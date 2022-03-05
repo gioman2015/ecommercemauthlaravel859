@@ -28,7 +28,12 @@ class AdminProfileController extends Controller
         if($request->file('profile_photo_path')){
             $old_image = $data->profile_photo_path;         
             $brand_image = $request->file('profile_photo_path');
-            unlink($old_image);
+            if ($old_image == null) {
+                
+            }else{
+                unlink($old_image);
+            }
+            /* unlink($old_image); */
             $name_gen = hexdec(uniqid());
             $img_ext = strtolower($brand_image->getClientOriginalExtension());
             $img_name = $name_gen.".".$img_ext;
