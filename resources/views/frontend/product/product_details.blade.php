@@ -120,7 +120,7 @@
 						<div class="product-info">
 
 
-							<h1 class="name">
+							<h1 class="name" id="pname">
                                 @if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif
 							 </h1>
 							
@@ -159,10 +159,14 @@
                                     <div class="col-sm-6">
                                         <div class="price-box">
 											@if ($product->discount_price == NULL)
-												<span class="price">${{ $product->selling_price }}</span>
+												<input type="hidden" id="pprice" value="0" readonly>
+												<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+												{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 											@else
-												<span class="price">${{ $product->discount_price }}</span>
-												<span class="price-strike">${{ $product->selling_price }}</span>
+												<input type="text" id="pprice" value="{{ $product->discount_price }}" readonly>
+												<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+												{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
+												<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 											@endif     
                                         </div>
                                     </div>
@@ -187,7 +191,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
 											<label class="info-title control-label">Chose Color <span>*</span></label>
-											<select class="form-control unicase-form-control selectpicker" style="display: none;">
+											<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
 												<option selected="" disabled="">--Chose Color--</option>
 												@if(session()->get('language') == 'spanish') 
 													@foreach ($product_color_esp as $color)
@@ -203,8 +207,11 @@
                                     </div>{{-- end col-sm-6 --}}
 									<div class="col-sm-6">
 										<div class="form-group">
+											@if ($product->product_size_en == null)
+												
+											@else
 											<label class="info-title control-label">Choose Size <span>*</span></label>
-											<select class="form-control unicase-form-control selectpicker" style="display: none;">
+											<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
 												<option selected="" disabled="">--Choose Size--</option>
 												@if(session()->get('language') == 'spanish') 
 													@foreach ($product_size_esp as $size)
@@ -216,6 +223,7 @@
 													@endforeach
 												@endif
 											</select>
+											@endif
 										</div>{{-- end from-group --}}
 									</div>{{-- end col-sm-6 --}}
 								</div><!-- /.row -->
@@ -235,13 +243,14 @@
 								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 								                </div>
-								                <input type="text" value="1">
+								                <input type="text" id="qty" value="1" min="1">
 							              </div>
 							            </div>
 									</div>
 
+									<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 									<div class="col-sm-7">
-										<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+										<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
 									</div>
 								</div><!-- /.row -->
 							</div><!-- /.quantity-container -->	
