@@ -132,6 +132,11 @@ class IndexController extends Controller
 
     /// Product View With Ajax
 	public function ProductViewAjax($id){
+        if (Auth::check()) {
+            $type_user = Auth::user()->type_user;
+        } else {
+            $type_user = 0;
+        }
         $product = Product::with('category','brand')->findOrFail($id);
 
 		$color = $product->product_color_en;
@@ -155,6 +160,7 @@ class IndexController extends Controller
 			'sizeen' => $product_size_en,
             'coloresp' => $product_color_esp,
 			'sizeesp' => $product_size_esp,
+            'type_user' => $type_user,
 		));
 	} // end method
 }

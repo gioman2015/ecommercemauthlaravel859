@@ -179,7 +179,7 @@
                         </div>{{-- end 4th row --}}
 
                         <div class="row">{{-- 5th row --}}
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h5>Product Color Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -189,8 +189,8 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-6 --}}
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h5>Product Color Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -200,7 +200,11 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
+                            </div>{{-- end col-md-6 --}}
+                            
+                        </div>{{-- end 5th row --}}
+
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5>Product Selling Price <span class="text-danger">*</span></h5>
@@ -212,9 +216,6 @@
                                     </div>
                                 </div>
                             </div>{{-- end col-md-4 --}}
-                        </div>{{-- end 5th row --}}
-
-                        <div class="row">{{-- 6th row --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5>Product Discount Price <span class="text-danger">*</span></h5>
@@ -228,6 +229,21 @@
                             </div>{{-- end col-md-4 --}}
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <h5>Product Supplier Price <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" name="supplier_price" class="form-control">
+                                        @error('supplier_price') 
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror 
+                                    </div>
+                                </div>
+                            </div>{{-- end col-md-4 --}}
+                        </div>{{-- end Prices row --}}
+
+                        <div class="row">{{-- 6th row --}}
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <h5>Image Thambnaill<span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)" required="">
@@ -237,8 +253,8 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror 
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-6 --}}
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h5>Multiple Image<span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -249,7 +265,7 @@
                                     @enderror 
                                     <div class="row" id="preview_img"></div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
+                            </div>{{-- end col-md-6 --}}
                         </div>{{-- end 6th row --}}
                         
                         <div class="row">{{-- 7th row --}}

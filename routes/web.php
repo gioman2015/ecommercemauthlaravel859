@@ -8,10 +8,13 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\UserController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LenguageController;
 use App\Http\Controllers\Frontend\CartController;
+
+use App\Http\Controllers\User\WishlistController;
 use App\Models\User;
 
 /*
@@ -100,7 +103,6 @@ Route::middleware(['auth:admin'])->group(function(){
     });
 
     // Admin Slider All Routes 
-
     Route::prefix('slider')->group(function(){
         Route::get('/view', [SliderController::class, 'SliderView'])->name('manage-slider');
         Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
@@ -109,6 +111,13 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
         Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
         Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+    });
+
+    // Admin User All Routes
+    Route::prefix('user')->group(function(){
+        Route::get('/view', [UserController::class, 'UserView'])->name('manage-user');
+        Route::get('/active/{id}', [UserController::class, 'Proveedor'])->name('user.proveedor');
+        Route::get('/inactive/{id}', [UserController::class, 'NormalUser'])->name('user.normal');
     });
 });
 
@@ -154,3 +163,10 @@ Route::get('/product/mini/cart/', [CartController::class, 'AddMiniCart']);
 
 // Remove mini cart
 Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
+// Add to Wishlist
+Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
+
+// Wishlist page
+Route::get('/wishlist', [WishlistController::class, 'ViewWishlist'])->name('wishlist');
+Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']);

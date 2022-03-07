@@ -82,6 +82,19 @@
           <ul class="treeview-menu">
             <li class="{{ ($route == 'manage-slider')? 'active':'' }}"><a href="{{route('manage-slider')}}"><i class="ti-more"></i>Manage Slider</a></li>
           </ul>
+        </li>
+
+        <li class="treeview {{($prefix == '/user')? 'active':''}}">
+          <a href="#">
+            <i data-feather="file"></i>
+            <span>Users</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'manage-user')? 'active':'' }}"><a href="{{route('manage-user')}}"><i class="ti-more"></i>Manage Users</a></li>
+          </ul>
         </li> 
 		 
         <li class="header nav-small-cap">User Interface</li>

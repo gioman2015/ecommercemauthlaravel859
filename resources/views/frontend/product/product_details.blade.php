@@ -158,16 +158,38 @@
 								<div class="row">
                                     <div class="col-sm-6">
                                         <div class="price-box">
-											@if ($product->discount_price == NULL)
-												<input type="hidden" id="pprice" value="0" readonly>
-												<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
-												{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
+											@auth
+												@php
+													$user = Auth::user();
+												@endphp
+												@if ($user->type_user == 1)
+													<input type="hidden" id="oldprice" value="0" readonly>
+													<input type="text" id="pprice" class="price" value="{{ $product->supplier_price }}" readonly>
+												@else
+													@if ($product->discount_price == NULL)
+														<input type="hidden" id="pprice" value="0" readonly>
+														<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+														{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
+													@else
+														<input type="text" id="pprice" value="{{ $product->discount_price }}" readonly>
+														<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+														{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
+														<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
+													@endif 
+												@endif
 											@else
-												<input type="text" id="pprice" value="{{ $product->discount_price }}" readonly>
-												<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
-												{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
-												<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
-											@endif     
+												@if ($product->discount_price == NULL)
+													<input type="hidden" id="pprice" value="0" readonly>
+													<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+													{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
+												@else
+													<input type="text" id="pprice" value="{{ $product->discount_price }}" readonly>
+													<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+													{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
+													<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
+												@endif  
+											@endauth
+											   
                                         </div>
                                     </div>
 									<div class="col-sm-6">
@@ -444,11 +466,26 @@
 			</h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
-				@if ($product->discount_price == NULL)
-                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
-                @else
-                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
-                @endif
+				@auth
+					@php
+					$user = Auth::user();
+					@endphp
+					@if ($user->type_user == 1)
+					<div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+					@else
+					@if ($product->discount_price == NULL)
+						<div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+					@else
+						<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+					@endif
+					@endif
+				@else
+					@if ($product->discount_price == NULL)
+					<div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+					@else
+					<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+					@endif
+				@endauth
 			
 		</div><!-- /.product-info -->
 					<div class="cart clearfix animate-effect">

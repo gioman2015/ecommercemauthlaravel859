@@ -41,11 +41,26 @@
           <div class="product-info text-left m-t-20">
             <h3 class="name"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">@if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif</a></h3>
             <div class="rating rateit-small"></div>
-              @if ($product->discount_price == NULL)
-                <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+              @auth
+                @php
+                  $user = Auth::user();
+                @endphp
+                @if ($user->type_user == 1)
+                  <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+                @else
+                  @if ($product->discount_price == NULL)
+                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                  @else
+                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                  @endif
+                @endif
               @else
-                <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
-              @endif
+                @if ($product->discount_price == NULL)
+                  <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                @else
+                  <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                @endif
+              @endauth
             <!-- /.product-price --> 
             
           </div>

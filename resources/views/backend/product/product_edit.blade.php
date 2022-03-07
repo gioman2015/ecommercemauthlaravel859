@@ -210,7 +210,7 @@
                         </div>{{-- end 5th row --}}
 
                         <div class="row">{{-- 6th row --}}
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <h5>Product Selling Price <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -220,8 +220,8 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-6 --}}
-                            <div class="col-md-6">
+                            </div>{{-- end col-md-4 --}}
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <h5>Product Discount Price <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -231,7 +231,18 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-6 --}}
+                            </div>{{-- end col-md-4 --}}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Product Supplier Price <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" name="supplier_price" class="form-control" value="{{$products->supplier_price}}">
+                                        @error('supplier_price') 
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror 
+                                    </div>
+                                </div>
+                            </div>{{-- end col-md-4 --}}
                         </div>{{-- end 6th row --}}
                         
                         <div class="row">{{-- 7th row --}}

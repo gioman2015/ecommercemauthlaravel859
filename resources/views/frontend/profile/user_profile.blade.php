@@ -24,7 +24,7 @@
                         <form method="POST" action="{{route('user.profile.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Name <span>*</span></label>
+                                <label class="info-title" for="exampleInputEmail1">Name <span></span></label>
                                 <input type="text" name="name" class="form-control" value="{{$user->name}}">
                                  @error('name')
                                 <span class="invalid-feedback" role="alert">

@@ -164,30 +164,36 @@
             url: '/product/view/modal/'+id,
             dataType:'json',
             success:function(data){
-              //console.log(data)
+              console.log(data)
               @if(session()->get('language') == 'spanish') $('#pname').text(data.product.product_name_esp); @else $('#pname').text(data.product.product_name_en); @endif
               $('#price').text(data.product.selling_price);
               $('#pcode').text(data.product.product_code);
               @if(session()->get('language') == 'spanish') $('#pcategory').text(data.product.category.category_name_esp); @else $('#pcategory').text(data.product.category.category_name_en); @endif
               $('#pbrand').text(data.product.brand.brand_name_en);
               $('#pimage').attr('src','/'+data.product.product_thambnail);
-              
               $('#product_id').val(id);
               $('#qty').val(1);
-
-              // Product Price 
-              if (data.product.discount_price == null) {
-                  $('#pprice').text('');
-                  $('#oldprice').text('');
-                  $('#pprice').text(data.product.selling_price);
-                  $('#pprice').val(data.product.selling_price);
-                  $('#oldprice').val('0');
-              }else{
-                  $('#pprice').text(data.product.discount_price);
-                  $('#oldprice').text(data.product.selling_price);
-                  $('#pprice').val(data.product.discount_price);
-                  $('#oldprice').val(data.product.selling_price);
-              } // end prodcut price 
+              // Product Price
+              if (data.type_user == 1) {
+                $('#pprice').text('');
+                $('#oldprice').text('');
+                $('#pprice').text(data.product.supplier_price);
+                $('#pprice').val(data.product.supplier_price);
+                $('#oldprice').val('0');
+              } else {
+                if (data.product.discount_price == null) {
+                    $('#pprice').text('');
+                    $('#oldprice').text('');
+                    $('#pprice').text(data.product.selling_price);
+                    $('#pprice').val(data.product.selling_price);
+                    $('#oldprice').val('0');
+                }else{
+                    $('#pprice').text(data.product.discount_price);
+                    $('#oldprice').text(data.product.selling_price);
+                    $('#pprice').val(data.product.discount_price);
+                    $('#oldprice').val(data.product.selling_price);
+                } // end prodcut price 
+              }
               // Start Stock opiton
               if (data.product.product_qty > 0) {
                   $('#aviable').text('');
@@ -332,6 +338,80 @@
       }
         //  end mini cart remove 
     </script>
+
+    <!--  /// Start Add Wishlist Page  //// -->
+
+    <script type="text/javascript">
+      function addToWishList(product_id){
+          $.ajax({
+              type: "POST",
+              dataType: 'json',
+              url: "/add-to-wishlist/"+product_id,
+              success:function(data){
+                // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+              }
+          })
+      }
+    </script>
+   <!--  /// End Add Wishlist Page  ////   -->
+   <!-- /// Load Wishlist Data  -->
+
+
+<script type="text/javascript">
+  function wishlist(){
+     $.ajax({
+         type: 'GET',
+         url: '/get-wishlist-product',
+         dataType:'json',
+         success:function(response){
+             var rows = ""
+             $.each(response, function(key,value){
+                 rows += `<tr>
+                    <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
+                    <td class="col-md-7">
+                      <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
+                      <div class="price">
+                        ${value.product.discount_price == null
+                            ? `${value.product.selling_price}`
+                            :
+                            `${value.product.discount_price} <span>${value.product.selling_price}</span>`
+                        }    
+                      </div>
+                        </td>
+                        <td class="col-md-2">
+                            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Add to Cart </button>
+                        </td>
+                        <td class="col-md-1 close-btn">
+                          <a href="#" class=""><i class="fa fa-times"></i></a>
+                        </td>
+                  </tr>`
+                });        
+             $('#wishlist').html(rows);
+         }
+     })
+  }
+wishlist();
+</script> 
 </body>
 
 </html>
