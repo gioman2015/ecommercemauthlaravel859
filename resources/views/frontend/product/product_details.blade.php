@@ -163,8 +163,8 @@
 													$user = Auth::user();
 												@endphp
 												@if ($user->type_user == 1)
-													<input type="hidden" id="oldprice" value="0" readonly>
-													<input type="text" id="pprice" class="price" value="{{ $product->supplier_price }}" readonly>
+													<input type="hidden" id="pprice" value="0" readonly>
+													<input type="text" id="oldprice" class="price" value="{{ $product->supplier_price }}" readonly>
 												@else
 													@if ($product->discount_price == NULL)
 														<input type="hidden" id="pprice" value="0" readonly>

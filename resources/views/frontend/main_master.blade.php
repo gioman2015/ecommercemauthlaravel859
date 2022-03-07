@@ -164,7 +164,7 @@
             url: '/product/view/modal/'+id,
             dataType:'json',
             success:function(data){
-              console.log(data)
+              //console.log(data)
               @if(session()->get('language') == 'spanish') $('#pname').text(data.product.product_name_esp); @else $('#pname').text(data.product.product_name_en); @endif
               $('#price').text(data.product.selling_price);
               $('#pcode').text(data.product.product_code);
@@ -179,14 +179,15 @@
                 $('#oldprice').text('');
                 $('#pprice').text(data.product.supplier_price);
                 $('#pprice').val(data.product.supplier_price);
-                $('#oldprice').val('0');
+                $('#oldprice').val(data.product.supplier_price);
+                $('#oldprice').val(data.product.supplier_price);
               } else {
                 if (data.product.discount_price == null) {
                     $('#pprice').text('');
                     $('#oldprice').text('');
                     $('#pprice').text(data.product.selling_price);
-                    $('#pprice').val(data.product.selling_price);
-                    $('#oldprice').val('0');
+                    $('#pprice').val('0');
+                    $('#oldprice').val(data.product.selling_price);
                 }else{
                     $('#pprice').text(data.product.discount_price);
                     $('#oldprice').text(data.product.selling_price);
@@ -375,8 +376,6 @@
     </script>
    <!--  /// End Add Wishlist Page  ////   -->
    <!-- /// Load Wishlist Data  -->
-
-
 <script type="text/javascript">
   function wishlist(){
      $.ajax({
@@ -385,12 +384,20 @@
          dataType:'json',
          success:function(response){
              var rows = ""
-             $.each(response, function(key,value){
+             $.each(response.wishlist, function(key,value){
+               console.log(response.wishlist)
                  rows += `<tr>
                     <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
                     <td class="col-md-7">
                       <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
                       <div class="price">
+                        ${response.type_user == 1
+                            ? `${value.product.supplier_price}`
+                         
+                          :
+                          ${value.product.discount_price == null ? `${value.product.selling_price}` :
+                                `${value.product.discount_price} <span>${value.product.selling_price}</span>`
+                        }
                         ${value.product.discount_price == null
                             ? `${value.product.selling_price}`
                             :
@@ -412,6 +419,7 @@
   }
 wishlist();
 </script> 
+<!-- /// End Load Wishlist Data  -->
 </body>
 
 </html>

@@ -21,6 +21,10 @@ class WishlistController extends Controller
             $type_user = 0;
         }
 		$wishlist = Wishlist::with('product')->where('user_id',Auth::id())->latest()->get();
-		return response()->json($wishlist);
+		/* return response()->json($wishlist); */
+        return response()->json(array(
+			'wishlist' => $wishlist,
+            'type_user' => $type_user,
+		));
 	} // end method
 }
