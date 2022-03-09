@@ -32,42 +32,42 @@
         <li class="treeview {{($prefix == '/brand')? 'active':''}}">
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>Brands</span>
+            <span>Marcas</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="{{ ($route == 'all.brand')? 'active':'' }}">
-              <a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
+              <a href="{{ route('all.brand') }}"><i class="ti-more"></i>Todas las Marcas</a></li>
           </ul>
         </li> 
 		  
         <li class="treeview {{($prefix == '/category')? 'active':''}}">
           <a href="#">
-            <i data-feather="mail"></i> <span>Category</span>
+            <i data-feather="mail"></i> <span>Categoria</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>All Category</a></li>
-            <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
-            <li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>All Sub->SubCategory</a></li>
+            <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>Todas las Categorias</a></li>
+            <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>Todas las SubCategorias</a></li>
+            <li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>Todas las Sub->SubCategorias</a></li>
           </ul>
         </li>
 		
         <li class="treeview {{($prefix == '/product')? 'active':''}}">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Products</span>
+            <span>Productos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'add-product')? 'active':'' }}"><a href="{{route('add-product')}}"><i class="ti-more"></i>Add Products</a></li>
-            <li class="{{ ($route == 'manage-product')? 'active':'' }}"><a href="{{route('manage-product')}}"><i class="ti-more"></i>Manage Products</a></li>
+            <li class="{{ ($route == 'add-product')? 'active':'' }}"><a href="{{route('add-product')}}"><i class="ti-more"></i>Agregar Producto</a></li>
+            <li class="{{ ($route == 'manage-product')? 'active':'' }}"><a href="{{route('manage-product')}}"><i class="ti-more"></i>Administrar Productos</a></li>
           </ul>
         </li> 	
         
@@ -80,20 +80,48 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'manage-slider')? 'active':'' }}"><a href="{{route('manage-slider')}}"><i class="ti-more"></i>Manage Slider</a></li>
+            <li class="{{ ($route == 'manage-slider')? 'active':'' }}"><a href="{{route('manage-slider')}}"><i class="ti-more"></i>Administrar Slider</a></li>
           </ul>
         </li>
 
-        <li class="treeview {{($prefix == '/user')? 'active':''}}">
+        <li class="treeview {{($prefix == '/coupons')? 'active':''}}">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Users</span>
+            <span>Cupones</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'manage-user')? 'active':'' }}"><a href="{{route('manage-user')}}"><i class="ti-more"></i>Manage Users</a></li>
+            <li class="{{ ($route == 'manage-coupon')? 'active':'' }}"><a href="{{route('manage-coupon')}}"><i class="ti-more"></i>Administrar Cupones</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview {{ ($prefix == '/shipping')?'active':'' }}  ">
+          <a href="#">
+            <i data-feather="file"></i>
+            <span>Envíos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'manage-division')? 'active':'' }}"><a href="{{ route('manage-division') }}"><i class="ti-more"></i>Ship Division</a></li>
+            <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{ route('manage-district') }}"><i class="ti-more"></i>Ship District</a></li>
+            <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{ route('manage-state') }}"><i class="ti-more"></i>Ship State</a></li>
+          </ul>
+        </li>    
+
+        <li class="treeview {{($prefix == '/user')? 'active':''}}">
+          <a href="#">
+            <i data-feather="file"></i>
+            <span>Usuarios</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'manage-user')? 'active':'' }}"><a href="{{route('manage-user')}}"><i class="ti-more"></i>Administrar Usuarios</a></li>
           </ul>
         </li> 
 		 

@@ -8,8 +8,8 @@
             <ul class="list-unstyled">
               <li><a href="#"><i class="icon fa fa-user"></i>@if(session()->get('language') == 'spanish') Perfil @else Profile @endif</a></li>
               <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-              <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-              <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
+              <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+              <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
               <li>
                 @auth
                   <a href="{{route('dashboard')}}"><i class="icon fa fa-user"></i>User Profile</a>
@@ -180,7 +180,7 @@
                             </div>
                             <!-- /.col --> 
                             @endforeach  {{-- end subcategory foreach --}}                         
-                            <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{asset('frontend/assets/images/banners/top-menu-banner.jpg')}}" alt=""> </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" {{-- src="{{asset('frontend/assets/images/banners/top-menu-banner.jpg')}}" --}} alt=""> </div>
                             <!-- /.yamm-content --> 
                           </div>
                         </div>

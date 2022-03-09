@@ -201,8 +201,25 @@ Tag Wise Product
 
 
         <!-- == ==== SECTION – HERO === ====== -->
-        
-        <div id="category" class="category-carousel hidden-xs">
+        <div id="hero">
+          <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+            @foreach($sliders as $slider)
+            <div class="item" style="background-image: url({{asset($slider->slider_img)}});">
+              <div class="container-fluid">
+                <div class="caption bg-color vertical-center text-left">
+                  <div class="big-text fadeInDown-1"> {{$slider->title}} </div>
+                  <div class="excerpt fadeInDown-2 hidden-xs"> <span>{{$slider->desciption}}</span> </div>
+                </div>
+                <!-- /.caption --> 
+              </div>
+              <!-- /.container-fluid --> 
+            </div>
+            <!-- /.item -->    
+            @endforeach          
+          </div>
+          <!-- /.owl-carousel --> 
+        </div>
+        {{-- <div id="category" class="category-carousel hidden-xs">
           <div class="item">
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
             <div class="container-fluid">
@@ -215,7 +232,7 @@ Tag Wise Product
             </div>
             <!-- /.container-fluid --> 
           </div>
-        </div>
+        </div> --}}
         
      
         <div class="clearfix filters-container m-t-10">
