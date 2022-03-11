@@ -29,9 +29,10 @@ return new class extends Migration
             $table->string('product_tags_esp');
             $table->string('product_size_en')->nullable();
             $table->string('product_size_esp')->nullable();
-            $table->string('product_color_en');
-            $table->string('product_color_esp');
+            $table->string('product_color_en')->nullable();
+            $table->string('product_color_esp')->nullable();
             $table->string('selling_price');
+            $table->string('supplier_price');
             $table->string('discount_price')->nullable();
             $table->string('short_descp_en');
             $table->string('short_descp_esp');

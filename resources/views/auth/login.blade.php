@@ -47,6 +47,8 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
+
+            
         </div>
         <div class="radio outer-xs">
             <label>
