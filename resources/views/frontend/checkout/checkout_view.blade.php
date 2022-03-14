@@ -202,7 +202,7 @@ My Checkout
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <label for="">Stripe</label> 		
                             <input type="radio" name="payment_method" value="stripe">
                             <img src="{{ asset('frontend/assets/images/payments/4.png') }}">		    		
@@ -212,7 +212,7 @@ My Checkout
                             <label for="">Card</label> 		
                             <input type="radio" name="payment_method" value="card">	
                             <img src="{{ asset('frontend/assets/images/payments/3.png') }}">    		
-                        </div> <!-- end col md 4 -->
+                        </div> <!-- end col md 4 --> --}}
 
                         <div class="col-md-4">
                             <label for="">Cash</label> 		

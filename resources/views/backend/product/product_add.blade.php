@@ -375,7 +375,8 @@
                   dataType:"json",
                   success:function(data) {
                       $('select[name="subsubcategory_id"]').html('');
-                     var d =$('select[name="subcategory_id"]').empty();
+                      var d =$('select[name="subcategory_id"]').empty();
+                        d =$('select[name="subcategory_id"]').append('<option value=""> --- </option>');
                         $.each(data, function(key, value){
                             $('select[name="subcategory_id"]').append('<option value="'+ value.id +'">' + value.subcategory_name_en + '</option>');
                         });
@@ -396,7 +397,8 @@ $('select[name="subcategory_id"]').on('change', function(){
                   type:"GET",
                   dataType:"json",
                   success:function(data) {
-                     var d =$('select[name="subsubcategory_id"]').empty();
+                        var d =$('select[name="subsubcategory_id"]').empty();
+                        d =$('select[name="subsubcategory_id"]').append('<option value=""> --- </option>');
                         $.each(data, function(key, value){
                             $('select[name="subsubcategory_id"]').append('<option value="'+ value.id +'">' + value.subsubcategory_name_en + '</option>');
                         });
