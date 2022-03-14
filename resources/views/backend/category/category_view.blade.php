@@ -13,7 +13,7 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Category List</h3>
+                <h3 class="box-title">Category List <span class="badge badge-pill badge-danger"> {{ count($categories) }} </span></h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -35,7 +35,7 @@
                                 <td>{{$item->category_name_esp	}}</td>
                                 <td>
                                     <a href="{{route('category.edit',$item->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{route('category.delete',$item->id)}}" onclick="return confirm('Are you sure to delete')" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                    <a href="{{route('category.delete',$item->id)}}" {{-- onclick="return confirm('Are you sure to delete')" --}} id="delete" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
                                 </td>
                             </tr> 
                           @endforeach

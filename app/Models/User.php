@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'phone',
         'password',
         'type_user',
+        'last_seen',
     ];
 
     /**
@@ -60,4 +62,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // User Active Show
+    public function UserOnline(){
+        return Cache::has('user-is-online' . $this->id);
+    }
 }

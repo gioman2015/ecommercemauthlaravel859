@@ -133,7 +133,7 @@
                                 <div class="form-group">
                                     <h5>Product Tag Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_tags_en" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" required=""/>
+                                        <input type="text" name="product_tags_en" value="" data-role="tagsinput" placeholder="add tags" required=""/>
                                         @error('product_tags_en') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -147,7 +147,7 @@
                                 <div class="form-group">
                                     <h5>Product Tag Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_tags_esp" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" required=""/>
+                                        <input type="text" name="product_tags_esp" value="" data-role="tagsinput" placeholder="add tags" required=""/>
                                         @error('product_tags_esp') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -158,7 +158,7 @@
                                 <div class="form-group">
                                     <h5>Product Size Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_size_en" value="Small,Medium,Large" data-role="tagsinput" placeholder="add tags"/>
+                                        <input type="text" name="product_size_en" value="" data-role="tagsinput" placeholder="add tags"/>
                                         @error('product_size_en') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -169,7 +169,7 @@
                                 <div class="form-group">
                                     <h5>Product Size Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_size_esp" value="Pequeño,Medio,Grande" data-role="tagsinput" placeholder="add tags"/>
+                                        <input type="text" name="product_size_esp" value="" data-role="tagsinput" placeholder="add tags"/>
                                         @error('product_size_esp') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -183,7 +183,7 @@
                                 <div class="form-group">
                                     <h5>Product Color Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_color_en" value="Red,Black" data-role="tagsinput" placeholder="add tags" />
+                                        <input type="text" name="product_color_en" value="" data-role="tagsinput" placeholder="add tags" />
                                         @error('product_color_en') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -194,7 +194,7 @@
                                 <div class="form-group">
                                     <h5>Product Color Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_color_esp" value="Rojo,Negro" data-role="tagsinput" placeholder="add tags" />
+                                        <input type="text" name="product_color_esp" value="" data-role="tagsinput" placeholder="add tags" />
                                         @error('product_color_esp') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -416,7 +416,7 @@ $('select[name="subcategory_id"]').on('change', function(){
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e){
-				$('#mainThmb').attr('src',e.target.result).width(80).height(80);
+				$('#mainThmb').attr('src',e.target.result).height(300).width(300);
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -437,8 +437,8 @@ $('select[name="subcategory_id"]').on('change', function(){
                   var fRead = new FileReader(); //new filereader
                   fRead.onload = (function(file){ //trigger function on successful read
                   return function(e) {
-                      var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(80)
-                  .height(80); //create image element 
+                      var img = $('<img/>').addClass('thumb').attr('src', e.target.result).height(150) ;
+                  /* .width(300); */ //create image element 
                       $('#preview_img').append(img); //append image to output element
                   };
                   })(file);

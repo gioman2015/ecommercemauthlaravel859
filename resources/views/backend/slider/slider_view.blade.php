@@ -49,7 +49,7 @@
                                 </td>
                                 <td>
                                     <a href="{{route('slider.edit',$item->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{route('slider.delete',$item->id)}}" onclick="return confirm('Are you sure to delete')" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                    <a href="{{route('slider.delete',$item->id)}}" {{-- onclick="return confirm('Are you sure to delete')" --}} id="delete" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
                                     @if($item->status == 1)
                                         <a href="{{ route('slider.inactive',$item->id) }}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
                                     @else

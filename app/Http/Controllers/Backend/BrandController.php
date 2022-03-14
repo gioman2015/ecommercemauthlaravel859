@@ -24,12 +24,13 @@ class BrandController extends Controller
             'brand_name_esp.required' => 'Input Brand Spanish Name',
         ]);
         $image = $request->file('brand_image');
-        $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($image->getClientOriginalExtension());
-        $img_name = $name_gen.".".$img_ext;
-        $up_location = 'upload/brand/';
-        $last_img = $up_location.$img_name;
-        $image->move($up_location,$img_name);
+
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save('upload/brand/'.$name_gen);
+        $last_img = 'upload/brand/'.$name_gen;
+        /* dd($imgresize); */
 
         Brand::insert([
             'brand_name_en' => $request->brand_name_en,
@@ -58,12 +59,12 @@ class BrandController extends Controller
 
         if($brand_image){
             $image = $request->file('brand_image');
-            $name_gen = hexdec(uniqid());
-            $img_ext = strtolower($image->getClientOriginalExtension());
-            $img_name = $name_gen.".".$img_ext;
-            $up_location = 'upload/brand/';
-            $last_img = $up_location.$img_name;
-            $image->move($up_location,$img_name);
+
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('upload/brand/'.$name_gen);
+            $last_img = 'upload/brand/'.$name_gen;
     
             unlink($old_img);
     

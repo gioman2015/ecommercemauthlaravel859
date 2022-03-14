@@ -13,7 +13,7 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Brand List</h3>
+                <h3 class="box-title">Brand List <span class="badge badge-pill badge-danger"> {{ count($brands) }} </span></h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -35,7 +35,7 @@
                                 <td><img src="{{asset($item->brand_image)}}" style="width: 70px"></td>
                                 <td>
                                     <a href="{{route('brand.edit',$item->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{route('brand.delete',$item->id)}}" onclick="return confirm('Are you sure to delete')" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                    <a href="{{route('brand.delete',$item->id)}}" {{-- onclick="return confirm('Are you sure to delete')" --}} class="btn btn-danger" title="Delete Data" id="delete"><i class="fa fa-trash"></i> </a>
                                 </td>
                             </tr> 
                           @endforeach

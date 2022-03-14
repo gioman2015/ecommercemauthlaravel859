@@ -43,7 +43,7 @@ Home Easy Online Shop
                             <div class="col col-xs-7">
                               <div class="product-info">
                                 <h3 class="name"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">@if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif</a></h3>
-                                <div class="rating rateit-small"></div>
+                                {{-- <div class=""></div> --}}
                                 @auth
                                   @php
                                     $user = Auth::user();
@@ -110,7 +110,7 @@ Home Easy Online Shop
                             <div class="col col-xs-7">
                               <div class="product-info">
                                 <h3 class="name"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">@if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif</a></h3>
-                                <div class="rating rateit-small"></div>
+                                {{-- <div class=""></div> --}}
                                 @auth
                                   @php
                                     $user = Auth::user();
@@ -152,7 +152,7 @@ Home Easy Online Shop
           <!-- /.sidebar-widget -->
           <!-- ============================================== SPECIAL DEALS : END ============================================== --> 
           <!-- ============================================== NEWSLETTER ============================================== -->
-          <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small">
+          {{-- <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small">
             <h3 class="section-title">Newsletters</h3>
             <div class="sidebar-widget-body outer-top-xs">
               <p>Sign Up for Our Newsletter!</p>
@@ -165,7 +165,7 @@ Home Easy Online Shop
               </form>
             </div>
             <!-- /.sidebar-widget-body --> 
-          </div>
+          </div> --}}
           <!-- /.sidebar-widget --> 
           <!-- ============================================== NEWSLETTER: END ============================================== --> 
           
@@ -173,7 +173,7 @@ Home Easy Online Shop
           @include('frontend.common.testimonials')          
           <!-- ============================================== Testimonials: END ============================================== -->
           
-          <div class="home-banner"> <img src="{{asset('frontend/assets/images/banners/LHS-banner.jpg')}}" alt="Image"> </div>
+          {{-- <div class="home-banner"> <img src="{{asset('frontend/assets/images/banners/LHS-banner.jpg')}}" alt="Image"> </div> --}}
         </div>
         <!-- /.sidemenu-holder --> 
         <!-- ============================================== SIDEBAR : END ============================================== --> 
@@ -204,7 +204,7 @@ Home Easy Online Shop
           <!-- ========================================= SECTION – HERO : END ========================================= --> 
           
           <!-- ============================================== INFO BOXES ============================================== -->
-          <div class="info-boxes wow fadeInUp">
+          {{-- <div class="info-boxes wow fadeInUp">
             <div class="info-boxes-inner">
               <div class="row">
                 <div class="col-md-6 col-sm-4 col-lg-4">
@@ -247,7 +247,7 @@ Home Easy Online Shop
             </div>
             <!-- /.info-boxes-inner --> 
             
-          </div>
+          </div> --}}
           <!-- /.info-boxes --> 
           <!-- ============================================== INFO BOXES : END ============================================== --> 
           <!-- ============================================== SCROLL TABS ============================================== -->
@@ -295,7 +295,7 @@ Home Easy Online Shop
                             <h3 class="name"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">
                               @if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif</a>
                             </h3>
-                            <div class="rating rateit-small"></div>
+                            {{-- <div class=""></div> --}}
                             <div class="description"></div>
                             @auth
                               @php
@@ -387,7 +387,7 @@ Home Easy Online Shop
                             
                             <div class="product-info text-left">
                               <h3 class="name"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">@if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif</a></h3>
-                              <div class="rating rateit-small"></div>
+                              {{-- <div class=""></div> --}}
                               <div class="description"></div>
                               @if ($product->discount_price == NULL)
                                 <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
@@ -440,7 +440,7 @@ Home Easy Online Shop
           <!-- /.scroll-tabs --> 
           <!-- ============================================== SCROLL TABS : END ============================================== --> 
           <!-- ============================================== WIDE PRODUCTS ============================================== -->
-          <div class="wide-banners wow fadeInUp outer-bottom-xs">
+          {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
             <div class="row">
               <div class="col-md-7 col-sm-7">
                 <div class="wide-banner cnt-strip">
@@ -458,7 +458,7 @@ Home Easy Online Shop
               <!-- /.col --> 
             </div>
             <!-- /.row --> 
-          </div>
+          </div> --}}
           <!-- /.wide-banners --> 
           
           <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
@@ -498,7 +498,7 @@ Home Easy Online Shop
                           @endif
                         </a>
                       </h3>
-                      <div class="rating rateit-small"></div>
+                      {{-- <div class=""></div> --}}
                       <div class="description"></div>
                       @auth
                         @php
@@ -581,7 +581,7 @@ Home Easy Online Shop
                     
                     <div class="product-info text-left">
                       <h3 class="name"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">{{$product->product_name_en}}</a></h3>
-                      <div class="rating rateit-small"></div>
+                      <div class=""></div>
                       <div class="description"></div>
                       @if ($product->discount_price == NULL)
                         <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
@@ -622,7 +622,7 @@ Home Easy Online Shop
           <!-- ============================================== SKIPPRODUCT0 PRODUCTS : END ============================================== --> 
 
           <!-- ============================================== WIDE PRODUCTS ============================================== -->
-          <div class="wide-banners wow fadeInUp outer-bottom-xs">
+          {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
             <div class="row">
               <div class="col-md-12">
                 <div class="wide-banner cnt-strip">
@@ -644,12 +644,12 @@ Home Easy Online Shop
               
             </div>
             <!-- /.row --> 
-          </div>
+          </div> --}}
           <!-- /.wide-banners --> 
           <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
           <!-- ============================================== BEST SELLER ============================================== -->
           
-          <div class="best-deal wow fadeInUp outer-bottom-xs">
+          {{-- <div class="best-deal wow fadeInUp outer-bottom-xs">
             <h3 class="section-title">Best seller</h3>
             <div class="sidebar-widget-body outer-top-xs">
               <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
@@ -670,7 +670,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -698,7 +698,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -730,7 +730,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -758,7 +758,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -790,7 +790,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -818,7 +818,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -850,7 +850,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -878,7 +878,7 @@ Home Easy Online Shop
                           <div class="col2 col-xs-7">
                             <div class="product-info">
                               <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                              <div class="rating rateit-small"></div>
+                              <div class=""></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> </div>
                               <!-- /.product-price --> 
                               
@@ -896,12 +896,12 @@ Home Easy Online Shop
               </div>
             </div>
             <!-- /.sidebar-widget-body --> 
-          </div>
+          </div> --}}
           <!-- /.sidebar-widget --> 
           <!-- ============================================== BEST SELLER : END ============================================== --> 
           
           <!-- ============================================== BLOG SLIDER ============================================== -->
-          <section class="section latest-blog outer-bottom-vs wow fadeInUp">
+          {{-- <section class="section latest-blog outer-bottom-vs wow fadeInUp">
             <h3 class="section-title">latest form blog</h3>
             <div class="blog-slider-container outer-top-xs">
               <div class="owl-carousel blog-slider custom-carousel">
@@ -1006,12 +1006,12 @@ Home Easy Online Shop
               <!-- /.owl-carousel --> 
             </div>
             <!-- /.blog-slider-container --> 
-          </section>
+          </section> --}}
           <!-- /.section --> 
           <!-- ============================================== BLOG SLIDER : END ============================================== --> 
           
           <!-- ============================================== FEATURED PRODUCTS ============================================== -->
-          <section class="section wow fadeInUp new-arriavls">
+          {{-- <section class="section wow fadeInUp new-arriavls">
             <h3 class="section-title">New Arrivals</h3>
             <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
               <div class="item item-carousel">
@@ -1027,7 +1027,7 @@ Home Easy Online Shop
                     
                     <div class="product-info text-left">
                       <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                      <div class="rating rateit-small"></div>
+                      <div class=""></div>
                       <div class="description"></div>
                       <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                       <!-- /.product-price --> 
@@ -1069,7 +1069,7 @@ Home Easy Online Shop
                     
                     <div class="product-info text-left">
                       <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                      <div class="rating rateit-small"></div>
+                      <div class=""></div>
                       <div class="description"></div>
                       <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                       <!-- /.product-price --> 
@@ -1111,7 +1111,7 @@ Home Easy Online Shop
                     
                     <div class="product-info text-left">
                       <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                      <div class="rating rateit-small"></div>
+                      <div class=""></div>
                       <div class="description"></div>
                       <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                       <!-- /.product-price --> 
@@ -1153,7 +1153,7 @@ Home Easy Online Shop
                     
                     <div class="product-info text-left">
                       <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                      <div class="rating rateit-small"></div>
+                      <div class=""></div>
                       <div class="description"></div>
                       <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                       <!-- /.product-price --> 
@@ -1195,7 +1195,7 @@ Home Easy Online Shop
                     
                     <div class="product-info text-left">
                       <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                      <div class="rating rateit-small"></div>
+                      <div class=""></div>
                       <div class="description"></div>
                       <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                       <!-- /.product-price --> 
@@ -1237,7 +1237,7 @@ Home Easy Online Shop
                     
                     <div class="product-info text-left">
                       <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                      <div class="rating rateit-small"></div>
+                      <div class=""></div>
                       <div class="description"></div>
                       <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                       <!-- /.product-price --> 
@@ -1267,7 +1267,7 @@ Home Easy Online Shop
               <!-- /.item --> 
             </div>
             <!-- /.home-owl-carousel --> 
-          </section>
+          </section> --}}
           <!-- /.section --> 
           <!-- ============================================== FEATURED PRODUCTS : END ============================================== --> 
           

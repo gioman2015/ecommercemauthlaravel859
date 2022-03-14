@@ -11,6 +11,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\MultiImg;
 use Carbon\Carbon;
+use Image;
 
 
 class ProductController extends Controller
@@ -23,18 +24,18 @@ class ProductController extends Controller
 
     public function StoreProduct(Request $request){
         $image = $request->file('product_thambnail');
-        $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($image->getClientOriginalExtension());
-        $img_name = $name_gen.".".$img_ext;
-        $up_location = 'upload/products/thambnail/';
-        $last_img = $up_location.$img_name;
-        $image->move($up_location,$img_name);
+
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save('upload/products/thambnail/'.$name_gen);
+        $last_img = 'upload/products/thambnail/'.$name_gen;
         
         $product_id = Product::insertGetId([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
-            'subcategory_id' => '1'/* $request->subcategory_id */,
-            'subsubcategory_id' => '1'/* $request->subsubcategory_id */,
+            'subcategory_id' => $request->subcategory_id,
+            'subsubcategory_id' => $request->subsubcategory_id,
             'product_name_en' => $request->product_name_en,
             'product_name_esp' => $request->product_name_esp,
             'product_slug_en' => strtolower(str_replace(' ','-',$request->product_name_en)),
@@ -69,12 +70,11 @@ class ProductController extends Controller
         $multi_imgs = $request->file('multi_img');
 
         foreach($multi_imgs as $multi_img){
-            $name_gen = hexdec(uniqid());
-            $img_ext = strtolower($multi_img->getClientOriginalExtension());
-            $img_name = $name_gen.".".$img_ext;
-            $up_location = 'upload/products/multi-image/';
-            $last_img = $up_location.$img_name;
-            $multi_img->move($up_location,$img_name);
+            $name_gen = hexdec(uniqid()).'.'.$multi_img->getClientOriginalExtension();
+            $imgresize = Image::make($multi_img)->resize(450, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('upload/products/multi-image/'.$name_gen);
+            $last_img = 'upload/products/multi-image/'.$name_gen;
 
             MultiImg::insert([
                 'product_id' => $product_id,
@@ -148,6 +148,31 @@ class ProductController extends Controller
         return Redirect()->route('manage-product')->with($notification);
     }//end method
 
+    /// Multiple Image Add Update
+	public function MultiImageAdd(Request $request){
+        $pro_id = $request->id;
+        $multi_imgs = $request->file('multi_img');
+
+        foreach($multi_imgs as $multi_img){
+            $name_gen = hexdec(uniqid()).'.'.$multi_img->getClientOriginalExtension();
+            $imgresize = Image::make($multi_img)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('upload/products/multi-image/'.$name_gen);
+            $last_img = 'upload/products/multi-image/'.$name_gen;
+
+            MultiImg::insert([
+                'product_id' => $pro_id,
+                'photo_name' => $last_img,
+                'created_at' => Carbon::now()
+            ]);
+        }
+        $notification = array(
+			'message' => 'Product Image Add Successfully',
+			'alert-type' => 'info'
+		);
+		return redirect()->back()->with($notification);
+	} // end mehtod
+
     /// Multiple Image Update
 	public function MultiImageUpdate(Request $request){
 		$imgs = $request->multi_img;
@@ -156,12 +181,18 @@ class ProductController extends Controller
             $imgDel = MultiImg::findOrFail($id);
             unlink($imgDel->photo_name);
 
-            $name_gen = hexdec(uniqid());
+            /* $name_gen = hexdec(uniqid());
             $img_ext = strtolower($img->getClientOriginalExtension());
             $img_name = $name_gen.".".$img_ext;
             $up_location = 'upload/products/multi-image/';
             $last_img = $up_location.$img_name;
-            $img->move($up_location,$img_name);
+            $img->move($up_location,$img_name); */
+
+            $name_gen = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            $imgresize = Image::make($img)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('upload/products/multi-image/'.$name_gen);
+            $last_img = 'upload/products/multi-image/'.$name_gen;
 
             MultiImg::where('id',$id)->update([
                 'photo_name' => $last_img,
@@ -182,12 +213,18 @@ class ProductController extends Controller
         unlink($oldImage);
 
         $image = $request->file('product_thambnail');
-        $name_gen = hexdec(uniqid());
+        /* $name_gen = hexdec(uniqid());
         $img_ext = strtolower($image->getClientOriginalExtension());
         $img_name = $name_gen.".".$img_ext;
         $up_location = 'upload/products/thambnail/';
         $last_img = $up_location.$img_name;
-        $image->move($up_location,$img_name);
+        $image->move($up_location,$img_name); */
+
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save('upload/products/thambnail/'.$name_gen);
+        $last_img = 'upload/products/thambnail/'.$name_gen;
 
         Product::findOrFail($pro_id)->update([
            'product_thambnail' => $last_img,

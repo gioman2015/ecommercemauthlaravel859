@@ -13,7 +13,7 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Product List</h3>
+                <h3 class="box-title">Product List <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -58,7 +58,7 @@
                                 <td width="20%">
                                     <a href="{{route('product.edit',$item->id)}}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i></a>
                                     <a href="{{route('product.edit',$item->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{route('product.delete',$item->id)}}" onclick="return confirm('Are you sure to delete')" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                    <a href="{{route('product.delete',$item->id)}}" {{-- onclick="return confirm('Are you sure to delete')" --}} id="delete" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
                                     @if($item->status == 1)
                                         <a href="{{ route('product.inactive',$item->id) }}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
                                     @else

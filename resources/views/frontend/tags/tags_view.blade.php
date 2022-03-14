@@ -37,7 +37,7 @@ Tag Wise Product
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <h3 class="section-title">shop by</h3>
+              {{-- <h3 class="section-title">shop by</h3> --}}
               <div class="widget-header">
                 <h4 class="widget-title">Category</h4>
               </div>
@@ -105,22 +105,22 @@ Tag Wise Product
             <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
+               {{--  <h4 class="widget-title">Price Slider</h4> --}}
               </div>
               <div class="sidebar-widget-body m-t-10">
-                <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> </span>
-                  <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
-                  <input type="text" class="price-slider" value="" >
+                <div class="price-range-holder"> <span class="min-max"> {{-- <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> --}} </span>
+                  {{-- <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
+                  <input type="text" class="price-slider" value="" > --}}
                 </div>
                 <!-- /.price-range-holder --> 
-                <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
+                {{-- <a href="#" class="lnk btn btn-primary">Show Now</a> --}} </div>
               <!-- /.sidebar-widget-body --> 
             </div>
             <!-- /.sidebar-widget --> 
             <!-- ============================================== PRICE SILDER : END ============================================== --> 
             <!-- ============================================== MANUFACTURES============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
-              <div class="widget-header">
+            {{-- <div class="sidebar-widget wow fadeInUp"> --}}
+              {{-- <div class="widget-header">
                 <h4 class="widget-title">Manufactures</h4>
               </div>
               <div class="sidebar-widget-body">
@@ -133,14 +133,14 @@ Tag Wise Product
                   <li><a href="#">Other Brand</a></li>
                 </ul>
                 <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
-              </div>
+              </div> --}}
               <!-- /.sidebar-widget-body --> 
-            </div>
+            {{-- </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== MANUFACTURES: END ============================================== --> 
             <!-- ============================================== COLOR============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
-              <div class="widget-header">
+            {{-- <div class="sidebar-widget wow fadeInUp">
+              {{-- <div class="widget-header">
                 <h4 class="widget-title">Colors</h4>
               </div>
               <div class="sidebar-widget-body">
@@ -152,22 +152,22 @@ Tag Wise Product
                   <li><a href="#">Brown</a></li>
                   <li><a href="#">Teal</a></li>
                 </ul>
-              </div>
+              </div> 
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COLOR: END ============================================== --> 
             <!-- == ======= COMPARE==== ==== -->
-            <div class="sidebar-widget wow fadeInUp outer-top-vs">
-              <h3 class="section-title">Compare products</h3>
-              <div class="sidebar-widget-body">
-                <div class="compare-report">
+            {{-- <div class="sidebar-widget wow fadeInUp outer-top-vs"> --}}
+              {{-- <h3 class="section-title">Compare products</h3> --}}
+              {{-- <div class="sidebar-widget-body"> --}}
+                {{-- <div class="compare-report">
                   <p>You have no <span>item(s)</span> to compare</p>
-                </div>
+                </div> --}}
                 <!-- /.compare-report --> 
-              </div>
+              {{-- </div> --}}
               <!-- /.sidebar-widget-body --> 
-            </div>
+            {{-- </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COMPARE: END ============================================== --> 
 
@@ -189,7 +189,7 @@ Tag Wise Product
 
 
             
-            <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+            {{-- <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div> --}}
           </div>
           <!-- /.sidebar-filter --> 
         </div>
@@ -344,7 +344,7 @@ Tag Wise Product
                 {{$product->product_name_en}} 
             @endif
         </a></h3>
-          <div class="rating rateit-small"></div>
+          <div class=""></div>
           <div class="description"></div>
 
 
@@ -439,7 +439,7 @@ Tag Wise Product
                     {{$product->product_name_en}} 
                 @endif
             </a></h3>
-            <div class="rating rateit-small"></div>
+            <div class=""></div>
 
 
             @if ($product->discount_price == NULL)

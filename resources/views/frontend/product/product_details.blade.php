@@ -11,11 +11,11 @@
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
+			{{-- <ul class="list-inline list-unstyled">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Clothing</a></li>
 				<li class='active'>Floral Print Buttoned</li>
-			</ul>
+			</ul> --}}
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb -->
@@ -24,9 +24,9 @@
 		<div class='row single-product'>
 			<div class='col-md-3 sidebar'>
 				<div class="sidebar-module-container">
-				<div class="home-banner outer-top-n">
-<img src="{{asset('frontend/assets/images/banners/LHS-banner.jpg')}}" alt="Image">
-</div>		
+				{{-- <div class="home-banner outer-top-n">
+				<img src="{{asset('frontend/assets/images/banners/LHS-banner.jpg')}}" alt="Image">
+				</div> --}}		
   
     
     
@@ -35,7 +35,7 @@
 <!-- ============================================== HOT DEALS: END ============================================== -->					
 
 <!-- ============================================== NEWSLETTER ============================================== -->
-<div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
+{{-- <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
 	<h3 class="section-title">Newsletters</h3>
 	<div class="sidebar-widget-body outer-top-xs">
 		<p>Sign Up for Our Newsletter!</p>
@@ -47,11 +47,11 @@
 			<button class="btn btn-primary">Subscribe</button>
 		</form>
 	</div><!-- /.sidebar-widget-body -->
-</div><!-- /.sidebar-widget -->
+</div><!-- /.sidebar-widget --> --}}
 <!-- ============================================== NEWSLETTER: END ============================================== -->
 
 <!-- ============================================== Testimonials============================================== -->
-<div class="sidebar-widget  wow fadeInUp outer-top-vs ">
+{{-- <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
 	<div id="advertisement" class="advertisement">
         <div class="item">
             <div class="avatar"><img src="{{asset('frontend/assets/images/testimonials/member1.png')}}" alt="Image"></div>
@@ -72,7 +72,7 @@
         </div><!-- /.item -->
 
     </div><!-- /.owl-carousel -->
-</div>
+</div> --}}
     
 <!-- ============================================== Testimonials: END ============================================== -->
 
@@ -124,7 +124,7 @@
                                 @if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif
 							 </h1>
 							
-							<div class="rating-reviews m-t-20">
+							{{-- <div class="rating-reviews m-t-20">
 								<div class="row">
 									<div class="col-sm-3">
 										<div class="rating rateit-small"></div>
@@ -135,7 +135,7 @@
 										</div>
 									</div>
 								</div><!-- /.row -->		
-							</div><!-- /.rating-reviews -->
+							</div><!-- /.rating-reviews --> --}}
 
 							<div class="stock-container info-container m-t-10">
 								<div class="row">
@@ -197,12 +197,12 @@
 											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#">
 											    <i class="fa fa-heart"></i>
 											</a>
-											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
+											{{-- <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
 											   <i class="fa fa-signal"></i>
 											</a>
 											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail" href="#">
 											    <i class="fa fa-envelope"></i>
-											</a>
+											</a> --}}
 										</div>
 									</div>
 
@@ -212,6 +212,9 @@
 								<div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
+											@if ($product->product_color_en == null)
+												
+											@else
 											<label class="info-title control-label">Chose Color <span>*</span></label>
 											<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
 												<option selected="" disabled="">--Chose Color--</option>
@@ -225,6 +228,8 @@
 													@endforeach
 												@endif
 											</select>
+											@endif
+											
 										</div>{{-- end from-group --}}
                                     </div>{{-- end col-sm-6 --}}
 									<div class="col-sm-6">
@@ -261,11 +266,11 @@
 									<div class="col-sm-2">
 										<div class="cart-quantity">
 											<div class="quant-input">
-								                <div class="arrows">
+								                {{-- <div class="arrows">
 								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-								                </div>
-								                <input type="text" id="qty" value="1" min="1">
+								                </div> --}}
+								                <input type="number" id="qty" value="1" min="1">
 							              </div>
 							            </div>
 									</div>
@@ -286,8 +291,8 @@
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
 								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-								<li><a data-toggle="tab" href="#review">REVIEW</a></li>
-								<li><a data-toggle="tab" href="#tags">TAGS</a></li>
+								{{-- <li><a data-toggle="tab" href="#review">REVIEW</a></li>
+								<li><a data-toggle="tab" href="#tags">TAGS</a></li> --}}
 							</ul><!-- /.nav-tabs #product-tabs -->
 						</div>
 						<div class="col-sm-9">
@@ -464,7 +469,7 @@
 					@endif
 				</a>
 			</h3>
-			<div class="rating rateit-small"></div>
+			{{-- <div class="rating rateit-small"></div> --}}
 			<div class="description"></div>
 				@auth
 					@php

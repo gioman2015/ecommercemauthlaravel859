@@ -20,10 +20,10 @@
 <div class="col-md-6 col-sm-6 sign-in">
     <h4 class="">Sign in</h4>
     <p class="">Hello, Welcome to your account.</p>
-    <div class="social-sign-in outer-top-xs">
+    {{-- <div class="social-sign-in outer-top-xs">
         <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
         <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
-    </div>
+    </div> --}}
    
 
     <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">

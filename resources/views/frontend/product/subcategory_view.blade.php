@@ -6,12 +6,12 @@ Sub Category Product
 
 <div class="breadcrumb">
   <div class="container">
-    <div class="breadcrumb-inner">
+    {{-- <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
         <li><a href="#">Home</a></li>
         <li class='active'>Handbags</li>
       </ul>
-    </div>
+    </div> --}}
     <!-- /.breadcrumb-inner --> 
   </div>
   <!-- /.container --> 
@@ -33,7 +33,7 @@ Sub Category Product
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <h3 class="section-title">shop by</h3>
+              {{-- <h3 class="section-title">shop by</h3> --}}
               <div class="widget-header">
                 <h4 class="widget-title">Category</h4>
               </div>
@@ -100,22 +100,22 @@ Sub Category Product
             
             <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <div class="widget-header">
+              {{-- <div class="widget-header">
                 <h4 class="widget-title">Price Slider</h4>
-              </div>
-              <div class="sidebar-widget-body m-t-10">
+              </div> --}}
+              {{-- <div class="sidebar-widget-body m-t-10">
                 <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> </span>
                   <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
                   <input type="text" class="price-slider" value="" >
                 </div>
                 <!-- /.price-range-holder --> 
-                <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
+                <a href="#" class="lnk btn btn-primary">Show Now</a> </div> --}}
               <!-- /.sidebar-widget-body --> 
             </div>
             <!-- /.sidebar-widget --> 
             <!-- ============================================== PRICE SILDER : END ============================================== --> 
             <!-- ============================================== MANUFACTURES============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Manufactures</h4>
               </div>
@@ -131,11 +131,11 @@ Sub Category Product
                 <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== MANUFACTURES: END ============================================== --> 
             <!-- ============================================== COLOR============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Colors</h4>
               </div>
@@ -150,11 +150,11 @@ Sub Category Product
                 </ul>
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COLOR: END ============================================== --> 
             <!-- == ======= COMPARE==== ==== -->
-            <div class="sidebar-widget wow fadeInUp outer-top-vs">
+            {{-- <div class="sidebar-widget wow fadeInUp outer-top-vs">
               <h3 class="section-title">Compare products</h3>
               <div class="sidebar-widget-body">
                 <div class="compare-report">
@@ -163,7 +163,7 @@ Sub Category Product
                 <!-- /.compare-report --> 
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COMPARE: END ============================================== --> 
 
@@ -185,7 +185,7 @@ Sub Category Product
 
 
             
-            <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+            {{-- <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div> --}}
           </div>
           <!-- /.sidebar-filter --> 
         </div>
@@ -197,8 +197,27 @@ Sub Category Product
 
 
         <!-- == ==== SECTION – HERO === ====== -->
+
+        <div id="hero">
+          <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+            @foreach($sliders as $slider)
+            <div class="item" style="background-image: url({{asset($slider->slider_img)}});">
+              <div class="container-fluid">
+                <div class="caption bg-color vertical-center text-left">
+                  <div class="big-text fadeInDown-1"> {{$slider->title}} </div>
+                  <div class="excerpt fadeInDown-2 hidden-xs"> <span>{{$slider->desciption}}</span> </div>
+                </div>
+                <!-- /.caption --> 
+              </div>
+              <!-- /.container-fluid --> 
+            </div>
+            <!-- /.item -->    
+            @endforeach          
+          </div>
+          <!-- /.owl-carousel --> 
+        </div>
         
-        <div id="category" class="category-carousel hidden-xs">
+        {{-- <div id="category" class="category-carousel hidden-xs">
           <div class="item">
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
             <div class="container-fluid">
@@ -211,7 +230,7 @@ Sub Category Product
             </div>
             <!-- /.container-fluid --> 
           </div>
-        </div>
+        </div> --}}
         
      
         <div class="clearfix filters-container m-t-10">
@@ -228,7 +247,7 @@ Sub Category Product
             <!-- /.col -->
             <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Sort by</span>
+                {{-- <div class="lbl-cnt"> <span class="lbl">Sort by</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
                       <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span class="caret"></span> </button>
@@ -241,12 +260,12 @@ Sub Category Product
                     </div>
                   </div>
                   <!-- /.fld --> 
-                </div>
+                </div> --}}
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col -->
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Show</span>
+                {{-- <div class="lbl-cnt"> <span class="lbl">Show</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
                       <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
@@ -265,7 +284,7 @@ Sub Category Product
                     </div>
                   </div>
                   <!-- /.fld --> 
-                </div>
+                </div> --}}
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col --> 
@@ -323,7 +342,7 @@ Sub Category Product
                 {{$product->product_name_en}} 
             @endif
         </a></h3>
-          <div class="rating rateit-small"></div>
+          <div class=""></div>
           <div class="description"></div>
 
 
@@ -418,7 +437,7 @@ Sub Category Product
                     {{$product->product_name_en}} 
                 @endif
             </a></h3>
-            <div class="rating rateit-small"></div>
+            <div class=""></div>
 
 
             @if ($product->discount_price == NULL)

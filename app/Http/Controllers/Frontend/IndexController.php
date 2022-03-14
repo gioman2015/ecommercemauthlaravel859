@@ -120,15 +120,17 @@ class IndexController extends Controller
 	}
 
     public function SubCatWiseProduct($subcat_id, $slug){
+        $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
         $products = Product::where([['status',1],['subcategory_id',$subcat_id]])->orderBy('id','DESC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
-		return view('frontend.product.subcategory_view',compact('products','categories'));
+		return view('frontend.product.subcategory_view',compact('products','categories','sliders'));
     }
 
     public function SubSubCatWiseProduct($subsubcat_id, $slug){
+        $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
         $products = Product::where([['status',1],['subsubcategory_id',$subsubcat_id]])->orderBy('id','DESC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
-		return view('frontend.product.sub_subcategory_view',compact('products','categories'));
+		return view('frontend.product.sub_subcategory_view',compact('products','categories','sliders'));
     }
 
     /// Product View With Ajax

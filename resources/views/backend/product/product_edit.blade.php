@@ -354,7 +354,7 @@
                             @foreach($multiImgs as $img)
                             <div class="col-md-3">
                                 <div class="card">
-                                    <img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                    <img src="{{ asset($img->photo_name) }}" class="card-img-top" {{--  style="height: 130px; width: 280px;" --}}>
                                     <div class="card-body">
                                     <h5 class="card-title">
                                     <a href="{{route('product.multiimg.delete',$img->id)}}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
@@ -377,6 +377,23 @@
                 </div>
             </div><!-- end col md 12 -->
         </div> <!-- end row  -->
+            <form method="POST" action="{{route('update-product-add-image')}}" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{ $products->id }}">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5>Multiple Image<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg" required="">
+                        </div>
+                        @error('multi_img') 
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror 
+                        <div class="row" id="preview_img"></div>
+                    </div>
+                    <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Image">
+                </div>{{-- end col-md-6 --}}
+            </form>
     </section>
 
     <!-- ///////////////// Start Thambnail Image Update Area ///////// -->
@@ -394,7 +411,7 @@
                         <div class="row row-sm">
                             <div class="col-md-3">
                                 <div class="card">
-                                    <img src="{{ asset($products->product_thambnail) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                    <img src="{{ asset($products->product_thambnail) }}" class="card-img-top" style="height: 300px;"{{--  width: 280px; --}}>
                                     <div class="card-body">
                                         <p class="card-text"> 
                                             <div class="form-group">
@@ -470,7 +487,7 @@ $('select[name="subcategory_id"]').on('change', function(){
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e){
-				$('#mainThmb').attr('src',e.target.result).width(80).height(80);
+				$('#mainThmb').attr('src',e.target.result).height(300).width(300);
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -491,8 +508,8 @@ $('select[name="subcategory_id"]').on('change', function(){
                   var fRead = new FileReader(); //new filereader
                   fRead.onload = (function(file){ //trigger function on successful read
                   return function(e) {
-                      var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(80)
-                  .height(80); //create image element 
+                      var img = $('<img/>').addClass('thumb').attr('src', e.target.result).height(150);
+                  /* .height(80); */ //create image element 
                       $('#preview_img').append(img); //append image to output element
                   };
                   })(file);

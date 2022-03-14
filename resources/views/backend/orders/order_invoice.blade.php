@@ -116,7 +116,7 @@
      @foreach($orderItem as $item)
       <tr class="font">
         <td align="center">
-            <img src="{{ public_path($item->product->product_thambnail)  }}" height="60px;" width="60px;" alt="">
+            <img src="{{ public_path($item->product->product_thambnail)  }}" style="height: 50px; width: 50px;" alt="">
         </td>
         <td align="center"> {{ $item->product->product_name_en }}</td>
         <td align="center">

@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReportController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LenguageController;
@@ -103,6 +104,7 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');
         Route::post('/update', [ProductController::class, 'ProductDataUpdate'])->name('product-update');
         Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');
+        Route::post('/image/add/update', [ProductController::class, 'MultiImageAdd'])->name('update-product-add-image');
         Route::post('/thambnail/update', [ProductController::class, 'ThambnailImageUpdate'])->name('update-product-thambnail');
         Route::get('/multiimg/delete/{id}', [ProductController::class, 'MultiImageDelete'])->name('product.multiimg.delete');
         Route::get('/inactive/{id}', [ProductController::class, 'ProductInactive'])->name('product.inactive');
@@ -177,6 +179,19 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped.delivered');
         Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
     });
+
+    // Admin Reports Routes 
+    Route::prefix('reports')->group(function(){
+        Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports'); 
+        Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
+        Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month'); 
+        Route::post('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
+    });
+
+    // Admin Get All User Routes 
+    Route::prefix('alluser')->group(function(){
+        Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+    });
 });
 
 //User All Route
@@ -235,6 +250,12 @@ Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'Use
     Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
     Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
     Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+    Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
+    Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
+    Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
+
+    /// Order Traking Route 
+    Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
 });
 
 // Cart Page

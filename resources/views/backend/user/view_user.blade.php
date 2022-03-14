@@ -40,14 +40,11 @@
                                     @endif    
                                 </td>
                                 <td width="20%">
-                                    <a href="{{ route('user.proveedor',$item->id) }}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-up"></i> </a>
-                                    <a href="{{ route('user.normal',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-down"></i> </a>
-
-                                    {{-- @if($item->type_user == 1)
-                                        <a href="{{ route('user.normal',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i> </a>
+                                    @if($item->type_user == 1)
+                                        <a href="{{ route('user.normal',$item->id) }}" class="btn btn-danger" title="Usuario Normal"><i class="fa fa-arrow-down"></i> </a>
                                     @else
-                                        <a href="{{ route('user.proveedor',$item->id) }}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
-                                    @endif --}}
+                                        <a href="{{ route('user.proveedor',$item->id) }}" class="btn btn-success" title="Proveedor"><i class="fa fa-arrow-up"></i> </a>
+                                    @endif
                                 </td>
                             </tr> 
                           @endforeach

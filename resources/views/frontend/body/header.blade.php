@@ -6,7 +6,6 @@
         <div class="header-top-inner">
           <div class="cnt-account">
             <ul class="list-unstyled">
-              <li><a href="#"><i class="icon fa fa-user"></i>@if(session()->get('language') == 'spanish') Perfil @else Profile @endif</a></li>
               <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
               <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
               <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
@@ -23,22 +22,15 @@
           
           <div class="cnt-block">
             <ul class="list-unstyled list-inline">
-              <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">USD </span><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">USD</a></li>
-                  <li><a href="#">INR</a></li>
-                  <li><a href="#">GBP</a></li>
-                </ul>
-              </li>
               <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
                 @if(session()->get('language') == 'spanish') Idioma @else Language @endif
                   </span><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   @if(session()->get('language') == 'spanish')       
-        <li><a href="{{ route('english.language') }}">English</a></li>
-        @else
-        <li><a href="{{ route('spanish.language') }}">Español</a></li>
-         @endif 
+                 <li><a href="{{ route('english.language') }}">English</a></li>
+                @else
+                  <li><a href="{{ route('spanish.language') }}">Español</a></li>
+                @endif 
                 </ul>
               </li>
             </ul>
@@ -66,7 +58,7 @@
           <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder"> 
             <!-- /.contact-row --> 
             <!-- ============================================================= SEARCH AREA ============================================================= -->
-            <div class="search-area">
+            {{-- <div class="search-area">
               <form>
                 <div class="control-group">
                   <ul class="categories-filter animate-dropdown">
@@ -83,7 +75,7 @@
                   <input class="search-field" placeholder="Search here..." />
                   <a class="search-button" href="#" ></a> </div>
               </form>
-            </div>
+            </div> --}}
             <!-- /.search-area --> 
             <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
           <!-- /.top-search-holder -->
@@ -189,7 +181,7 @@
                   </li>
                   @endforeach {{-- end category foreach --}} 
 
-                  <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
+                  {{-- <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li> --}}
                 </ul>
                 <!-- /.navbar-nav -->
                 <div class="clearfix"></div>

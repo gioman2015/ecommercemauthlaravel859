@@ -22,7 +22,7 @@
               off</span></div>
             @endif 
             <div class="timing-wrapper">
-              <div class="box-wrapper">
+              {{-- <div class="box-wrapper">
                 <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
               </div>
               <div class="box-wrapper">
@@ -33,14 +33,14 @@
               </div>
               <div class="box-wrapper hidden-md">
                 <div class="seconds box"> <span class="key">60</span> <span class="value">SEC</span> </div>
-              </div>
+              </div> --}}
             </div>
           </div>
           <!-- /.hot-deal-wrapper -->
           
           <div class="product-info text-left m-t-20">
             <h3 class="name"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">@if(session()->get('language') == 'spanish') {{$product->product_name_esp}} @else {{$product->product_name_en}} @endif</a></h3>
-            <div class="rating rateit-small"></div>
+            {{-- <div class="rating rateit-small"></div> --}}
               @auth
                 @php
                   $user = Auth::user();
