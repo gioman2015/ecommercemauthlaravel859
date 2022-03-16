@@ -209,7 +209,7 @@
                                 <div class="form-group">
                                     <h5>Product Selling Price <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="selling_price" class="form-control" required="">
+                                        <input type="number" name="selling_price" class="form-control" required="">
                                         @error('selling_price') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -220,7 +220,7 @@
                                 <div class="form-group">
                                     <h5>Product Discount Price <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="discount_price" class="form-control">
+                                        <input type="number" name="discount_price" class="form-control">
                                         @error('discount_price') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
@@ -231,7 +231,7 @@
                                 <div class="form-group">
                                     <h5>Product Supplier Price <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="supplier_price" class="form-control">
+                                        <input type="number" name="supplier_price" class="form-control">
                                         @error('supplier_price') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
