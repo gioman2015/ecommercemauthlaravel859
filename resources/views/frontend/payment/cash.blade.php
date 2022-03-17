@@ -9,7 +9,6 @@ Cash On Delivery
 <style>
     ul#menulista li {
       display:inline;
-	  
     }
 </style>
 
