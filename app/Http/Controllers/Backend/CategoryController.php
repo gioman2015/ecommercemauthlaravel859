@@ -28,8 +28,8 @@ class CategoryController extends Controller
             Category::insert([
                 'category_name_en' => $request->category_name_en,
                 'category_name_esp' => $request->category_name_esp,
-                'category_slug_en' => strtolower(str_replace(' ','-',$request->category_slug_en)),
-                'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_slug_esp)),
+                'category_slug_en' => strtolower(str_replace(' ','-',$request->category_name_en)),
+                'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_name_esp)),
                 'category_icon' => $request->category_icon,
                 'category_order' => $request->category_order,
             ]);
@@ -37,8 +37,8 @@ class CategoryController extends Controller
             Category::insert([
                 'category_name_en' => $request->category_name_en,
                 'category_name_esp' => $request->category_name_esp,
-                'category_slug_en' => strtolower(str_replace(' ','-',$request->category_slug_en)),
-                'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_slug_esp)),
+                'category_slug_en' => strtolower(str_replace(' ','-',$request->category_name_en)),
+                'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_name_esp)),
                 'category_icon' => $request->category_icon,
                 'category_order' => '1',
             ]);

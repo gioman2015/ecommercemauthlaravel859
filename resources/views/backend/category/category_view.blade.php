@@ -86,7 +86,7 @@
                         @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleFormControlPassword3">Category Icon</label>
+                        <label for="exampleFormControlPassword3">Orden</label>
                         <input type="number" name="category_order" class="form-control">
                         @error('category_order')
                             <span class="text-danger">{{$message}}</span>

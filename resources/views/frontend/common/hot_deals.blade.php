@@ -11,16 +11,40 @@
         <div class="products">
           <div class="hot-deal-wrapper">
             <div class="image"><a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}"><img src="{{asset($product->product_thambnail)}}" alt=""> </div>
-            @php
+              @auth
+              @php
+                $user = Auth::user();
+              @endphp
+              @if ($user->type_user == 1)
+              
+              @else
+              @php
               $amount = $product->selling_price - $product->discount_price;
               $discount = ($amount/$product->selling_price) * 100;
-            @endphp
-            @if ($product->discount_price == NULL)
-              <div class="tag new"><span>new</span></div>
+              @endphp     
+                
+                <div>
+                  @if ($product->discount_price == NULL)
+                  <div class="tag new"><span>new</span></div>
+                  @else
+                  <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                  @endif
+                </div>
+              @endif
             @else
-              <div class="sale-offer-tag"><span>{{ round($discount) }}%<br>
-              off</span></div>
-            @endif 
+            @php
+            $amount = $product->selling_price - $product->discount_price;
+            $discount = ($amount/$product->selling_price) * 100;
+            @endphp     
+              
+              <div>
+                @if ($product->discount_price == NULL)
+                <div class="tag new"><span>new</span></div>
+                @else
+                <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                @endif
+              </div>
+            @endauth
             <div class="timing-wrapper">
               {{-- <div class="box-wrapper">
                 <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
@@ -69,7 +93,7 @@
           <div class="cart clearfix animate-effect">
             <div class="action">
               <div class="add-cart-button btn-group">
-                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
               </div>
             </div>
