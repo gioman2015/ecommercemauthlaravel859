@@ -6,13 +6,20 @@
 My Checkout
 @endsection
 
+<style>
+    ul#menulista li {
+      display:inline;
+    }
+</style>
 
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>Checkout</li>
+			<ul id="menulista" {{-- class="list-inline list-unstyled" --}}>
+				<li><a href="{{url('/')}}">Home</a></li>
+				<li class='active'>Datos de Envio</li>
+				<li>Metodo de Pago</li>
+				{{-- <li>Orden Realizada con Exito</li> --}}
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -58,10 +65,10 @@ My Checkout
                             <label class="info-title" for="exampleInputEmail1"><b>Phone</b>  <span>*</span></label>
                             <input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone }}" required="">
                           </div>  <!-- // end form group  -->
-                          <div class="form-group">
+                          {{-- <div class="form-group">
                             <label class="info-title" for="exampleInputEmail1"><b>Post Code </b> <span>*</span></label>
-                            <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code" required="">
-                          </div>  <!-- // end form group  -->
+                            <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code">
+                          </div>  <!-- // end form group  --> --}}
                 </div>
 				<!-- guest-login -->
 
@@ -201,7 +208,7 @@ My Checkout
                     <h4 class="unicase-checkout-title">Select Payment Method</h4>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         {{-- <div class="col-md-4">
                             <label for="">Stripe</label> 		
                             <input type="radio" name="payment_method" value="stripe">
@@ -212,14 +219,14 @@ My Checkout
                             <label for="">Card</label> 		
                             <input type="radio" name="payment_method" value="card">	
                             <img src="{{ asset('frontend/assets/images/payments/3.png') }}">    		
-                        </div> <!-- end col md 4 --> --}}
+                        </div> <!-- end col md 4 -->
 
                         <div class="col-md-4">
                             <label for="">Cash</label> 		
                             <input type="radio" name="payment_method" value="cash">	
                             <img src="{{ asset('frontend/assets/images/payments/6.png') }}">  		
                         </div> <!-- end col md 4 -->
-                    </div> <!-- // end row  -->
+                    </div> <!-- // end row  --> --}}
                     <hr>
                     <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Payment Step</button>
 

@@ -24,6 +24,7 @@
                             <th>Icon</th>
                             <th>Category Name EN</th>
                             <th>Category Name ESP</th>
+                            <th>Orden</th>
                             <th>Action</th>
                           </tr>
                       </thead>
@@ -33,6 +34,7 @@
                                 <td><span><i class="{{$item->category_icon}}"></i></span> </td>
                                 <td>{{$item->category_name_en}}</td>
                                 <td>{{$item->category_name_esp	}}</td>
+                                <td>{{$item->category_order	}}</td>
                                 <td>
                                     <a href="{{route('category.edit',$item->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
                                     <a href="{{route('category.delete',$item->id)}}" {{-- onclick="return confirm('Are you sure to delete')" --}} id="delete" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
@@ -82,7 +84,14 @@
                         @error('category_icon')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
-                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlPassword3">Category Icon</label>
+                        <input type="number" name="category_order" class="form-control">
+                        @error('category_order')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                      </div>
                       <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add new">
                   </form>
                    </div>

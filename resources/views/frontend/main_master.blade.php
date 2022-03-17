@@ -126,7 +126,7 @@
                 </ul>
               </div>{{-- end col-md-4 --}}
               <div class="col-md-4">
-                <div class="form-group">
+                <div class="form-group" id="colorArea">
                   <label for="exampleFormControlSelect1">Chose Color</label>
                   <select class="form-control" id="color" name="color">
                     
@@ -140,10 +140,10 @@
                 </div>{{-- end form-group --}}
                 <div class="form-group">
                   <label for="qty">Quantity</label>
-                  <input type="number" class="form-control" id="qty" value="1" min="1">
+                  <input type="number" class="form-control" id="qty" value="1" min="1" {{-- max="10" --}}>
                 </div>{{-- end form-group --}}
                 <input type="hidden" id="product_id">
-                <button type="submit" class="btn btn-primary mb-2" onclick="addToCart()">Add to Cart</button>
+                <button type="submit" class="btn btn-primary mb-2" id="btnAddToCart" onclick="addToCart()">Add to Cart</button>
               </div>{{-- end col-md-4 --}}
             </div>{{-- end row --}}
           </div>{{-- end modal-body --}}
@@ -174,6 +174,7 @@
               $('#pimage').attr('src','/'+data.product.product_thambnail);
               $('#product_id').val(id);
               $('#qty').val(1);
+              $('#qty').attr('max',data.product.product_qty);
               // Product Price
               if (data.type_user == 1) {
                 $('#pprice').text('');
@@ -211,12 +212,17 @@
               $('select[name="color"]').empty();        
               $.each(data.coloren,function(key,value){
                   $('select[name="color"]').append('<option value=" '+value+' ">'+value+' </option>')
+                  if (data.coloren == "") {
+                      $('#colorArea').hide();
+                  }else{
+                      $('#colorArea').show();
+                  }
               }) // end color
               // Size
               $('select[name="size"]').empty();        
               $.each(data.sizeen,function(key,value){
                   $('select[name="size"]').append('<option value=" '+value+' ">'+value+' </option>')
-                  if (data.size == "") {
+                  if (data.sizeen == "") {
                       $('#sizeArea').hide();
                   }else{
                       $('#sizeArea').show();

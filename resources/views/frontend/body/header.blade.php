@@ -11,7 +11,13 @@
               <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
               <li>
                 @auth
-                  <a href="{{route('dashboard')}}"><i class="icon fa fa-user"></i>User Profile</a>
+                  <a href="{{route('dashboard')}}"><i class="icon fa fa-user"></i>
+                    @php
+                        
+                        $username = Auth::user()->name;
+                    @endphp
+                    {{$username}} 
+                  </a>
                 @else
                   <a href="{{route('login')}}"><i class="icon fa fa-lock"></i>Login/Register</a>
                 @endauth
@@ -109,7 +115,7 @@
                       <span class='price' id="cartSubTotal"> </span> 
                     </div>
                     <div class="clearfix"></div>
-                    <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                    <a href="{{ route('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                   <!-- /.cart-total--> 
                   
                 </li>
@@ -141,14 +147,14 @@
             <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
               <div class="nav-outer">
                 <ul class="nav navbar-nav">
-                  <li class="active dropdown yamm-fw"> <a href="{{url('/')}}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
+                  <li class="active dropdown yamm-fw"> <a href="{{url('/')}}" data-hover="dropdown" {{-- class="dropdown-toggle" data-toggle="dropdown" --}}>
                     @if(session()->get('language') == 'spanish') Inicio @else Home @endif</a></li>
                   {{-- Category Table Data --}}
                   @php
-                      $categories = App\Models\Category::orderBy('category_name_en','ASC')->get()
+                      $categories = App\Models\Category::orderBy('category_order','ASC')->get()
                   @endphp
                   @foreach ($categories as $category)
-                  <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
+                  <li class="dropdown yamm mega-menu"> <a href="{{url('category/product/'.$category->id.'/'.$category->category_slug_en)}}" data-hover="dropdown" {{-- class="dropdown-toggle" data-toggle="dropdown" --}}>
                     @if(session()->get('language') == 'spanish') {{$category->category_name_esp}} @else {{$category->category_name_en}} @endif</a>
                     <ul class="dropdown-menu container">
                       <li>

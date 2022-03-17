@@ -38,12 +38,19 @@
                           @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleFormControlPassword3">Category Icon</label>
+                        <label for="exampleFormControlPassword3">Icono de Categoria </label>
                         <input type="text" name="category_icon" class="form-control"  value="{{$category->category_icon}}">
                         @error('category_icon')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
-                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlPassword3">Orden de Categoria </label>
+                        <input type="number" name="category_order" class="form-control" value="{{$category->category_order}}">
+                        @error('category_order')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                      </div>
                       <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                   </form>
                    </div>

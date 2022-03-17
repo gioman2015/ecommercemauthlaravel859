@@ -24,13 +24,14 @@ class CategoryController extends Controller
             'category_name_esp.required' => 'Input Category Spanish Name',
         ]);
 
-        if ($request->category_icon) {
+        if ($request->category_order) {
             Category::insert([
                 'category_name_en' => $request->category_name_en,
                 'category_name_esp' => $request->category_name_esp,
                 'category_slug_en' => strtolower(str_replace(' ','-',$request->category_slug_en)),
                 'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_slug_esp)),
                 'category_icon' => $request->category_icon,
+                'category_order' => $request->category_order,
             ]);
         }else {
             Category::insert([
@@ -38,7 +39,8 @@ class CategoryController extends Controller
                 'category_name_esp' => $request->category_name_esp,
                 'category_slug_en' => strtolower(str_replace(' ','-',$request->category_slug_en)),
                 'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_slug_esp)),
-                'category_icon' => '',
+                'category_icon' => $request->category_icon,
+                'category_order' => '1',
             ]);
         }
         
@@ -57,14 +59,16 @@ class CategoryController extends Controller
 
     public function CategoryEdit(Request $request){
         $category_id = $request->id;
-
+        /* dd($request); */
         Category::findOrFail($category_id)->update([
             'category_name_en' => $request->category_name_en,
             'category_name_esp' => $request->category_name_esp,
-            'category_slug_en' => strtolower(str_replace(' ','-',$request->category_slug_en)),
-            'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_slug_esp)),
+            'category_slug_en' => strtolower(str_replace(' ','-',$request->category_name_en)),
+            'category_slug_esp' => strtolower(str_replace(' ','-',$request->category_name_esp)),
             'category_icon' => $request->category_icon,
+            'category_order' => $request->category_order,
         ]);
+
         $notification = array(
             'message' => 'Category Updated Successfully',
             'alert-type' => 'success'
