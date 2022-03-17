@@ -6,15 +6,20 @@
 Cash On Delivery
 @endsection
 
-
-
+<style>
+    ul#menulista li {
+      display:inline;
+    }
+</style>
 
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>Cash On Delivery</li>
+			<ul id="menulista" {{-- class="list-inline list-unstyled" --}}>
+				<li><a href="{{url('/')}}">Home</a></li>
+				<li>Datos de Envio</li>
+				<li class='active'>Metodo de Pago</li>
+				{{-- <li>Orden Realizada con Exito</li> --}}
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->

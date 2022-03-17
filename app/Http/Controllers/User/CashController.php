@@ -85,7 +85,7 @@ class CashController extends Controller
         Cart::destroy();
 
         $notification = array(
-			'message' => 'Your Order Place Successfully',
+			'message' => 'Orden Realizada con Exito',
 			'alert-type' => 'success'
 		);
 		return redirect()->route('dashboard')->with($notification);

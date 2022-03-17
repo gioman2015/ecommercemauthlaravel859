@@ -119,6 +119,13 @@ class IndexController extends Controller
 		return view('frontend.tags.tags_view',compact('products','categories','sliders'));
 	}
 
+    public function CatWiseProduct($cat_id, $slug){
+        $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
+        $products = Product::where([['status',1],['category_id',$cat_id]])->orderBy('id','DESC')->paginate(6);
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+		return view('frontend.product.category_view',compact('products','categories','sliders'));
+    }
+
     public function SubCatWiseProduct($subcat_id, $slug){
         $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
         $products = Product::where([['status',1],['subcategory_id',$subcat_id]])->orderBy('id','DESC')->paginate(6);

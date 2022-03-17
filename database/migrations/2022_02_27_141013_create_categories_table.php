@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('category_name_esp');
             $table->string('category_slug_en');
             $table->string('category_slug_esp');
-            $table->string('category_icon');
+            $table->string('category_icon')->nullable();
+            $table->integer('category_order')->default(1)->nullable();
             $table->timestamps();
         });
     }
