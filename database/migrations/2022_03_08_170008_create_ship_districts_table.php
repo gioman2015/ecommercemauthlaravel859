@@ -16,6 +16,7 @@ class CreateShipDistrictsTable extends Migration
         Schema::create('ship_districts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('division_id');
+            $table->integer('district_code');
             $table->string('district_name');
             $table->timestamps();
         });
