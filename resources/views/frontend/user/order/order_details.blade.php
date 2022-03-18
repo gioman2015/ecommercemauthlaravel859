@@ -5,10 +5,25 @@
 	<div class="container">
 		<div class="row">
 			 @include('frontend.common.user_sidebar')
-
+       
+       <div class="col-md-10">
+         <div class="row">
+          <div class="col-md-12">
+            <img src="{{asset('frontend/assets/images/estados/estados-envio.jpg')}}" style="width: 100%">
+          </div>
+        </div>
+         <div class="row">
+            <div class="col-md-2" style="background-color:rgb(42, 112, 243);">Fecha Pendiente</div>
+            <div class="col-md-2" style="background-color:rgb(119, 33, 100);">Fecha Confirmado</div>
+            <div class="col-md-2" style="background-color:rgb(33, 119, 40);">Fecha Procesando</div>
+            <div class="col-md-2" style="background-color:rgb(119, 33, 33);">Fecha Recojida</div>
+            <div class="col-md-2" style="background-color:rgb(0, 0, 0);">Fecha Enviada</div>
+            <div class="col-md-2" style="background-color:rgb(243, 243, 243);">Fecha Entrega</div>
+         </div>
+       </div>
              <div class="col-md-5">
                 <div class="card">
-                  <div class="card-header"><h4>Shipping Details</h4></div>
+                  <div class="card-header"><h4>Detalles Envio</h4></div>
                  <hr>
                  <div class="card-body" style="background: #E9EBEC;">
                    <table class="table">

@@ -163,16 +163,21 @@
 													$user = Auth::user();
 												@endphp
 												@if ($user->type_user == 1)
-													<input type="hidden" id="pprice" value="0" readonly>
-													<input type="text" id="oldprice" class="price" value="{{ $product->supplier_price }}" readonly>
+													{{-- <input type="hidden" id="pprice" value="0" readonly> --}}
+													<input type="hidden" id="oldprice" value="0" readonly>
+													<input type="hidden" id="pprice" class="price" value="{{ $product->supplier_price }}" readonly>
+													<span class="price">${{ $product->supplier_price }}</span>
 												@else
 													@if ($product->discount_price == NULL)
 														<input type="hidden" id="pprice" value="0" readonly>
-														<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+														<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+														<span class="price">${{ $product->selling_price }}</span>
 														{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 													@else
-														<input type="text" id="pprice" value="{{ $product->discount_price }}" readonly>
-														<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+														<input type="hidden" id="pprice" value="{{ $product->discount_price }}" readonly>
+														<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+														<span class="price">${{ $product->discount_price }}</span>
+														<span class="price-strike">${{ $product->selling_price }}</span>
 														{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
 														<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 													@endif 
@@ -180,23 +185,25 @@
 											@else
 												@if ($product->discount_price == NULL)
 													<input type="hidden" id="pprice" value="0" readonly>
-													<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+													<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+													<span class="price">${{ $product->selling_price }}</span>
 													{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 												@else
-													<input type="text" id="pprice" value="{{ $product->discount_price }}" readonly>
-													<input type="text" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+													<input type="hidden" id="pprice" value="{{ $product->discount_price }}" readonly>
+													<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
+													<span class="price">${{ $product->discount_price }}</span>
+													<span class="price-strike">${{ $product->selling_price }}</span>
 													{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
 													<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
-												@endif  
+												@endif 
 											@endauth
-											   
+											{{-- <span class="price">${{ $product->discount_price }}</span>
+											<span class="price-strike">${{ $product->selling_price }}</span> --}}
                                         </div>
                                     </div>
 									<div class="col-sm-6">
 										<div class="favorite-button m-t-10">
-											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#">
-											    <i class="fa fa-heart"></i>
-											</a>
+											<button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 											{{-- <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
 											   <i class="fa fa-signal"></i>
 											</a>

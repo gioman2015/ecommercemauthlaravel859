@@ -108,6 +108,21 @@
           <ul class="treeview-menu">
             <li class="{{ ($route == 'manage-user')? 'active':'' }}"><a href="{{route('manage-user')}}"><i class="ti-more"></i>Administrar Usuarios</a></li>
           </ul>
+        </li>
+
+        <li class="treeview {{($prefix == '/shipping')? 'active':''}}">
+          <a href="#">
+            <i data-feather="file"></i>
+            <span>Direcciones</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'manage-division')? 'active':'' }}"><a href="{{route('manage-division')}}"><i class="ti-more"></i>Administrar Departamentos</a></li>
+            <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{route('manage-district')}}"><i class="ti-more"></i>Administrar Municipios</a></li>
+            <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{route('manage-state')}}"><i class="ti-more"></i>Administrar Ciudad/Barrios</a></li>
+          </ul>
         </li> 
 		 
         <li class="header nav-small-cap">User Interface</li>

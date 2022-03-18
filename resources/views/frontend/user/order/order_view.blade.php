@@ -64,10 +64,24 @@
 					 </td>
 	 
 					  <td class="col-md-2">
-					   <label for=""> 
-						 <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span>
-	 
-						 </label>
+						@if($order->status == 'Pending')
+							<img src="{{asset('frontend/assets/images/estados/Stado1.jpg')}}" style="width: 100%">
+						@elseif($order->status == 'confirm')
+							<img src="{{asset('frontend/assets/images/estados/Stado2.jpg')}}" style="width: 100%">
+						@elseif($order->status == 'processing')
+							<img src="{{asset('frontend/assets/images/estados/Stado3.jpg')}}" style="width: 100%">
+						@elseif($order->status == 'picked')
+							<img src="{{asset('frontend/assets/images/estados/Stado4.jpg')}}" style="width: 100%">
+						@elseif($order->status == 'shipped')
+							<img src="{{asset('frontend/assets/images/estados/Stado5.jpg')}}" style="width: 100%">
+						@elseif($order->status == 'delivered')
+							<img src="{{asset('frontend/assets/images/estados/Stado6.jpg')}}" style="width: 100%">
+						@elseif($order->status == 'cancel')
+							<img src="{{asset('frontend/assets/images/estados/Stado7.jpg')}}" style="width: 100%">
+						@endif
+					   	<label for=""> 
+						 	<span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span>
+						</label>
 					 </td>
 	 
 			<td class="col-md-1">
