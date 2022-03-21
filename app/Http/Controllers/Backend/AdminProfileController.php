@@ -32,7 +32,12 @@ class AdminProfileController extends Controller
             if ($old_image == null) {
                 
             }else{
-                unlink($old_image);
+                try {
+                    unlink($old_image);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                
             }
             /* unlink($old_image); */
             $name_gen = hexdec(uniqid());

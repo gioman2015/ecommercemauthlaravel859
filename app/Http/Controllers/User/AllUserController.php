@@ -42,6 +42,7 @@ class AllUserController extends Controller
 	public function ReturnOrder(Request $request,$order_id){
         Order::findOrFail($order_id)->update([
             'return_date' => Carbon::now()->format('d F Y'),
+            'cancel_date' => Carbon::now(),
             'return_reason' => $request->return_reason,
             'status' => 'cancel',
             /* 'return_order' => 1, */

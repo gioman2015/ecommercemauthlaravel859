@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ShipDivision;
 use App\Models\ShipDistrict;
 use App\Models\ShipState;
+use App\Models\Address;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
@@ -31,11 +32,39 @@ class CheckoutController extends Controller
         $data['division_id'] = $request->division_id;
         $data['district_id'] = $request->district_id;
         $data['state_id'] = $request->state_id;
+        $data['cedula'] = $request->cedula;
+        $data['address'] = $request->address;
+        $data['address2'] = $request->address2;
+        $data['barrio'] = $request->barrio;
         $data['notes'] = $request->notes;
         $cartTotal = Cart::total();
 
         $payment_method = 'cash';
 
+        $address = Address::where('user_id',$request->user_id)->first();
+        if ($address == null) {
+            Address::insert([
+                'user_id' => $request->user_id,
+                'division_id' => $request->division_id,
+                'district_id' => $request->district_id,
+                'address' => $request->address,
+                'address2' => $request->address2,
+                'barrio' => $request->barrio,
+                'notes' => $request->notes,
+            ]);
+        }else {
+            Address::findOrFail($address->id)->update([
+                'user_id' => $request->user_id,
+                'division_id' => $request->division_id,
+                'district_id' => $request->district_id,
+                'address' => $request->address,
+                'address2' => $request->address2,
+                'barrio' => $request->barrio,
+                'notes' => $request->notes,
+            ]);            
+        }
+        
+/* dd($request); */
         if ($request->payment_method == 'stripe') {
             return view('frontend.payment.stripe',compact('data','cartTotal'));
         }elseif ($request->payment_method == 'card') {

@@ -79,6 +79,7 @@ class ProductController extends Controller
             MultiImg::insert([
                 'product_id' => $product_id,
                 'photo_name' => $last_img,
+                'photo_name' => '1',
                 'created_at' => Carbon::now()
             ]);
         }
@@ -163,6 +164,7 @@ class ProductController extends Controller
             MultiImg::insert([
                 'product_id' => $pro_id,
                 'photo_name' => $last_img,
+                'photo_name' => '1',
                 'created_at' => Carbon::now()
             ]);
         }
@@ -173,31 +175,52 @@ class ProductController extends Controller
 		return redirect()->back()->with($notification);
 	} // end mehtod
 
-    /// Multiple Image Update
-	public function MultiImageUpdate(Request $request){
-		$imgs = $request->multi_img;
-
-		foreach ($imgs as $id => $img) {
-            $imgDel = MultiImg::findOrFail($id);
-            unlink($imgDel->photo_name);
-
-            /* $name_gen = hexdec(uniqid());
-            $img_ext = strtolower($img->getClientOriginalExtension());
-            $img_name = $name_gen.".".$img_ext;
-            $up_location = 'upload/products/multi-image/';
-            $last_img = $up_location.$img_name;
-            $img->move($up_location,$img_name); */
-
-            $name_gen = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-            $imgresize = Image::make($img)->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save('upload/products/multi-image/'.$name_gen);
-            $last_img = 'upload/products/multi-image/'.$name_gen;
-
+    /* public function MultiImageUpdateOrder(Request $request){
+        $order = $request->image_order;
+         dd($order);
+        foreach ($order as $id => $ord) {
+            error_log($ord);
             MultiImg::where('id',$id)->update([
-                'photo_name' => $last_img,
+                'image_order' => $imgordr->image_order,
                 'updated_at' => Carbon::now(),
             ]);
+        }
+    } */
+
+    /// Multiple Image Update
+	public function MultiImageUpdate(Request $request){
+        $orderimg = $request->image_order;
+		$imgs = $request->multi_img;
+        foreach ($orderimg as $order => $ord) {
+            /* dd($ord); */
+            MultiImg::where('id',$order)->update([
+                'image_order' => $ord,
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+
+        if ($imgs ==null) {
+            
+        }else {        
+            foreach ($imgs as $id => $img) {
+                $imgDel = MultiImg::findOrFail($id);
+                try {
+                    unlink($imgDel->photo_name);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+
+                $name_gen = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+                $imgresize = Image::make($img)->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save('upload/products/multi-image/'.$name_gen);
+                $last_img = 'upload/products/multi-image/'.$name_gen;
+
+                MultiImg::where('id',$id)->update([
+                    'photo_name' => $last_img,
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
         }
         $notification = array(
 			'message' => 'Product Image Updated Successfully',
@@ -210,27 +233,30 @@ class ProductController extends Controller
     public function ThambnailImageUpdate(Request $request){
         $pro_id = $request->id;
         $oldImage = $request->old_img;
-        unlink($oldImage);
-
         $image = $request->file('product_thambnail');
-        /* $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($image->getClientOriginalExtension());
-        $img_name = $name_gen.".".$img_ext;
-        $up_location = 'upload/products/thambnail/';
-        $last_img = $up_location.$img_name;
-        $image->move($up_location,$img_name); */
 
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save('upload/products/thambnail/'.$name_gen);
-        $last_img = 'upload/products/thambnail/'.$name_gen;
-
-        Product::findOrFail($pro_id)->update([
-           'product_thambnail' => $last_img,
-           'updated_at' => Carbon::now(),
-
-        ]);
+        if ($image == null) {
+            # code...
+        }else {
+            try {
+                unlink($oldImage);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+            
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('upload/products/thambnail/'.$name_gen);
+            $last_img = 'upload/products/thambnail/'.$name_gen;
+    
+            Product::findOrFail($pro_id)->update([
+               'product_thambnail' => $last_img,
+               'updated_at' => Carbon::now(),
+    
+            ]);
+        }
+        
         $notification = array(
            'message' => 'Product Image Thambnail Updated Successfully',
            'alert-type' => 'info'
@@ -241,7 +267,11 @@ class ProductController extends Controller
     //// Multi Image Delete ////
     public function MultiImageDelete($id){
         $oldimg = MultiImg::findOrFail($id);
-        unlink($oldimg->photo_name);
+        try {
+            unlink($oldimg->photo_name);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         MultiImg::findOrFail($id)->delete();
         $notification = array(
            'message' => 'Product Image Deleted Successfully',
@@ -271,12 +301,21 @@ class ProductController extends Controller
 
     public function ProductDelete($id){
         $product = Product::findOrFail($id);
-        unlink($product->product_thambnail);
+        try {
+            unlink($product->product_thambnail);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
         Product::findOrFail($id)->delete();
 
         $images = MultiImg::where('product_id',$id)->get();
         foreach ($images as $img) {
-            unlink($img->photo_name);
+            try {
+                unlink($img->photo_name);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
             MultiImg::where('product_id',$id)->delete();
         }
 

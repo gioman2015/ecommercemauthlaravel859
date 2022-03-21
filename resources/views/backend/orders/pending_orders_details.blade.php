@@ -65,14 +65,43 @@
                <th> {{ $order->district->district_name }} </th>
             </tr>
 
-             <tr>
+             {{-- <tr>
               <th> State : </th>
                <th>{{ $order->state->state_name }} </th>
+            </tr> --}}
+
+            {{-- <tr>
+              <th> Post Code : </th>
+               <th> {{ $order->post_code }} </th>
+            </tr> --}}
+            <tr>
+              <th>Cedula : </th>
+              <th>{{ $order->cedula }}</th>
             </tr>
 
             <tr>
-              <th> Post Code : </th>
-               <th> {{ $order->post_code }} </th>
+              <th>Direccion: </th>
+              <th>{{ $order->address }}</th>
+            </tr>
+
+            @if ( $order->address2 == null )
+                
+            @else
+              <tr>
+                <th>Direccion Alternativa: </th>
+                <th>{{ $order->address2 }}</th>
+              </tr>
+            @endif
+            
+
+            <tr>
+              <th>Barrio</th>
+              <th>{{ $order->barrio }}</th>
+            </tr>
+
+            <tr>
+              <th>Anotaciones</th>
+              <th>{{ $order->notes }}</th>
             </tr>
 
             <tr>

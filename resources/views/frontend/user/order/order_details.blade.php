@@ -13,12 +13,12 @@
           </div>
         </div>
          <div class="row">
-            <div class="col-md-2" style="background-color:rgb(42, 112, 243);">Fecha Pendiente</div>
-            <div class="col-md-2" style="background-color:rgb(119, 33, 100);">Fecha Confirmado</div>
-            <div class="col-md-2" style="background-color:rgb(33, 119, 40);">Fecha Procesando</div>
-            <div class="col-md-2" style="background-color:rgb(119, 33, 33);">Fecha Recojida</div>
-            <div class="col-md-2" style="background-color:rgb(0, 0, 0);">Fecha Enviada</div>
-            <div class="col-md-2" style="background-color:rgb(243, 243, 243);">Fecha Entrega</div>
+            <div class="col-md-2">&nbsp;&nbsp;{{ $order->created_at }}</div>
+            <div class="col-md-2">&nbsp;&nbsp;{{ $order->confirmed_date }}</div>
+            <div class="col-md-2">&nbsp;&nbsp;{{ $order->processing_date }}</div>
+            <div class="col-md-2">{{ $order->picked_date }}</div>
+            <div class="col-md-2">{{ $order->shipped_date }}</div>
+            <div class="col-md-2">{{ $order->delivered_date }}</div>
          </div>
        </div>
              <div class="col-md-5">

@@ -94,7 +94,7 @@
             <div class="action">
               <div class="add-cart-button btn-group">
                 <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                <button class="btn btn-primary cart-btn" type="button" style="background-color: #292929">Add to cart</button>
               </div>
             </div>
             <!-- /.action --> 

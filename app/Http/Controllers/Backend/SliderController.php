@@ -60,7 +60,11 @@ class SliderController extends Controller
             $last_img = $up_location.$img_name;
             $image->move($up_location,$img_name);
     
-            unlink($old_img);
+            try {
+                unlink($old_img);
+            } catch (\Throwable $th) {
+                
+            }
     
             Slider::findOrFail($slider_id)->update([
                 'title' => $request->title,
@@ -90,7 +94,12 @@ class SliderController extends Controller
 
         $image = Slider::findOrFail($id);
         $old_image = $image->slider_img;
-        unlink($old_image);
+
+        try {
+            unlink($old_image);
+        } catch (\Throwable $th) {
+            
+        }
 
         Slider::findOrFail($id)->delete();
         $notification = array(

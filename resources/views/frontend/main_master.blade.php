@@ -37,7 +37,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 </head>
-<body class="cnt-home">
+<body class="cnt-home" {{-- style="background-image: url({{asset('frontend/assets/images/body.jpg')}})" --}}>
 <!-- ============================================== HEADER ============================================== -->
 
 @include('frontend.body.header')
@@ -404,7 +404,7 @@
                       </div>
                         </td>
                         <td class="col-md-2">
-                            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Add to Cart </button>
+                            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"  style="background-color: #292929"> Add to Cart </button>
                         </td>
                         <td class="col-md-1 close-btn">
                           <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>

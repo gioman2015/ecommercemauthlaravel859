@@ -1,13 +1,13 @@
 <header class="header-style-1"> 
   
     <!-- ============================================== TOP MENU ============================================== -->
-    <div class="top-bar animate-dropdown">
+    <div class="top-bar animate-dropdown" style="background-color: #141414">
       <div class="container">
         <div class="header-top-inner">
           <div class="cnt-account">
             <ul class="list-unstyled">
-              <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-              <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+              <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Lista de Deseados</a></li>
+              <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>Carrito</a></li>
               <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
               <li>
                 @auth
@@ -51,7 +51,7 @@
     </div>
     <!-- /.header-top --> 
     <!-- ============================================== TOP MENU : END ============================================== -->
-    <div class="main-header">
+    <div class="main-header" style="background-color: #141414">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
@@ -115,7 +115,7 @@
                       <span class='price' id="cartSubTotal"> </span> 
                     </div>
                     <div class="clearfix"></div>
-                    <a href="{{ route('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                    <a href="{{ route('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20" style="background-color: #141414">Checkout</a> </div>
                   <!-- /.cart-total--> 
                   
                 </li>
@@ -136,9 +136,9 @@
     <!-- /.main-header --> 
     
     <!-- ============================================== NAVBAR ============================================== -->
-    <div class="header-nav animate-dropdown">
-      <div class="container">
-        <div class="yamm navbar navbar-default" role="navigation">
+    <div class="header-nav animate-dropdown" style="background-color: #292929">
+      <div class="container" >
+        <div class="yamm navbar navbar-default" role="navigation" >
           <div class="navbar-header">
          <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> 
          <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -147,14 +147,14 @@
             <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
               <div class="nav-outer">
                 <ul class="nav navbar-nav">
-                  <li class="active dropdown yamm-fw"> <a href="{{url('/')}}" data-hover="dropdown" {{-- class="dropdown-toggle" data-toggle="dropdown" --}}>
+                  <li class="active dropdown yamm-fw" style="background: #292929"> <a href="{{url('/')}}" data-hover="dropdown" {{-- class="dropdown-toggle" data-toggle="dropdown" --}}>
                     @if(session()->get('language') == 'spanish') Inicio @else Home @endif</a></li>
                   {{-- Category Table Data --}}
                   @php
                       $categories = App\Models\Category::orderBy('category_order','ASC')->get()
                   @endphp
                   @foreach ($categories as $category)
-                  <li class="dropdown yamm mega-menu"> <a href="{{url('category/product/'.$category->id.'/'.$category->category_slug_en)}}" data-hover="dropdown" {{-- class="dropdown-toggle" data-toggle="dropdown" --}}>
+                  <li class="dropdown yamm mega-menu" > <a href="{{url('category/product/'.$category->id.'/'.$category->category_slug_en)}}" data-hover="dropdown" {{-- class="dropdown-toggle" data-toggle="dropdown" --}}>
                     @if(session()->get('language') == 'spanish') {{$category->category_name_esp}} @else {{$category->category_name_en}} @endif</a>
                     <ul class="dropdown-menu container">
                       <li>
@@ -178,7 +178,7 @@
                             </div>
                             <!-- /.col --> 
                             @endforeach  {{-- end subcategory foreach --}}                         
-                            <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" {{-- src="{{asset('frontend/assets/images/banners/top-menu-banner.jpg')}}" --}} alt=""> </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" {{-- src="{{asset('frontend/assets/images/header.jpg')}}" --}} alt=""> </div>
                             <!-- /.yamm-content --> 
                           </div>
                         </div>

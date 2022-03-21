@@ -201,11 +201,11 @@ Sub -Sub Category Product
         <div id="hero">
           <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
             @foreach($sliders as $slider)
-            <div class="item" style="background-image: url({{asset($slider->slider_img)}});">
+            <div class="item" style="background-image: url({{asset($slider->slider_categoria_img)}});">
               <div class="container-fluid">
                 <div class="caption bg-color vertical-center text-left">
-                  <div class="big-text fadeInDown-1"> {{$slider->title}} </div>
-                  <div class="excerpt fadeInDown-2 hidden-xs"> <span>{{$slider->desciption}}</span> </div>
+                  <div class="big-text fadeInDown-1"> {{-- {{$slider->title}} --}} </div>
+                  <div class="excerpt fadeInDown-2 hidden-xs"> <span>{{-- {{$slider->desciption}} --}}</span> </div>
                 </div>
                 <!-- /.caption --> 
               </div>
@@ -406,9 +406,9 @@ Sub -Sub Category Product
             <ul class="list-unstyled">
               <li class="add-cart-button btn-group">
                 <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                <button class="btn btn-primary cart-btn" type="button" style="background-color: #292929">Agrgar al Carrito</button>
               </li>
-              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"  style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
             </ul>
           </div>
           <!-- /.action --> 
@@ -513,9 +513,9 @@ Sub -Sub Category Product
                 <ul class="list-unstyled">
                   <li class="add-cart-button btn-group">
                     <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                    <button class="btn btn-primary cart-btn" type="button"  style="background-color: #292929">Agregar al Carrito</button>
                   </li>
-                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)" style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
                 </ul>
               </div>
               <!-- /.action --> 

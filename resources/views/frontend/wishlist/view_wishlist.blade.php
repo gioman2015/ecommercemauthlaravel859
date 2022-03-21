@@ -25,7 +25,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="4" class="heading-title">My Wishlist</th>
+					<th colspan="4" class="heading-title">Mi Lista de Deseados</th>
 				</tr>
 			</thead>
 			<tbody id="wishlist">

@@ -42,7 +42,7 @@ Category Product
 
 
  @foreach($categories as $category)
-	<div class="accordion-group">
+	<div class="accordion-group" >
 	<div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed"> 
         @if(session()->get('language') == 'spanish') 
             {{$category->category_name_esp}} 
@@ -60,7 +60,7 @@ Category Product
 
    @foreach($subcategories as $subcategory)
 	    <ul>
-	      <li><a href="{{url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en)}}">
+	      <li><a href="{{url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en)}}" style="color:white">
             @if(session()->get('language') == 'spanish') 
                 {{$subcategory->subcategory_name_esp}} 
             @else 
@@ -201,11 +201,11 @@ Category Product
         <div id="hero">
           <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
             @foreach($sliders as $slider)
-            <div class="item" style="background-image: url({{asset($slider->slider_img)}});">
+            <div class="item" style="background-image: url({{asset($slider->slider_categoria_img)}});">
               <div class="container-fluid">
                 <div class="caption bg-color vertical-center text-left">
-                  <div class="big-text fadeInDown-1"> {{$slider->title}} </div>
-                  <div class="excerpt fadeInDown-2 hidden-xs"> <span>{{$slider->desciption}}</span> </div>
+                  <div class="big-text fadeInDown-1">  </div>
+                  <div class="excerpt fadeInDown-2 hidden-xs"> <span></span> </div>
                 </div>
                 <!-- /.caption --> 
               </div>
@@ -235,17 +235,17 @@ Category Product
      
         <div class="clearfix filters-container m-t-10">
           <div class="row">
-            <div class="col col-sm-6 col-md-2">
+            <div class="col col-sm-6 col-md-2" >
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
+                  <li class="active" > <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
                   <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
             </div>
             <!-- /.col -->
-            <div class="col col-sm-12 col-md-6">
+            <div class="col col-sm-12 col-md-6" >
               <div class="col col-sm-3 col-md-6 no-padding">
                 {{-- <div class="lbl-cnt"> <span class="lbl">Sort by</span>
                   <div class="fld inline">
@@ -264,7 +264,7 @@ Category Product
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col -->
-              <div class="col col-sm-3 col-md-6 no-padding">
+              <div class="col col-sm-3 col-md-6 no-padding" >
                 {{-- <div class="lbl-cnt"> <span class="lbl">Show</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
@@ -303,7 +303,7 @@ Category Product
 
         <div class="search-result-container ">
           <div id="myTabContent" class="tab-content category-list">
-            <div class="tab-pane active " id="grid-container">
+            <div class="tab-pane active " id="grid-container" >
               <div class="category-product">
                 <div class="row">
 
@@ -397,7 +397,7 @@ Category Product
                 <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
               </li>
-              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"  style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
             </ul>
           </div>
           <!-- /.action --> 
@@ -487,9 +487,9 @@ Category Product
                 <ul class="list-unstyled">
                   <li class="add-cart-button btn-group">
                     <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                    <button class="btn btn-primary cart-btn" type="button"  style="background-color: #292929">Agregar al Carrito</button>
                   </li>
-                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)" style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
                 </ul>
               </div>
               <!-- /.action --> 

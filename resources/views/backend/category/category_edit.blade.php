@@ -15,14 +15,15 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Add Category</h3>
+                 <h3 class="box-title">Editar Categoria</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                    <form method="POST" action="{{route('category.update')}}">
+                    <form method="POST" action="{{route('category.update')}}" enctype="multipart/form-data">
                       @csrf
                       <input type="hidden" name="id" value="{{$category->id}}">
+                      <input type="hidden" name="old_image" value="{{$category->slider_categoria_img}}">
                       <div class="form-group">
                           <label for="exampleFormControlInput3">Category English</label>
                           <input type="text" name="category_name_en" class="form-control" value="{{$category->category_name_en}}">
@@ -51,6 +52,17 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
+                      <img src="{{asset($category->slider_categoria_img)}}" width="25%">
+                      <div class="form-group">
+                        <h5>Slider Category<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="file" name="category_slider" class="form-control" onChange="mainThamUrl(this)" required="">
+                        </div>
+                        <img src="" id="mainThmb">
+                        @error('category_slider') 
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror 
+                      </div>
                       <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                   </form>
                    </div>
@@ -67,5 +79,16 @@
     </div>
 </div>
 <!-- /.content-wrapper -->
+<script type="text/javascript">
+	function mainThamUrl(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb').attr('src',e.target.result).height(300).width(300);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}	
+</script>
 
 @endsection

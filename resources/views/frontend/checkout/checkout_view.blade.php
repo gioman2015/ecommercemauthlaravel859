@@ -49,22 +49,30 @@ My Checkout
 
 				<!-- guest-login -->			
 				<div class="col-md-6 col-sm-6 already-registered-login">
-                    <h4 class="checkout-subtitle"><b>Shipping Address</b></h4>
+                    <h4 class="checkout-subtitle"><b>Datos de envio</b></h4>
            
                     <form class="register-form" action="{{ route('checkout.store') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b>  <span>*</span></label>
+                            <label class="info-title" for="exampleInputEmail1"><b>Nombre</b>  <span>*</span></label>
                             <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name }}" required="">
-                          </div>  <!-- // end form group  -->
-                    <div class="form-group">
+                        </div>  <!-- // end form group  -->
+                        
+                        <div class="form-group">
                             <label class="info-title" for="exampleInputEmail1"><b>Email </b> <span>*</span></label>
                             <input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" value="{{ Auth::user()->email }}" required="">
-                          </div>  <!-- // end form group  -->
-                    <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1"><b>Phone</b>  <span>*</span></label>
-                            <input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone }}" required="">
-                          </div>  <!-- // end form group  -->
+                        </div>  <!-- // end form group  -->
+
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail1"><b>Cedula </b> <span>*</span></label>
+                            <input type="number" name="cedula" class="form-control unicase-form-control text-input" required="">
+                        </div>  <!-- // end form group  -->
+
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail1"><b>Telefono</b></label>
+                            <input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" placeholder="Nro telefonico" value="{{ Auth::user()->phone }}" required="">
+                        </div>  <!-- // end form group  -->
                           {{-- <div class="form-group">
                             <label class="info-title" for="exampleInputEmail1"><b>Post Code </b> <span>*</span></label>
                             <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code">
@@ -75,12 +83,12 @@ My Checkout
 				<!-- already-registered-login -->
 				<div class="col-md-6 col-sm-6 already-registered-login">
                     <div class="form-group">
-                        <h5><b>Division Select </b> <span class="text-danger">*</span></h5>
+                        <h5><b>Departamento </b> <span class="text-danger">*</span></h5>
                         <div class="controls">
                             <select name="division_id" class="form-control" required="" >
-                                <option value="" selected="" disabled="">Select Division</option>
+                                <option value="" selected="" disabled="">Departamento</option>
                                 @foreach($divisions as $item)
-                                    <option value="{{ $item->id }}">{{ $item->division_name }}</option>	
+                                    <option value="{{ $item->id }}" {{ $item->id == $address->division_id ? 'selected': '' }}>{{ $item->division_name }}</option>	
                                 @endforeach
                             </select>
                             @error('division_id') 
@@ -89,30 +97,46 @@ My Checkout
                         </div>
                     </div> <!-- // end form group -->                    
                     <div class="form-group">
-                        <h5><b>District Select</b>  <span class="text-danger">*</span></h5>
+                        <h5><b>Ciudad</b>  <span class="text-danger">*</span></h5>
                         <div class="controls">
                             <select name="district_id" class="form-control" required="" >
-                                <option value="" selected="" disabled="">Select District</option>
+                                <option value="" selected="" disabled="">Ciudad</option>
+                                @foreach ($district as $item)
+                                    <option value="{{ $item->id }}" {{ $item->id == $address->district_id ? 'selected': '' }}>{{ $item->district_name }}</option>
+                                @endforeach
                             </select>
                             @error('district_id')   
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror 
                         </div>
                     </div> <!-- // end form group -->
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <h5><b>State Select</b> <span class="text-danger">*</span></h5>
                         <div class="controls">
-                            <select name="state_id" class="form-control" required="" >
+                            <select name="state_id" class="form-control">
                                 <option value="" selected="" disabled="">Select State</option>
                             </select>
                             @error('state_id') 
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror 
                          </div>
-                    </div> <!-- // end form group -->
+                    </div> <!-- // end form group --> --}}
                     <div class="form-group">
-                        <label class="info-title" for="exampleInputEmail1">Notes <span>*</span></label>
-                        <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes"></textarea>
+                        <label class="info-title" for="exampleInputEmail1"><b>Direccion</b> <span class="text-danger">*</span></label>
+                        <input class="form-control" name="address" value="{{ $address->address }}">
+                    </div>  <!-- // end form group  -->
+                    <div class="form-group">
+                        <label class="info-title" for="exampleInputEmail1"><b>Direccion complementaria</b></label>
+                        <input class="form-control" name="address2" value="{{ $address->address2 }}">
+                    </div>  <!-- // end form group  -->
+                    <div class="form-group">
+                        <label class="info-title" for="exampleInputEmail1"><b>Barrio</b> <span class="text-danger">*</span></label>
+                        <input class="form-control" name="barrio" value="{{ $address->barrio }}">
+                    </div>  <!-- // end form group  -->
+                    
+                    <div class="form-group">
+                        <label class="info-title" for="exampleInputEmail1">Anotaciones</label>
+                        <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes">{{ $address->notes }}</textarea>
                     </div>  <!-- // end form group  -->
 				</div>	
 				<!-- already-registered-login -->		
@@ -205,11 +229,11 @@ My Checkout
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="unicase-checkout-title">Select Payment Method</h4>
+                    <h4 class="unicase-checkout-title">Seleccione Metodo de Envio</h4>
                     </div>
 
-                    {{-- <div class="row">
-                        {{-- <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
                             <label for="">Stripe</label> 		
                             <input type="radio" name="payment_method" value="stripe">
                             <img src="{{ asset('frontend/assets/images/payments/4.png') }}">		    		
@@ -226,9 +250,9 @@ My Checkout
                             <input type="radio" name="payment_method" value="cash">	
                             <img src="{{ asset('frontend/assets/images/payments/6.png') }}">  		
                         </div> <!-- end col md 4 -->
-                    </div> <!-- // end row  --> --}}
+                    </div> <!-- // end row  --> 
                     <hr>
-                    <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Payment Step</button>
+                    <button type="submit" class="btn-upper btn btn-primary checkout-page-button"  style="background-color: #292929">Metodo de Envio</button>
 
 
                 </div>

@@ -22,8 +22,9 @@
                       <thead>
                           <tr>
                             <th>Icon</th>
-                            <th>Category Name EN</th>
-                            <th>Category Name ESP</th>
+                            <th>Slider</th>
+                            <th>Nombre de Categoria EN</th>
+                            <th>Nombre de Categoria ESP</th>
                             <th>Orden</th>
                             <th>Action</th>
                           </tr>
@@ -32,6 +33,7 @@
                           @foreach ($categories as $item)
                             <tr>
                                 <td><span><i class="{{$item->category_icon}}"></i></span> </td>
+                                <td><img src="{{asset($item->slider_categoria_img)}}" style="width: 70px"></td>
                                 <td>{{$item->category_name_en}}</td>
                                 <td>{{$item->category_name_esp	}}</td>
                                 <td>{{$item->category_order	}}</td>
@@ -62,7 +64,7 @@
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                    <form method="POST" action="{{route('category.store')}}">
+                    <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
                       @csrf
                       <div class="form-group">
                           <label for="exampleFormControlInput3">Category English</label>
@@ -92,6 +94,16 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
+                      <div class="form-group">
+                        <h5>Slider Category<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="file" name="category_slider" class="form-control" onChange="mainThamUrl(this)" required="">
+                        </div>
+                        <img src="" id="mainThmb">
+                        @error('category_slider') 
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror 
+                      </div>
                       <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add new">
                   </form>
                    </div>
@@ -108,5 +120,17 @@
     </div>
 </div>
 <!-- /.content-wrapper -->
+
+<script type="text/javascript">
+	function mainThamUrl(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb').attr('src',e.target.result).height(300).width(300);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}	
+</script>
 
 @endsection

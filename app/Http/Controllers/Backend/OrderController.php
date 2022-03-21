@@ -90,7 +90,7 @@ class OrderController extends Controller
 
 	public function PendingToConfirm($order_id){
    
-      Order::findOrFail($order_id)->update(['status' => 'confirm']);
+      Order::findOrFail($order_id)->update(['status' => 'confirm','confirmed_date' => Carbon::now()]);
 
       $notification = array(
 			'message' => 'Order Confirm Successfully',
@@ -108,7 +108,7 @@ class OrderController extends Controller
 
 	public function ConfirmToProcessing($order_id){
    
-      Order::findOrFail($order_id)->update(['status' => 'processing']);
+      Order::findOrFail($order_id)->update(['status' => 'processing','processing_date' => Carbon::now()]);
 
       $notification = array(
 			'message' => 'Order Processing Successfully',
@@ -124,7 +124,7 @@ class OrderController extends Controller
 
 		public function ProcessingToPicked($order_id){
    
-      Order::findOrFail($order_id)->update(['status' => 'picked']);
+      Order::findOrFail($order_id)->update(['status' => 'picked','picked_date' => Carbon::now()]);
 
       $notification = array(
 			'message' => 'Order Picked Successfully',
@@ -139,7 +139,7 @@ class OrderController extends Controller
 
 	 public function PickedToShipped($order_id){
    
-      Order::findOrFail($order_id)->update(['status' => 'shipped']);
+      Order::findOrFail($order_id)->update(['status' => 'shipped','shipped_date' => Carbon::now()]);
 
       $notification = array(
 			'message' => 'Order Shipped Successfully',
@@ -160,7 +160,7 @@ class OrderController extends Controller
 	 			->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]);
 	 } 
  
-      Order::findOrFail($order_id)->update(['status' => 'delivered']);
+      Order::findOrFail($order_id)->update(['status' => 'delivered','delivered_date' => Carbon::now()]);
 
       $notification = array(
 			'message' => 'Order Delivered Successfully',

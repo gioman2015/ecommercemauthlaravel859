@@ -43,7 +43,7 @@ Cash On Delivery
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Your Shopping Amount </h4>
+		    	<h4 class="unicase-checkout-title">Su Valor de Compra </h4>
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
@@ -99,7 +99,7 @@ Cash On Delivery
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Select Payment Method</h4>
+		    	<h4 class="unicase-checkout-title"></h4>
 		    </div>
 
 <form action="{{ route('cash.order') }}" method="post" id="payment-form">
@@ -117,6 +117,10 @@ Cash On Delivery
       <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
       <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
       <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+      <input type="hidden" name="cedula" value="{{ $data['cedula'] }}"> 
+      <input type="hidden" name="address" value="{{ $data['address'] }}"> 
+      <input type="hidden" name="address2" value="{{ $data['address2'] }}"> 
+      <input type="hidden" name="barrio" value="{{ $data['barrio'] }}"> 
       <input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
 
             </label>
@@ -126,7 +130,7 @@ Cash On Delivery
 
         </div>
         <br>
-        <button class="btn btn-primary">Submit Payment</button>
+        <button class="btn btn-primary" style="background-color: #292929">Enviar Pedido</button>
         </form>
 
 

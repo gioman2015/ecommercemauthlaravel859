@@ -110,7 +110,7 @@
           </ul>
         </li>
 
-        <li class="treeview {{($prefix == '/shipping')? 'active':''}}">
+        {{-- <li class="treeview {{($prefix == '/shipping')? 'active':''}}">
           <a href="#">
             <i data-feather="file"></i>
             <span>Direcciones</span>
@@ -123,7 +123,7 @@
             <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{route('manage-district')}}"><i class="ti-more"></i>Administrar Municipios</a></li>
             <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{route('manage-state')}}"><i class="ti-more"></i>Administrar Ciudad/Barrios</a></li>
           </ul>
-        </li> 
+        </li>  --}}
 		 
         <li class="header nav-small-cap">User Interface</li>
 		  

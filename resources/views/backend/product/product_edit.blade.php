@@ -361,9 +361,13 @@
                                         </h5>
                                     <p class="card-text"> 
                                         <div class="form-group">
-                                            <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                            <label class="form-control-label">Cambiar Imagen <span class="tx-danger">*</span></label>
                                             <input class="form-control" type="file" name="multi_img[{{$img->id}}]">
-                                        </div> 
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Orden de Imagen <span class="tx-danger">*</span></label>
+                                            <input class="form-control" type="number" name="image_order[{{$img->id}}]" value="{{ $img->image_order }}">
+                                        </div>
                                     </p>
                                     </div>
                                 </div> 		
@@ -371,7 +375,7 @@
                             @endforeach
                         </div>			
                         <div class="text-xs-right">
-                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Actualizar Imagen">
                         </div><br><br>
                     </form>
                 </div>

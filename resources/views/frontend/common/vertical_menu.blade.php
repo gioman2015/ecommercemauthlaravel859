@@ -1,13 +1,13 @@
 @php
-    $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
+    $categories = App\Models\Category::orderBy('category_order','ASC')->get();
 @endphp
 
-<div class="side-menu animate-dropdown outer-bottom-xs">
-    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+<div class="side-menu animate-dropdown outer-bottom-xs"  {{-- style="background-image: url({{asset('frontend/assets/images/body.jpg')}})" --}}>
+    <div class="head" style="background: #292929; color:white"><i class="icon fa fa-align-justify fa-fw"></i> Categorias</div>
     <nav class="yamm megamenu-horizontal">
       <ul class="nav">
         @foreach ($categories as $category) 
-        <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="{{$category->category_icon}}"></i>
+        <li class="dropdown menu-item" > <a href="#" class="dropdown-toggle" data-toggle="dropdown" {{-- style="color:white" --}}><i class="{{$category->category_icon}}"></i>
           @if(session()->get('language') == 'spanish') {{$category->category_name_esp}} @else {{$category->category_name_en}} @endif</a>
           <ul class="dropdown-menu mega-menu">
             <li class="yamm-content">

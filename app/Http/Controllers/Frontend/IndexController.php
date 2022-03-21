@@ -8,6 +8,8 @@ use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\SubSubCategory;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\MultiImg;
@@ -51,7 +53,12 @@ class IndexController extends Controller
             $old_image = $data->profile_photo_path;         
             $brand_image = $request->file('profile_photo_path');
             if($old_image){
-                unlink($old_image);
+                try {
+                    unlink($old_image);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                
             }
             $name_gen = hexdec(uniqid());
             $img_ext = strtolower($brand_image->getClientOriginalExtension());
@@ -105,7 +112,7 @@ class IndexController extends Controller
         $product_size_en = explode(',', $size_en);
         $size_esp = $product->product_size_esp;
         $product_size_esp = explode(',', $size_esp);
-        $multiImag = MultiImg::where('product_id',$id)->get();
+        $multiImag = MultiImg::where('product_id',$id)->orderBy('image_order','ASC')->get();
 
         $cat_id = $product->category_id;
         $relatedProduct = Product::where([['category_id',$cat_id],['id','!=',$id]])->orderBy('id','DESC')->get();
@@ -120,21 +127,24 @@ class IndexController extends Controller
 	}
 
     public function CatWiseProduct($cat_id, $slug){
-        $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
+        /* $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get(); */
+        $sliders = Category::where([['id',$cat_id]])->get();
         $products = Product::where([['status',1],['category_id',$cat_id]])->orderBy('id','DESC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
 		return view('frontend.product.category_view',compact('products','categories','sliders'));
     }
 
     public function SubCatWiseProduct($subcat_id, $slug){
-        $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
+        $subcategory = SubCategory::findOrFail($subcat_id);
+        $sliders = Category::where('id', $subcategory->category_id)->get();
         $products = Product::where([['status',1],['subcategory_id',$subcat_id]])->orderBy('id','DESC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
 		return view('frontend.product.subcategory_view',compact('products','categories','sliders'));
     }
 
     public function SubSubCatWiseProduct($subsubcat_id, $slug){
-        $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
+        $subsubcategory = SubSubCategory::findOrFail($subsubcat_id);
+        $sliders = Category::where('id', $subsubcategory->category_id)->get();
         $products = Product::where([['status',1],['subsubcategory_id',$subsubcat_id]])->orderBy('id','DESC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
 		return view('frontend.product.sub_subcategory_view',compact('products','categories','sliders'));

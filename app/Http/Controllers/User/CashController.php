@@ -36,6 +36,12 @@ class CashController extends Controller
             'post_code' => $request->post_code,
             'notes' => $request->notes,
 
+            'cedula' => $request->cedula,
+            'address' => $request->address,
+            'address2' => $request->address2,
+            'barrio' => $request->barrio,
+
+
             'payment_type' => 'Cash On Delivery',
             'payment_method' => 'Cash On Delivery',
 

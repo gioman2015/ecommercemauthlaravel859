@@ -1,22 +1,32 @@
-<footer id="footer" class="footer color-bg">
-  <div class="footer-bottom">
+<footer id="footer" class="footer color-bg" >
+  <div class="footer-bottom" style="background-color: #292929">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="module-heading">
-            <h4 class="module-title">Contact Us</h4>
+            <h4 class="module-title" style="color:white">INFORMACIÓN DE CONTACTO</h4>
           </div>
           <!-- /.module-heading -->
-          
-          <div class="module-body">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span> </div>
+            <div class="media-body">
+              <p style="color:white">CRA 23 # 72-15, GLORIETA DEL BATALLÓN 170001</p>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span> </div>
+            <div class="media-body"> <span style="color:white">asgardgames@hotmail.com</span> </div>
+          </div>
+
+          {{-- <div class="module-body">
             <ul class="toggle-footer" style="">
               <li class="media">
                 <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span> </div>
                 <div class="media-body">
-                  <p>ThemesGround, 789 Main rd, Anytown, CA 12345 USA</p>
+                  <p>CRA 23 # 72-15, GLORIETA DEL BATALLÓN 170001</p>
                 </div>
               </li>
-              <li class="media">
+              {{-- <li class="media">
                 <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span> </div>
                 <div class="media-body">
                   <p>+(888) 123-4567<br>
@@ -25,15 +35,15 @@
               </li>
               <li class="media">
                 <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span> </div>
-                <div class="media-body"> <span><a href="#">flipmart@themesground.com</a></span> </div>
+                <div class="media-body"> <span><a href="#">asgardgames@hotmail.com</a></span> </div>
               </li>
             </ul>
-          </div>
+          </div> --}}
           <!-- /.module-body --> 
         </div>
         <!-- /.col -->
         
-        <div class="col-xs-12 col-sm-6 col-md-3">
+        {{-- <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="module-heading">
             <h4 class="module-title">Customer Service</h4>
           </div>
@@ -87,12 +97,12 @@
             </ul>
           </div>
           <!-- /.module-body --> 
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
   <div class="copyright-bar">
-    <div class="container">
+    <div class="container" style="background-color: #141414">
       <div class="col-xs-12 col-sm-6 no-padding social">
         <ul class="link">
           <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#" title="Facebook"></a></li>
@@ -106,13 +116,13 @@
       </div>
       <div class="col-xs-12 col-sm-6 no-padding">
         <div class="clearfix payment-methods">
-          <ul>
+          {{-- <ul>
             <li><img src="{{asset('frontend/assets/images/payments/1.png')}}" alt=""></li>
             <li><img src="{{asset('frontend/assets/images/payments/2.png')}}" alt=""></li>
             <li><img src="{{asset('frontend/assets/images/payments/3.png')}}" alt=""></li>
             <li><img src="{{asset('frontend/assets/images/payments/4.png')}}" alt=""></li>
             <li><img src="{{asset('frontend/assets/images/payments/5.png')}}" alt=""></li>
-          </ul>
+          </ul> --}}
         </div>
         <!-- /.payment-methods --> 
       </div>

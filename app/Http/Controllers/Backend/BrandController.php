@@ -66,7 +66,11 @@ class BrandController extends Controller
             })->save('upload/brand/'.$name_gen);
             $last_img = 'upload/brand/'.$name_gen;
     
-            unlink($old_img);
+            try {
+                unlink($old_img);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
     
             Brand::findOrFail($brand_id)->update([
                 'brand_name_en' => $request->brand_name_en,
@@ -100,7 +104,11 @@ class BrandController extends Controller
 
         $image = Brand::findOrFail($id);
         $old_image = $image->brand_image;
-        unlink($old_image);
+        try {
+            unlink($old_image);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
 
         Brand::findOrFail($id)->delete();
         $notification = array(

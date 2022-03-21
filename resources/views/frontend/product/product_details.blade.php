@@ -284,7 +284,7 @@
 
 									<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 									<div class="col-sm-7">
-										<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+										<button type="submit" onclick="addToCart()" class="btn btn-primary" style="background-color: #292929"><i class="fa fa-shopping-cart inner-right-vs"></i> AGREGAR AL CARRITO</button>
 									</div>
 								</div><!-- /.row -->
 							</div><!-- /.quantity-container -->	
@@ -297,7 +297,7 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
+								<li class="active"><a data-toggle="tab" href="#description">DESCRIPCION</a></li>
 								{{-- <li><a data-toggle="tab" href="#review">REVIEW</a></li>
 								<li><a data-toggle="tab" href="#tags">TAGS</a></li> --}}
 							</ul><!-- /.nav-tabs #product-tabs -->
@@ -447,7 +447,7 @@
 
 				<!-- ============================================== UPSELL PRODUCTS ============================================== -->
 <section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Related Products</h3>
+	<h3 class="section-title">Productos Relacionados</h3>
 	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
 	    	
 		@foreach ($relatedProduct as $product)

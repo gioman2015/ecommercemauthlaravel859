@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('product_id');
             $table->string('photo_name');
+            $table->integer('image_order')->default(1)->nullable();
             $table->timestamps();
         });
     }

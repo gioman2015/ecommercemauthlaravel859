@@ -6,7 +6,7 @@ Home Easy Online Shop
 @endsection
     
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
-    <div class="container">
+    <div class="container" >
       <div class="row"> 
         <!-- ============================================== SIDEBAR ============================================== -->
         <div class="col-xs-12 col-sm-12 col-md-3 sidebar"> 
@@ -22,7 +22,7 @@ Home Easy Online Shop
           <!-- ============================================== SPECIAL OFFER ============================================== -->
           
           <div class="sidebar-widget outer-bottom-small wow fadeInUp">
-            <h3 class="section-title">Special Offer</h3>
+            <h3 class="section-title">Oferta Especial</h3>
             <div class="sidebar-widget-body outer-top-xs">
               <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
                 <div class="item">
@@ -89,7 +89,7 @@ Home Easy Online Shop
           <!-- ============================================== PRODUCT TAGS : END ============================================== --> 
           <!-- ============================================== SPECIAL DEALS ============================================== -->
           <div class="sidebar-widget outer-bottom-small wow fadeInUp">
-            <h3 class="section-title">Special Deals</h3>
+            <h3 class="section-title">Venta Especial</h3>
             <div class="sidebar-widget-body outer-top-xs">
               <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
                 <div class="item">
@@ -183,7 +183,7 @@ Home Easy Online Shop
           <!-- ========================================== SECTION – HERO ========================================= -->
           
           <div id="hero">
-            <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+            <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm" >
               @foreach($sliders as $slider)
               <div class="item" style="background-image: url({{asset($slider->slider_img)}});">
                 <div class="container-fluid">
@@ -360,9 +360,9 @@ Home Easy Online Shop
                               <ul class="list-unstyled">
                                 <li class="add-cart-button btn-group">
                                   <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                                  <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                  <button class="btn btn-primary cart-btn" type="button">Agregar al Carrito</button>
                                 </li> 
-                                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+                                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"  style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
                                 
                               </ul>
                             </div>
@@ -476,10 +476,10 @@ Home Easy Online Shop
                                 <ul class="list-unstyled">
                                   <li class="add-cart-button btn-group">
                                     <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                    <button class="btn btn-primary cart-btn" type="button">Agregar al Carrito</button>
                                   </li>
-                                  <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                  <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                  <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"  style="background-color: #292929"> <i class="icon fa fa-heart"></i> </a> </li>
+                                  
                                 </ul>
                               </div>
                               <!-- /.action --> 
@@ -537,7 +537,7 @@ Home Easy Online Shop
           <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
           <!-- ============================================== FEATURED PRODUCTS ============================================== -->
           <section class="section featured-product wow fadeInUp">
-            <h3 class="section-title">Featured products</h3>
+            <h3 class="section-title">Productos Destacados</h3>
             <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
               @foreach ($featured as $product)
               <div class="item item-carousel">
@@ -631,10 +631,9 @@ Home Easy Online Shop
                         <ul class="list-unstyled">
                           <li class="add-cart-button btn-group">
                             <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                            <button class="btn btn-primary cart-btn" type="button">Agregar al Carrito</button>
                           </li>
-                          <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                          <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                          <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"  style="background-color: #292929"> <i class="icon fa fa-heart"></i> </a> </li>
                         </ul>
                       </div>
                       <!-- /.action --> 
