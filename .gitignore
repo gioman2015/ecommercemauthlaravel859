@@ -11,8 +11,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/public/upload/user_images
-/public/upload/slider
-/public/upload/products
-/public/upload/brand
-/public/upload/admin_images
+/public/upload/user_images/*
+/public/upload/slider/*
+/public/upload/products/*
+/public/upload/brand/*
+/public/upload/admin_images/*

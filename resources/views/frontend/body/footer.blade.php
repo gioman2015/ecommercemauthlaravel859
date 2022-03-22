@@ -7,15 +7,17 @@
             <h4 class="module-title" style="color:white">INFORMACIÓN DE CONTACTO</h4>
           </div>
           <!-- /.module-heading -->
-          <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="col-xs-6 col-sm-6 col-md-4">
             <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span> </div>
-            <div class="media-body">
-              <p style="color:white">CRA 23 # 72-15, GLORIETA DEL BATALLÓN 170001</p>
-            </div>
+            <div class="media-body"> <p style="color:white"><a target="_blank" href="https://goo.gl/maps/MV5gKEZtPAMoCqrm6">CRA 23 # 72-15, GLORIETA DEL BATALLÓN</p></a> </div>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span> </div>
-            <div class="media-body"> <span style="color:white">asgardgames@hotmail.com</span> </div>
+          <div class="col-xs-6 col-sm-6 col-md-4">
+            <div class="pull-left"> <span class="icon fa-stack fa-lg" > <i class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span> </div>
+            <div class="media-body"> <span style="color:white">game-lotmanizales@outlook.com</span> </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-4">
+            <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span> </div>
+            <div class="media-body"><span style="color: white">314 7849806</span></div>
           </div>
 
           {{-- <div class="module-body">
@@ -105,13 +107,26 @@
     <div class="container" style="background-color: #141414">
       <div class="col-xs-12 col-sm-6 no-padding social">
         <ul class="link">
-          <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#" title="Facebook"></a></li>
-          <li class="tw pull-left"><a target="_blank" rel="nofollow" href="#" title="Twitter"></a></li>
-          <li class="googleplus pull-left"><a target="_blank" rel="nofollow" href="#" title="GooglePlus"></a></li>
-          <li class="rss pull-left"><a target="_blank" rel="nofollow" href="#" title="RSS"></a></li>
-          <li class="pintrest pull-left"><a target="_blank" rel="nofollow" href="#" title="PInterest"></a></li>
-          <li class="linkedin pull-left"><a target="_blank" rel="nofollow" href="#" title="Linkedin"></a></li>
-          <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="#" title="Youtube"></a></li>
+          <a target="_blank" href="https://www.facebook.com/GamelotManizales/" class="fa fa-facebook"></a>
+          {{-- <a href="#" class="fa fa-twitter"></a> --}}
+          {{-- <a href="#" class="fa fa-google"></a> --}}
+          {{-- <a href="#" class="fa fa-linkedin"></a> --}}
+          {{-- <a target="_blank" href="#" class="fa fa-youtube"></a> --}}
+          <a target="_blank" href="https://www.instagram.com/gamelotcolombia/" class="fa fa-instagram"></a>
+          {{-- <a href="#" class="fa fa-pinterest"></a> --}}
+          {{-- <a href="#" class="fa fa-snapchat-ghost"></a> --}}
+          {{-- <a href="#" class="fa fa-skype"></a> --}}
+          {{-- <a href="#" class="fa fa-android"></a> --}}
+          {{-- <a href="#" class="fa fa-dribbble"></a> --}}
+          {{-- <a href="#" class="fa fa-vimeo"></a> --}}
+          {{-- <a href="#" class="fa fa-tumblr"></a> --}}
+          {{-- <a href="#" class="fa fa-vine"></a> --}}
+          {{-- <a href="#" class="fa fa-foursquare"></a> --}}
+          {{-- <a href="#" class="fa fa-stumbleupon"></a> --}}
+          {{-- <a href="#" class="fa fa-flickr"></a> --}}
+          {{-- <a href="#" class="fa fa-yahoo"></a> --}}
+          {{-- <a href="#" class="fa fa-reddit"></a> --}}
+          {{-- <a href="#" class="fa fa-rss"></a> --}}
         </ul>
       </div>
       <div class="col-xs-12 col-sm-6 no-padding">

@@ -26,7 +26,6 @@ class CreateOrdersTable extends Migration
             $table->string('address')->nullable();
             $table->string('address2')->nullable();
             $table->string('barrio')->nullable();
-            $table->string('notes')->nullable();
             $table->integer('post_code')->nullable();
             $table->text('notes')->nullable();
             $table->string('payment_type');

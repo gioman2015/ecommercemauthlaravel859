@@ -144,11 +144,22 @@
 											<span class="label">Availability :</span>
 										</div>	
 									</div>
+									
+									@if ($product->product_qty > 0)
+									
 									<div class="col-sm-9">
 										<div class="stock-box">
 											<span class="value">In Stock</span>
 										</div>	
 									</div>
+									@else
+									
+									<div class="col-sm-9">
+										<div class="stock-box">
+											<span class="value">stockout</span>
+										</div>	
+									</div>
+									@endif
 								</div><!-- /.row -->	
 							</div><!-- /.stock-container -->
                             <div class="description-container m-t-20">
@@ -277,14 +288,23 @@
 								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 								                </div> --}}
-								                <input type="number" id="qty" value="1" min="1" max="{{$product->product_qty}}" style="width:90px;">
+												@if ($product->product_qty > 0)
+													<input type="number" id="qty" value="1" min="1" max="{{$product->product_qty}}" style="width:90px;">												
+												@else
+													<input type="number" id="qty" value="0" min="1" max="{{$product->product_qty}}" style="width:90px;" disabled>
+												@endif
 							              </div>
 							            </div>
 									</div>
 
 									<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 									<div class="col-sm-7">
-										<button type="submit" onclick="addToCart()" class="btn btn-primary" style="background-color: #292929"><i class="fa fa-shopping-cart inner-right-vs"></i> AGREGAR AL CARRITO</button>
+										@if ($product->product_qty > 0)
+											<button type="submit" onclick="addToCart()" class="btn btn-primary" style="background-color: #292929"><i class="fa fa-shopping-cart inner-right-vs"></i> AGREGAR AL CARRITO</button>
+										@else									
+											<button type="submit" onclick="addToCart()" class="btn btn-primary" style="background-color: #292929" disabled><i class="fa fa-shopping-cart inner-right-vs"></i> AGREGAR AL CARRITO</button>
+										@endif
+										
 									</div>
 								</div><!-- /.row -->
 							</div><!-- /.quantity-container -->	

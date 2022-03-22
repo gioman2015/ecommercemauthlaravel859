@@ -15,8 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        /* \App\Models\Admin::factory()->create(); */
-        $this->call('ShipDivisionSeeder');
-        $this->call('ShipDistrictSeeder');
+
+        \App\Models\Admin::factory()->create();
+
+        $this->call(BrandSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(ShipDivisionSeeder::class);
+        $this->call(ShipDistrictSeeder::class);
+
     }
 }
