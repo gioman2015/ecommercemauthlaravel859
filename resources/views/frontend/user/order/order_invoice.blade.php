@@ -77,10 +77,10 @@
            @php
                $div = $order->division->division_name;
                $dis = $order->district->district_name;
-               $state = $order->state->state_name;
+               /* $state = $order->state->state_name; */
            @endphp
             
-           <strong>Address:</strong> {{$div}},{{$dis}}.{{$state}} <br>
+           <strong>Address:</strong> {{$div}},{{$dis}}{{-- .{{$state}} --}} <br>
            <strong>Post Code:</strong> {{$order->post_code}}
          </p>
         </td>

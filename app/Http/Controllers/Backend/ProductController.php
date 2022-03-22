@@ -164,7 +164,7 @@ class ProductController extends Controller
             MultiImg::insert([
                 'product_id' => $pro_id,
                 'photo_name' => $last_img,
-                'photo_name' => '1',
+                'image_order' => '1',
                 'created_at' => Carbon::now()
             ]);
         }

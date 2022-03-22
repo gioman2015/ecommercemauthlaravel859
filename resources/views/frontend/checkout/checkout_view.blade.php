@@ -88,7 +88,7 @@ My Checkout
                             <select name="division_id" class="form-control" required="" >
                                 <option value="" selected="" disabled="">Departamento</option>
                                 @foreach($divisions as $item)
-                                    <option value="{{ $item->id }}" {{ $item->id == $address->division_id ? 'selected': '' }}>{{ $item->division_name }}</option>	
+                                    <option value="{{ $item->id }}" {{-- {{ $item->id == $address->division_id ? 'selected': '' }} --}}>{{ $item->division_name }}</option>	
                                 @endforeach
                             </select>
                             @error('division_id') 
@@ -102,7 +102,7 @@ My Checkout
                             <select name="district_id" class="form-control" required="" >
                                 <option value="" selected="" disabled="">Ciudad</option>
                                 @foreach ($district as $item)
-                                    <option value="{{ $item->id }}" {{ $item->id == $address->district_id ? 'selected': '' }}>{{ $item->district_name }}</option>
+                                    <option value="{{ $item->id }}" {{-- {{ $item->id == $address->district_id ? 'selected': '' }} --}}>{{ $item->district_name }}</option>
                                 @endforeach
                             </select>
                             @error('district_id')   
@@ -123,20 +123,20 @@ My Checkout
                     </div> <!-- // end form group --> --}}
                     <div class="form-group">
                         <label class="info-title" for="exampleInputEmail1"><b>Direccion</b> <span class="text-danger">*</span></label>
-                        <input class="form-control" name="address" value="{{ $address->address }}">
+                        <input class="form-control" name="address" {{-- value="{{ $address->address }}" --}}>
                     </div>  <!-- // end form group  -->
                     <div class="form-group">
                         <label class="info-title" for="exampleInputEmail1"><b>Direccion complementaria</b></label>
-                        <input class="form-control" name="address2" value="{{ $address->address2 }}">
+                        <input class="form-control" name="address2" {{-- value="{{ $address->address2 }}" --}}>
                     </div>  <!-- // end form group  -->
                     <div class="form-group">
                         <label class="info-title" for="exampleInputEmail1"><b>Barrio</b> <span class="text-danger">*</span></label>
-                        <input class="form-control" name="barrio" value="{{ $address->barrio }}">
+                        <input class="form-control" name="barrio" {{-- value="{{ $address->barrio }}" --}}>
                     </div>  <!-- // end form group  -->
                     
                     <div class="form-group">
                         <label class="info-title" for="exampleInputEmail1">Anotaciones</label>
-                        <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes">{{ $address->notes }}</textarea>
+                        <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes">{{-- {{ $address->notes }} --}}</textarea>
                     </div>  <!-- // end form group  -->
 				</div>	
 				<!-- already-registered-login -->		
@@ -239,11 +239,11 @@ My Checkout
                             <img src="{{ asset('frontend/assets/images/payments/4.png') }}">		    		
                         </div> <!-- end col md 4 -->
 
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <label for="">Card</label> 		
                             <input type="radio" name="payment_method" value="card">	
                             <img src="{{ asset('frontend/assets/images/payments/3.png') }}">    		
-                        </div> <!-- end col md 4 -->
+                        </div> <!-- end col md 4 --> --}}
 
                         <div class="col-md-4">
                             <label for="">Cash</label> 		

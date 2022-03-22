@@ -61,6 +61,7 @@ width: 100% !important;
 <td> Amount : {{ $order['amount'] }}</td>
 <td> Name : {{ $order['name'] }}</td>
 <td> Email : {{ $order['email'] }}</td>
+<td>Gracias por su compra</td>
 
 </tr>
 

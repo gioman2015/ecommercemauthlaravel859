@@ -52,15 +52,15 @@
                        <th> {{ $order->district->district_name }} </th>
                     </tr>
         
-                     <tr>
+                    {{--  <tr>
                       <th> State : </th>
                        <th>{{ $order->state->state_name }} </th>
-                    </tr>
+                    </tr> --}}
         
-                    <tr>
+                    {{-- <tr>
                       <th> Post Code : </th>
                        <th> {{ $order->post_code }} </th>
-                    </tr>
+                    </tr> --}}
         
                     <tr>
                       <th> Order Date : </th>
@@ -99,10 +99,10 @@
                        <th> {{ $order->payment_method }} </th>
                     </tr>
         
-                     <tr>
+                     {{-- <tr>
                       <th> Tranx ID : </th>
                        <th> {{ $order->transaction_id }} </th>
-                    </tr>
+                    </tr> --}}
         
                      <tr>
                       <th> Invoice  : </th>
