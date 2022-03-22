@@ -16,3 +16,4 @@ yarn-error.log
 /public/upload/products/*
 /public/upload/brand/*
 /public/upload/admin_images/*
+/public/upload/category_slider/*

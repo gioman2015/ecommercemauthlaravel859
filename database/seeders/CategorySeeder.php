@@ -25,7 +25,8 @@ class CategorySeeder extends Seeder
             'category_slug_en' => 'categoria1',
             'category_slug_esp' => 'categoria1',
             'category_icon' => 'fa fa-circle',
-            'category_order'  => 1
+            'category_order' => 1,
+            'slider_categoria_img' => 'upload/default/slider-1.jpg',
         ]);
 
         $category2 = Category::create([
@@ -35,7 +36,8 @@ class CategorySeeder extends Seeder
             'category_slug_en' => 'categoria2',
             'category_slug_esp' => 'categoria2',
             'category_icon' => 'fa fa-circle',
-            'category_order' => 2
+            'category_order' => 2,
+            'slider_categoria_img' => 'upload/default/slider-2.jpg',
         ]);
 
         $subCategory1 = SubCategory::create([
