@@ -23,7 +23,8 @@ class CheckoutController extends Controller
     } // end method 
 
     public function CheckoutStore(Request $request){
-        // dd($request->all());
+        /* dd($request); */
+        $typedistrict = ShipDistrict::where('id', $request->district_id)->first();
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_email'] = $request->shipping_email;
@@ -37,8 +38,12 @@ class CheckoutController extends Controller
         $data['address2'] = $request->address2;
         $data['barrio'] = $request->barrio;
         $data['notes'] = $request->notes;
+        $data['weigth'] = $request->weigth;
+        $data['type'] = $typedistrict->type;
+        
         $cartTotal = Cart::total();
 
+        /* dd($typedistrict->type); */
         $payment_method = 'cash';
 
         $address = Address::where('user_id',$request->user_id)->first();
@@ -73,4 +78,9 @@ class CheckoutController extends Controller
             return view('frontend.payment.cash',compact('data','cartTotal'));
         }
     }// end mehtod. 
+
+    public function CheckoutMessage(){
+        $messages = Messages::where('type', 'Web')->first();
+        return view ('frontend.payment.message', compact('messages'));
+    }// end method.
 }

@@ -162,8 +162,11 @@ My Checkout
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
-
+                    @php
+                        $peso = 0;
+                    @endphp
 					@foreach($carts as $item)
+                    
 					<li> 
 						<strong>Image: </strong>
 						<img src="{{ asset($item->options->image) }}" style="height: 50px; width: 50px;">
@@ -173,15 +176,38 @@ My Checkout
 						<strong>Qty: </strong>
 						 ( {{ $item->qty }} )
 
-						 <strong>Color: </strong>
+						 {{-- <strong>Color: </strong>
 						 {{ $item->options->color }}
 
 						 <strong>Size: </strong>
-						 {{ $item->options->size }}
+						 {{ $item->options->size }} --}}
 					</li>
-                    @endforeach 
+                    @endforeach
+
+                    @foreach($carts as $item)
+                    @php
+                        $peso = $peso + $item->options->product_weight
+                    @endphp					
+                    @endforeach
+                    @php
+                        $pesoqty = $peso * $item->qty
+                    @endphp
+                    <input type="hidden" name="weigth" value="{{$pesoqty}}">
+                    
 <hr>
 		 <li>
+            {{-- <strong>Peso del pedido: </strong>{{$pesoqty}} kg<hr> --}}
+            {{-- @php
+                $envios = App\Models\PreciosEnvios::latest()->get();
+            @endphp
+@if ($pesoqty < 3 )
+    <input type="text" value="-3">
+@elseif ($pesoqty < 5)
+    <input type="text" value="-5">
+@else
+    <input type="text" value="+6">
+@endif --}}
+
 		 	@if(Session::has('coupon'))
 
 <strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
@@ -198,6 +224,7 @@ My Checkout
 
 
 		 	@else
+             
 
 <strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
 
@@ -233,11 +260,11 @@ My Checkout
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <label for="">Stripe</label> 		
                             <input type="radio" name="payment_method" value="stripe">
                             <img src="{{ asset('frontend/assets/images/payments/4.png') }}">		    		
-                        </div> <!-- end col md 4 -->
+                        </div> <!-- end col md 4 --> --}}
 
                         {{-- <div class="col-md-4">
                             <label for="">Card</label> 		

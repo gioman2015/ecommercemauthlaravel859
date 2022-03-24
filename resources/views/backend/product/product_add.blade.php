@@ -120,7 +120,7 @@
                             </div>{{-- end col-md-4 --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Product Quantity <span class="text-danger">*</span></h5>
+                                    <h5>Cantidad <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="text" name="product_qty" class="form-control" required="">
                                         @error('product_qty') 
@@ -131,6 +131,20 @@
                             </div>{{-- end col-md-4 --}}
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <h5>Peso <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="number" name="product_weight" class="form-control" required=""/>
+                                        @error('product_weight') 
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror 
+                                    </div>
+                                </div>
+                            </div>{{-- end col-md-4 --}}
+                        </div>{{-- end 3rd row --}}
+
+                        <div class="row">{{-- 4th row --}}
+                            <div class="col-md-3">
+                                <div class="form-group">
                                     <h5>Product Tag Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="text" name="product_tags_en" value="" data-role="tagsinput" placeholder="add tags" required=""/>
@@ -140,10 +154,7 @@
                                     </div>
                                 </div>
                             </div>{{-- end col-md-4 --}}
-                        </div>{{-- end 3rd row --}}
-
-                        <div class="row">{{-- 4th row --}}
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Product Tag Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -153,8 +164,8 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Product Size Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -164,8 +175,8 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Product Size Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -175,7 +186,7 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
+                            </div>{{-- end col-md-3 --}}
                         </div>{{-- end 4th row --}}
 
                         <div class="row">{{-- 5th row --}}
@@ -293,7 +304,7 @@
                                     <h5>Long Description Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea id="editor1" name="long_descp_en" rows="10" cols="80" required="">
-                                            This is my textarea to be replaced with CKEditor.
+                                            
                                         </textarea>
                                     </div> 
                                 </div>
@@ -303,7 +314,7 @@
                                     <h5>Long Description Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <textarea id="editor2" name="long_descp_esp" rows="10" cols="80" required="">
-                                            This is my textarea to be replaced with CKEditor.
+                                            
                                         </textarea>
                                     </div>
                                 </div>

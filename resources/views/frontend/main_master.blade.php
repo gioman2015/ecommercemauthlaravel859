@@ -3,13 +3,13 @@
 <head>
 
   <style>
-    .fa {
+    /* .fa {
       font-size: 30px;
       width: 50px;
       text-align: center;
       text-decoration: none;
-      /* margin: 5px 2px; */
-    }
+      /* margin: 5px 2px;
+    } */
     
     .fa:hover {
         opacity: 0.7;
@@ -263,6 +263,7 @@
                   <input type="number" class="form-control" id="qty" value="1" min="1" {{-- max="10" --}}>
                 </div>{{-- end form-group --}}
                 <input type="hidden" id="product_id">
+                <input type="hidden" id="product_weight">
                 <button type="submit" class="btn btn-primary mb-2" id="btnAddToCart" onclick="addToCart()" style="background-color: #292929">Add to Cart</button>
               </div>{{-- end col-md-4 --}}
             </div>{{-- end row --}}
@@ -293,6 +294,7 @@
               $('#pbrand').text(data.product.brand.brand_name_en);
               $('#pimage').attr('src','/'+data.product.product_thambnail);
               $('#product_id').val(id);
+              $('#product_weight').val(data.product.product_weight);
               $('#qty').val(1);
               $('#qty').attr('max',data.product.product_qty);
               // Product Price
@@ -356,6 +358,7 @@
       function addToCart(){
         var product_name = $('#pname').text();
         var id = $('#product_id').val();
+        var product_weight = $('#product_weight').val();
         var color = $('#color option:selected').text();
         var size = $('#size option:selected').text();
         var quantity = $('#qty').val();
@@ -365,7 +368,7 @@
             type: "POST",
             dataType: 'json',
             data:{
-              discount_price:discount_price, selling_price:selling_price, color:color, size:size, quantity:quantity, product_name:product_name
+              discount_price:discount_price, selling_price:selling_price, color:color, size:size, quantity:quantity, product_name:product_name, product_weight:product_weight
             },
             url: "/cart/data/store/"+id,
             success:function(data){
@@ -597,7 +600,7 @@ wishlist();
                  </td>
 
                  <td class="col-md-2">
-            <strong>${value.options.color} </strong> 
+            <strong>${value.options.color}</strong>
             </td>
          <td class="col-md-2">
           ${value.options.size == null

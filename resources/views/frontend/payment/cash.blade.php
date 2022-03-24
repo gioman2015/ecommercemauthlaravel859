@@ -47,8 +47,47 @@ Cash On Delivery
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
-
-
+					<input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+					@php
+						$envios = App\Models\PreciosEnvios::latest()->get();
+					@endphp
+				@if ($data['type']==0)
+					
+					@if ($data['weigth'] <= 3 )
+						@php
+							$envios = App\Models\PreciosEnvios::where('id',2)->first();
+						@endphp
+						<input type="hidden" value="{{$envios->price}}">
+					@elseif ($data['weigth'] <= 5)
+						@php
+							$envios = App\Models\PreciosEnvios::where('id',4)->first();
+						@endphp
+						<input type="hidden" value="{{$envios->price}}">
+					@else
+						@php
+							$envios = App\Models\PreciosEnvios::where('id',6)->first();
+						@endphp
+						<input type="hidden" value="{{$envios->price}}">
+					@endif
+				@else
+					
+					@if ($data['weigth'] <= 3 )
+						@php
+							$envios = App\Models\PreciosEnvios::where('id',1)->first();
+						@endphp
+						<input type="hidden" value="{{$envios->price}}">
+					@elseif ($data['weigth'] <= 5)
+						@php
+							$envios = App\Models\PreciosEnvios::where('id',3)->first();
+						@endphp
+						<input type="hidden" value="{{$envios->price}}">
+					@else
+						@php
+							$envios = App\Models\PreciosEnvios::where('id',5)->first();
+						@endphp
+						<input type="hidden" value="{{$envios->price}}">
+					@endif
+				@endif
 <hr>
 		 <li>
 		 	@if(Session::has('coupon'))
@@ -69,8 +108,11 @@ Cash On Delivery
 		 	@else
 
 <strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
-
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Valor de Envio: </strong> ${{ $envios->price }} <hr>
+@php
+	$totalenvio = $envios->price + $cartTotal
+@endphp
+<strong>Grand Total : </strong> ${{$totalenvio}}<hr>
 
 
 		 	@endif 

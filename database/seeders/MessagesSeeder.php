@@ -1,0 +1,78 @@
+<?php
+
+namespace Database\Seeders;
+use App\Models\Messages;
+use App\Models\PreciosEnvios;
+
+use Illuminate\Database\Seeder;
+
+class MessagesSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $messsageWeb = Messages::create([
+            'id' => 1,
+            'type' => 'Web',
+            'message' => 'Mensaje Web',
+        ]);
+
+        $messsageMail = Messages::create([
+            'id' => 2,
+            'type' => 'Mail',
+            'message' => 'Mensaje E-Mail',
+        ]);
+
+        $enviosReg1 = PreciosEnvios::create([
+            'id' => 1,
+            'desde' => 1,
+            'hasta' => 3,
+            'type' => 'Regional',
+            'price' => '8600'
+        ]);
+
+        $enviosNac1 = PreciosEnvios::create([
+            'id' => 2,
+            'desde' => 1,
+            'hasta' => 3,
+            'type' => 'Nacional',
+            'price' => '10900'
+        ]);
+
+        $enviosReg2 = PreciosEnvios::create([
+            'id' => 3,
+            'desde' => 4,
+            'hasta' => 5,
+            'type' => 'Regional',
+            'price' => '12300'
+        ]);
+
+        $enviosNac2 = PreciosEnvios::create([
+            'id' => 4,
+            'desde' => 4,
+            'hasta' => 5,
+            'type' => 'Nacional',
+            'price' => '16000'
+        ]);
+
+        $enviosReg2 = PreciosEnvios::create([
+            'id' => 5,
+            'desde' => 6,
+            'hasta' => 8,
+            'type' => 'Regional',
+            'price' => '16300'
+        ]);
+
+        $enviosNac2 = PreciosEnvios::create([
+            'id' => 6,
+            'desde' => 6,
+            'hasta' => 8,
+            'type' => 'Nacional',
+            'price' => '19600'
+        ]);
+    }
+}

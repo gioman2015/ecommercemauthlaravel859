@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShipDistrictsTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateShipDistrictsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ship_districts', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('division_id');
-            $table->integer('district_code');
-            $table->string('district_name');
-            $table->boolean('type');
+            $table->string("type");
+            $table->mediumText("message");
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateShipDistrictsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ship_districts');
+        Schema::dropIfExists('messages');
     }
 }

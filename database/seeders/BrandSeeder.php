@@ -19,7 +19,7 @@ class BrandSeeder extends Seeder
             'brand_name_esp' => 'Marca1',
             'brand_slug_en' => 'marca1',
             'brand_slug_esp' => 'marca1',
-            'brand_image' => 'upload/default/logo-1.jpg',
+            'brand_image' => 'upload/default/logo-1.png',
         ]);
 
         $brand2 = Brand::create([
@@ -27,7 +27,7 @@ class BrandSeeder extends Seeder
             'brand_name_esp' => 'Marca2',
             'brand_slug_en' => 'marca2',
             'brand_slug_esp' => 'marca2',
-            'brand_image' => 'upload/default/logo-2.jpg',
+            'brand_image' => 'upload/default/logo-2.png',
         ]);
 
         $brand3 = Brand::create([
@@ -35,7 +35,7 @@ class BrandSeeder extends Seeder
             'brand_name_esp' => 'Marca3',
             'brand_slug_en' => 'marca3',
             'brand_slug_esp' => 'marca3',
-            'brand_image' => 'upload/default/logo-3.jpg',
+            'brand_image' => 'upload/default/logo-3.png',
         ]);
 
         $brand4 = Brand::create([
@@ -43,7 +43,7 @@ class BrandSeeder extends Seeder
             'brand_name_esp' => 'Marca4',
             'brand_slug_en' => 'marca4',
             'brand_slug_esp' => 'marca4',
-            'brand_image' => 'upload/default/logo-4.jpg',
+            'brand_image' => 'upload/default/logo-4.png',
         ]);
 
         $brand5 = Brand::create([
@@ -51,7 +51,7 @@ class BrandSeeder extends Seeder
             'brand_name_esp' => 'Marca5',
             'brand_slug_en' => 'marca5',
             'brand_slug_esp' => 'marca5',
-            'brand_image' => 'upload/default/logo-5.jpg',
+            'brand_image' => 'upload/default/logo-5.png',
         ]);
     }
 }

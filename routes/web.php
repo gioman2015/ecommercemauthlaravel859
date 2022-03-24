@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\MessageController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LenguageController;
@@ -192,6 +193,16 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::prefix('alluser')->group(function(){
         Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
     });
+
+    Route::prefix('message')->group(function(){
+        Route::get('/web', [MessageController::class, 'Web'])->name('web-message');
+        Route::post('/web/update/', [MessageController::class, 'WebUpdate'])->name('web.update');
+        Route::get('/mail', [MessageController::class, 'Email'])->name('mail-message');
+        Route::post('/mail/update/', [MessageController::class, 'EmailUpdate'])->name('mail.update');
+        Route::get('/precios', [MessageController::class, 'PreciosEnvios'])->name('precios-envios');
+        Route::get('/edit/{id}', [MessageController::class, 'PreciosUpdate'])->name('precios.edit');
+        Route::post('/update', [MessageController::class, 'PreciosEdit'])->name('precios.update');
+    });
 });
 
 //User All Route
@@ -278,3 +289,4 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
 Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+Route::post('/checkout/message', [CheckoutController::class, 'CheckoutMessage'])->name('checkout.message');

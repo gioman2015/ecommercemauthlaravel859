@@ -110,7 +110,7 @@
           </ul>
         </li>
 
-        {{-- <li class="treeview {{($prefix == '/shipping')? 'active':''}}">
+        <li class="treeview {{($prefix == '/shipping')? 'active':''}}">
           <a href="#">
             <i data-feather="file"></i>
             <span>Direcciones</span>
@@ -121,9 +121,24 @@
           <ul class="treeview-menu">
             <li class="{{ ($route == 'manage-division')? 'active':'' }}"><a href="{{route('manage-division')}}"><i class="ti-more"></i>Administrar Departamentos</a></li>
             <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{route('manage-district')}}"><i class="ti-more"></i>Administrar Municipios</a></li>
-            <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{route('manage-state')}}"><i class="ti-more"></i>Administrar Ciudad/Barrios</a></li>
+            {{-- <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{route('manage-state')}}"><i class="ti-more"></i>Administrar Ciudad/Barrios</a></li> --}}
           </ul>
-        </li>  --}}
+        </li> 
+
+        <li class="treeview {{($prefix == '/message')? 'active':''}}">
+          <a href="#">
+            <i data-feather="file"></i>
+            <span>Configuraciones</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'web-message')? 'active':'' }}"><a href="{{route('web-message')}}"><i class="ti-more"></i>Mensaje Web</a></li>
+            <li class="{{ ($route == 'mail-message')? 'active':'' }}"><a href="{{route('mail-message')}}"><i class="ti-more"></i>Mensaje E-mail</a></li>
+            <li class="{{ ($route == 'precios-envios')? 'active':'' }}"><a href="{{route('precios-envios')}}"><i class="ti-more"></i>Precios Envios</a></li>
+          </ul>
+        </li>
 		 
         <li class="header nav-small-cap">User Interface</li>
 		  

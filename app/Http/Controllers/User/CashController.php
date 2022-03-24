@@ -94,7 +94,7 @@ class CashController extends Controller
 			'message' => 'Orden Realizada con Exito',
 			'alert-type' => 'success'
 		);
-		return redirect()->route('dashboard')->with($notification);
+		return view('frontend.payment.message')->with($notification);
     } // end method 
 
 }

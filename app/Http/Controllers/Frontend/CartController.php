@@ -25,7 +25,8 @@ class CartController extends Controller
     	if ($product->discount_price == NULL) {
     		Cart::add([
     			'id' => $id, 
-    			'name' => $request->product_name, 
+    			'name' => $request->product_name,
+				'product_weight' => $product->product_weight,
     			'qty' => $request->quantity, 
     			'price' => $request->selling_price,
     			'weight' => 1, 
@@ -33,6 +34,7 @@ class CartController extends Controller
     				'image' => $product->product_thambnail,
     				'color' => $request->color,
     				'size' => $request->size,
+					'product_weight' => $product->product_weight,
     			],
     		]);
     		return response()->json(['success' => 'Successfully Added on Your Cart']);
@@ -40,6 +42,7 @@ class CartController extends Controller
     		Cart::add([
     			'id' => $id, 
     			'name' => $request->product_name, 
+				'product_weight' => $product->product_weight,
     			'qty' => $request->quantity, 
     			'price' => $request->discount_price,
     			'weight' => 1, 
@@ -47,6 +50,7 @@ class CartController extends Controller
     				'image' => $product->product_thambnail,
     				'color' => $request->color,
     				'size' => $request->size,
+					'product_weight' => $product->product_weight,
     			],
     		]);
     		return response()->json(['success' => 'Successfully Added on Your Cart']);

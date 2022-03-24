@@ -137,10 +137,10 @@
                             </div>{{-- end col-md-4 --}}
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Product Tag Eng <span class="text-danger">*</span></h5>
+                                    <h5>Peso <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_tags_en" data-role="tagsinput" placeholder="add tags" value="{{$products->product_tags_en}}" required=""/>
-                                        @error('product_tags_en') 
+                                        <input type="number" name="product_weight" class="form-control" value="{{$products->product_weight}}" required=""/>
+                                        @error('product_weight') 
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror 
                                     </div>
@@ -149,7 +149,18 @@
                         </div>{{-- end 3rd row --}}
 
                         <div class="row">{{-- 4th row --}}
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <h5>Product Tag Eng <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" name="product_tags_en" data-role="tagsinput" placeholder="add tags" value="{{$products->product_tags_en}}" required=""/>
+                                        @error('product_tags_en') 
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror 
+                                    </div>
+                                </div>
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Product Tag Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -159,8 +170,8 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Product Size Eng <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -170,8 +181,8 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Product Size Esp <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -181,7 +192,7 @@
                                         @enderror 
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
+                            </div>{{-- end col-md-3 --}}
                         </div>{{-- end 4th row --}}
 
                         <div class="row">{{-- 5th row --}}

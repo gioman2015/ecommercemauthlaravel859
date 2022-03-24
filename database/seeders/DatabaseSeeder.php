@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(ShipDivisionSeeder::class);
         $this->call(ShipDistrictSeeder::class);
+        $this->call(MessagesSeeder::class);
+        $this->call(ProductSeeder::class);
 
     }
 }
