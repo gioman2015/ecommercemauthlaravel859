@@ -18,14 +18,16 @@ class ShippingAreaController extends Controller
 
     public function DivisionStore(Request $request){
     	$request->validate([
-    		'division_name' => 'required',   	 
+    		'division_name' => 'required',
+            'division_code' => 'required',  	 
         ]);
         ShipDivision::insert([
             'division_name' => $request->division_name,
+            'division_code' => $request->division_code,
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Division Inserted Successfully',
+            'message' => 'Departamento Guardado Correctamente',
             'alert-type' => 'success'
         );
 		return redirect()->back()->with($notification);
@@ -39,10 +41,11 @@ class ShippingAreaController extends Controller
     public function DivisionUpdate(Request $request,$id){
         ShipDivision::findOrFail($id)->update([
         'division_name' => $request->division_name,
+        'division_code' => $request->division_code,
         'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Division Updated Successfully',
+            'message' => 'Departamento Actualizado Correctamente',
             'alert-type' => 'info'
         );
         return redirect()->route('manage-division')->with($notification);
@@ -69,16 +72,19 @@ class ShippingAreaController extends Controller
     public function DistrictStore(Request $request){
     	$request->validate([
     		'division_id' => 'required',  
-    		'district_name' => 'required',  	 
+    		'district_name' => 'required',
+            'district_code' => 'required'	 
 
     	]);
         ShipDistrict::insert([
             'division_id' => $request->division_id,
             'district_name' => $request->district_name,
+            'district_code' => $request->district_code,
+            'type' => $request->type,
             'created_at' => Carbon::now(),
         ]);
 	    $notification = array(
-			'message' => 'District Inserted Successfully',
+			'message' => 'Municipio Guardado Correctamente',
 			'alert-type' => 'success'
 		);
 		return redirect()->back()->with($notification);
@@ -94,10 +100,12 @@ class ShippingAreaController extends Controller
         ShipDistrict::findOrFail($id)->update([
             'division_id' => $request->division_id,
             'district_name' => $request->district_name,
+            'district_code' => $request->district_code,
+            'type' => $request->type,
             'created_at' => Carbon::now(),
     	]);
 	    $notification = array(
-			'message' => 'District Updated Successfully',
+			'message' => 'Municipio Actualizado Correctamente',
 			'alert-type' => 'info'
 		);
 		return redirect()->route('manage-district')->with($notification);

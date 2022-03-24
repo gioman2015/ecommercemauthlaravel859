@@ -64,6 +64,26 @@
 	</div>
 	</div>
 
+	<div class="form-group">
+		<h5>Codigo Municipio  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="number"  name="district_code" class="form-control" value="{{ $district->district_code }}"> 
+	 @error('district_code') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
+	<div class="form-group">
+		<h5>Tipo Municipio  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="number"  name="type" class="form-control" value="{{ $district->type }}" min="0" max="1"> 
+	 @error('type') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
 
 
 			 <div class="text-xs-right">

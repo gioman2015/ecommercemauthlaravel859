@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">District List</h3>
+				  <h3 class="box-title">Lista de Municipios</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,8 +26,8 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Division Name </th> 
-								<th>District Name </th>
+								<th>Departamento </th> 
+								<th>Municipios </th>
 								<th>Action</th>
 
 							</tr>
@@ -83,7 +83,7 @@
 	<h5>Division Select <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="division_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select Division</option>
+			<option value="" selected="" disabled="">Seleccione Departamento</option>
 			@foreach($division as $div)
 			<option value="{{ $div->id }}">{{ $div->division_name }}</option>	
 			@endforeach
@@ -97,10 +97,30 @@
 
 
 	 <div class="form-group">
-		<h5>District Name  <span class="text-danger">*</span></h5>
+		<h5>Nombre de Municipio  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="district_name" class="form-control" > 
 	 @error('district_name') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
+	<div class="form-group">
+		<h5>Codigo Municipio  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="number"  name="district_code" class="form-control"> 
+	 @error('district_code') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
+	<div class="form-group">
+		<h5>Tipo Municipio  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="number"  name="type" class="form-control" value="0" min="0" max="1"> 
+	 @error('type') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror 
 	</div>

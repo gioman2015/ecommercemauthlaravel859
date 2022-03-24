@@ -34,10 +34,20 @@
 
 
 	 <div class="form-group">
-		<h5>Division Name  <span class="text-danger">*</span></h5>
+		<h5>Departamento  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="division_name" class="form-control" value="{{ $divisions->division_name }}" > 
 	 @error('division_name') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
+	<div class="form-group">
+		<h5>Codigo de Departamento  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="number"  name="division_code" class="form-control" value="{{ $divisions->division_code }}"> 
+	 @error('division_code') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror 
 	</div>
