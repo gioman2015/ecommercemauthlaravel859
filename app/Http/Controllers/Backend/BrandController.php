@@ -26,7 +26,7 @@ class BrandController extends Controller
         $image = $request->file('brand_image');
 
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
+        $imgresize = Image::make($image)->resize(166, null, function ($constraint) {
             $constraint->aspectRatio();
         })->save('upload/brand/'.$name_gen);
         $last_img = 'upload/brand/'.$name_gen;
@@ -61,7 +61,7 @@ class BrandController extends Controller
             $image = $request->file('brand_image');
 
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $imgresize = Image::make($image)->resize(300, null, function ($constraint) {
+            $imgresize = Image::make($image)->resize(166, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save('upload/brand/'.$name_gen);
             $last_img = 'upload/brand/'.$name_gen;

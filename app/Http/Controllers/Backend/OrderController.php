@@ -89,6 +89,12 @@ class OrderController extends Controller
 
 
 	public function PendingToConfirm($order_id){
+
+		$product = OrderItem::where('order_id',$order_id)->get();
+		foreach ($product as $item) {
+			Product::where('id',$item->product_id)
+					->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]);
+		} 
    
       Order::findOrFail($order_id)->update(['status' => 'confirm','confirmed_date' => Carbon::now()]);
 
@@ -154,11 +160,11 @@ class OrderController extends Controller
 
 	 public function ShippedToDelivered($order_id){
 
-	 $product = OrderItem::where('order_id',$order_id)->get();
+	 /* $product = OrderItem::where('order_id',$order_id)->get();
 	 foreach ($product as $item) {
 	 	Product::where('id',$item->product_id)
 	 			->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]);
-	 } 
+	 }  */
  
       Order::findOrFail($order_id)->update(['status' => 'delivered','delivered_date' => Carbon::now()]);
 
@@ -186,7 +192,18 @@ class OrderController extends Controller
 
 	} // end method 
 
-
+	public function GuiaOrder(Request $request){
+		/* dd($request); */
+        $id = $request->orderid;
+        Order::findOrFail($id)->update([
+            'post_code' => $request->guia,
+        ]);
+        $notification = array(
+            'message' => 'Nro de Guia Guardado Correctamente',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 
 }
  

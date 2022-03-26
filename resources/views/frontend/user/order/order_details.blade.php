@@ -57,10 +57,10 @@
                        <th>{{ $order->state->state_name }} </th>
                     </tr> --}}
         
-                    {{-- <tr>
-                      <th> Post Code : </th>
+                    <tr>
+                      <th> Nro de Guia : </th>
                        <th> {{ $order->post_code }} </th>
-                    </tr> --}}
+                    </tr>
         
                     <tr>
                       <th> Order Date : </th>

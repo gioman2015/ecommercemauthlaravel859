@@ -41,7 +41,7 @@
                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 25px 0; text-align: center;">
                             <a href="http://127.0.0.1:8000"
                                 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 19px; font-weight: bold; text-decoration: none; display: inline-block;">
-                                <img src="https://shopbeta.game-lot.com/frontend/assets/images/ESCUDO.png" class="logo" alt="Game-Lot Logo"
+                                <img src="ESCUDO.png" class="logo" alt="Game-Lot Logo"
                                     style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100%; border: none; height: 200px;">
                             </a>
                         </td>
@@ -76,28 +76,27 @@
                                             <tr>
                                                 <td>
                                                     <p class="font" style="margin-left: 16px;">
-                                                        <strong>Nombre:</strong> {{$order['order']->name}} <br>
-                                                        <strong>Correo:</strong> {{$order['order']->email}} <br>
-                                                        <strong>Telefono:</strong> {{$order['order']->phone}} <br>
+                                                        <strong>Nombre:</strong> {{$order->name}} <br>
+                                                        <strong>Correo:</strong> {{$order->email}} <br>
+                                                        <strong>Telefono:</strong> {{$order->phone}} <br>
 
                                                         @php
-                                                        $div = $order['order']->division->division_name;
-                                                        $dis = $order['order']->district->district_name;
-                                                        $dir = $order['order']->district->address;
+                                                        $div = $order->division->division_name;
+                                                        $dis = $order->district->district_name;
                                                         /* $state = $order->state->state_name; */
                                                         @endphp
                                                         <br>
-                                                        <strong>Direccion:</strong> {{$div}},{{$dis}},{{$dir}}{{-- .{{$state}}
-                                                        <br> --}}
+                                                        <strong>Direccion:</strong> {{$div}},{{$dis}}{{-- .{{$state}}
+                                                        --}} <br>
                                                     </p>
                                                 </td>
                                                 <td>
                                                     <p class="font">
                                                     <h3><span style="color: rgb(0, 0, 0);">Orden:</span>
-                                                        #{{$order['invoice_no']}}</h3>
-                                                        fecha del pedido: {{$order['order']->order_date}} <br>
-                                                        {{-- Delivery Date: {{$order['delivered_date']}} <br> --}}
-                                                        Metodo de Envio : {{$order['order']->payment_method}} </span>
+                                                        #{{$order->invoice_no}}</h3>
+                                                    fecha del pedido: {{$order->order_date}} <br>
+                                                    Delivery Date: {{$order->delivered_date}} <br>
+                                                    Payment Type : {{$order->payment_method}} </span>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -121,12 +120,12 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach($order['orderItem'] as $item)
+                                                @foreach($orderItem as $item)
 
                                                 <tr class="font">
 
                                                     <td align="center">
-                                                        <img src="https://shopbeta.game-lot.com/{{ $item->product->product_thambnail }}"
+                                                        <img src="{{ public_path($item->product->product_thambnail) }}"
                                                             style="height: 50px; width: 50px;" alt="">
                                                     </td>
 

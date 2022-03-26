@@ -118,10 +118,8 @@ Cash On Delivery
 		 	@endif 
 
 		 </li>
-
-
-
-				</ul>		
+				</ul>
+						
 			</div>
 		</div>
 	</div>
@@ -135,7 +133,7 @@ Cash On Delivery
 
 
 
-	<div class="col-md-6">
+	<div class="col-md-5">
 					<!-- checkout-progress-sidebar -->
 <div class="checkout-progress-sidebar ">
 	<div class="panel-group">
@@ -147,8 +145,21 @@ Cash On Delivery
 <form action="{{ route('cash.order') }}" method="post" id="payment-form">
                             @csrf
         <div class="form-row">
-
-          <img src="{{ asset('frontend/assets/images/payments/cash.png') }}">
+			<div class="row">
+				<div class="col-md-5" style="border: #292929 solid 3px; border-radius: 5px;">
+					<p><b>Deposito o transferencia desde nequi o bancolombia a nuestra cuenta de ahorros bancolombia:</b></p>
+					<img src="{{asset('frontend/assets/images/logos-bancolombia-nequi.png')}}" style="width: 100%"><br>
+					<center><input type="radio" name="payment_type" value="bdancolombia"></center>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-5" style="border: #292929 solid 3px; border-radius: 5px;">
+					<p><b>Deposito o transferencia desde daviplata o davivienda a nuestra cuenta de ahorros davivienda:</b></p>
+					<img src="{{asset('frontend/assets/images/logos-davivienda-daviplata.png')}}" style="width: 100%"><br>
+					<center><input type="radio" name="payment_type" value="davivienda"></center>
+				</div>
+				</div>
+			</div>
+          {{-- <img src="{{ asset('frontend/assets/images/payments/cash.png') }}"> --}}
 
             <label for="card-element">
 
@@ -164,6 +175,7 @@ Cash On Delivery
       <input type="hidden" name="address2" value="{{ $data['address2'] }}"> 
       <input type="hidden" name="barrio" value="{{ $data['barrio'] }}"> 
       <input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+      <input type="hidden" name="payment_method" value="{{ $data['payment_method'] }}"> 
 
             </label>
 

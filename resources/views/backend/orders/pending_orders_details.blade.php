@@ -11,12 +11,12 @@
 <div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Order Details</h3>
+					<h3 class="page-title">Detalles de Orden</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Order Details</li>
+								<li class="breadcrumb-item" aria-current="page">Detalles de Orden</li>
 								 
 							</ol>
 						</nav>
@@ -35,33 +35,33 @@
 <div class="col-md-6 col-12">
 				<div class="box box-bordered border-primary">
 				  <div class="box-header with-border">
-					<h4 class="box-title"><strong>Shipping Details</strong> </h4>
+					<h4 class="box-title"><strong>Detalles de Envío</strong> </h4>
 				  </div>
 				  
 
 <table class="table">
             <tr>
-              <th> Shipping Name : </th>
+              <th> Nombre Destinatario : </th>
                <th> {{ $order->name }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Phone : </th>
+              <th> Telefono Destinatario : </th>
                <th> {{ $order->phone }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Email : </th>
+              <th> Correo Destinatario : </th>
                <th> {{ $order->email }} </th>
             </tr>
 
              <tr>
-              <th> Division : </th>
+              <th> Departamento : </th>
                <th> {{ $order->division->division_name }} </th>
             </tr>
 
              <tr>
-              <th> District : </th>
+              <th> Municipio : </th>
                <th> {{ $order->district->district_name }} </th>
             </tr>
 
@@ -75,12 +75,12 @@
                <th> {{ $order->post_code }} </th>
             </tr> --}}
             <tr>
-              <th>Cedula : </th>
+              <th> Cedula/Nit : </th>
               <th>{{ $order->cedula }}</th>
             </tr>
 
             <tr>
-              <th>Direccion: </th>
+              <th> Direccion: </th>
               <th>{{ $order->address }}</th>
             </tr>
 
@@ -88,24 +88,24 @@
                 
             @else
               <tr>
-                <th>Direccion Alternativa: </th>
+                <th> Direccion Alternativa: </th>
                 <th>{{ $order->address2 }}</th>
               </tr>
             @endif
             
 
             <tr>
-              <th>Barrio</th>
+              <th> Barrio : </th>
               <th>{{ $order->barrio }}</th>
             </tr>
 
             <tr>
-              <th>Anotaciones</th>
+              <th> Anotaciones : </th>
               <th>{{ $order->notes }}</th>
             </tr>
 
             <tr>
-              <th> Order Date : </th>
+              <th> Fecha de Pedido : </th>
                <th> {{ $order->order_date }} </th>
             </tr>
              
@@ -120,43 +120,43 @@
 <div class="col-md-6 col-12">
 				<div class="box box-bordered border-primary">
 				  <div class="box-header with-border">
-					<h4 class="box-title"><strong>Order Details</strong><span class="text-danger"> Invoice : {{ $order->invoice_no }}</span></h4>
+					<h4 class="box-title"><strong>Detale de Pedido</strong><span class="text-danger"> Orden nro : {{ $order->invoice_no }}</span></h4>
 				  </div>
 				   
 
 <table class="table">
             <tr>
-              <th>  Name : </th>
+              <th>  Nombre : </th>
                <th> {{ $order->user->name }} </th>
             </tr>
 
              <tr>
-              <th>  Phone : </th>
+              <th>  Telefono : </th>
                <th> {{ $order->user->phone }} </th>
             </tr>
 
              <tr>
-              <th> Payment Type : </th>
+              <th> Forma de Pago : </th>
+               <th> {{ $order->payment_type }} </th>
+            </tr>
+
+             <tr>
+              <th> Metodo de Envio : </th>
                <th> {{ $order->payment_method }} </th>
             </tr>
 
              <tr>
-              <th> Tranx ID : </th>
-               <th> {{ $order->transaction_id }} </th>
-            </tr>
-
-             <tr>
-              <th> Invoice  : </th>
+              <th> Orden nro  : </th>
                <th class="text-danger"> {{ $order->invoice_no }} </th>
             </tr>
 
              <tr>
-              <th> Order Total : </th>
+              <th> Valor Total : </th>
                <th>${{ $order->amount }} </th>
             </tr>
 
             <tr>
-              <th> Order : </th>
+              <th> Estado : </th>
                <th>   
                 <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }}</span> </th>
             </tr>
@@ -166,16 +166,16 @@
               <th>  </th>
                <th> 
                	@if($order->status == 'Pending')
-               	<a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">Confirm Order</a>
+               	<a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">Confirmar Orden</a>
 
                	@elseif($order->status == 'confirm')
-               	<a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-success" id="processing">Processing Order</a>
+               	<a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-success" id="processing">Orden en Proceso</a>
 
                	@elseif($order->status == 'processing')
-               	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">Picked Order</a>
+               	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">Orden Recojida</a>
 
                	@elseif($order->status == 'picked')
-               	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Shipped Order</a>
+               	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Orden Enviada</a>
 
                	@elseif($order->status == 'shipped')
                 <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a>
@@ -195,10 +195,30 @@
 
 
 				</div>
+
+        
 			  </div> <!--  // cod md -6 -->
-
-
-
+        
+    <div class="col-md-6 col-12">
+      <div class="box box-bordered border-primary">
+        <div class="box-header with-border">
+          <table class="table">
+            <tr>
+              <form action="{{ route('guia.order',$order->id) }}" method="post">
+                @csrf
+                <input type="hidden" name="orderid" value="{{$order->id}}">
+                <th> Nro de Guia </th>
+                <th> <input type="text" name="guia" {{-- size="50" --}} placeholder="Nro de Guia"></th>
+                <th><input type="submit" value="Nro Guia" class="btn btn-block btn-success" ></th>
+              </form>
+            </tr>
+            <tr>
+              <center><p>{{$order->post_code}}</p></center>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
 
 
 <div class="col-md-12 col-12">

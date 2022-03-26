@@ -179,6 +179,7 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipped'])->name('picked.shipped');
         Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped.delivered');
         Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
+        Route::post('/guia/order', [OrderController::class, 'GuiaOrder'])->name('guia.order');
     });
 
     // Admin Reports Routes 

@@ -42,8 +42,8 @@ class CashController extends Controller
             'barrio' => $request->barrio,
 
 
-            'payment_type' => 'Cash On Delivery',
-            'payment_method' => 'Cash On Delivery',
+            'payment_type' => $request->payment_type,
+            'payment_method' => $request->payment_method,
 
             'currency' =>  'Usd',
             'amount' => $total_amount,
@@ -56,19 +56,7 @@ class CashController extends Controller
             'created_at' => Carbon::now(),	 
         ]);
 
-        // Start Send Email 
-        $invoice = Order::findOrFail($order_id);
-     	$data = [
-     		'invoice_no' => $invoice->invoice_no,
-     		'amount' => $total_amount,
-     		'name' => $invoice->name,
-     	    'email' => $invoice->email,
-     	];
-
-     	Mail::to($request->email)->send(new OrderMail($data));
-
-        // End Send Email 
-
+        
         $carts = Cart::content();
         foreach ($carts as $cart) {
             OrderItem::insert([
@@ -83,6 +71,24 @@ class CashController extends Controller
             ]);
         }
 
+        // Start Send Email 
+        $order = Order::with('division','district','state','user')->where('id',$order_id)->first();
+    	$orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
+
+        $invoice = Order::findOrFail($order_id);
+     	$data = [
+            'order' => $order,
+            'orderItem' => $orderItem,
+     		'invoice_no' => $invoice->invoice_no,
+     		'amount' => $total_amount,
+     		'name' => $invoice->name,
+     	    'email' => $invoice->email,
+     	];
+        /*  dd($data); */
+
+     	Mail::to($request->email)->send(new OrderMail($data));
+
+         // End Send Email 
 
         if (Session::has('coupon')) {
             Session::forget('coupon');
@@ -96,5 +102,7 @@ class CashController extends Controller
 		);
 		return view('frontend.payment.message')->with($notification);
     } // end method 
+
+    
 
 }

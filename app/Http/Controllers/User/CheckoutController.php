@@ -40,11 +40,12 @@ class CheckoutController extends Controller
         $data['notes'] = $request->notes;
         $data['weigth'] = $request->weigth;
         $data['type'] = $typedistrict->type;
+        $data['payment_method'] = $request->payment_method;
         
         $cartTotal = Cart::total();
 
-        /* dd($typedistrict->type); */
-        $payment_method = 'cash';
+        /* dd($request); */
+        $payment_method = $request->payment_method;
 
         $address = Address::where('user_id',$request->user_id)->first();
         if ($address == null) {
@@ -68,15 +69,15 @@ class CheckoutController extends Controller
                 'notes' => $request->notes,
             ]);            
         }
-        
+        return view('frontend.payment.cash',compact('data','cartTotal'));
 /* dd($request); */
-        if ($request->payment_method == 'stripe') {
+        /* if ($request->payment_method == 'stripe') {
             return view('frontend.payment.stripe',compact('data','cartTotal'));
         }elseif ($request->payment_method == 'card') {
             return 'card';
         }else{
             return view('frontend.payment.cash',compact('data','cartTotal'));
-        }
+        } */
     }// end mehtod. 
 
     public function CheckoutMessage(){

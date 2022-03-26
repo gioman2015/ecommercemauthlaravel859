@@ -196,17 +196,6 @@ My Checkout
                     
 <hr>
 		 <li>
-            {{-- <strong>Peso del pedido: </strong>{{$pesoqty}} kg<hr> --}}
-            {{-- @php
-                $envios = App\Models\PreciosEnvios::latest()->get();
-            @endphp
-@if ($pesoqty < 3 )
-    <input type="text" value="-3">
-@elseif ($pesoqty < 5)
-    <input type="text" value="-5">
-@else
-    <input type="text" value="+6">
-@endif --}}
 
 		 	@if(Session::has('coupon'))
 
@@ -260,21 +249,21 @@ My Checkout
                     </div>
 
                     <div class="row">
-                        {{-- <div class="col-md-4">
-                            <label for="">Stripe</label> 		
-                            <input type="radio" name="payment_method" value="stripe">
+                        <div class="col-md-6">
+                            <label for="">Paso a recojer</label> 		
+                            <input type="radio" name="payment_method" value="recojer">
                             <img src="{{ asset('frontend/assets/images/payments/4.png') }}">		    		
-                        </div> <!-- end col md 4 --> --}}
-
+                        </div> <!-- end col md 4 -->
+                    {{-- </div> --}}
                         {{-- <div class="col-md-4">
                             <label for="">Card</label> 		
                             <input type="radio" name="payment_method" value="card">	
                             <img src="{{ asset('frontend/assets/images/payments/3.png') }}">    		
                         </div> <!-- end col md 4 --> --}}
-
-                        <div class="col-md-4">
-                            <label for="">Cash</label> 		
-                            <input type="radio" name="payment_method" value="cash">	
+                    {{-- <div class="row"> --}}
+                        <div class="col-md-6">
+                            <label for="">Envia</label> 		
+                            <input type="radio" name="payment_method" value="cash">	<br>
                             <img src="{{ asset('frontend/assets/images/payments/6.png') }}">  		
                         </div> <!-- end col md 4 -->
                     </div> <!-- // end row  --> 
