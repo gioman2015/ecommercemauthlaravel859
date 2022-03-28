@@ -203,6 +203,10 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/precios', [MessageController::class, 'PreciosEnvios'])->name('precios-envios');
         Route::get('/edit/{id}', [MessageController::class, 'PreciosUpdate'])->name('precios.edit');
         Route::post('/update', [MessageController::class, 'PreciosEdit'])->name('precios.update');
+        Route::get('/davivienda', [MessageController::class, 'DatosDavivienda'])->name('datos.davivienda');
+        Route::post('/davivienda/update', [MessageController::class, 'DaviviendaEdit'])->name('davivienda.update');
+        Route::get('/bancolombia', [MessageController::class, 'DatosBancolombia'])->name('datos.bancolombia');
+        Route::post('/bancolombia/update', [MessageController::class, 'BancolombiaEdit'])->name('bancolombia.update');
     });
 });
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 use App\Models\Messages;
 use App\Models\PreciosEnvios;
+use App\Models\DatosBanco;
 
 use Illuminate\Database\Seeder;
 
@@ -73,6 +74,24 @@ class MessagesSeeder extends Seeder
             'hasta' => 8,
             'type' => 'Nacional',
             'price' => '19600'
+        ]);
+
+        $bancolombia = DatosBanco::create([
+            'id' => 1,
+            'banco' => 'Bancolombia',
+            'tipo' => 'Tipo Cuenta Banc',
+            'numero' => 'Nro Cuenta Banc',
+            'cc' => 'Documento Titular Banc',
+            'titular' => 'Nombre Titular Banc',
+        ]);
+
+        $davivienda = DatosBanco::create([
+            'id' => 2,
+            'banco' => 'Davivienda',
+            'tipo' => 'Tipo Cuenta Dav',
+            'numero' => 'Nro Cuenta Dav',
+            'cc' => 'Documento Titular Dav',
+            'titular' => 'Nombre Titular Dav',
         ]);
     }
 }

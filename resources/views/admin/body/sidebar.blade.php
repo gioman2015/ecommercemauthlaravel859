@@ -137,6 +137,8 @@
             <li class="{{ ($route == 'web-message')? 'active':'' }}"><a href="{{route('web-message')}}"><i class="ti-more"></i>Mensaje Web</a></li>
             <li class="{{ ($route == 'mail-message')? 'active':'' }}"><a href="{{route('mail-message')}}"><i class="ti-more"></i>Mensaje E-mail</a></li>
             <li class="{{ ($route == 'precios-envios')? 'active':'' }}"><a href="{{route('precios-envios')}}"><i class="ti-more"></i>Precios Envios</a></li>
+            <li class="{{ ($route == 'datos.davivienda')? 'active':'' }}"><a href="{{route('datos.davivienda')}}"><i class="ti-more"></i>Datos Davivienda</a></li>
+            <li class="{{ ($route == 'datos.bancolombia')? 'active':'' }}"><a href="{{route('datos.bancolombia')}}"><i class="ti-more"></i>Datos Bancolombia</a></li>
           </ul>
         </li>
 		 
