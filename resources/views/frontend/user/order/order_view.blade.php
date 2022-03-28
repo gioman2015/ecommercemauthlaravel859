@@ -9,7 +9,7 @@
 			 <div class="col-md-2">
 			</div>
 	 
-			<div class="col-md-8">
+			<div class="col-md-9">
 	 
 			 <div class="table-responsive">
 			   <table class="table">
@@ -17,7 +17,7 @@
 	 
 				   <tr style="background: #e2e2e2;">
 					 <td class="col-md-1">
-					   <label for=""> Date</label>
+					   <label for=""> Fecha de Pedido</label>
 					 </td>
 	 
 					 <td class="col-md-3">
@@ -25,20 +25,20 @@
 					 </td>
 	 
 					 <td class="col-md-3">
-					   <label for=""> Payment</label>
+					   <label for=""> Metodo de Pago</label>
 					 </td>
 	 
 	 
 					 <td class="col-md-2">
-					   <label for=""> Invoice</label>
+					   <label for=""> Nro de Orden</label>
 					 </td>
 	 
 					  <td class="col-md-2">
-					   <label for=""> Order</label>
+					   <label for=""> Estado</label>
 					 </td>
 	 
 					  <td class="col-md-1">
-					   <label for=""> Action </label>
+					   <label for="">  </label>
 					 </td>
 	 
 				   </tr>
@@ -66,26 +66,47 @@
 					  <td class="col-md-2">
 						@if($order->status == 'Pending')
 							<img src="{{asset('frontend/assets/images/estados/Stado1.jpg')}}" style="width: 100%">
+							<label for=""> 
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Pendiente </span>
+						   </label>
 						@elseif($order->status == 'confirm')
 							<img src="{{asset('frontend/assets/images/estados/Stado2.jpg')}}" style="width: 100%">
+							<label for=""> 
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Confirmado </span>
+						   </label>
 						@elseif($order->status == 'processing')
 							<img src="{{asset('frontend/assets/images/estados/Stado3.jpg')}}" style="width: 100%">
+							<label for=""> 
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Procesando </span>
+						   </label>
 						@elseif($order->status == 'picked')
 							<img src="{{asset('frontend/assets/images/estados/Stado4.jpg')}}" style="width: 100%">
+							<label for=""> 
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Recojido </span>
+						   </label>
 						@elseif($order->status == 'shipped')
 							<img src="{{asset('frontend/assets/images/estados/Stado5.jpg')}}" style="width: 100%">
+							<label for=""> 
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Enviado </span>
+						   </label>
 						@elseif($order->status == 'delivered')
 							<img src="{{asset('frontend/assets/images/estados/Stado6.jpg')}}" style="width: 100%">
+							<label for=""> 
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Entregado </span>
+						   </label>
 						@elseif($order->status == 'cancel')
 							<img src="{{asset('frontend/assets/images/estados/Stado7.jpg')}}" style="width: 100%">
+							<label for=""> 
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Cancelado </span>
+						   </label>
 						@endif
-					   	<label for=""> 
+					   	{{-- <label for=""> 
 						 	<span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span>
-						</label>
+						</label> --}}
 					 </td>
 	 
 			<td class="col-md-1">
-				<a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
+				<a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detalle de Orden</a>
 	 
 				{{-- <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger" style="margin-top: 5px"><i class="fa fa-download" style="color: white;"></i> Invoice </a> --}}
 	 

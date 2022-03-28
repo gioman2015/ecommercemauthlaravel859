@@ -19,7 +19,7 @@
                     {{$username}} 
                   </a>
                 @else
-                  <a href="{{route('login')}}"><i class="icon fa fa-lock"></i>Login/Register</a>
+                  <a href="{{route('login')}}"><i class="icon fa fa-lock"></i>Logear/Registrarse</a>
                 @endauth
               </li>
             </ul>
@@ -28,7 +28,7 @@
           
           <div class="cnt-block">
             <ul class="list-unstyled list-inline">
-              <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
+              {{-- <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
                 @if(session()->get('language') == 'spanish') Idioma @else Language @endif
                   </span><b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
                   <li><a href="{{ route('spanish.language') }}">Español</a></li>
                 @endif 
                 </ul>
-              </li>
+              </li> --}}
             </ul>
             <!-- /.list-unstyled --> 
           </div>

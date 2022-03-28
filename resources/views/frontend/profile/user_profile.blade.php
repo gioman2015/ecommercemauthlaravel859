@@ -9,13 +9,13 @@
                 
                 <div class="col-md-6">
                     <div class="card">
-                        <h3 class="text-center"><span class="text-danger">Hi.... <strong>{{Auth::user()->name}}</strong> Update Your Profile</span></h3>
+                        <h3 class="text-center"><span class="text-danger">Hola.... <strong>{{Auth::user()->name}}</strong> Actualiza tu perfil</span></h3>
                     </div>{{-- end card --}}
                     <div class="card-body">
                         <form method="POST" action="{{route('user.profile.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Name <span></span></label>
+                                <label class="info-title" for="exampleInputEmail1">Nombre <span></span></label>
                                 <input type="text" name="name" class="form-control" value="{{$user->name}}">
                                  @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
                                 @enderror
                             </div>{{-- end form user name --}}
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Email <span>*</span></label>
+                                <label class="info-title" for="exampleInputEmail1">Correo <span>*</span></label>
                                 <input type="email" name="email" class="form-control" value="{{$user->email}}">
                                  @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                                 @enderror
                             </div>{{-- end form user email --}}
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Phone <span>*</span></label>
+                                <label class="info-title" for="exampleInputEmail1">Telefono <span>*</span></label>
                                 <input type="text" name="phone" class="form-control" value="{{$user->phone}}">
                                  @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -42,13 +42,13 @@
                                 @enderror
                             </div>{{-- end form user phone --}}
                             <div class="form-group">
-                                <h5>Profile Image <span class="text-danger">*</span></h5>
+                                <h5>Imagen de perfil <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="file" name="profile_photo_path" class="form-control" id="image">
                                 </div>
                             </div>{{-- end form user image --}}
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Update</button>
+                                <button type="submit" class="btn btn-danger">Actualizar</button>
                             </div>
                         </form>{{-- end form --}}
                     </div>{{-- end card-body --}}

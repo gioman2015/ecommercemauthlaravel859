@@ -13,12 +13,12 @@
           </div>
         </div>
          <div class="row">
-            <div class="col-md-2">&nbsp;&nbsp;{{ $order->created_at }}</div>
-            <div class="col-md-2">&nbsp;&nbsp;{{ $order->confirmed_date }}</div>
+            <div class="col-md-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $order->created_at }}</div>
+            <div class="col-md-2">{{ $order->confirmed_date }}</div>
             <div class="col-md-2">&nbsp;&nbsp;{{ $order->processing_date }}</div>
             <div class="col-md-2">{{ $order->picked_date }}</div>
             <div class="col-md-2">{{ $order->shipped_date }}</div>
-            <div class="col-md-2">{{ $order->delivered_date }}</div>
+            {{-- <div class="col-md-2">{{ $order->delivered_date }}</div> --}}
          </div>
        </div>
              <div class="col-md-5">
@@ -28,27 +28,27 @@
                  <div class="card-body" style="background: #E9EBEC;">
                    <table class="table">
                     <tr>
-                      <th> Shipping Name : </th>
+                      <th> Nombre : </th>
                        <th> {{ $order->name }} </th>
                     </tr>
         
                      <tr>
-                      <th> Shipping Phone : </th>
+                      <th> Telefono : </th>
                        <th> {{ $order->phone }} </th>
                     </tr>
         
                      <tr>
-                      <th> Shipping Email : </th>
+                      <th> Correo electronico : </th>
                        <th> {{ $order->email }} </th>
                     </tr>
         
                      <tr>
-                      <th> Division : </th>
+                      <th> Departamento : </th>
                        <th> {{ $order->division->division_name }} </th>
                     </tr>
         
                      <tr>
-                      <th> District : </th>
+                      <th> Municipio : </th>
                        <th> {{ $order->district->district_name }} </th>
                     </tr>
         
@@ -63,7 +63,7 @@
                     </tr>
         
                     <tr>
-                      <th> Order Date : </th>
+                      <th> Fecha de Pedido : </th>
                        <th> {{ $order->order_date }} </th>
                     </tr>
         
@@ -78,25 +78,25 @@
 
               <div class="col-md-5">
                 <div class="card">
-                  <div class="card-header"><h4>Order Details
-        <span class="text-danger"> Invoice : {{ $order->invoice_no }}</span></h4>
+                  <div class="card-header"><h4>Detalles de Pedido
+        <span class="text-danger"> Nro de Orden : {{ $order->invoice_no }}</span></h4>
                   </div>
                  <hr>
                  <div class="card-body" style="background: #E9EBEC;">
                    <table class="table">
                     <tr>
-                      <th>  Name : </th>
+                      <th>  Nombre : </th>
                        <th> {{ $order->user->name }} </th>
                     </tr>
         
                      <tr>
-                      <th>  Phone : </th>
+                      <th>  Telefono : </th>
                        <th> {{ $order->user->phone }} </th>
                     </tr>
         
                      <tr>
-                      <th> Payment Type : </th>
-                       <th> {{ $order->payment_method }} </th>
+                      <th> Metodo de Pago : </th>
+                       <th> {{ $order->payment_type }} </th>
                     </tr>
         
                      {{-- <tr>
@@ -105,19 +105,48 @@
                     </tr> --}}
         
                      <tr>
-                      <th> Invoice  : </th>
+                      <th> Nro de Orden  : </th>
                        <th class="text-danger"> {{ $order->invoice_no }} </th>
                     </tr>
         
                      <tr>
-                      <th> Order Total : </th>
+                      <th> Total : </th>
                        <th>{{ $order->amount }} </th>
                     </tr>
         
                     <tr>
-                      <th> Order : </th>
+                      <th> Estado : </th>
                        <th>   
-                        <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span> </th>
+                        @if($order->status == 'Pending')
+                        <label for=""> 
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pendiente </span>
+                         </label>
+                      @elseif($order->status == 'confirm')
+                        <label for=""> 
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Confirmado </span>
+                         </label>
+                      @elseif($order->status == 'processing')
+                        <label for=""> 
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Procesando </span>
+                         </label>
+                      @elseif($order->status == 'picked')
+                        <label for=""> 
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Recojido </span>
+                         </label>
+                      @elseif($order->status == 'shipped')
+                        <label for=""> 
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Enviado </span>
+                         </label>
+                      @elseif($order->status == 'delivered')
+                        <label for=""> 
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Entregado </span>
+                         </label>
+                      @elseif($order->status == 'cancel')
+                        <label for=""> 
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Cancelado </span>
+                         </label>
+                      @endif
+                      </th>
                     </tr>
         
         
@@ -144,15 +173,15 @@
         
                       <tr style="background: #e2e2e2;">
                         <td class="col-md-1">
-                          <label for=""> Image</label>
+                          <label for=""> Imagen</label>
                         </td>
         
-                        <td class="col-md-3">
-                          <label for=""> Product Name </label>
+                        <td class="col-md-2">
+                          <label for=""> Nombre del producto </label>
                         </td>
         
-                        <td class="col-md-3">
-                          <label for=""> Product Code</label>
+                        <td class="col-md-2">
+                          <label for=""> Código de producto </label>
                         </td>
         
         
@@ -161,15 +190,15 @@
                         </td>
         
                          <td class="col-md-2">
-                          <label for=""> Size </label>
+                          <label for=""> Tamaño </label>
                         </td>
         
                          <td class="col-md-1">
-                          <label for=""> Quantity </label>
+                          <label for=""> Cantidad </label>
                         </td>
         
-                        <td class="col-md-1">
-                          <label for=""> Price </label>
+                        <td class="col-md-2">
+                          <label for=""> Precio </label>
                         </td>
         
                       </tr>
@@ -181,12 +210,12 @@
                           <label for=""><img src="{{ asset($item->product->product_thambnail) }}" height="50px;" width="50px;"> </label>
                         </td>
         
-                        <td class="col-md-3">
+                        <td class="col-md-2">
                           <label for=""> {{ $item->product->product_name_en }}</label>
                         </td>
         
         
-                         <td class="col-md-3">
+                         <td class="col-md-2">
                           <label for=""> {{ $item->product->product_code }}</label>
                         </td>
         
@@ -198,7 +227,7 @@
                           <label for=""> {{ $item->size }}</label>
                         </td>
         
-                         <td class="col-md-2">
+                         <td class="col-md-1">
                           <label for=""> {{ $item->qty }}</label>
                         </td>
         
@@ -231,10 +260,10 @@
             <form action="{{ route('return.order',$order->id) }}" method="post">
             @csrf
               <div class="form-group">
-                <label for="label"> Order Return Reason:</label>
-                <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Return Reason</textarea>    
+                <label for="label"> Razón de devolución del pedido:</label>
+                <textarea name="return_reason" id="" class="form-control" cols="30" rows="05" placeholder="Motivo de la devolución"></textarea>    
               </div>
-              <button type="submit" class="btn btn-danger">Order Return</button>
+              <button type="submit" class="btn btn-danger">Devolver Orden</button>
             </form>
           @else
             <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>

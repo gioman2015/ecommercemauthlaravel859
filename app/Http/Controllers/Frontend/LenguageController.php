@@ -18,7 +18,7 @@ class LenguageController extends Controller
   public function English(){
         session()->get('language');
         session()->forget('language');
-        Session::put('language','english');
+        Session::put('language','spanish');
         return redirect()->back();
     }
 }

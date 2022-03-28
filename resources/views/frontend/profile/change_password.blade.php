@@ -13,34 +13,34 @@
                 
                 <div class="col-md-6">
                     <div class="card">
-                        <h3 class="text-center"><span class="text-danger">Change Password</span></h3>
+                        <h3 class="text-center"><span class="text-danger">Cambiar contraseña</span></h3>
                     </div>{{-- end card --}}
                     <div class="card-body">
                         <form method="POST" action="{{route('user.password.update')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleFormControlInput3">Current Password</label>
-                                <input type="password" id="current_password" name="oldpassword" class="form-control" placeholder="Current Password">
+                                <label for="exampleFormControlInput3">Contraseña actual</label>
+                                <input type="password" id="current_password" name="oldpassword" class="form-control" placeholder="Contraseña actual">
                                 @error('oldpassword')
                                     <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>{{-- end current password --}}
                             <div class="form-group">
-                                <label for="exampleFormControlPassword3">New Password</label>
-                                <input type="password" id="password" name="password" class="form-control" placeholder="New Password">
+                                <label for="exampleFormControlPassword3">Nueva contraseña</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Nueva contraseña">
                                 @error('password')
                                     <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>{{-- end new password --}}
                             <div class="form-group">
-                                <label for="exampleFormControlPassword3">Confirm Password</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+                                <label for="exampleFormControlPassword3">Confirmar contraseña</label>
+                                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirmar contraseña">
                                 @error('password_confirmation')
                                     <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>{{-- end confirm password --}}
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Update</button>
+                                <button type="submit" class="btn btn-danger">Actualizar</button>
                             </div>
                         </form>{{-- end form --}}
                     </div>{{-- end card-body --}}
