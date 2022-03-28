@@ -35,7 +35,7 @@ class SliderController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Slider Inserted Successfully',
+            'message' => 'Deslizador insertado con éxito',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -59,20 +59,20 @@ class SliderController extends Controller
             $up_location = 'upload/slider/';
             $last_img = $up_location.$img_name;
             $image->move($up_location,$img_name);
-    
+
             try {
                 unlink($old_img);
             } catch (\Throwable $th) {
-                
+
             }
-    
+
             Slider::findOrFail($slider_id)->update([
                 'title' => $request->title,
                 'desciption' => $request->desciption,
                 'slider_img' => $last_img,
             ]);
             $notification = array(
-                'message' => 'Slider Updated Successfully',
+                'message' => 'Deslizador actualizado con éxito',
                 'alert-type' => 'success'
             );
             return redirect()->route('manage-slider')->with($notification);
@@ -83,7 +83,7 @@ class SliderController extends Controller
                 'slider_img' => $old_img,
             ]);
             $notification = array(
-                'message' => 'Slider Updated Successfully',
+                'message' => 'Deslizador actualizado con éxito',
                 'alert-type' => 'success'
             );
             return redirect()->route('manage-slider')->with($notification);
@@ -98,12 +98,12 @@ class SliderController extends Controller
         try {
             unlink($old_image);
         } catch (\Throwable $th) {
-            
+
         }
 
         Slider::findOrFail($id)->delete();
         $notification = array(
-            'message' => 'Slider Deleted Successfully',
+            'message' => 'Deslizador eliminado con éxito',
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);

@@ -22,41 +22,41 @@ class CouponController extends Controller
     	]);
         Coupon::insert([
             'coupon_name' => strtoupper($request->coupon_name),
-            'coupon_discount' => $request->coupon_discount, 
+            'coupon_discount' => $request->coupon_discount,
             'coupon_validity' => $request->coupon_validity,
             'created_at' => Carbon::now(),
         ]);
 	    $notification = array(
-			'message' => 'Coupon Inserted Successfully',
+			'message' => 'Cupón insertado con éxito',
 			'alert-type' => 'success'
 		);
 		return redirect()->back()->with($notification);
-    } // end method 
+    } // end method
 
     public function CouponEdit($id){
         $coupons = Coupon::findOrFail($id);
         return view('backend.coupon.edit_coupon',compact('coupons'));
     }
-   
+
     public function CouponUpdate(Request $request, $id){
         Coupon::findOrFail($id)->update([
            'coupon_name' => strtoupper($request->coupon_name),
-           'coupon_discount' => $request->coupon_discount, 
+           'coupon_discount' => $request->coupon_discount,
            'coupon_validity' => $request->coupon_validity,
            'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Coupon Updated Successfully',
+            'message' => 'Cupón actualizado con éxito',
             'alert-type' => 'info'
         );
-        return redirect()->route('manage-coupon')->with($notification);   
-    } // end mehtod 
-   
-   
+        return redirect()->route('manage-coupon')->with($notification);
+    } // end mehtod
+
+
     public function CouponDelete($id){
         Coupon::findOrFail($id)->delete();
         $notification = array(
-            'message' => 'Coupon Deleted Successfully',
+            'message' => 'Cupón eliminado con éxito',
             'alert-type' => 'info'
         );
         return redirect()->back()->with($notification);

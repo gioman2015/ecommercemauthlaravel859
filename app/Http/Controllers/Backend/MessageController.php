@@ -68,10 +68,10 @@ class MessageController extends Controller
             'price' => $request->price,
         ]);
         $notification = array(
-            'message' => 'Precio Actualizado correctamente',
+            'message' => 'Precio Actualizado con éxito',
             'alert-type' => 'success'
         );
         return redirect()->route('precios-envios')->with($notification);
-        
+
     }
 }

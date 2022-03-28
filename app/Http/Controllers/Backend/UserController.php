@@ -16,7 +16,7 @@ class UserController extends Controller
     public function NormalUser($id){
         User::findOrFail($id)->update(['type_user' => 0]);
         $notification = array(
-           'message' => 'Type user change to Normal User',
+           'message' => 'Tipo de usuario cambio a Usuario Normal',
            'alert-type' => 'success'
        );
        return redirect()->back()->with($notification);
@@ -25,7 +25,7 @@ class UserController extends Controller
     public function Proveedor($id){
         User::findOrFail($id)->update(['type_user' => 1]);
         $notification = array(
-           'message' => 'Type user change to Supplier',
+           'message' => 'Tipo de usuario cambio a Usuario Proveedor',
            'alert-type' => 'success'
        );
        return redirect()->back()->with($notification);

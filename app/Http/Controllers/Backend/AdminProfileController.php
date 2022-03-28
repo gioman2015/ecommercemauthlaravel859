@@ -18,26 +18,26 @@ class AdminProfileController extends Controller
 
     public function AdminProfileEdit(){
         $editData = Admin::find(1);
-        return view('admin.admin_profile_edit', compact('editData'));  
+        return view('admin.admin_profile_edit', compact('editData'));
     }
 
     public function AdminProfileStore(Request $request){
         $data = Admin::find(1);
         $data->name = $request->name;
         $data->email = $request->email;
-        
+
         if($request->file('profile_photo_path')){
-            $old_image = $data->profile_photo_path;         
+            $old_image = $data->profile_photo_path;
             $brand_image = $request->file('profile_photo_path');
             if ($old_image == null) {
-                
+
             }else{
                 try {
                     unlink($old_image);
                 } catch (\Throwable $th) {
                     //throw $th;
                 }
-                
+
             }
             /* unlink($old_image); */
             $name_gen = hexdec(uniqid());
@@ -48,11 +48,11 @@ class AdminProfileController extends Controller
             $brand_image->move($up_location,$img_name);
             $data['profile_photo_path'] = $last_img;
 
-        } 
+        }
         $data->save();
 
         $notification = array(
-            'message' => "Admin Profile Updated Successfully",
+            'message' => "Perfil Administrativo Actualizado con éxito",
             'alert-type' => 'success'
         );
         return redirect()->route('admin.profile')->with($notification);

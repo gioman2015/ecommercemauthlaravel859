@@ -10,7 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Session;
 use Auth;
-use Carbon\Carbon; 
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
@@ -53,14 +53,14 @@ class CashController extends Controller
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
             'status' => 'Pending',
-            'created_at' => Carbon::now(),	 
+            'created_at' => Carbon::now(),
         ]);
 
-        
+
         $carts = Cart::content();
         foreach ($carts as $cart) {
             OrderItem::insert([
-                'order_id' => $order_id, 
+                'order_id' => $order_id,
                 'product_id' => $cart->id,
                 'color' => $cart->options->color,
                 'size' => $cart->options->size,
@@ -71,7 +71,7 @@ class CashController extends Controller
             ]);
         }
 
-        // Start Send Email 
+        // Start Send Email
         $order = Order::with('division','district','state','user')->where('id',$order_id)->first();
     	$orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
 
@@ -88,7 +88,7 @@ class CashController extends Controller
 
      	Mail::to($request->email)->send(new OrderMail($data));
 
-         // End Send Email 
+         // End Send Email
 
         if (Session::has('coupon')) {
             Session::forget('coupon');
@@ -97,12 +97,12 @@ class CashController extends Controller
         Cart::destroy();
 
         $notification = array(
-			'message' => 'Orden Realizada con Exito',
+			'message' => 'Orden realizada con éxito',
 			'alert-type' => 'success'
 		);
 		return view('frontend.payment.message')->with($notification);
-    } // end method 
+    } // end method
 
-    
+
 
 }

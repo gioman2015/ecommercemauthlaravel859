@@ -53,10 +53,10 @@ class CategoryController extends Controller
                 'slider_categoria_img' => $last_img,
             ]);
         }
-        
+
 
         $notification = array(
-            'message' => 'Category Inserted Successfully',
+            'message' => 'Categoría Insertada con éxito',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
     public function CategoryEdit(Request $request){
         $category_id = $request->id;
-    
+
         $slider_image = $request->file('category_slider');
         /* dd($request); */
         if($slider_image){
@@ -81,13 +81,13 @@ class CategoryController extends Controller
             $up_location = 'upload/category_slider/';
             $last_img = $up_location.$img_name;
             $image->move($up_location,$img_name);
-    
+
             try {
                 unlink($old_img);
             } catch (\Throwable $th) {
-                
+
             }
-    
+
             Category::findOrFail($category_id)->update([
                 'category_name_en' => $request->category_name_en,
                 'category_name_esp' => $request->category_name_esp,
@@ -97,9 +97,9 @@ class CategoryController extends Controller
                 'category_order' => $request->category_order,
                 'slider_categoria_img' => $up_location.$img_name,
             ]);
-    
+
             $notification = array(
-                'message' => 'Category Updated Successfully with image',
+                'message' => 'Categoría Actualizada Exitosamente con la imagen',
                 'alert-type' => 'success'
             );
             return redirect()->route('all.category')->with($notification);
@@ -112,13 +112,13 @@ class CategoryController extends Controller
                 'category_icon' => $request->category_icon,
                 'category_order' => $request->category_order,
             ]);
-    
+
             $notification = array(
-                'message' => 'Category Updated Successfully',
+                'message' => 'Categoría Actualizada con éxito',
                 'alert-type' => 'success'
             );
             return redirect()->route('all.category')->with($notification);
-        }   
+        }
     }
 
     public function CategoryDelete($id){
@@ -128,13 +128,13 @@ class CategoryController extends Controller
         try {
             unlink($old_image);
         } catch (\Throwable $th) {
-            
+
         }
 
         Category::findOrFail($id)->delete();
-        
+
         $notification = array(
-            'message' => 'Category Deleted Successfully',
+            'message' => 'Categoría Eliminada con éxito',
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);

@@ -24,12 +24,12 @@ class CartController extends Controller
     	$product = Product::findOrFail($id);
     	if ($product->discount_price == NULL) {
     		Cart::add([
-    			'id' => $id, 
+    			'id' => $id,
     			'name' => $request->product_name,
 				'product_weight' => $product->product_weight,
-    			'qty' => $request->quantity, 
+    			'qty' => $request->quantity,
     			'price' => $request->selling_price,
-    			'weight' => 1, 
+    			'weight' => 1,
     			'options' => [
     				'image' => $product->product_thambnail,
     				'color' => $request->color,
@@ -37,15 +37,15 @@ class CartController extends Controller
 					'product_weight' => $product->product_weight,
     			],
     		]);
-    		return response()->json(['success' => 'Successfully Added on Your Cart']);
+    		return response()->json(['success' => 'Añadido con éxito en su carrito']);
     	}else{
     		Cart::add([
-    			'id' => $id, 
-    			'name' => $request->product_name, 
+    			'id' => $id,
+    			'name' => $request->product_name,
 				'product_weight' => $product->product_weight,
-    			'qty' => $request->quantity, 
+    			'qty' => $request->quantity,
     			'price' => $request->discount_price,
-    			'weight' => 1, 
+    			'weight' => 1,
     			'options' => [
     				'image' => $product->product_thambnail,
     				'color' => $request->color,
@@ -53,9 +53,9 @@ class CartController extends Controller
 					'product_weight' => $product->product_weight,
     			],
     		]);
-    		return response()->json(['success' => 'Successfully Added on Your Cart']);
+    		return response()->json(['success' => 'Añadido con éxito en su carrito']);
     	}
-    } // end mehtod 
+    } // end mehtod
 
     // Mini Cart Section
     public function AddMiniCart(){
@@ -68,15 +68,15 @@ class CartController extends Controller
     		'cartQty' => $cartQty,
     		'cartTotal' => round($cartTotal),
     	));
-    } // end method 
+    } // end method
 
-    // remove mini cart 
+    // remove mini cart
     public function RemoveMiniCart($rowId){
     	Cart::remove($rowId);
 		if (Session::has('coupon')) {
 			Session::forget('coupon');
 		 }
-    	return response()->json(['success' => 'Product Remove from Cart']);
+    	return response()->json(['success' => 'Producto Eliminar del carrito']);
 
     } // end mehtod
 
@@ -85,18 +85,18 @@ class CartController extends Controller
             $exists = Wishlist::where('user_id',Auth::id())->where('product_id',$product_id)->first();
             if (!$exists) {
 				Wishlist::insert([
-					'user_id' => Auth::id(), 
-					'product_id' => $product_id, 
-					'created_at' => Carbon::now(), 
+					'user_id' => Auth::id(),
+					'product_id' => $product_id,
+					'created_at' => Carbon::now(),
 				]);
-			   return response()->json(['success' => 'Successfully Added On Your Wishlist']);
+			   return response()->json(['success' => 'Añadido con éxito en su lista de deseos']);
 			} else {
-				return response()->json(['error' => 'This Product has Already on Your Wishlist']);
+				return response()->json(['error' => 'Este producto ya está en su lista de deseos']);
 			}
         }else{
-            return response()->json(['error' => 'At First Login Your Account']);
+            return response()->json(['error' => 'Primero inicie sesión con su cuenta']);
         }
-    } // end method 
+    } // end method
 
 	public function CouponApply(Request $request){
 		$coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
@@ -104,17 +104,17 @@ class CartController extends Controller
             Session::put('coupon',[
                 'coupon_name' => $coupon->coupon_name,
                 'coupon_discount' => $coupon->coupon_discount,
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100), 
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
                 'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100)
 			]);
             return response()->json(array(
 				'validity' => true,
-                'success' => 'Coupon Applied Successfully'
+                'success' => 'Cupón aplicado con éxito'
             ));
         }else{
             return response()->json(['error' => 'Invalid Coupon']);
         }
-    } // end method 
+    } // end method
 
 	public function CouponCalculation(){
         if (Session::has('coupon')) {
@@ -130,14 +130,14 @@ class CartController extends Controller
                 'total' => Cart::total(),
             ));
         }
-    } // end method 
+    } // end method
 
-	// Remove Coupon 
+	// Remove Coupon
     public function CouponRemove(){
         Session::forget('coupon');
-        return response()->json(['success' => 'Coupon Remove Successfully']);
+        return response()->json(['success' => 'Cupón Eliminar con éxito']);
     }
-	// Checkout Method 
+	// Checkout Method
     public function CheckoutCreate(){
         if (Auth::check()) {
             if (Cart::total() > 0) {
@@ -152,7 +152,7 @@ class CartController extends Controller
 				return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal','divisions','district','address'));
             }else{
 				$notification = array(
-				'message' => 'Shopping At list One Product',
+				'message' => 'Debe de agregar un producto antes',
 				'alert-type' => 'error'
 				);
 				return redirect()->to('/')->with($notification);
@@ -160,11 +160,11 @@ class CartController extends Controller
 
         }else{
              $notification = array(
-            'message' => 'You Need to Login First',
+            'message' => 'Necesita iniciar sesión en primer lugar',
             'alert-type' => 'error'
         );
         return redirect()->route('login')->with($notification);
         }
-    } // end method 
+    } // end method
 
 }

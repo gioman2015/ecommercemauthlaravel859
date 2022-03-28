@@ -3,19 +3,19 @@ $(function() {
         e.preventDefault();
         var link = $(this).attr("href");
         Swal.fire({
-            title: 'Are you sure?',
-            text: "Delete This Data?",
+            title: '¿Estás seguro?',
+            text: "¿Eliminar estos datos?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: '¡Sí, borra esto!'
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = link
                 Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
+                    '¡Eliminado!',
+                    'Tu archivo ha sido borrado.',
                     'success'
                 )
             }
@@ -27,7 +27,7 @@ $(function() {
 });
 
 
-// Confirm 
+// Confirm
 
 $(function() {
     $(document).on('click', '#confirm', function(e) {

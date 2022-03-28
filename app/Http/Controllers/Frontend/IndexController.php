@@ -48,9 +48,9 @@ class IndexController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->phone = $request->phone;
-        
+
         if($request->file('profile_photo_path')){
-            $old_image = $data->profile_photo_path;         
+            $old_image = $data->profile_photo_path;
             $brand_image = $request->file('profile_photo_path');
             if($old_image){
                 try {
@@ -58,7 +58,7 @@ class IndexController extends Controller
                 } catch (\Throwable $th) {
                     //throw $th;
                 }
-                
+
             }
             $name_gen = hexdec(uniqid());
             $img_ext = strtolower($brand_image->getClientOriginalExtension());
@@ -68,11 +68,11 @@ class IndexController extends Controller
             $brand_image->move($up_location,$img_name);
             $data['profile_photo_path'] = $last_img;
 
-        } 
+        }
         $data->save();
 
         $notification = array(
-            'message' => "User Profile Updated Successfully",
+            'message' => "Perfil de usuario actualizado correctamente",
             'alert-type' => 'success'
         );
         return redirect()->route('dashboard')->with($notification);
@@ -95,9 +95,9 @@ class IndexController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
-            return redirect()->route('user.logout')->with('success', 'Password is Change Successfuly');
+            return redirect()->route('user.logout')->with('success', 'Contraseña cambiada con éxito');
         }else{
-            return redirect()->back()->with('error', 'Current Password is invalid');
+            return redirect()->back()->with('error', 'La contraseña actual no es válida');
         }
     }
 

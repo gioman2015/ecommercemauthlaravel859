@@ -41,7 +41,7 @@ class BrandController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Brand Inserted Successfully',
+            'message' => 'Marca insertada con éxito',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -65,13 +65,13 @@ class BrandController extends Controller
                 $constraint->aspectRatio();
             })->save('upload/brand/'.$name_gen);
             $last_img = 'upload/brand/'.$name_gen;
-    
+
             try {
                 unlink($old_img);
             } catch (\Throwable $th) {
                 //throw $th;
             }
-    
+
             Brand::findOrFail($brand_id)->update([
                 'brand_name_en' => $request->brand_name_en,
                 'brand_name_esp' => $request->brand_name_esp,
@@ -80,7 +80,7 @@ class BrandController extends Controller
                 'brand_image' => $last_img,
             ]);
             $notification = array(
-                'message' => 'Brand Updated Successfully',
+                'message' => 'Marca actualizada con éxito',
                 'alert-type' => 'success'
             );
             return redirect()->route('all.brand')->with($notification);
@@ -93,7 +93,7 @@ class BrandController extends Controller
                 'brand_image' => $old_img,
             ]);
             $notification = array(
-                'message' => 'Brand Updated Successfully',
+                'message' => 'Marca actualizada con éxito',
                 'alert-type' => 'success'
             );
             return redirect()->route('all.brand')->with($notification);
@@ -112,7 +112,7 @@ class BrandController extends Controller
 
         Brand::findOrFail($id)->delete();
         $notification = array(
-            'message' => 'Brand Deleted Successfully',
+            'message' => 'Marca eliminada con éxito',
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);

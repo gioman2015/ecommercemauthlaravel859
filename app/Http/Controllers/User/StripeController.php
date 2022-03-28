@@ -41,7 +41,7 @@ class StripeController extends Controller
             'phone' => $request->phone,
             'post_code' => $request->post_code,
             'notes' => $request->notes,
-   
+
             'payment_type' => 'Stripe',
             'payment_method' => 'Stripe',
             'payment_type' => $charge->payment_method,
@@ -49,17 +49,17 @@ class StripeController extends Controller
             'currency' => $charge->currency,
             'amount' => $total_amount,
             'order_number' => $charge->metadata->order_id,
-   
+
             'invoice_no' => 'EOS'.mt_rand(10000000,99999999),
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
             'status' => 'Pending',
-            'created_at' => Carbon::now(),	 
-   
+            'created_at' => Carbon::now(),
+
         ]);
 
-        // Start Send Email 
+        // Start Send Email
         $invoice = Order::findOrFail($order_id);
         $data = [
             'invoice_no' => $invoice->invoice_no,
@@ -70,12 +70,12 @@ class StripeController extends Controller
 
         Mail::to($request->email)->send(new OrderMail($data));
 
-        // End Send Email 
+        // End Send Email
 
         $carts = Cart::content();
         foreach ($carts as $cart) {
             OrderItem::insert([
-                'order_id' => $order_id, 
+                'order_id' => $order_id,
                 'product_id' => $cart->id,
                 'color' => $cart->options->color,
                 'size' => $cart->options->size,
@@ -89,10 +89,10 @@ class StripeController extends Controller
         }
         Cart::destroy();
         $notification = array(
-			'message' => 'Your Order Place Successfully',
+			'message' => 'Su pedido se realizo con éxito',
 			'alert-type' => 'success'
 		);
 		return redirect()->route('dashboard')->with($notification);
-    } // end method 
-    
+    } // end method
+
 }
