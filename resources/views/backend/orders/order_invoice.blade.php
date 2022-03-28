@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Invoice</title>
+<title>Orden</title>
 
 <style type="text/css">
     * {
@@ -56,7 +56,7 @@
                Email:support@easylearningbd.com <br>
                Mob: 1245454545 <br>
                Dhaka 1207,Dhanmondi:#4 <br>
-              
+
             </pre>
         </td>
     </tr>
@@ -79,7 +79,7 @@
             $dis = $order->district->district_name;
             $state = $order->state->state_name;
            @endphp
-            
+
            <strong>Address:</strong> {{ $div }},{{ $dis }}.{{ $state }} <br>
            <strong>Post Code:</strong> {{ $order->post_code }}
          </p>
@@ -126,7 +126,7 @@
           @else
             {{ $item->size }}
           @endif
-            
+
         </td>
         <td align="center">{{ $item->color }}</td>
         <td align="center">{{ $item->product->product_code }}</td>
@@ -135,7 +135,7 @@
         <td align="center">${{ $item->price * $item->qty }} </td>
       </tr>
       @endforeach
-      
+
     </tbody>
   </table>
   <br>

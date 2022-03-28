@@ -7,7 +7,7 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="row"> 
+        <div class="row">
           <!-- /.col -->
 
           {{-- ------------- Edit Slider Page --------------------- --}}
@@ -15,7 +15,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Edit Slider</h3>
+                 <h3 class="box-title">Editar Deslizador</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -25,39 +25,39 @@
                       <input type="hidden" name="id" value="{{$sliders->id}}">
                       <input type="hidden" name="old_image" value="{{$sliders->slider_img}}">
                       <div class="form-group">
-                          <label for="exampleFormControlInput3">Slider Title</label>
+                          <label for="exampleFormControlInput3">Titulo del Deslizador</label>
                           <input type="text" name="title" class="form-control" value="{{$sliders->title}}">
                           @error('title')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Slider Description</label>
+                          <label for="exampleFormControlPassword3">Descripción del Deslizador</label>
                           <input type="text" name="desciption" class="form-control" value="{{$sliders->desciption}}">
                           @error('desciption')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Slider Image</label>
+                          <label for="exampleFormControlPassword3">Imagen del Deslizador</label>
                           <input type="file" name="slider_img" class="form-control">
                           @error('slider_img')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
-                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Actualizar">
                   </form>
                    </div>
                </div>
                <!-- /.box-body -->
              </div>
-             <!-- /.box -->         
+             <!-- /.box -->
            </div>
         </div>
         <!-- /.row -->
       </section>
       <!-- /.content -->
-    
+
     </div>
 </div>
 <!-- /.content-wrapper -->

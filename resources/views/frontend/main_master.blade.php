@@ -10,112 +10,112 @@
       text-decoration: none;
       /* margin: 5px 2px;
     } */
-    
+
     .fa:hover {
         opacity: 0.7;
     }
-    
+
     .fa-facebook {
       background: #3B5998;
       color: white;
     }
-    
+
     .fa-twitter {
       background: #55ACEE;
       color: white;
     }
-    
+
     .fa-google {
       background: #dd4b39;
       color: white;
     }
-    
+
     .fa-linkedin {
       background: #007bb5;
       color: white;
     }
-    
+
     .fa-youtube {
       background: #bb0000;
       color: white;
     }
-    
+
     .fa-instagram {
       background: #125688;
       color: white;
     }
-    
+
     .fa-pinterest {
       background: #cb2027;
       color: white;
     }
-    
+
     .fa-snapchat-ghost {
       background: #fffc00;
       color: white;
       text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
-    
+
     .fa-skype {
       background: #00aff0;
       color: white;
     }
-    
+
     .fa-android {
       background: #a4c639;
       color: white;
     }
-    
+
     .fa-dribbble {
       background: #ea4c89;
       color: white;
     }
-    
+
     .fa-vimeo {
       background: #45bbff;
       color: white;
     }
-    
+
     .fa-tumblr {
       background: #2c4762;
       color: white;
     }
-    
+
     .fa-vine {
       background: #00b489;
       color: white;
     }
-    
+
     .fa-foursquare {
       background: #45bbff;
       color: white;
     }
-    
+
     .fa-stumbleupon {
       background: #eb4924;
       color: white;
     }
-    
+
     .fa-flickr {
       background: #f40083;
       color: white;
     }
-    
+
     .fa-yahoo {
       background: #430297;
       color: white;
     }
-    
+
     .fa-soundcloud {
       background: #ff5500;
       color: white;
     }
-    
+
     .fa-reddit {
       background: #ff5700;
       color: white;
     }
-    
+
     .fa-rss {
       background: #ff6600;
       color: white;
@@ -129,7 +129,8 @@
 <meta name="author" content="">
 <meta name="keywords" content="MediaCenter, Template, eCommerce">
 <meta name="robots" content="all">
-<title>@yield('title') </title>
+<title>{{-- @yield('title') --}} Game-Lot Hobbie Store</title>
+<link rel="shortcut icon" href="{{asset('frontend/assets/images/ico.ico')}}">
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
@@ -166,30 +167,30 @@
 
 @yield('content')
 
-<!-- /#top-banner-and-menu --> 
+<!-- /#top-banner-and-menu -->
 
 <!-- ============================================================= FOOTER ============================================================= -->
 
 @include('frontend.body.footer')
 
-<!-- ============================================================= FOOTER : END============================================================= --> 
+<!-- ============================================================= FOOTER : END============================================================= -->
 
-<!-- For demo purposes – can be removed on production --> 
+<!-- For demo purposes – can be removed on production -->
 
-<!-- For demo purposes – can be removed on production : End --> 
+<!-- For demo purposes – can be removed on production : End -->
 
-<!-- JavaScripts placed at the end of the document so the pages load faster --> 
-<script src="{{asset('frontend/assets/js/jquery-1.11.1.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/bootstrap-hover-dropdown.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/echo.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/jquery.easing-1.3.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/bootstrap-slider.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/jquery.rateit.min.js')}}"></script> 
-<script type="{{asset('frontend/text/javascript" src="assets/js/lightbox.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/bootstrap-select.min.js')}}"></script> 
-<script src="{{asset('frontend/assets/js/wow.min.js')}}"></script> 
+<!-- JavaScripts placed at the end of the document so the pages load faster -->
+<script src="{{asset('frontend/assets/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/bootstrap-hover-dropdown.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/echo.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/jquery.easing-1.3.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/bootstrap-slider.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/jquery.rateit.min.js')}}"></script>
+<script type="{{asset('frontend/text/javascript" src="assets/js/lightbox.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/wow.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/scripts.js')}}"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -230,7 +231,7 @@
               <div class="col-md-4">
                 <div class="card" style="width: 18rem;">
                   <img src="" class="card-img-top" alt="" style="height: 200px; width: 180px;" id="pimage">
-                  
+
                 </div>
               </div>{{-- end col-md-4 --}}
               <div class="col-md-4">
@@ -240,8 +241,8 @@
                   <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
                   <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
                   <li class="list-group-item">Brand: <strong id="pbrand"></strong></li>
-                  <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: white;"></span> 
-                    <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: white;"></span> 
+                  <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: white;"></span>
+                    <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: white;"></span>
                   </li>
                 </ul>
               </div>{{-- end col-md-4 --}}
@@ -249,13 +250,13 @@
                 <div class="form-group" id="colorArea">
                   <label for="exampleFormControlSelect1">Chose Color</label>
                   <select class="form-control" id="color" name="color">
-                    
+
                   </select>
                 </div>{{-- end form-group --}}
                 <div class="form-group" id="sizeArea">
                   <label for="exampleFormControlSelect1">Chose Size</label>
                   <select class="form-control" id="size" name="size">
-                    
+
                   </select>
                 </div>{{-- end form-group --}}
                 <div class="form-group">
@@ -279,7 +280,7 @@
               'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
           }
       })
-      // Start Product View with Modal 
+      // Start Product View with Modal
       function productView(id){
         // alert(id)
         $.ajax({
@@ -317,7 +318,7 @@
                     $('#oldprice').text(data.product.selling_price);
                     $('#pprice').val(data.product.discount_price);
                     $('#oldprice').val(data.product.selling_price);
-                } // end prodcut price 
+                } // end prodcut price
               }
               // Start Stock opiton
               if (data.product.product_qty > 0) {
@@ -328,10 +329,10 @@
                   $('#aviable').text('');
                   $('#stockout').text('');
                   $('#stockout').text('stockout');
-              } // end Stock Option 
+              } // end Stock Option
 
               // Color
-              $('select[name="color"]').empty();        
+              $('select[name="color"]').empty();
               $.each(data.coloren,function(key,value){
                   $('select[name="color"]').append('<option value=" '+value+' ">'+value+' </option>')
                   if (data.coloren == "") {
@@ -341,7 +342,7 @@
                   }
               }) // end color
               // Size
-              $('select[name="size"]').empty();        
+              $('select[name="size"]').empty();
               $.each(data.sizeen,function(key,value){
                   $('select[name="size"]').append('<option value=" '+value+' ">'+value+' </option>')
                   if (data.sizeen == "") {
@@ -352,7 +353,7 @@
               }) // end size
             }
         })
-      }// End Product View with Modal 
+      }// End Product View with Modal
 
       // Start Add to Cart Product
       function addToCart(){
@@ -374,7 +375,7 @@
             success:function(data){
               miniCart()
               $('#closeModel').click();
-              // Start Message 
+              // Start Message
               const Toast = Swal.mixin({
                       toast: true,
                       position: 'top-end',
@@ -393,11 +394,11 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
             }
         })
       }
-      // End Add to Cart Product 
+      // End Add to Cart Product
     </script>
     <script type="text/javascript">
       function miniCart(){
@@ -420,7 +421,7 @@
                         <div class="price">${value.price} * ${value.qty}</div>
                       </div>
                       <div class="col-xs-1 action">
-                         <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button> 
+                         <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button>
                          </div>
                     </div>
                   </div>
@@ -428,14 +429,14 @@
                   <div class="clearfix"></div>
                   <hr>`
                   });
-                  
+
                   $('#miniCart').html(miniCart);
               }
           })
       }
       miniCart();
 
-      // mini cart remove Start 
+      // mini cart remove Start
       function miniCartRemove(rowId){
         $.ajax({
             type: 'GET',
@@ -443,7 +444,7 @@
             dataType:'json',
             success:function(data){
             miniCart();
-            // Start Message 
+            // Start Message
                 const Toast = Swal.mixin({
                       toast: true,
                       position: 'top-end',
@@ -462,11 +463,11 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
             }
         });
       }
-        //  end mini cart remove 
+        //  end mini cart remove
     </script>
 
     <!--  /// Start Add Wishlist Page  //// -->
@@ -478,7 +479,7 @@
               dataType: 'json',
               url: "/add-to-wishlist/"+product_id,
               success:function(data){
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                       toast: true,
                       position: 'top-end',
@@ -498,7 +499,7 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
               }
           })
       }
@@ -519,11 +520,11 @@
                     <td class="col-md-7">
                       <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
                       <div class="price">
-                          ${response.type_user == 1 ?   
-                            `${value.product.supplier_price}` 
-                            : 
+                          ${response.type_user == 1 ?
+                            `${value.product.supplier_price}`
+                            :
                             value.product.discount_price == null ? `${value.product.selling_price}` : `${value.product.discount_price} <span>${value.product.selling_price}</span>`
-                          }                       
+                          }
                       </div>
                         </td>
                         <td class="col-md-2">
@@ -533,14 +534,14 @@
                           <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
                         </td>
                   </tr>`
-                });        
+                });
              $('#wishlist').html(rows);
          }
      })
   }
 wishlist();
 
-    ///  Wishlist remove Start 
+    ///  Wishlist remove Start
     function wishlistRemove(id){
             $.ajax({
                 type: 'GET',
@@ -548,11 +549,11 @@ wishlist();
                 dataType:'json',
                 success:function(data){
                 wishlist();
-                // Start Message 
+                // Start Message
                     const Toast = Swal.mixin({
                           toast: true,
                           position: 'top-end',
-                          
+
                           showConfirmButton: false,
                           timer: 3000
                         })
@@ -569,12 +570,12 @@ wishlist();
                             title: data.error
                         })
                     }
-                    // End Message 
+                    // End Message
                 }
             });
         }
-    // End Wishlist remove   
-</script> 
+    // End Wishlist remove
+</script>
 <!-- /// End Load Wishlist Data  -->
 
 <!-- /// Load My Cart /// -->
@@ -590,11 +591,11 @@ wishlist();
  $.each(response.carts, function(key,value){
      rows += `<tr>
      <td class="col-md-2"><img src="/${value.options.image} " alt="imga" style="width:60px; height:60px;"></td>
-     
+
      <td class="col-md-2">
          <div class="product-name"><a href="#">${value.name}</a></div>
-          
-         <div class="price"> 
+
+         <div class="price">
                          ${value.price}
                      </div>
                  </td>
@@ -606,33 +607,33 @@ wishlist();
           ${value.options.size == null
             ? `<span> .... </span>`
             :
-          `<strong>${value.options.size} </strong>` 
-          }           
+          `<strong>${value.options.size} </strong>`
+          }
             </td>
            <td class="col-md-2">
             ${value.qty > 1
             ? `<button type="submit" class="btn btn-danger btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)" >-</button> `
             : `<button type="submit" class="btn btn-danger btn-sm" disabled >-</button> `
             }
-        <input type="text" value="${value.qty}" min="1" max="100" disabled="" style="width:25px;" >  
-         <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartIncrement(this.id)" >+</button>  
+        <input type="text" value="${value.qty}" min="1" max="100" disabled="" style="width:25px;" >
+         <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartIncrement(this.id)" >+</button>
             </td>
              <td class="col-md-2">
-            <strong>$${value.subtotal} </strong> 
+            <strong>$${value.subtotal} </strong>
             </td>
-      
+
      <td class="col-md-1 close-btn">
          <button type="submit" id="${value.rowId}" onclick="cartRemove(this.id)"><i class="fa fa-times"></i></button>
      </td>
              </tr>`
      });
-             
+
              $('#cartPage').html(rows);
          }
      })
   }
 cart();
-///  Cart remove Start 
+///  Cart remove Start
  function cartRemove(id){
      $.ajax({
          type: 'GET',
@@ -644,7 +645,7 @@ cart();
           miniCart();
           $('#couponField').show();
             $('#coupon_name').val('');
-          // Start Message 
+          // Start Message
              const Toast = Swal.mixin({
                    toast: true,
                    position: 'top-end',
@@ -664,11 +665,11 @@ cart();
                      title: data.error
                  })
              }
-             // End Message 
+             // End Message
          }
      });
  }
-// End Cart remove   
+// End Cart remove
 
 // -------- CART INCREMENT --------//
 function cartIncrement(rowId){
@@ -699,7 +700,7 @@ function cartIncrement(rowId){
         });
     }
  // ---------- END CART Decrement -----///
-</script>  
+</script>
 
 <!-- //End Load My cart / -->
 
@@ -717,11 +718,11 @@ function cartIncrement(rowId){
           if (data.validity == true) {
             $('#couponField').hide();
           }
-          // Start Message 
+          // Start Message
           const Toast = Swal.mixin({
                       toast: true,
                       position: 'top-end',
-                      
+
                       showConfirmButton: false,
                       timer: 3000
                     })
@@ -738,10 +739,10 @@ function cartIncrement(rowId){
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
         }
     })
-  }  
+  }
 
   function couponCalculation(){
     $.ajax({
@@ -793,7 +794,7 @@ function cartIncrement(rowId){
 <!--  //////////////// =========== Start Coupon Remove================= ////  -->
 
 <script type="text/javascript">
-     
+
   function couponRemove(){
      $.ajax({
          type:'GET',
@@ -803,11 +804,11 @@ function cartIncrement(rowId){
              couponCalculation();
              $('#couponField').show();
              $('#coupon_name').val('');
-              // Start Message 
+              // Start Message
              const Toast = Swal.mixin({
                    toast: true,
                    position: 'top-end',
-                   
+
                    showConfirmButton: false,
                    timer: 3000
                  })
@@ -824,7 +825,7 @@ function cartIncrement(rowId){
                      title: data.error
                  })
              }
-             // End Message 
+             // End Message
          }
      });
   }

@@ -8,11 +8,11 @@
       <!-- Main content -->
       <section class="content">
           <div class="row">
-              
+
             <!-- Basic Forms -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Admin Profile Edit</h4>
+                    <h4 class="box-title">Editar perfil de Administrador</h4>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -22,7 +22,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
-                                    
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -31,7 +31,7 @@
                                                         <input type="text" name="name" class="form-control" value="{{$editData->name}}"> <div>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div class="form-group">
                                                     <h5>Admin Email <span class="text-danger">*</span></h5>
                                                     <div class="controls">
@@ -49,7 +49,7 @@
                                         {{-- <div>
                                             <img id="showImage" class="rounded-circle" src="{{ (!empty($editData->profile_photo_path))? url('upload/admin_images/'.$editData->profile_photo_path):url('upload/no_image.jpg') }}" style="width: 100px; height: 100px;">
                                         </div><br><br> --}}
-                                        
+
                                         <div class="text-xs-right">
                                             <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                                         </div>

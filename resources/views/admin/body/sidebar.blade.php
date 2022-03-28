@@ -5,30 +5,30 @@
 
 <aside class="main-sidebar">
     <!-- sidebar-->
-    <section class="sidebar">	
-		
+    <section class="sidebar">
+
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="index.html">
+				 <a href="{{url('admin/dashboard')}}">
 				  <!-- logo for regular state and mobile devices -->
-					 <div class="d-flex align-items-center justify-content-center">					 	
-						  <img src="{{asset('backend/images/logo-dark.png')}}" alt="">
-						  <h3><b>Easy</b> Shop</h3>
+					 <div class="d-flex align-items-center justify-content-center">
+						  <img src="{{asset('backend/images/Escudo.png')}}" alt="" style="height: 80px;" >
+						  <h3><b>Game</b>-Lot</h3>
 					 </div>
 				</a>
 			</div>
         </div>
-      
+
       <!-- sidebar menu-->
-      <ul class="sidebar-menu" data-widget="tree">  
-		  
+      <ul class="sidebar-menu" data-widget="tree">
+
 		<li class="{{($route == 'dashboard')? 'active':''}}">
           <a href="{{url('admin/dashboard')}}">
             <i data-feather="pie-chart"></i>
-			<span>Dashboard</span>
+			<span>Tablero</span>
           </a>
-        </li>  
-		
+        </li>
+
         <li class="treeview {{($prefix == '/brand')? 'active':''}}">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -41,8 +41,8 @@
             <li class="{{ ($route == 'all.brand')? 'active':'' }}">
               <a href="{{ route('all.brand') }}"><i class="ti-more"></i>Todas las Marcas</a></li>
           </ul>
-        </li> 
-		  
+        </li>
+
         <li class="treeview {{($prefix == '/category')? 'active':''}}">
           <a href="#">
             <i data-feather="mail"></i> <span>Categoria</span>
@@ -56,7 +56,7 @@
             <li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>Todas las Sub->SubCategorias</a></li>
           </ul>
         </li>
-		
+
         <li class="treeview {{($prefix == '/product')? 'active':''}}">
           <a href="#">
             <i data-feather="file"></i>
@@ -69,18 +69,18 @@
             <li class="{{ ($route == 'add-product')? 'active':'' }}"><a href="{{route('add-product')}}"><i class="ti-more"></i>Agregar Producto</a></li>
             <li class="{{ ($route == 'manage-product')? 'active':'' }}"><a href="{{route('manage-product')}}"><i class="ti-more"></i>Administrar Productos</a></li>
           </ul>
-        </li> 	
-        
+        </li>
+
         <li class="treeview {{($prefix == '/slider')? 'active':''}}">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Slider</span>
+            <span>Deslizador</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'manage-slider')? 'active':'' }}"><a href="{{route('manage-slider')}}"><i class="ti-more"></i>Administrar Slider</a></li>
+            <li class="{{ ($route == 'manage-slider')? 'active':'' }}"><a href="{{route('manage-slider')}}"><i class="ti-more"></i>Administrar Deslizador</a></li>
           </ul>
         </li>
 
@@ -123,7 +123,7 @@
             <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{route('manage-district')}}"><i class="ti-more"></i>Administrar Municipios</a></li>
             {{-- <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{route('manage-state')}}"><i class="ti-more"></i>Administrar Ciudad/Barrios</a></li> --}}
           </ul>
-        </li> 
+        </li>
 
         <li class="treeview {{($prefix == '/message')? 'active':''}}">
           <a href="#">
@@ -141,9 +141,9 @@
             <li class="{{ ($route == 'datos.bancolombia')? 'active':'' }}"><a href="{{route('datos.bancolombia')}}"><i class="ti-more"></i>Datos Bancolombia</a></li>
           </ul>
         </li>
-		 
+
         <li class="header nav-small-cap">User Interface</li>
-		  
+
         <li class="treeview {{ ($prefix == '/orders')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
@@ -161,8 +161,8 @@
             <li class="{{ ($route == 'delivered-orders')? 'active':'' }}"><a href="{{ route('delivered-orders') }}"><i class="ti-more"></i> Delivered Orders</a></li>
             <li class="{{ ($route == 'cancel-orders')? 'active':'' }}"><a href="{{ route('cancel-orders') }}"><i class="ti-more"></i> Cancel Orders</a></li>
           </ul>
-        </li>  
-		
+        </li>
+
         <li class="treeview {{ ($prefix == '/reports')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
@@ -174,7 +174,7 @@
           <ul class="treeview-menu">
             <li class="{{ ($route == 'all-reports')? 'active':'' }}"><a href="{{ route('all-reports') }}"><i class="ti-more"></i>Reportes</a></li>
           </ul>
-        </li>  
+        </li>
 
         <li class="treeview {{ ($prefix == '/alluser')?'active':'' }}  ">
           <a href="#">
@@ -187,11 +187,11 @@
           <ul class="treeview-menu">
         <li class="{{ ($route == 'all-users')? 'active':'' }}"><a href="{{ route('all-users') }}"><i class="ti-more"></i>All Users</a></li>
           </ul>
-        </li> 
-        
+        </li>
+
       </ul>
     </section>
-	
+
 	<div class="sidebar-footer">
 		<!-- item-->
 		<a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>

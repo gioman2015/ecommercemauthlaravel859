@@ -73,9 +73,9 @@ class AdminProfileController extends Controller
             $admin->password = Hash::make($request->password);
             $admin->save();
             Auth::logout();
-            return redirect()->route('admin.logout')->with('success', 'Password is Change Successfuly');
+            return redirect()->route('admin.logout')->with('success', 'Contraseña cambiada con éxito');
         }else{
-            return redirect()->back()->with('error', 'Current Password is invalid');
+            return redirect()->back()->with('error', 'Contraseña actual no es válida');
         }
     }
 

@@ -7,7 +7,7 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="row"> 
+        <div class="row">
           <!-- /.col -->
 
           {{-- ------------- Edit Brand Page --------------------- --}}
@@ -15,7 +15,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Edit Brand</h3>
+                 <h3 class="box-title">Editar Marca</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -25,39 +25,39 @@
                       <input type="hidden" name="id" value="{{$brand->id}}">
                       <input type="hidden" name="old_image" value="{{$brand->brand_image}}">
                       <div class="form-group">
-                          <label for="exampleFormControlInput3">Brand Name English</label>
+                          <label for="exampleFormControlInput3">Nombre Marca Inglés</label>
                           <input type="text" name="brand_name_en" class="form-control" value="{{$brand->brand_name_en}}">
                           @error('brand_name_en')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Brand Name Spanish</label>
+                          <label for="exampleFormControlPassword3">Nombre Marca Español</label>
                           <input type="text" name="brand_name_esp" class="form-control" value="{{$brand->brand_name_esp}}">
                           @error('brand_name_esp')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Brand Image</label>
+                          <label for="exampleFormControlPassword3">Imagen de la Marca</label>
                           <input type="file" name="brand_image" class="form-control">
                           @error('brand_image')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
-                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Actualizar">
                   </form>
                    </div>
                </div>
                <!-- /.box-body -->
              </div>
-             <!-- /.box -->         
+             <!-- /.box -->
            </div>
         </div>
         <!-- /.row -->
       </section>
       <!-- /.content -->
-    
+
     </div>
 </div>
 <!-- /.content-wrapper -->

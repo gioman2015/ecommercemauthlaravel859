@@ -8,11 +8,11 @@
       <!-- Main content -->
       <section class="content">
           <div class="row">
-              
+
             <!-- Basic Forms -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">User Change Password</h4>
+                    <h4 class="box-title">Cambiar contraseña de usuario</h4>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -21,27 +21,27 @@
                             <form method="POST" action="{{route('update.change.password')}}" class="form-pill">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput3">Current Password</label>
+                                    <label for="exampleFormControlInput3">Contraseña actual</label>
                                     <input type="password" id="current_password" name="oldpassword" class="form-control" placeholder="Current Password">
                                     @error('oldpassword')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlPassword3">New Password</label>
+                                    <label for="exampleFormControlPassword3">Contraseña nueva</label>
                                     <input type="password" id="password" name="password" class="form-control" placeholder="New Password">
                                     @error('password')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlPassword3">Confirm Password</label>
+                                    <label for="exampleFormControlPassword3">Confirmar contraseña</label>
                                     <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                                     @error('password_confirmation')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
-                                <button class="btn btn-primary btn-default" type="submit">Save</button>
+                                <button class="btn btn-primary btn-default" type="submit">Guardar</button>
                             </form>
 
                         </div>
