@@ -150,29 +150,33 @@
                                             <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
                                                 Deposito o transferencia
                                             </h1>
-
+                                            @php
+                                                $bancolombia = App\Models\DatosBanco::where('banco', 'Bancolombia')->first();
+                                            @endphp
                                             <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
                                                 Bancolombia
                                             </h1>
                                             <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
-                                                Tipo: Ahorros<br>
-                                                Numero: 373 71384 465<br>
-                                                C.c: 1053.806.044<br>
-                                                Titular: Martha Lucia Arias<br>
+                                                Tipo: {{ $bancolombia->tipo }}<br>
+                                                Numero: {{ $bancolombia->numero }}<br>
+                                                C.c: {{ $bancolombia->cc }}<br>
+                                                Titular: {{ $bancolombia->titular }}<br>
                                             </p>
                                         @else
                                             <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
                                                 Deposito o transferencia
                                             </h1>
-
+                                            @php
+                                                $davivienda = App\Models\DatosBanco::where('banco', 'Davivienda')->first();
+                                            @endphp
                                             <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
                                                 Davivienda
                                             </h1>
                                             <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
-                                                Tipo: Ahorros<br>
-                                                Numero: 4884 1643 8296<br>
-                                                C.c: 1053.806.044<br>
-                                                Titular: Martha Lucia Arias<br>
+                                                Tipo: {{ $davivienda->tipo }}<br>
+                                                Numero: {{ $davivienda->numero }}<br>
+                                                C.c: {{ $davivienda->cc }}<br>
+                                                Titular: {{ $davivienda->titular }}<br>
                                             </p>
                                         @endif
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 use App\Models\Messages;
 use App\Models\PreciosEnvios;
+use App\Models\DatosBanco;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -73,5 +74,47 @@ class MessageController extends Controller
         );
         return redirect()->route('precios-envios')->with($notification);
         
+    }
+
+    public function DatosDavivienda(){
+        $davivienda = DatosBanco::where('banco', 'Davivienda')->first();
+        return view('backend.messages.davivienda', compact('davivienda'));
+    }
+
+    public function DaviviendaEdit(Request $request){
+        $davivienda = DatosBanco::where('banco', 'Davivienda')->first();
+
+        DatosBanco::findOrFail($davivienda->id)->update([
+            'tipo' => $request->tipo,
+            'numero' => $request->numero,
+            'cc' => $request->cc,
+            'titular' => $request->titular,
+        ]);
+        $notification = array(
+            'message' => 'Datos de Banco Davivienda Actualizado correctamente',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function DatosBancolombia(){
+        $bancolombia = DatosBanco::where('banco', 'Bancolombia')->first();
+        return view('backend.messages.bancolombia', compact('bancolombia'));
+    }
+
+    public function BancolombiaEdit(Request $request){
+        $bancolombia = DatosBanco::where('banco', 'Bancolombia')->first();
+
+        DatosBanco::findOrFail($bancolombia->id)->update([
+            'tipo' => $request->tipo,
+            'numero' => $request->numero,
+            'cc' => $request->cc,
+            'titular' => $request->titular,
+        ]);
+        $notification = array(
+            'message' => 'Datos de Banco Bancolombia Actualizado correctamente',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }
