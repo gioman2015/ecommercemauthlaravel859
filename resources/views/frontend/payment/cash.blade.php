@@ -149,7 +149,7 @@ Cash On Delivery
 				<div class="col-md-5" style="border: #292929 solid 3px; border-radius: 5px;">
 					<p><b>Deposito o transferencia desde nequi o bancolombia a nuestra cuenta de ahorros bancolombia:</b></p>
 					<img src="{{asset('frontend/assets/images/logos-bancolombia-nequi.png')}}" style="width: 100%"><br>
-					<center><input type="radio" name="payment_type" value="bdancolombia"></center>
+					<center><input type="radio" name="payment_type" value="bancolombia"></center>
 				</div>
 				<div class="col-md-1"></div>
 				<div class="col-md-5" style="border: #292929 solid 3px; border-radius: 5px;">

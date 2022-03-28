@@ -58,14 +58,19 @@
                                 <tr>
                                     <td class="content-cell"
                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
-                                        <h1
+                                        @php
+                                            $messages = App\Models\Messages::where('type', 'Mail')->first();
+                                            echo $messages->message
+                                        @endphp
+                                        
+                                        {{-- <h1
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
                                             ¡Gracias por tu compra!</h1>
                                         <p
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
                                             Tu orden se ha enviado a nuetro equipo de trabajo, recuerda confirmar tu
                                             pago para que pueda ser procesada, encontraras los pasos para confirmar tu
-                                            pago al final de este detalle.</p>
+                                            pago al final de este detalle.</p> --}}
 
                                         <h1
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
@@ -97,7 +102,7 @@
                                                         #{{$order['invoice_no']}}</h3>
                                                         fecha del pedido: {{$order['order']->order_date}} <br>
                                                         {{-- Delivery Date: {{$order['delivered_date']}} <br> --}}
-                                                        Metodo de Envio : {{$order['order']->payment_method}} </span>
+                                                        Metodo de Envio : {{$order['order']->payment_type}} </span>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -140,6 +145,36 @@
 
                                             </tbody>
                                         </table>
+                                        {{-- {{$order['order']->payment_type}} --}}
+                                        @if ($order['order']->payment_type == 'bancolombia')
+                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                                Deposito o transferencia
+                                            </h1>
+
+                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                                Bancolombia
+                                            </h1>
+                                            <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
+                                                Tipo: Ahorros<br>
+                                                Numero: 373 71384 465<br>
+                                                C.c: 1053.806.044<br>
+                                                Titular: Martha Lucia Arias<br>
+                                            </p>
+                                        @else
+                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                                Deposito o transferencia
+                                            </h1>
+
+                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                                Davivienda
+                                            </h1>
+                                            <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
+                                                Tipo: Ahorros<br>
+                                                Numero: 4884 1643 8296<br>
+                                                C.c: 1053.806.044<br>
+                                                Titular: Martha Lucia Arias<br>
+                                            </p>
+                                        @endif
 
                                         <h1
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">

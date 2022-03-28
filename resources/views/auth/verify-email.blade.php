@@ -1,14 +1,28 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('frontend.main_master')
+@section('content')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="{{url('/')}}">Home</a></li>
+                <li class='active'>Verificacion de correo</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
+    </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
 
-        @if (session('status') == 'verification-link-sent')
+<div class="body-content">
+    <div class="container">
+        <div class="sign-in-page">
+            <div class="row">
+                <!-- Sign-in -->            
+<div class="col-md-6 col-sm-6 sign-in">
+
+     
+   
+
+    @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
                 {{ __('A new verification link has been sent to the email address you provided during registration.') }}
             </div>
@@ -29,9 +43,31 @@
                 @csrf
 
                 <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
+                    {{ __('Logout') }}
                 </button>
-            </form>
-        </div>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            </form>   
+
+
+</div>
+<!-- Sign-in -->
+ 
+<!-- create a new account -->   
+ </div><!-- /.row -->
+        </div><!-- /.sigin-in-->
+        <!-- ============================================== BRANDS CAROUSEL ============================================== -->
+
+
+
+
+@include('frontend.body.brands')
+
+
+<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->    </div><!-- /.container -->
+</div><!-- /.body-content -->
+
+
+
+
+
+
+@endsection
