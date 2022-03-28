@@ -7,13 +7,13 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="row">    
+        <div class="row">
 
           <div class="col-8">
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Slider List</h3>
+                <h3 class="box-title">Lista de Deslizador</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -21,11 +21,11 @@
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                              <th>Slider Image</th>
-                              <th>Title</th>
-                              <th>Description</th>
-                              <th>Status</th>
-                              <th>Action</th>
+                              <th>Imagen del Deslizador</th>
+                              <th>Titulo</th>
+                              <th>Descripción</th>
+                              <th>Estado</th>
+                              <th>Acción</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -34,18 +34,18 @@
                                 <td><img src="{{asset($item->slider_img)}}" style="width: 70px"></td>
                                 <td>
                                     @if ($item->title == null)
-                                        <span class="badge badge-pill badge-danger">No Title</span>  
+                                        <span class="badge badge-pill badge-danger">No Title</span>
                                     @else
                                         {{$item->title}}
-                                    @endif 
+                                    @endif
                                 </td>
                                 <td>{{$item->desciption	}}</td>
                                 <td>
                                     @if ($item->status == 1)
-                                        <span class="badge badge-pill badge-success">Active</span>  
+                                        <span class="badge badge-pill badge-success">Active</span>
                                     @else
-                                        <span class="badge badge-pill badge-danger">InActive</span> 
-                                    @endif    
+                                        <span class="badge badge-pill badge-danger">InActive</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{route('slider.edit',$item->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
@@ -56,16 +56,16 @@
                                         <a href="{{ route('slider.active',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i> </a>
                                     @endif
                                 </td>
-                            </tr> 
+                            </tr>
                           @endforeach
-                          
+
                       </tbody>
                     </table>
                   </div>
               </div>
               <!-- /.box-body -->
             </div>
-            <!-- /.box -->         
+            <!-- /.box -->
           </div>
           <!-- /.col -->
 
@@ -74,7 +74,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Add Slider</h3>
+                 <h3 class="box-title">Agregar Deslizador</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -82,33 +82,33 @@
                     <form method="POST" action="{{route('slider.store')}}" enctype="multipart/form-data">
                       @csrf
                       <div class="form-group">
-                          <label for="exampleFormControlInput3">Slider Title</label>
+                          <label for="exampleFormControlInput3">Titulo del Deslizador</label>
                           <input type="text" name="title" class="form-control">
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Slider Description</label>
+                          <label for="exampleFormControlPassword3">Descripcion del Deslizador</label>
                           <input type="text" name="desciption" class="form-control">
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Slider Image</label>
+                          <label for="exampleFormControlPassword3">Imagen del Deslizador</label>
                           <input type="file" name="slider_image" class="form-control">
                           @error('slider_image')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
-                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add new">
+                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Agregar Nuevo">
                   </form>
                    </div>
                </div>
                <!-- /.box-body -->
              </div>
-             <!-- /.box -->         
+             <!-- /.box -->
            </div>
         </div>
         <!-- /.row -->
       </section>
       <!-- /.content -->
-    
+
     </div>
 </div>
 <!-- /.content-wrapper -->

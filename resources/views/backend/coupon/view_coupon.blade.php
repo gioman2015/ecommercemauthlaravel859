@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Coupon List <span class="badge badge-pill badge-danger"> {{ count($coupons) }} </span></h3>
+				  <h3 class="box-title">lista de Cupones<span class="badge badge-pill badge-danger"> {{ count($coupons) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,11 +26,11 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Coupon Name </th>
-								<th>Coupon Discount</th>
-								<th>Validity </th>
-								<th>Status </th>
-								<th>Action</th>
+								<th>Nombre del Cupon</th>
+								<th>Descuento del Cupon (%)</th>
+								<th>Fecha de validez del cupón</th>
+								<th>Estado</th>
+								<th>Acción</th>
 
 							</tr>
 						</thead>
@@ -78,7 +78,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Coupon </h3>
+				  <h3 class="box-title">Agregar Cupon</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -86,45 +86,45 @@
                         <form method="post" action="{{ route('coupon.store') }}" >
                                 @csrf
                                 <div class="form-group">
-                                    <h5>Coupon Name  <span class="text-danger">*</span></h5>
+                                    <h5>Nombre del Cupon<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                    <input type="text"  name="coupon_name" class="form-control" > 
-                                        @error('coupon_name') 
+                                    <input type="text"  name="coupon_name" class="form-control" >
+                                        @error('coupon_name')
                                             <span class="text-danger">{{ $message }}</span>
-                                        @enderror 
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <h5>Coupon Discount(%) <span class="text-danger">*</span></h5>
+                                    <h5>Descuento del Cupon(%) <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                     <input type="text" name="coupon_discount" class="form-control" >
-                                        @error('coupon_discount') 
+                                        @error('coupon_discount')
                                             <span class="text-danger">{{ $message }}</span>
-                                        @enderror 
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <h5>Coupon Validity Date  <span class="text-danger">*</span></h5>
+                                    <h5>Fecha de validez del cupón<span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="date" name="coupon_validity" class="form-control" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
-                                            @error('coupon_validity') 
+                                            @error('coupon_validity')
                                                 <span class="text-danger">{{ $message }}</span>
-                                            @enderror 
+                                            @enderror
                                     </div>
-                                </div> 
+                                </div>
                             <div class="text-xs-right">
-                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Agregar Nuevo">
                             </div>
                         </form>
 					</div>
 				</div>
 				<!-- /.box-body -->
 			  </div>
-			  <!-- /.box --> 
+			  <!-- /.box -->
 			</div>
 		  </div>
 		  <!-- /.row -->
 		</section>
 		<!-- /.content -->
 	  </div>
-@endsection 
+@endsection

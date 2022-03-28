@@ -9,7 +9,7 @@
                 </div>{{-- end col-md-2 --}}
                 <div class="col-md-6">
                     <div class="card">
-                        <h3 class="text-center"><span class="text-danger">Hi.... <strong>{{Auth::user()->name}}</strong> Wellcome to easy Online Shop</span></h3>
+                        <h3 class="text-center"><span class="text-danger">Hola.... <strong>{{Auth::user()->name}}</strong> Bienvenido a Game-Lot Hobbie Store</span></h3>
                     </div>{{-- end card --}}
                 </div>{{-- end col-md-6 --}}
             </div>{{-- end row --}}

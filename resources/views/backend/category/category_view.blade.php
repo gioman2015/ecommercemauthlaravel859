@@ -7,13 +7,13 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="row">    
+        <div class="row">
 
           <div class="col-8">
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Category List <span class="badge badge-pill badge-danger"> {{ count($categories) }} </span></h3>
+                <h3 class="box-title">Lista de Categorías<span class="badge badge-pill badge-danger"> {{ count($categories) }} </span></h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -21,12 +21,12 @@
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                            <th>Icon</th>
-                            <th>Slider</th>
-                            <th>Nombre de Categoria EN</th>
-                            <th>Nombre de Categoria ESP</th>
+                            <th>Icono</th>
+                            <th>Deslizador</th>
+                            <th>Nombre de Categoría EN</th>
+                            <th>Nombre de Categoría ESP</th>
                             <th>Orden</th>
-                            <th>Action</th>
+                            <th>Acción</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -41,16 +41,16 @@
                                     <a href="{{route('category.edit',$item->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
                                     <a href="{{route('category.delete',$item->id)}}" {{-- onclick="return confirm('Are you sure to delete')" --}} id="delete" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i> </a>
                                 </td>
-                            </tr> 
+                            </tr>
                           @endforeach
-                          
+
                       </tbody>
                     </table>
                   </div>
               </div>
               <!-- /.box-body -->
             </div>
-            <!-- /.box -->         
+            <!-- /.box -->
           </div>
           <!-- /.col -->
 
@@ -59,7 +59,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Add Category</h3>
+                 <h3 class="box-title">Agregar Categoría</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -67,56 +67,56 @@
                     <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
                       @csrf
                       <div class="form-group">
-                          <label for="exampleFormControlInput3">Category English</label>
+                          <label for="exampleFormControlInput3">Categoría en Inglés</label>
                           <input type="text" name="category_name_en" class="form-control">
                           @error('category_name_en')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Category Spanish</label>
+                          <label for="exampleFormControlPassword3">Categoría en Español</label>
                           <input type="text" name="category_name_esp" class="form-control">
                           @error('category_name_esp')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleFormControlPassword3">Category Icon</label>
+                        <label for="exampleFormControlPassword3">Categoría Icono</label>
                         <input type="text" name="category_icon" class="form-control">
                         @error('category_icon')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleFormControlPassword3">Orden</label>
+                        <label for="exampleFormControlPassword3">Orden de Categoría</label>
                         <input type="number" name="category_order" class="form-control">
                         @error('category_order')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <h5>Slider Category<span class="text-danger">*</span></h5>
+                        <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
                         <div class="controls">
                             <input type="file" name="category_slider" class="form-control" onChange="mainThamUrl(this)" required="">
                         </div>
                         <img src="" id="mainThmb">
-                        @error('category_slider') 
+                        @error('category_slider')
                             <span class="text-danger">{{ $message }}</span>
-                        @enderror 
+                        @enderror
                       </div>
-                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add new">
+                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Agregar Nuevo">
                   </form>
                    </div>
                </div>
                <!-- /.box-body -->
              </div>
-             <!-- /.box -->         
+             <!-- /.box -->
            </div>
         </div>
         <!-- /.row -->
       </section>
       <!-- /.content -->
-    
+
     </div>
 </div>
 <!-- /.content-wrapper -->
@@ -130,7 +130,7 @@
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
-	}	
+	}
 </script>
 
 @endsection

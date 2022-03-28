@@ -8,12 +8,12 @@
 		<!-- Content Header (Page header) -->
 		<!-- Main content -->
 		<section class="content">
-		  <div class="row">   
+		  <div class="row">
 <!--   ------------ Add Sub Sub Category Page -------- -->
           <div class="col-12">
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Edit Sub-SubCategory </h3>
+				  <h3 class="box-title">Editar Sub->SubCategorías</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -22,90 +22,90 @@
 
  <form method="post" action="{{ route('subsubcategory.update') }}" >
 	 	@csrf
-	
-	<input type="hidden" name="id" value="{{ $subsubcategories->id }}">				   
+
+	<input type="hidden" name="id" value="{{ $subsubcategories->id }}">
 
 	 <div class="form-group">
-	<h5>Category Select <span class="text-danger">*</span></h5>
+	<h5>Seleccionar Categoría<span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select Category</option>
+			<option value="" selected="" disabled="">Seleccionar Categoría</option>
 			@foreach($categories as $category)
-			<option value="{{ $category->id }}" {{ $category->id == $subsubcategories->category_id ? 'selected':'' }} >{{ $category->category_name_en }}</option>	
+			<option value="{{ $category->id }}" {{ $category->id == $subsubcategories->category_id ? 'selected':'' }} >{{ $category->category_name_en }}</option>
 			@endforeach
 		</select>
-		@error('category_id') 
+		@error('category_id')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror  
+	 @enderror
 	 </div>
 		 </div>
 
 
 		  <div class="form-group">
-	<h5>SubCategory Select <span class="text-danger">*</span></h5>
+	<h5>Seleccionar SubCategoría<span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="subcategory_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select SubCategory</option>
+			<option value="" selected="" disabled="">Seleccionar SubCategoría</option>
 
 			 @foreach($subcategories as $subsub)
-			<option value="{{ $subsub->id }}" {{ $subsub->id == $subsubcategories->subcategory_id ? 'selected':'' }} >{{ $subsub->subcategory_name_en }}</option>	
+			<option value="{{ $subsub->id }}" {{ $subsub->id == $subsubcategories->subcategory_id ? 'selected':'' }} >{{ $subsub->subcategory_name_en }}</option>
 			@endforeach
 		</select>
-		@error('subcategory_id') 
+		@error('subcategory_id')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	 </div>
 		 </div>
 
 
 	<div class="form-group">
-		<h5>Sub-SubCategory English <span class="text-danger">*</span></h5>
+		<h5>Sub->SubCategoría en Inglés<span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="subsubcategory_name_en" class="form-control" value="{{ $subsubcategories->subsubcategory_name_en }}" >
-     @error('subsubcategory_name_en') 
+     @error('subsubcategory_name_en')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	  </div>
 	</div>
 
 
 	<div class="form-group">
-		<h5>Sub-SubCategory Español  <span class="text-danger">*</span></h5>
+		<h5>Sub->SubCategoría en Español<span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="subsubcategory_name_esp" class="form-control" value="{{ $subsubcategories->subsubcategory_name_esp }}">
-     @error('subsubcategory_name_esp') 
+     @error('subsubcategory_name_esp')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	  </div>
-	</div> 
-					 
+	</div>
+
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Actualizar">
 						</div>
 					</form>
 
 
 
 
-					  
+
 					</div>
 				</div>
 				<!-- /.box-body -->
 			  </div>
-			  <!-- /.box --> 
+			  <!-- /.box -->
 			</div>
 
- 
+
 
 
 		  </div>
 		  <!-- /.row -->
 		</section>
 		<!-- /.content -->
-	  
+
 	  </div>
-  
+
 	  <script type="text/javascript">
 		$(document).ready(function() {
 		  $('select[name="category_id"]').on('change', function(){
@@ -128,7 +128,7 @@
 		  });
 	  });
 	  </script>
- 
+
 
 
 @endsection

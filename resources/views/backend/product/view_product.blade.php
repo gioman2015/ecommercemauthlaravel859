@@ -7,13 +7,13 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="row">    
+        <div class="row">
 
           <div class="col-12">
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Product List <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
+                <h3 class="box-title">Lista de productos <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -21,13 +21,13 @@
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                            <th>Image</th>
-                            <th>Product Name EN</th>
-                            <th>Product Price</th>
-                            <th>Quantity</th>
-                            <th>Discount</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Imagen</th>
+                            <th>Nombre producto EN</th>
+                            <th>Precio del Producto</th>
+                            <th>Cantidad</th>
+                            <th>Descuento</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -46,14 +46,14 @@
                                             $discount = ($amount/$item->selling_price) * 100;
                                             @endphp
                                         <span class="badge badge-pill badge-danger">{{ round($discount)  }} %</span>
-                                    @endif 
+                                    @endif
                                 </td>
                                 <td>
                                     @if ($item->status == 1)
-                                        <span class="badge badge-pill badge-success">Active</span>  
+                                        <span class="badge badge-pill badge-success">Active</span>
                                     @else
-                                        <span class="badge badge-pill badge-danger">InActive</span> 
-                                    @endif    
+                                        <span class="badge badge-pill badge-danger">InActive</span>
+                                    @endif
                                 </td>
                                 <td width="20%">
                                     {{-- <a href="{{route('product.edit',$item->id)}}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i></a> --}}
@@ -65,23 +65,23 @@
                                         <a href="{{ route('product.active',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i> </a>
                                     @endif
                                 </td>
-                            </tr> 
+                            </tr>
                           @endforeach
-                          
+
                       </tbody>
                     </table>
                   </div>
               </div>
               <!-- /.box-body -->
             </div>
-            <!-- /.box -->         
+            <!-- /.box -->
           </div>
           <!-- /.col -->
-          
+
         <!-- /.row -->
       </section>
       <!-- /.content -->
-    
+
     </div>
 </div>
 <!-- /.content-wrapper -->

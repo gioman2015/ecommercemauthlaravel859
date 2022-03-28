@@ -7,7 +7,7 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="row">    
+        <div class="row">
 
 
           {{-- ------------- Add Category Page --------------------- --}}
@@ -15,7 +15,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Editar Categoria</h3>
+                 <h3 class="box-title">Editar Categoría</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -25,28 +25,28 @@
                       <input type="hidden" name="id" value="{{$category->id}}">
                       <input type="hidden" name="old_image" value="{{$category->slider_categoria_img}}">
                       <div class="form-group">
-                          <label for="exampleFormControlInput3">Category English</label>
+                          <label for="exampleFormControlInput3">Categoría en Inglés</label>
                           <input type="text" name="category_name_en" class="form-control" value="{{$category->category_name_en}}">
                           @error('category_name_en')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                          <label for="exampleFormControlPassword3">Category Spanish</label>
+                          <label for="exampleFormControlPassword3">Categoría en Español</label>
                           <input type="text" name="category_name_esp" class="form-control"  value="{{$category->category_name_esp}}">
                           @error('category_name_esp')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleFormControlPassword3">Icono de Categoria </label>
+                        <label for="exampleFormControlPassword3">Categoría Icono</label>
                         <input type="text" name="category_icon" class="form-control"  value="{{$category->category_icon}}">
                         @error('category_icon')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleFormControlPassword3">Orden de Categoria </label>
+                        <label for="exampleFormControlPassword3">Orden de Categoría</label>
                         <input type="number" name="category_order" class="form-control" value="{{$category->category_order}}">
                         @error('category_order')
                             <span class="text-danger">{{$message}}</span>
@@ -54,28 +54,28 @@
                       </div>
                       <img src="{{asset($category->slider_categoria_img)}}" width="25%">
                       <div class="form-group">
-                        <h5>Slider Category<span class="text-danger">*</span></h5>
+                        <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
                         <div class="controls">
                             <input type="file" name="category_slider" class="form-control" onChange="mainThamUrl(this)" required="">
                         </div>
                         <img src="" id="mainThmb">
-                        @error('category_slider') 
+                        @error('category_slider')
                             <span class="text-danger">{{ $message }}</span>
-                        @enderror 
+                        @enderror
                       </div>
-                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                      <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Actualizar">
                   </form>
                    </div>
                </div>
                <!-- /.box-body -->
              </div>
-             <!-- /.box -->         
+             <!-- /.box -->
            </div>
         </div>
         <!-- /.row -->
       </section>
       <!-- /.content -->
-    
+
     </div>
 </div>
 <!-- /.content-wrapper -->
@@ -88,7 +88,7 @@
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
-	}	
+	}
 </script>
 
 @endsection
