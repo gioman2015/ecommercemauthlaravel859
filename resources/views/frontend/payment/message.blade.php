@@ -12,8 +12,9 @@
                         <h3 class="text-center"><span class="text-danger">Hi.... <strong>{{Auth::user()->name}}</strong> Wellcome to easy Online Shop</span></h3>
                         @php
                             $messages = App\Models\Messages::where('type', 'Web')->first();
+                            echo $messages->message
                         @endphp
-                        {{-- {{$messages->message}} --}}{{$messages->message}}
+                        {{-- {{$messages->message}} --}}
                     </div>{{-- end card --}}
                 </div>{{-- end col-md-6 --}}
             </div>{{-- end row --}}
