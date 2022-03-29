@@ -208,7 +208,7 @@
                 @csrf
                 <input type="hidden" name="orderid" value="{{$order->id}}">
                 <th> Nro de Guia </th>
-                <th> <input type="text" name="guia" {{-- size="50" --}} placeholder="Nro de Guia"></th>
+                <th> <input type="number" name="guia" {{-- size="50" --}} placeholder="Nro de Guia"></th>
                 <th><input type="submit" value="Nro Guia" class="btn btn-block btn-success" ></th>
               </form>
             </tr>

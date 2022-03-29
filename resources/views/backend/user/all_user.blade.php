@@ -19,7 +19,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Total de usuarios <span class="badge badge-pill badge-danger"> {{ count($users) }} </span> </h3>
+				  <h3 class="box-title">Total de usuarios {{-- {{ count($users) }} --}}</span> </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -31,8 +31,9 @@
 								<th>Nombre </th>
 								<th>Correo</th>
 								<th>Telefono</th>
+								<th>Puntos</th>
 								<th>Estado</th>
-								{{-- <th>Action</th> --}}
+								<th>Action</th>
 
 							</tr>
 						</thead>
@@ -43,6 +44,7 @@
 		<td>{{ $user->name }}</td>
 		<td>{{ $user->email }}</td>
 		<td>{{ $user->phone }}</td>
+		<td>{{ $user->puntos }}</td>
 
 		<td>
 	    @if($user->UserOnline())
@@ -52,11 +54,17 @@
 		@endif
 		</td>
 
-		{{-- <td>
- <a href=" " class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
- <a href=" " class="btn btn-danger" title="Delete Data" id="delete">
- 	<i class="fa fa-trash"></i></a>
-		</td> --}}
+		<td>
+			<form action="{{route('puntos-users')}}" method="post">
+				@csrf
+				<input type="hidden" name="user_id" value="{{$user->id}}">
+				<input type="number" name='puntos' value="0">
+				<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cambiar Puntos">
+			</form>
+ {{-- <a href=" " class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a> --}}
+ {{-- <a href=" " class="btn btn-danger" title="Delete Data" id="delete">
+ 	<i class="fa fa-trash"></i></a> --}}
+		</td>
 
 	 </tr>
 	  @endforeach

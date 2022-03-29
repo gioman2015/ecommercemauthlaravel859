@@ -66,6 +66,9 @@ class CashController extends Controller
                 'size' => $cart->options->size,
                 'qty' => $cart->qty,
                 'price' => $cart->price,
+                'order_date' => Carbon::now()->format('d F Y'),
+                'order_month' => Carbon::now()->format('F'),
+                'order_year' => Carbon::now()->format('Y'),
                 'created_at' => Carbon::now(),
 
             ]);

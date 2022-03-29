@@ -4,13 +4,12 @@
 @section('title')
 Home Easy Online Shop
 @endsection
-    
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container" >
       <div class="row"> 
         <!-- ============================================== SIDEBAR ============================================== -->
         <div class="col-xs-12 col-sm-12 col-md-3 sidebar"> 
-          
           <!-- ================================== TOP NAVIGATION ================================== -->
           @include('frontend.common.vertical_menu')
           <!-- ================================== TOP NAVIGATION : END ================================== --> 
@@ -251,6 +250,7 @@ Home Easy Online Shop
           <!-- /.info-boxes --> 
           <!-- ============================================== INFO BOXES : END ============================================== --> 
           <!-- ============================================== SCROLL TABS ============================================== -->
+          
           <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
             <div class="more-info-tab clearfix ">
               <h3 class="new-product-title pull-left">Productos Nuevos</h3>

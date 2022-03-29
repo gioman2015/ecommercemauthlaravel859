@@ -30,6 +30,7 @@ class ProductFactory extends Factory
             'product_slug_esp' => strtolower(str_replace(' ','-',$title)),
             'product_code' => $this->faker->ean8(),
             'product_qty' => '100',
+            'product_qty_start' => '100',
             'product_weight' => 2,
             'product_tags_en' => 'pro',
             'product_tags_esp' => 'pro',
@@ -50,6 +51,7 @@ class ProductFactory extends Factory
             'special_offer' => NULL,
             'special_deals' => NULL,
             'status' => 1,
+            'puntos' => $this->faker->numberBetween($min = 1, $max = 100)
         ];
     }
 }

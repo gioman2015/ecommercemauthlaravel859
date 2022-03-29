@@ -22,6 +22,9 @@ class CreateOrderItemsTable extends Migration
             $table->string('size')->nullable();
             $table->string('qty');
             $table->float('price',8,2);
+            $table->string('order_date');
+            $table->string('order_month');
+            $table->string('order_year');
             $table->timestamps();
         });
     }

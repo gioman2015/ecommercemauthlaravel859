@@ -173,6 +173,10 @@
           </a>
           <ul class="treeview-menu">
             <li class="{{ ($route == 'all-reports')? 'active':'' }}"><a href="{{ route('all-reports') }}"><i class="ti-more"></i>Reportes</a></li>
+            <li class="{{ ($route == 'all-stock')? 'active':'' }}"><a href="{{ route('all-stock') }}"><i class="ti-more"></i>Inventario</a></li>
+            <li class="{{ ($route == 'ventas-stock')? 'active':'' }}"><a href="{{ route('ventas-stock') }}"><i class="ti-more"></i>Ventas</a></li>
+            <li class="{{ ($route == 'user-order')? 'active':'' }}"><a href="{{ route('user-order') }}"><i class="ti-more"></i>Ordenes por Cliente</a></li>
+            <li class="{{ ($route == 'cant-order')? 'active':'' }}"><a href="{{ route('cant-order') }}"><i class="ti-more"></i>Cantidad de Ordenes</a></li>
           </ul>
         </li>
 

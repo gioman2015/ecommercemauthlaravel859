@@ -56,7 +56,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
             <!-- ============================================================= LOGO ============================================================= -->
-            <div class="logo"> <a href="{{url('/')}}"> <img src="{{asset('frontend/assets/images/gamelot.png')}}" alt="logo"> </a> </div>
+            <div class="logo"> <a href="{{url('/')}}"><img src="{{asset('frontend/assets/images/MADERA.png')}}" alt="logo" style="margin-left: 150%; width: 200px"></a></div>
             <!-- /.logo --> 
             <!-- ============================================================= LOGO : END ============================================================= --> </div>
           <!-- /.logo-holder -->
@@ -189,6 +189,9 @@
 
                   {{-- <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li> --}}
                 </ul>
+
+                
+                
                 <!-- /.navbar-nav -->
                 <div class="clearfix"></div>
               </div>

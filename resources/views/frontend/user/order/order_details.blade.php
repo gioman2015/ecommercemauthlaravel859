@@ -248,7 +248,7 @@
         
               </div> <!-- // END ORDER ITEM ROW -->
         
-        @if($order->status !== "delivered")
+        {{-- @if($order->status !== "delivered")
 
         @else
 
@@ -269,7 +269,7 @@
             <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>
           @endif 
         @endif
-        <br><br>
+        <br><br> --}}
         
 
 		</div> <!-- // end row -->

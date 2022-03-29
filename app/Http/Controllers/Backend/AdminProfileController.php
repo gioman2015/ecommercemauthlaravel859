@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class AdminProfileController extends Controller
 {
@@ -83,4 +84,16 @@ class AdminProfileController extends Controller
 		$users = User::latest()->get();
 		return view('backend.user.all_user',compact('users'));
 	}
+
+    public function RestarPuntos(Request $request){
+        $users = User::findorfail($request->user_id)->first();
+        $cont = $request->puntos;
+        User::where('id', $request->user_id)
+		 		->update(['puntos' => DB::raw('puntos-'.$cont)]);
+        $notification = array(
+            'message' => 'Puntos Cambiados con exito',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }

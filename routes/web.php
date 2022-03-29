@@ -188,11 +188,20 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
         Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month'); 
         Route::post('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
+        Route::get('/stock', [ReportController::class, 'StockView'])->name('all-stock');
+        Route::post('/search-order/by/date', [ReportController::class, 'ReportByDateVentas'])->name('search-by-date-order');
+        Route::post('/search-order/by/month', [ReportController::class, 'ReportByMonthVentas'])->name('search-by-month-order'); 
+        Route::post('/search-order/by/year', [ReportController::class, 'ReportByYearVentas'])->name('search-by-year-order');
+        Route::get('/ventas', [ReportController::class, 'StockVentas'])->name('ventas-stock');
+        Route::get('/user-order', [ReportController::class, 'UserOrder'])->name('user-order');
+        Route::get('/cant-order', [ReportController::class, 'CantOrder'])->name('cant-order');
+        Route::post('/invoice/download/', [ReportController::class, 'AdminInvoiceDownloadOrders'])->name('invoice.download.orders');
     });
 
     // Admin Get All User Routes 
     Route::prefix('alluser')->group(function(){
         Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+        Route::post('/puntos', [AdminProfileController::class, 'RestarPuntos'])->name('puntos-users');
     });
 
     Route::prefix('message')->group(function(){

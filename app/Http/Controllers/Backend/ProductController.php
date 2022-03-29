@@ -42,6 +42,7 @@ class ProductController extends Controller
             'product_slug_esp' => strtolower(str_replace(' ','-',$request->product_name_esp)),
             'product_code' => $request->product_code,
             'product_qty' => $request->product_qty,
+            'product_qty_start' => $request->product_qty,
             'product_weight' => $request->product_weight,
             'product_tags_en' => $request->product_tags_en,
             'product_tags_esp' => $request->product_tags_esp,
@@ -57,6 +58,7 @@ class ProductController extends Controller
             'long_descp_en' => $request->long_descp_en,
             'long_descp_esp' => $request->long_descp_esp,
             'hot_deals' => $request->hot_deals,
+            'puntos' =>$request->puntos,
 
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,
@@ -80,7 +82,7 @@ class ProductController extends Controller
             MultiImg::insert([
                 'product_id' => $product_id,
                 'photo_name' => $last_img,
-                'photo_name' => '1',
+                'image_order' => '1',
                 'created_at' => Carbon::now()
             ]);
         }
@@ -136,6 +138,7 @@ class ProductController extends Controller
             'long_descp_en' => $request->long_descp_en,
             'long_descp_esp' => $request->long_descp_esp,
             'hot_deals' => $request->hot_deals,
+            'puntos' =>$request->puntos,
 
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,

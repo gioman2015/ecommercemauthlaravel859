@@ -32,7 +32,7 @@
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('search-by-date') }}">
+ <form method="post" action="{{ route('search-by-date-order') }}">
 	 	@csrf
 					   
 
@@ -74,7 +74,7 @@
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('search-by-month') }}">
+ <form method="post" action="{{ route('search-by-month-order') }}">
 	 	@csrf
 					   
 
@@ -156,14 +156,14 @@
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('search-by-year') }}" >
+ <form method="post" action="{{ route('search-by-year-order') }}" >
 	 	@csrf
 					   
 <div class="form-group">
 		<h5>Select Year  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	
-		<select name="year" id="year" class="form-control">
+		<select name="year" class="form-control">
 			<option label="Choose One"></option>
 			<option value="2020">2020</option>
 			<option value="2021">2021</option>
@@ -181,19 +181,10 @@
 	</div>   
 
 			 <div class="text-xs-right">
-		<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">	
-					 
-					</div>
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">					 
+						</div>
 					</form>
-					<td width="25%">	
-						<form action="{{ route('invoice.download.orders') }}" method="post">
-							@csrf
-							<input type="text" id="txtyear" name="txtyear">
-							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="PDF">
-						</form>	   
-						
-							
-					</td>
+ 
 					  
 					</div>
 				</div>
@@ -218,13 +209,8 @@
 		<!-- /.content -->
 	  
 	  </div>
+  
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-	$(document).on('change', '#year', function(event) {
-     $('#txtyear').val($("#year option:selected").text());
-});
-</script>
 
 
 @endsection

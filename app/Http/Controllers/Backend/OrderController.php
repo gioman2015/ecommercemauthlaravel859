@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\User;
 use Auth;
 use Carbon\Carbon;
 use PDF;
@@ -159,12 +160,19 @@ class OrderController extends Controller
 
 
 	 public function ShippedToDelivered($order_id){
+	
+	 $order = Order::findorfail($order_id)->first();
 
-	 /* $product = OrderItem::where('order_id',$order_id)->get();
+	 $product = OrderItem::where('order_id',$order_id)->get();
 	 foreach ($product as $item) {
-	 	Product::where('id',$item->product_id)
-	 			->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]);
-	 }  */
+		 $puntos = Product::where('id',$item->product_id)->first();
+		 $cont = $puntos->puntos * $item->qty;
+		 
+		 User::where('id', $order->user_id)
+		 		->update(['puntos' => DB::raw('puntos+'.$cont)]);
+	 	/* Product::where('id',$item->product_id)
+	 			->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]); */
+	 }
 
       Order::findOrFail($order_id)->update(['status' => 'delivered','delivered_date' => Carbon::now()]);
 
@@ -205,4 +213,16 @@ class OrderController extends Controller
         return redirect()->back()->with($notification);
     }
 
+	public function AdminInvoiceDownloadOrders(Request $request){
+		$var = 'test';
+		dd($request);
+		/* dd($orders); */
+
+		/* $pdf = PDF::loadView('backend.orders.order_invoice',compact('order','orderItem'))->setPaper('a4')->setOptions([
+				'tempDir' => public_path(),
+				'chroot' => public_path(),
+		]);
+		return $pdf->download('invoice.pdf'); */
+
+	} // end method
 }

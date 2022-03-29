@@ -159,6 +159,7 @@
 
 </head>
 <body class="cnt-home" {{-- style="background-image: url({{asset('frontend/assets/images/body.jpg')}})" --}}>
+
 <!-- ============================================== HEADER ============================================== -->
 
 @include('frontend.body.header')

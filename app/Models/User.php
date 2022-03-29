@@ -11,7 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Cache;
 
-class User extends Authenticatable /* implements MustVerifyEmail */
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -31,6 +31,7 @@ class User extends Authenticatable /* implements MustVerifyEmail */
         'password',
         'type_user',
         'last_seen',
+        'puntos',
     ];
 
     /**
@@ -67,4 +68,9 @@ class User extends Authenticatable /* implements MustVerifyEmail */
     public function UserOnline(){
         return Cache::has('user-is-online' . $this->id);
     }
+
+    public function order(){
+    	return $this->belongsTo(Order::class,'id','user_id');
+    }
+    
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('product_slug_esp');
             $table->string('product_code');
             $table->string('product_qty');
+            $table->string('product_qty_start');
             $table->string('product_weight')->default(1);
             $table->string('product_tags_en');
             $table->string('product_tags_esp');
@@ -45,6 +46,7 @@ return new class extends Migration
             $table->integer('special_offer')->nullable();
             $table->integer('special_deals')->nullable();
             $table->integer('status')->default(0);
+            $table->integer('puntos')->default(0);
             $table->timestamps();
         });
     }

@@ -7,14 +7,14 @@
   
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
-		 
+		
 
 		<!-- Main content -->
 		<section class="content">
+			
 		  <div class="row">
 			   
-		 
-
+			
 			<div class="col-12">
 
 			 <div class="box">
@@ -24,6 +24,9 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="table-responsive">
+						
+						{{-- <a target="_blank" href=" {{ route('invoice.download.orders',$orders) }} " class="btn btn-danger" title="Invoice Download"> --}}
+						
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -43,7 +46,7 @@
 		<td> {{ $item->invoice_no }}  </td>
 		<td> ${{ $item->amount }}  </td>
 
-		<td> {{ $item->payment_method }}  </td>
+		<td> {{ $item->payment_type }}  </td>
 		
 		<td> <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  </td>
 
@@ -57,8 +60,9 @@
 	 </tr>
 	  @endforeach
 						</tbody>
-						 
+						
 					  </table>
+					  
 					</div>
 				</div>
 				<!-- /.box-body -->

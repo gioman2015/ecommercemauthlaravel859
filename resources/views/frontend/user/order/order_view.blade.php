@@ -56,7 +56,7 @@
 	 
 	 
 					  <td class="col-md-3">
-					   <label for=""> {{ $order->payment_method }}</label>
+					   <label for=""> {{ $order->payment_type }}</label>
 					 </td>
 	 
 					 <td class="col-md-2">
