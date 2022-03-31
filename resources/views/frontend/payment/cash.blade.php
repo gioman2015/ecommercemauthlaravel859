@@ -32,12 +32,177 @@ Cash On Delivery
 	<div class="container">
 		<div class="checkout-box ">
 			<div class="row">
+				<div class="row" >
+					<div class="col-md-12" style="border-radius: 5px;">
+						<div class="checkout-progress-sidebar ">
+							<div class="panel-group">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="unicase-checkout-title">Su Valor de Compra </h4>
+									</div>
+									<div class="">
+										<ul class="nav nav-checkout-progress list-unstyled">
+											<input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+											@php
+												$envios = App\Models\PreciosEnvios::latest()->get();
+											@endphp
+										@if ($data['type']==0)
+											
+											@if ($data['weigth'] <= 3 )
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',2)->first();
+												@endphp
+												<input type="hidden" value="{{$envios->price}}">
+											@elseif ($data['weigth'] <= 5)
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',4)->first();
+												@endphp
+												<input type="hidden" value="{{$envios->price}}">
+											@else
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',6)->first();
+												@endphp
+												<input type="hidden" value="{{$envios->price}}">
+											@endif
+										@else
+											
+											@if ($data['weigth'] <= 3 )
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',1)->first();
+												@endphp
+												<input type="hidden" value="{{$envios->price}}">
+											@elseif ($data['weigth'] <= 5)
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',3)->first();
+												@endphp
+												<input type="hidden" value="{{$envios->price}}">
+											@else
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',5)->first();
+												@endphp
+												<input type="hidden" value="{{$envios->price}}">
+											@endif
+										@endif
+						<hr>
+								 <li>
+									 @if(Session::has('coupon'))
+									 <div class="row">
+										<div class="col-md-3"><strong>SubTotal: </strong> ${{ $cartTotal }} <hr></div>
+										<div class="col-md-3">{{ session()->get('coupon')['coupon_name'] }}
+											( {{ session()->get('coupon')['coupon_discount'] }} % )
+											 
+											 	<strong>Descuento : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
+											 
+										</div>
+										<div class="col-md-3"><strong>Valor de Envio: </strong> ${{ $envios->price }} <hr></div>
+										<div class="col-md-3">
+										   @php
+										   $cupon = session()->get('coupon')['total_amount'];
+										   $totalenvio = $envios->price + $cupon;
+										   @endphp
+										   <strong><strong>Total : </strong>  {{$totalenvio}}
+										</div>
+									</div>
+						
+									 @else
+									 <div class="row">
+										 <div class="col-md-4"><strong>SubTotal: </strong> ${{ $cartTotal }} <hr></div>
+										 <div class="col-md-4"><strong>Valor de Envio: </strong> ${{ $envios->price }} <hr></div>
+										 <div class="col-md-4">
+											@php
+											$totalenvio = $envios->price + $cartTotal
+											@endphp
+											<strong>Grand Total : </strong> ${{$totalenvio}}<hr>
+										 </div>
+									 </div>
+									 @endif 
+						
+								 </li>
+										</ul>
+												
+									</div>
+									
+								</div>
+							</div>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="col-md-12" >
+							<div class="col-md-12">
+								<!-- checkout-progress-sidebar -->
+									<div class="checkout-progress-sidebar ">
+										<div class="panel-group">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="unicase-checkout-title"></h4><h4>Seleccione medio de pago</h4>
+												</div>
+									
+									<form action="{{ route('cash.order') }}" method="post" id="payment-form">
+																@csrf
+											<div class="form-row">
+												<div class="row">
+													{{-- <div class="panel-heading"><h4>Seleccione medio de pago</h4></div>
+													<div class="panel-heading"></div> --}}
+													<div class="col-md-5" style="border: #292929 solid 3px; border-radius: 5px;">
+														{{-- <p><b>Deposito o transferencia desde nequi o bancolombia a nuestra cuenta de ahorros bancolombia:</b></p> --}}
+														<img src="{{asset('frontend/assets/images/bancolombia.png')}}" style="width: 100%"><br>
+														<img src="{{asset('frontend/assets/images/nequi.png')}}" style="width: 100%"><br>
+														<center><input type="radio" name="payment_type" value="bancolombia"></center>
+													</div>
+													<div class="col-md-1"></div>
+													<div class="col-md-6" style="border: #292929 solid 3px; border-radius: 5px;">
+														{{-- <p><b>Deposito o transferencia desde daviplata o davivienda a nuestra cuenta de ahorros davivienda:</b></p> --}}
+														<img src="{{asset('frontend/assets/images/davivienda.png')}}" style="width: 100%"><br>
+														<img src="{{asset('frontend/assets/images/daviplata.png')}}" style="width: 100%"><br>
+														<center><input type="radio" name="payment_type" value="davivienda"></center>
+													</div>
+													</div>
+												</div>
+											{{-- <img src="{{ asset('frontend/assets/images/payments/cash.png') }}"> --}}
+									
+												<label for="card-element">
+									
+										<input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
+										<input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+										<input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
+										<input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
+										<input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+										<input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
+										<input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+										<input type="hidden" name="cedula" value="{{ $data['cedula'] }}"> 
+										<input type="hidden" name="address" value="{{ $data['address'] }}"> 
+										<input type="hidden" name="address2" value="{{ $data['address2'] }}"> 
+										<input type="hidden" name="barrio" value="{{ $data['barrio'] }}"> 
+										<input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+										<input type="hidden" name="payment_method" value="{{ $data['payment_method'] }}"> 
+									
+												</label>
+									
+									
+									
+									
+											</div>
+											<br>
+											<button class="btn btn-primary" style="background-color: #292929">Enviar Pedido</button>
+											</form>
+									
+									
+									
+											</div>
+										</div>
+									</div> 
+									<!-- checkout-progress-sidebar -->
+						</div>
+						{{-- <div class="col-md-6" style="background-color: burlywood">
+							test
+						</div> --}}
+					</div>
+				</div>
 
 
 
 
-
-				<div class="col-md-6">
+				{{-- <div class="col-md-6">
 					<!-- checkout-progress-sidebar -->
 <div class="checkout-progress-sidebar ">
 	<div class="panel-group">
@@ -93,39 +258,33 @@ Cash On Delivery
 		 	@if(Session::has('coupon'))
 
 <strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
-
 <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
  <hr>
-
  <strong>Coupon Discount : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
  <hr>
-
   <strong>Grand Total : </strong> ${{ session()->get('coupon')['total_amount'] }} 
  <hr>
 
-
 		 	@else
-
 <strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
 <strong>Valor de Envio: </strong> ${{ $envios->price }} <hr>
 @php
 	$totalenvio = $envios->price + $cartTotal
 @endphp
 <strong>Grand Total : </strong> ${{$totalenvio}}<hr>
-
-
 		 	@endif 
 
 		 </li>
 				</ul>
 						
 			</div>
+			
 		</div>
 	</div>
 </div> 
 <!-- checkout-progress-sidebar -->
- </div> <!--  // end col md 6 -->
+ </div> <!--  // end col md 6 --> --}}
 
 
 
@@ -133,7 +292,7 @@ Cash On Delivery
 
 
 
-	<div class="col-md-5">
+	{{-- <div class="col-md-5">
 					<!-- checkout-progress-sidebar -->
 <div class="checkout-progress-sidebar ">
 	<div class="panel-group">
@@ -161,7 +320,7 @@ Cash On Delivery
 			</div>
           {{-- <img src="{{ asset('frontend/assets/images/payments/cash.png') }}"> --}}
 
-            <label for="card-element">
+            {{-- <label for="card-element">
 
       <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
       <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
@@ -193,7 +352,7 @@ Cash On Delivery
 	</div>
 </div> 
 <!-- checkout-progress-sidebar -->
- </div><!--  // end col md 6 -->
+ </div><!--  // end col md 6 --> --}}
 
 
 

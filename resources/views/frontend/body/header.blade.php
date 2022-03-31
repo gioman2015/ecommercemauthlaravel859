@@ -6,9 +6,9 @@
         <div class="header-top-inner">
           <div class="cnt-account">
             <ul class="list-unstyled">
-              <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Lista de Deseados</a></li>
-              <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>Carrito</a></li>
-              <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
+              <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i></a></li>
+              <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i></a></li>
+              <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i></a></li>
               <li>
                 @auth
                   <a href="{{route('dashboard')}}"><i class="icon fa fa-user"></i>
@@ -19,7 +19,7 @@
                     {{$username}} 
                   </a>
                 @else
-                  <a href="{{route('login')}}"><i class="icon fa fa-lock"></i>Logear/Registrarse</a>
+                  <a href="{{route('login')}}"><i class="icon fa fa-user"></i></a>
                 @endauth
               </li>
             </ul>
@@ -54,14 +54,14 @@
     <div class="main-header" style="background-color: #141414">
       <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
+          <div class="col-xs-12 col-sm-12 col-md-8 logo-holder"> 
             <!-- ============================================================= LOGO ============================================================= -->
-            <div class="logo"> <a href="{{url('/')}}"><img src="{{asset('frontend/assets/images/MADERA.png')}}" alt="logo" style="margin-left: 150%; width: 200px"></a></div>
+            <div class="logo"> <a href="{{url('/')}}"><img src="{{asset('frontend/assets/images/MADERA.png')}}" alt="logo" style="margin-left: 70%; width: 200px"></a></div>
             <!-- /.logo --> 
             <!-- ============================================================= LOGO : END ============================================================= --> </div>
           <!-- /.logo-holder -->
           
-          <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder"> 
+          <div class="col-xs-12 col-sm-12 col-md-2 top-search-holder"> 
             <!-- /.contact-row --> 
             <!-- ============================================================= SEARCH AREA ============================================================= -->
             {{-- <div class="search-area">

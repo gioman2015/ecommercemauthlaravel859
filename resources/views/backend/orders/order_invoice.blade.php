@@ -44,10 +44,10 @@
 </head>
 <body>
 
-  <table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
+  {{-- <table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
     <tr>
         <td valign="top">
-          <!-- {{-- <img src="" alt="" width="150"/> --}} -->
+          
           <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
         </td>
         <td align="right">
@@ -61,7 +61,7 @@
         </td>
     </tr>
 
-  </table>
+  </table> --}}
 
 
   <table width="100%" style="background:white; padding:2px;""></table>

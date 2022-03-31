@@ -30,10 +30,10 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Date </th>
-								<th>Invoice </th>
-								<th>Amount </th>
-								<th>Payment </th>
+								<th>Fecha </th>
+								<th>Nro </th>
+								<th>Cantidad </th>
+								<th>Metodo de Pago </th>
 								<th>Status </th>
 								<th>Action</th>
 								 

@@ -196,6 +196,13 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/user-order', [ReportController::class, 'UserOrder'])->name('user-order');
         Route::get('/cant-order', [ReportController::class, 'CantOrder'])->name('cant-order');
         Route::post('/invoice/download/', [ReportController::class, 'AdminInvoiceDownloadOrders'])->name('invoice.download.orders');
+        Route::post('/invoice-months/download/', [ReportController::class, 'AdminInvoiceDownloadOrdersMonths'])->name('invoice.download.orders.months');
+        Route::post('/invoice-order/download/', [ReportController::class, 'AdminInvoiceDownloadOrdersDate'])->name('invoice.download.orders.date');
+        Route::get('/stock/download/', [ReportController::class, 'StockDownload'])->name('download.stock');
+        Route::post('/ventas/download/', [ReportController::class, 'AdminInvoiceDownloadVentas'])->name('download.ventas');
+        Route::post('/ventas-months/download/', [ReportController::class, 'AdminInvoiceDownloadVentasMonths'])->name('download.ventas.months');
+        Route::post('/ventas-order/download/', [ReportController::class, 'AdminInvoiceDownloadVentasDate'])->name('download.ventas.date');
+        Route::get('/user/download/', [ReportController::class, 'AdminDownloadUser'])->name('download.user');
     });
 
     // Admin Get All User Routes 
