@@ -139,6 +139,7 @@
             <li class="{{ ($route == 'precios-envios')? 'active':'' }}"><a href="{{route('precios-envios')}}"><i class="ti-more"></i>Precios Envios</a></li>
             <li class="{{ ($route == 'datos.davivienda')? 'active':'' }}"><a href="{{route('datos.davivienda')}}"><i class="ti-more"></i>Datos Davivienda</a></li>
             <li class="{{ ($route == 'datos.bancolombia')? 'active':'' }}"><a href="{{route('datos.bancolombia')}}"><i class="ti-more"></i>Datos Bancolombia</a></li>
+            <li class="{{ ($route == 'header.frontend')? 'active':'' }}"><a href="{{route('header.frontend')}}"><i class="ti-more"></i>Configuracio Header Frontend</a></li>
           </ul>
         </li>
 

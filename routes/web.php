@@ -223,6 +223,8 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::post('/davivienda/update', [MessageController::class, 'DaviviendaEdit'])->name('davivienda.update');
         Route::get('/bancolombia', [MessageController::class, 'DatosBancolombia'])->name('datos.bancolombia');
         Route::post('/bancolombia/update', [MessageController::class, 'BancolombiaEdit'])->name('bancolombia.update');
+        Route::get('/header', [MessageController::class, 'HeaderFrontend'])->name('header.frontend');
+        Route::post('/header/update', [MessageController::class, 'HeaderEdit'])->name('header.update');
     });
 });
 

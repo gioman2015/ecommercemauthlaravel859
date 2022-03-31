@@ -4,6 +4,7 @@ namespace Database\Seeders;
 use App\Models\Messages;
 use App\Models\PreciosEnvios;
 use App\Models\DatosBanco;
+use App\Models\HeaderConfig;
 
 use Illuminate\Database\Seeder;
 
@@ -92,6 +93,12 @@ class MessagesSeeder extends Seeder
             'numero' => 'Nro Cuenta Dav',
             'cc' => 'Documento Titular Dav',
             'titular' => 'Nombre Titular Dav',
+        ]);
+
+        $headerConfig = HeaderConfig::create([
+            'id' => 1,
+            'background_color' => '#141414',
+            'background_imagen' => '',
         ]);
     }
 }

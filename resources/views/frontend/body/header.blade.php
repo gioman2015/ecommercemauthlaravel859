@@ -51,7 +51,10 @@
     </div>
     <!-- /.header-top --> 
     <!-- ============================================== TOP MENU : END ============================================== -->
-    <div class="main-header" style="background-color: #141414">
+    @php
+        $header = App\Models\HeaderConfig::latest()->first();
+    @endphp
+    <div class="main-header" style="background-color: {{$header->background_color}}; background-image: url('{{asset($header->background_imagen)}}') ">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-8 logo-holder"> 

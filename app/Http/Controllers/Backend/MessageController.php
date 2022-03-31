@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Messages;
 use App\Models\PreciosEnvios;
 use App\Models\DatosBanco;
+use App\Models\HeaderConfig;
+use Image;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -116,5 +118,69 @@ class MessageController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    }
+    
+    public function HeaderFrontend(){
+        $header = HeaderConfig::latest()->first();
+        /* dd($header); */
+        return view('backend.messages.headerfrontend', compact('header'));
+    }
+
+    public function HeaderEdit(Request $request){
+        
+        if ($request->background_color) {
+            $background_color = $request->background_color;
+        } else {
+            $background_color = '#141414';
+        }
+
+        if ($request->background_imagen) {
+            $background_imagen = $request->background_imagen;
+        } else {
+            $background_imagen = null;
+        }
+        $old_img = $request->old_image;
+        
+        if($background_imagen){
+            $image = $request->file('background_imagen');
+
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $imgresize = Image::make($image)->resize(1200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('upload/header/'.$name_gen);
+            $last_img = 'upload/header/'.$name_gen;
+
+            try {
+                unlink($old_img);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+
+            HeaderConfig::findOrFail(1)->update([
+                'background_color' => $background_color,
+                'background_imagen' => $last_img,
+            ]);
+            $notification = array(
+                'message' => 'Configuracion Header con éxito',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }else{
+            
+            try {
+                unlink($old_img);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+            HeaderConfig::findOrFail(1)->update([
+                'background_color' => $background_color,
+                'background_imagen' => '',
+            ]);
+            $notification = array(
+                'message' => 'Configuracion Header con éxito',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification); 
+        }
     }
 }
