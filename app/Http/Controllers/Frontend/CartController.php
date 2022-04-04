@@ -66,7 +66,7 @@ class CartController extends Controller
     	return response()->json(array(
     		'carts' => $carts,
     		'cartQty' => $cartQty,
-    		'cartTotal' => round($cartTotal),
+    		'cartTotal' => $cartTotal,
     	));
     } // end method
 
@@ -101,11 +101,13 @@ class CartController extends Controller
 	public function CouponApply(Request $request){
 		$coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
         if ($coupon) {
+			/* $amount = strval(Cart::total() * $coupon->coupon_discount/100); */
+			/* dd(round(Cart::total() - Cart::total() * $coupon->coupon_discount/100,3)); */
             Session::put('coupon',[
                 'coupon_name' => $coupon->coupon_name,
                 'coupon_discount' => $coupon->coupon_discount,
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
-                'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100)
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100,3),
+                'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100,3)
 			]);
             return response()->json(array(
 				'validity' => true,
@@ -118,12 +120,13 @@ class CartController extends Controller
 
 	public function CouponCalculation(){
         if (Session::has('coupon')) {
+			/* dd(session()->get('coupon')); */
             return response()->json(array(
                 'subtotal' => Cart::total(),
                 'coupon_name' => session()->get('coupon')['coupon_name'],
                 'coupon_discount' => session()->get('coupon')['coupon_discount'],
-                'discount_amount' => session()->get('coupon')['discount_amount'],
-                'total_amount' => session()->get('coupon')['total_amount'],
+                'discount_amount' => round(session()->get('coupon')['discount_amount']),
+                'total_amount' => round(session()->get('coupon')['total_amount']),
             ));
         }else{
             return response()->json(array(

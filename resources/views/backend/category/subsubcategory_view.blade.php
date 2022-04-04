@@ -109,6 +109,13 @@
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlPassword3">Orden de Sub->SubCategoría</label>
+                        <input type="number" name="subsubcategory_order" class="form-control" value="{{$subsubcategory->subsubcategory_order}}">
+                        @error('subsubcategory_order')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                      </div>
                       <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add new">
                   </form>
                    </div>

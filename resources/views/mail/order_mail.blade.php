@@ -58,19 +58,14 @@
                                 <tr>
                                     <td class="content-cell"
                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
-                                        @php
-                                            $messages = App\Models\Messages::where('type', 'Mail')->first();
-                                            echo $messages->message
-                                        @endphp
-                                        
-                                        {{-- <h1
+                                        <h1
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
                                             ¡Gracias por tu compra!</h1>
                                         <p
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
                                             Tu orden se ha enviado a nuetro equipo de trabajo, recuerda confirmar tu
                                             pago para que pueda ser procesada, encontraras los pasos para confirmar tu
-                                            pago al final de este detalle.</p> --}}
+                                            pago al final de este detalle.</p>
 
                                         <h1
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
@@ -88,21 +83,20 @@
                                                         @php
                                                         $div = $order['order']->division->division_name;
                                                         $dis = $order['order']->district->district_name;
-                                                        $dir = $order['order']->district->address;
-                                                        /* $state = $order->state->state_name; */
+                                                        /* $state = $order['order']->state->state_name; */
                                                         @endphp
                                                         <br>
-                                                        <strong>Direccion:</strong> {{$div}},{{$dis}},{{$dir}}{{-- .{{$state}}
-                                                        <br> --}}
+                                                        <strong>Direccion:</strong> {{$div}},{{$dis}}{{-- .{{$state}}
+                                                        --}} <br>
                                                     </p>
                                                 </td>
                                                 <td>
                                                     <p class="font">
                                                     <h3><span style="color: rgb(0, 0, 0);">Orden:</span>
-                                                        #{{$order['invoice_no']}}</h3>
-                                                        fecha del pedido: {{$order['order']->order_date}} <br>
-                                                        {{-- Delivery Date: {{$order['delivered_date']}} <br> --}}
-                                                        Metodo de Envio : {{$order['order']->payment_type}} </span>
+                                                        #{{$order['order']->invoice_no}}</h3>
+                                                    fecha del pedido: {{$order['order']->order_date}} <br>
+                                                    {{-- Delivery Date: {{$order->delivered_date}} <br> --}}
+                                                    Payment Type : {{$order['order']->payment_type}} </span>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -144,42 +138,43 @@
                                                 @endforeach
 
                                             </tbody>
-                                        </table>
-                                        {{-- {{$order['order']->payment_type}} --}}
-                                        @if ($order['order']->payment_type == 'bancolombia')
-                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
-                                                Deposito o transferencia
-                                            </h1>
-                                            @php
-                                                $bancolombia = App\Models\DatosBanco::where('banco', 'Bancolombia')->first();
-                                            @endphp
-                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
-                                                Bancolombia
-                                            </h1>
-                                            <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
-                                                Tipo: {{ $bancolombia->tipo }}<br>
-                                                Numero: {{ $bancolombia->numero }}<br>
-                                                C.c: {{ $bancolombia->cc }}<br>
-                                                Titular: {{ $bancolombia->titular }}<br>
-                                            </p>
-                                        @else
-                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
-                                                Deposito o transferencia
-                                            </h1>
-                                            @php
-                                                $davivienda = App\Models\DatosBanco::where('banco', 'Davivienda')->first();
-                                            @endphp
-                                            <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
-                                                Davivienda
-                                            </h1>
-                                            <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
-                                                Tipo: {{ $davivienda->tipo }}<br>
-                                                Numero: {{ $davivienda->numero }}<br>
-                                                C.c: {{ $davivienda->cc }}<br>
-                                                Titular: {{ $davivienda->titular }}<br>
-                                            </p>
-                                        @endif
 
+                                            
+
+                                        </table>
+                                        <br>
+                                            <table width="100%" style=" padding:0 10px 0 10px;">
+                                                <tr>
+                                                    <td align="right" >
+                                                        <span style="color: rgb(14, 14, 14);"><b>Subtotal:</b></span> {{$order['order']->amount}}
+                                                        <br>
+                                                        <span style="color: rgb(14, 14, 14);"><b>Total:</b></span> {{$order['order']->amount}}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            {{-- {{$order['order']->payment_type}} --}} @if ($order['order']->payment_type == 'bancolombia')
+                                        <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                            Deposito o transferencia
+                                        </h1>
+                                        @php $bancolombia = App\Models\DatosBanco::where('banco', 'Bancolombia')->first(); @endphp
+                                        <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                            Bancolombia
+                                        </h1>
+                                        <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
+                                            Tipo: {{ $bancolombia->tipo }}<br> Numero: {{ $bancolombia->numero }}<br> C.c: {{ $bancolombia->cc }}<br> Titular: {{ $bancolombia->titular }}<br>
+                                        </p>
+                                        @else
+                                        <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                            Deposito o transferencia
+                                        </h1>
+                                        @php $davivienda = App\Models\DatosBanco::where('banco', 'Davivienda')->first(); @endphp
+                                        <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
+                                            Davivienda
+                                        </h1>
+                                        <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 12px; line-height: 1.5em; margin-top: 0; text-align: justify;">
+                                            Tipo: {{ $davivienda->tipo }}<br> Numero: {{ $davivienda->numero }}<br> C.c: {{ $davivienda->cc }}<br> Titular: {{ $davivienda->titular }}<br>
+                                        </p>
+                                        @endif
                                         <h1
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 16px; font-weight: bold; margin-top: 0; text-align: left;">
                                             Importante!</h1>

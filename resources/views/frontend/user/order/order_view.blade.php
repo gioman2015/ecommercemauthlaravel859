@@ -67,29 +67,29 @@
 						@if($order->status == 'Pending')
 							<img src="{{asset('frontend/assets/images/estados/Stado1.jpg')}}" style="width: 100%">
 							<label for=""> 
-								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Pendiente </span>
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;"> Pago Pendiente </span>
 						   </label>
 						@elseif($order->status == 'confirm')
 							<img src="{{asset('frontend/assets/images/estados/Stado2.jpg')}}" style="width: 100%">
 							<label for=""> 
-								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Confirmado </span>
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Pago Confirmado </span>
 						   </label>
 						@elseif($order->status == 'processing')
-							<img src="{{asset('frontend/assets/images/estados/Stado3.jpg')}}" style="width: 100%">
+							<img src="{{asset('frontend/assets/images/estados/Stado4.jpg')}}" style="width: 100%">
 							<label for=""> 
-								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Procesando </span>
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Enpacada </span>
 						   </label>
-						@elseif($order->status == 'picked')
+						{{-- @elseif($order->status == 'picked')
 							<img src="{{asset('frontend/assets/images/estados/Stado4.jpg')}}" style="width: 100%">
 							<label for=""> 
 								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Recojido </span>
-						   </label>
+						   </label> --}}
 						@elseif($order->status == 'shipped')
 							<img src="{{asset('frontend/assets/images/estados/Stado5.jpg')}}" style="width: 100%">
 							<label for=""> 
-								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Enviado </span>
+								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Enviada</span>
 						   </label>
-						@elseif($order->status == 'delivered')
+						{{-- @elseif($order->status == 'delivered')
 							<img src="{{asset('frontend/assets/images/estados/Stado6.jpg')}}" style="width: 100%">
 							<label for=""> 
 								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Entregado </span>
@@ -98,7 +98,7 @@
 							<img src="{{asset('frontend/assets/images/estados/Stado7.jpg')}}" style="width: 100%">
 							<label for=""> 
 								<span class="badge badge-pill badge-warning" style="background: #418DB9;">Cancelado </span>
-						   </label>
+						   </label> --}}
 						@endif
 					   	{{-- <label for=""> 
 						 	<span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span>

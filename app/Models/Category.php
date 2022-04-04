@@ -15,6 +15,8 @@ class Category extends Model
         'category_slug_esp',
         'category_icon',
         'category_order',
-        'slider_categoria_img',
+        'slider_categoria_1',
+        'slider_categoria_2',
+        'slider_categoria_3',
     ];
 }

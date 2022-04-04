@@ -33,7 +33,14 @@
                           @foreach ($categories as $item)
                             <tr>
                                 <td><span><i class="{{$item->category_icon}}"></i></span> </td>
-                                <td><img src="{{asset($item->slider_categoria_img)}}" style="width: 70px"></td>
+                                <td><img src="{{asset($item->slider_categoria_1)}}" style="width: 70px"><br>
+                                    @if ($item->slider_categoria_2)
+                                    <img src="{{asset($item->slider_categoria_2)}}" style="width: 70px">  <br>
+                                    @endif
+                                    @if ($item->slider_categoria_3)
+                                    <img src="{{asset($item->slider_categoria_3)}}" style="width: 70px">
+                                    @endif
+                                </td>
                                 <td>{{$item->category_name_en}}</td>
                                 <td>{{$item->category_name_esp	}}</td>
                                 <td>{{$item->category_order	}}</td>
@@ -97,10 +104,30 @@
                       <div class="form-group">
                         <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
                         <div class="controls">
-                            <input type="file" name="category_slider" class="form-control" onChange="mainThamUrl(this)" required="">
+                            <input type="file" name="category_slider1" class="form-control" onChange="mainThamUrl(this)" required="">
                         </div>
                         <img src="" id="mainThmb">
-                        @error('category_slider')
+                        @error('category_slider1')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="file" name="category_slider2" class="form-control" onChange="mainThamUrl2(this)">
+                        </div>
+                        <img src="" id="mainThmb2">
+                        @error('category_slider2')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="file" name="category_slider3" class="form-control" onChange="mainThamUrl3(this)">
+                        </div>
+                        <img src="" id="mainThmb3">
+                        @error('category_slider3')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                       </div>
@@ -126,7 +153,29 @@
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e){
-				$('#mainThmb').attr('src',e.target.result).height(300).width(300);
+				$('#mainThmb').attr('src',e.target.result).width(300);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+<script type="text/javascript">
+	function mainThamUrl2(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb2').attr('src',e.target.result).width(300);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+<script type="text/javascript">
+	function mainThamUrl3(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb3').attr('src',e.target.result).width(300);
 			};
 			reader.readAsDataURL(input.files[0]);
 		}

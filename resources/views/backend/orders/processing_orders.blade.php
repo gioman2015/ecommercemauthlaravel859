@@ -43,13 +43,31 @@
 		<td> ${{ $item->amount }}  </td>
 
 		<td> {{ $item->payment_method }}  </td>
-		<td> <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  </td>
+		<td>
+			@if($item->status == 'Pending')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pago Pendiente</span> </th>
+
+                @elseif($item->status == 'confirm')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pago Confirmado</span> </th>
+
+                @elseif($item->status == 'processing')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Empacada</span> </th>
+
+                @elseif($item->status == 'picked')
+                {{-- <a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Orden Enviada</a> --}}
+
+                @elseif($item->status == 'shipped')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Enviada</span> </th>
+               {{-- <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a> --}}
+
+            @endif
+		</td>
 
 		<td width="25%">
  <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-eye"></i> </a>
 
- <a target="_blank" href="{{ route('invoice.download',$item->id) }}" class="btn btn-danger" title="Invoice Download">
- 	<i class="fa fa-download"></i></a>
+ {{-- <a target="_blank" href="{{ route('invoice.download',$item->id) }}" class="btn btn-danger" title="Invoice Download">
+ 	<i class="fa fa-download"></i></a> --}}
 		</td>
 
 	 </tr>

@@ -57,79 +57,54 @@
     <div class="main-header" style="background-color: {{$header->background_color}}; background-image: url('{{asset($header->background_imagen)}}') ">
       <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-8 logo-holder"> 
-            <!-- ============================================================= LOGO ============================================================= -->
-            <div class="logo"> <a href="{{url('/')}}"><img src="{{asset('frontend/assets/images/MADERA.png')}}" alt="logo" style="margin-left: 70%; width: 200px"></a></div>
-            <!-- /.logo --> 
-            <!-- ============================================================= LOGO : END ============================================================= --> </div>
-          <!-- /.logo-holder -->
-          
-          <div class="col-xs-12 col-sm-12 col-md-2 top-search-holder"> 
-            <!-- /.contact-row --> 
-            <!-- ============================================================= SEARCH AREA ============================================================= -->
-            {{-- <div class="search-area">
-              <form>
-                <div class="control-group">
-                  <ul class="categories-filter animate-dropdown">
-                    <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
-                      <ul class="dropdown-menu" role="menu" >
-                        <li class="menu-header">Computer</li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  <input class="search-field" placeholder="Search here..." />
-                  <a class="search-button" href="#" ></a> </div>
-              </form>
-            </div> --}}
-            <!-- /.search-area --> 
-            <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
-          <!-- /.top-search-holder -->
-          
-          <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row"> 
-            <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
-            
-            <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
-              <div class="items-cart-inner">
-                <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
-                <div class="basket-item-count">
-                  <span class="count" id="cartQty"> </span>
+          <div class="col-xs-12 col-sm-3 col-md-4"></div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <a href="{{url('/')}}"><img src="{{asset('frontend/assets/images/MADERA.png')}}" alt="logo" style="width: 100%"></a>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-12 animate-dropdown top-cart-row"> 
+              <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
+              
+              <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
+                <div class="items-cart-inner">
+                  <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
+                  <div class="basket-item-count">
+                    <span class="count" id="cartQty"> </span>
+                  </div>
+                  <div class="total-price-basket"> 
+                    <span class="lbl">cart -</span> 
+                    <span class="total-price"> 
+                      <span class="sign">$</span>
+                      <span class="value" id="cartSubTotal"></span> 
+                    </span> 
+                  </div>
                 </div>
-                <div class="total-price-basket"> 
-                  <span class="lbl">cart -</span> 
-                  <span class="total-price"> 
-                    <span class="sign">$</span>
-                    <span class="value" id="cartSubTotal"> </span> 
-                  </span> 
-                </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    {{-- Mini Cart Start with Ajax --}}
+                    <div id="miniCart"></div>
+                    {{-- End Mini Cart Start with Ajax --}}
+                    <div class="clearfix cart-total">
+                      <div class="pull-right"> 
+                        <span class="text">Sub Total :</span>
+                        <span class='price' id="cartSubTotal"> </span> 
+                      </div>
+                      <div class="clearfix"></div>
+                      <a href="{{ route('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20" style="background-color: #141414">Checkout</a> </div>
+                    <!-- /.cart-total--> 
+                    
+                  </li>
+                </ul>
+                <!-- /.dropdown-menu--> 
               </div>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  {{-- Mini Cart Start with Ajax --}}
-                  <div id="miniCart"></div>
-                  {{-- End Mini Cart Start with Ajax --}}
-                  <div class="clearfix cart-total">
-                    <div class="pull-right"> 
-                      <span class="text">Sub Total :</span>
-                      <span class='price' id="cartSubTotal"> </span> 
-                    </div>
-                    <div class="clearfix"></div>
-                    <a href="{{ route('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20" style="background-color: #141414">Checkout</a> </div>
-                  <!-- /.cart-total--> 
-                  
-                </li>
-              </ul>
-              <!-- /.dropdown-menu--> 
-            </div>
-            <!-- /.dropdown-cart --> 
-            
-            <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= --> </div>
-          <!-- /.top-cart-row --> 
+              <!-- /.dropdown-cart --> 
+              
+              <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= --> </div>
+            <!-- /.top-cart-row --> 
+          </div>
         </div>
+        
         <!-- /.row --> 
         
       </div>
@@ -164,18 +139,18 @@
                         <div class="yamm-content ">
                           <div class="row">
                             @php
-                                $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name_en','ASC')->get()
+                                $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_order','ASC')->get()
                             @endphp
                             @foreach ($subcategories as $subcategory)
                             <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
                               <a href="{{url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en)}}">
                               <h2 class="title">@if(session()->get('language') == 'spanish') {{$subcategory->subcategory_name_esp}} @else {{$subcategory->subcategory_name_en}} @endif</h2></a>
                               @php
-                                $subsubcategories = App\Models\SubSubCategory::where('subcategory_id',$subcategory->id)->orderBy('subsubcategory_name_en','ASC')->get()
+                                $subsubcategories = App\Models\SubSubCategory::where('subcategory_id',$subcategory->id)->orderBy('subsubcategory_order','ASC')->get()
                               @endphp
                               @foreach ($subsubcategories as $subsubcategory)
                               <ul class="links">
-                                <li><a href="{{url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en)}}">@if(session()->get('language') == 'spanish') {{$subsubcategory->subsubcategory_name_esp}} @else {{$subsubcategory->subsubcategory_name_en}} @endif</a></li>
+                                <li><a href="{{url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en)}}"><h2 class="title">@if(session()->get('language') == 'spanish') <i class="fa fa-circle"></i> {{$subsubcategory->subsubcategory_name_esp}} @else <i class="fa fa-circle"></i> {{$subsubcategory->subsubcategory_name_en}} @endif</h2></a></li>
                               </ul>
                               @endforeach {{-- end subsubcategory foreach --}} 
                             </div>

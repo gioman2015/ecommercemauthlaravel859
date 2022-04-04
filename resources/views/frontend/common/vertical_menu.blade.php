@@ -13,23 +13,23 @@
             <li class="yamm-content">
               <div class="row">
                 @php
-                    $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name_en','ASC')->get()
+                    $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_order','ASC')->get()
                 @endphp
                 @foreach ($subcategories as $subcategory)
                 <div class="col-sm-12 col-md-3">
                     <a href="{{url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en)}}">
                   <h2 class="title">@if(session()->get('language') == 'spanish') {{$subcategory->subcategory_name_esp}} @else {{$subcategory->subcategory_name_en}} @endif</h2></a>
                   @php
-                    $subsubcategories = App\Models\SubSubCategory::where('subcategory_id',$subcategory->id)->orderBy('subsubcategory_name_en','ASC')->get()
+                    $subsubcategories = App\Models\SubSubCategory::where('subcategory_id',$subcategory->id)->orderBy('subsubcategory_order','ASC')->get()
                   @endphp
                   @foreach ($subsubcategories as $subsubcategory)
                   <ul class="links list-unstyled">
                     <li>
                       <a href="{{url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en)}}">
                         @if(session()->get('language') == 'spanish') 
-                          {{$subsubcategory->subsubcategory_name_esp}} 
+                          <i class="fa fa-circle"></i>{{$subsubcategory->subsubcategory_name_esp}} 
                         @else 
-                          {{$subsubcategory->subsubcategory_name_en}} 
+                          <i class="fa fa-circle"></i>{{$subsubcategory->subsubcategory_name_en}} 
                         @endif
                         </a>
                       </li>

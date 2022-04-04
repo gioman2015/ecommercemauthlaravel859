@@ -24,6 +24,7 @@
 								<th>Categoría</th>
 								<th>Nombre SubCategoría</th>
 								<th>Nombre de SubCategoría ENG</th>
+								<th>Orden</th>
 								<th>Acción</th>
 							</tr>
 						</thead>
@@ -33,6 +34,7 @@
 								<td> {{ $item['category']['category_name_en'] }}  </td>
 								<td>{{ $item['subcategory']['subcategory_name_en'] }}</td>
 								<td>{{ $item->subsubcategory_name_en }}</td>
+								<td>{{ $item->subsubcategory_order }}</td>
 								<td width="30%">
 									<a href="{{ route('subsubcategory.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
 									<a href="{{ route('subsubcategory.delete',$item->id) }}" class="btn btn-danger" id="delete" title="Delete Data" id="delete"><i class="fa fa-trash"></i></a>
@@ -109,6 +111,13 @@
 							@enderror
 						</div>
 					</div>
+					<div class="form-group">
+                        <label for="exampleFormControlPassword3">Orden de Sub->SubCategoría</label>
+                        <input type="number" name="subsubcategory_order" class="form-control">
+                        @error('subsubcategory_order')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                      </div>
 			 <div class="text-xs-right">
 			<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Agregar Nuevo">
 						</div>

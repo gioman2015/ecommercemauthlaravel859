@@ -23,7 +23,9 @@
                     <form method="POST" action="{{route('category.update')}}" enctype="multipart/form-data">
                       @csrf
                       <input type="hidden" name="id" value="{{$category->id}}">
-                      <input type="hidden" name="old_image" value="{{$category->slider_categoria_img}}">
+                      <input type="hidden" name="old_image" value="{{$category->slider_categoria_1}}">
+                      <input type="hidden" name="old_image2" value="{{$category->slider_categoria_2}}">
+                      <input type="hidden" name="old_image3" value="{{$category->slider_categoria_3}}">
                       <div class="form-group">
                           <label for="exampleFormControlInput3">Categoría en Inglés</label>
                           <input type="text" name="category_name_en" class="form-control" value="{{$category->category_name_en}}">
@@ -52,14 +54,48 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
-                      <img src="{{asset($category->slider_categoria_img)}}" width="25%">
+                      @if ($category->slider_categoria_1)
+                        <img src="{{asset($category->slider_categoria_1)}}" width="25%">
+                      @else
+                          
+                      @endif
                       <div class="form-group">
                         <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
                         <div class="controls">
-                            <input type="file" name="category_slider" class="form-control" onChange="mainThamUrl(this)" required="">
+                            <input type="file" name="category_slider1" class="form-control" onChange="mainThamUrl(this)" required="">
                         </div>
                         <img src="" id="mainThmb">
-                        @error('category_slider')
+                        @error('category_slider1')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                      </div>
+                      @if ($category->slider_categoria_2)
+                        <img src="{{asset($category->slider_categoria_2)}}" width="25%">
+                      @else
+                          
+                      @endif
+                      <div class="form-group">
+                        <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="file" name="category_slider2" class="form-control" onChange="mainThamUrl2(this)">
+                        </div>
+                        <img src="" id="mainThmb2">
+                        @error('category_slider2')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                      </div>
+                      @if ($category->slider_categoria_3)
+                        <img src="{{asset($category->slider_categoria_3)}}" width="25%">
+                      @else
+                          
+                      @endif
+                      <div class="form-group">
+                        <h5>Categoría Deslizador<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="file" name="category_slider3" class="form-control" onChange="mainThamUrl3(this)">
+                        </div>
+                        <img src="" id="mainThmb3">
+                        @error('category_slider3')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                       </div>
@@ -84,7 +120,29 @@
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e){
-				$('#mainThmb').attr('src',e.target.result).height(300).width(300);
+				$('#mainThmb').attr('src',e.target.result).width(300);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+<script type="text/javascript">
+	function mainThamUrl2(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb2').attr('src',e.target.result).width(300);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
+<script type="text/javascript">
+	function mainThamUrl3(input){
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#mainThmb3').attr('src',e.target.result).width(300);
 			};
 			reader.readAsDataURL(input.files[0]);
 		}

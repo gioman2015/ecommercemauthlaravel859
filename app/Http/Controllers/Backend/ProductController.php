@@ -30,7 +30,11 @@ class ProductController extends Controller
             $constraint->aspectRatio();
         })->save('upload/products/thambnail/'.$name_gen);
         $last_img = 'upload/products/thambnail/'.$name_gen;
-
+        if ($request->discount_price) {
+            $discount = (int)str_replace('.','',$request->discount_price);
+        } else {
+            $discount = null;
+        }
         $product_id = Product::insertGetId([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
@@ -50,9 +54,9 @@ class ProductController extends Controller
             'product_size_esp' => $request->product_size_esp,
             'product_color_en' => $request->product_color_en,
             'product_color_esp' => $request->product_color_esp,
-            'selling_price' => $request->selling_price,
-            'discount_price' => $request->discount_price,
-            'supplier_price' => $request->supplier_price,
+            'selling_price' => (int)str_replace('.','', $request->selling_price),            
+            'discount_price' => $discount,
+            'supplier_price' => (int)str_replace('.','',$request->supplier_price),
             'short_descp_en' => $request->short_descp_en,
             'short_descp_esp' => $request->short_descp_esp,
             'long_descp_en' => $request->long_descp_en,
@@ -112,6 +116,11 @@ class ProductController extends Controller
 
     public function ProductDataUpdate(Request $request){
         $product_id = $request->id;
+        if ($request->discount_price) {
+            $discount = (int)str_replace('.','',$request->discount_price);
+        } else {
+            $discount = null;
+        }
         Product::findOrFail($product_id)->update([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
@@ -130,9 +139,9 @@ class ProductController extends Controller
             'product_size_esp' => $request->product_size_esp,
             'product_color_en' => $request->product_color_en,
             'product_color_esp' => $request->product_color_esp,
-            'selling_price' => $request->selling_price,
-            'discount_price' => $request->discount_price,
-            'supplier_price' => $request->supplier_price,
+            'selling_price' =>  (int)str_replace('.','', $request->selling_price),
+            'discount_price' =>  $discount,
+            'supplier_price' =>  (int)str_replace('.','',$request->supplier_price),
             'short_descp_en' => $request->short_descp_en,
             'short_descp_esp' => $request->short_descp_esp,
             'long_descp_en' => $request->long_descp_en,

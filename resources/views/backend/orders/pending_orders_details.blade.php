@@ -157,8 +157,25 @@
 
             <tr>
               <th> Estado : </th>
-               <th>   
-                <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }}</span> </th>
+               <th>
+                @if($order->status == 'Pending')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pago Pendiente</span> </th>
+
+                @elseif($order->status == 'confirm')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pago Confirmado</span> </th>
+
+                @elseif($order->status == 'processing')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Empacada</span> </th>
+
+                @elseif($order->status == 'picked')
+                {{-- <a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Orden Enviada</a> --}}
+
+                @elseif($order->status == 'shipped')
+                <span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Enviada</span> </th>
+               {{-- <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a> --}}
+
+                @endif
+                
             </tr>
 
 
@@ -175,10 +192,10 @@
                	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">Orden Recojida</a>
 
                	@elseif($order->status == 'picked')
-               	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Orden Enviada</a>
+               	{{-- <a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Orden Enviada</a> --}}
 
                	@elseif($order->status == 'shipped')
-                <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a>
+                {{-- <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a> --}}
                 
                 @elseif($order->status == 'cancel')
                 <span>{{$order->return_reason}}</span>

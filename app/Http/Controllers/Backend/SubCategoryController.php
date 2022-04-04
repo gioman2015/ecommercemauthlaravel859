@@ -33,6 +33,7 @@ class SubCategoryController extends Controller
             'subcategory_name_esp' => $request->subcategory_name_esp,
             'subcategory_slug_en' => strtolower(str_replace(' ','-',$request->subcategory_name_en)),
             'subcategory_slug_esp' => strtolower(str_replace(' ','-',$request->subcategory_name_esp)),
+            'subcategory_order' => $request->subcategory_order,
         ]);
 
         $notification = array(
@@ -52,13 +53,14 @@ class SubCategoryController extends Controller
 
     public function SubCategoryEdit(Request $request){
         $subcategory_id = $request->id;
-
+        /* dd($request); */
         SubCategory::findOrFail($subcategory_id)->update([
             'category_id' => $request->category_id,
             'subcategory_name_en' => $request->subcategory_name_en,
             'subcategory_name_esp' => $request->subcategory_name_esp,
             'subcategory_slug_en' => strtolower(str_replace(' ','-',$request->subcategory_name_en)),
             'subcategory_slug_esp' => strtolower(str_replace(' ','-',$request->subcategory_name_esp)),
+            'subcategory_order' => $request->subcategory_order,
         ]);
         $notification = array(
             'message' => 'SubCategoria actualizada con éxito',
@@ -113,6 +115,7 @@ class SubCategoryController extends Controller
         'subsubcategory_name_esp' => $request->subsubcategory_name_esp,
         'subsubcategory_slug_en' => strtolower(str_replace(' ', '-',$request->subsubcategory_name_en)),
         'subsubcategory_slug_esp' => strtolower(str_replace(' ', '-',$request->subsubcategory_name_esp)),
+        'subsubcategory_order' => $request->subsubcategory_order,
         ]);
         $notification = array(
             'message' => 'Sub-SubCategoria insertada con éxito',
@@ -140,6 +143,7 @@ class SubCategoryController extends Controller
             'subsubcategory_name_esp' => $request->subsubcategory_name_esp,
             'subsubcategory_slug_en' => strtolower(str_replace(' ', '-',$request->subsubcategory_name_en)),
             'subsubcategory_slug_esp' => strtolower(str_replace(' ', '-',$request->subsubcategory_name_esp)),
+            'subsubcategory_order' => $request->subsubcategory_order,
         ]);
         $notification = array(
             'message' => 'Sub-SubCategoria actualizada con éxito',

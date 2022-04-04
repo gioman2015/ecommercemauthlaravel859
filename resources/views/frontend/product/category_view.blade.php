@@ -201,7 +201,7 @@ Category Product
         <div id="hero">
           <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
             @foreach($sliders as $slider)
-            <div class="item" style="background-image: url({{asset($slider->slider_categoria_img)}});">
+            <div class="item" style="background-image: url({{asset($slider->slider_categoria_1)}});">
               <div class="container-fluid">
                 <div class="caption bg-color vertical-center text-left">
                   <div class="big-text fadeInDown-1">  </div>
@@ -211,7 +211,33 @@ Category Product
               </div>
               <!-- /.container-fluid --> 
             </div>
-            <!-- /.item -->    
+            <!-- /.item -->
+            @if ($slider->slider_categoria_2)
+              <div class="item" style="background-image: url({{asset($slider->slider_categoria_2)}});">
+                <div class="container-fluid">
+                  <div class="caption bg-color vertical-center text-left">
+                    <div class="big-text fadeInDown-1">  </div>
+                    <div class="excerpt fadeInDown-2 hidden-xs"> <span></span> </div>
+                  </div>
+                  <!-- /.caption --> 
+                </div>
+                <!-- /.container-fluid --> 
+              </div>
+              <!-- /.item --> 
+            @endif
+            @if ($slider->slider_categoria_3)
+              <div class="item" style="background-image: url({{asset($slider->slider_categoria_3)}});">
+                <div class="container-fluid">
+                  <div class="caption bg-color vertical-center text-left">
+                    <div class="big-text fadeInDown-1">  </div>
+                    <div class="excerpt fadeInDown-2 hidden-xs"> <span></span> </div>
+                  </div>
+                  <!-- /.caption --> 
+                </div>
+                <!-- /.container-fluid --> 
+              </div>
+              <!-- /.item --> 
+            @endif 
             @endforeach          
           </div>
           <!-- /.owl-carousel --> 

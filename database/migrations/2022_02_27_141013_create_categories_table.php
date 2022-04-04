@@ -21,7 +21,9 @@ return new class extends Migration
             $table->string('category_slug_esp');
             $table->string('category_icon')->nullable();
             $table->integer('category_order')->default(1)->nullable();
-            $table->string('slider_categoria_img')->nullable();
+            $table->string('slider_categoria_1')->nullable();
+            $table->string('slider_categoria_2')->nullable();
+            $table->string('slider_categoria_3')->nullable();
             $table->timestamps();
         });
     }

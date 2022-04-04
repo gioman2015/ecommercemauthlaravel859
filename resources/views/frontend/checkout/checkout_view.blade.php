@@ -205,10 +205,17 @@ My Checkout
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
  <hr>
 
- <strong>Coupon Discount : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
+ <strong>Coupon Discount : </strong> ${{-- {{ session()->get('coupon')['discount_amount'] }}  --}}
+ @php
+     $descuento = round( session()->get('coupon')['discount_amount'] )
+ @endphp
+ {{$descuento}}
  <hr>
-
-  <strong>Grand Total : </strong> ${{ session()->get('coupon')['total_amount'] }} 
+  <strong>Grand Total : </strong> ${{-- {{ session()->get('coupon')['total_amount'] }} --}}
+  @php
+     $grandtotal = round( session()->get('coupon')['total_amount'] )
+ @endphp
+ {{$grandtotal}} 
  <hr>
 
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('subsubcategory_name_esp');
             $table->string('subsubcategory_slug_en');
             $table->string('subsubcategory_slug_esp');
+            $table->integer('subsubcategory_order')->default(1)->nullable();
             $table->timestamps();
         });
     }

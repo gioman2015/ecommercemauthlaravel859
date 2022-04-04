@@ -13,12 +13,10 @@
           </div>
         </div>
          <div class="row">
-            <div class="col-md-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $order->created_at }}</div>
-            <div class="col-md-2">{{ $order->confirmed_date }}</div>
-            <div class="col-md-2">&nbsp;&nbsp;{{ $order->processing_date }}</div>
-            <div class="col-md-2">{{ $order->picked_date }}</div>
-            <div class="col-md-2">{{ $order->shipped_date }}</div>
-            {{-- <div class="col-md-2">{{ $order->delivered_date }}</div> --}}
+            <div class="col-md-3"><center>{{ $order->created_at }}</center><br><center><b style="color: red"> Orden Recibida Esperando Pago</b></center></div>
+            <div class="col-md-3"><center>{{ $order->confirmed_date }}</center><br><center><b style="color: red">Pago Confirmado</b></center></div>
+            <div class="col-md-3"><center>{{ $order->processing_date }}</center><br><center><b style="color: red">Orden Empacada</b></center></div>
+            <div class="col-md-3"><center>{{ $order->shipped_date }}</center><br><center><b style="color: red">Orden Enviada</b></center></div>
          </div>
        </div>
              <div class="col-md-5">
@@ -119,15 +117,15 @@
                        <th>   
                         @if($order->status == 'Pending')
                         <label for=""> 
-                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pendiente </span>
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pago Pendiente </span>
                          </label>
                       @elseif($order->status == 'confirm')
                         <label for=""> 
-                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Confirmado </span>
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Pago Confirmado </span>
                          </label>
                       @elseif($order->status == 'processing')
                         <label for=""> 
-                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Procesando </span>
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Empacada </span>
                          </label>
                       @elseif($order->status == 'picked')
                         <label for=""> 
@@ -135,7 +133,7 @@
                          </label>
                       @elseif($order->status == 'shipped')
                         <label for=""> 
-                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Enviado </span>
+                          <span class="badge badge-pill badge-warning" style="background: #418DB9;">Orden Enviada </span>
                          </label>
                       @elseif($order->status == 'delivered')
                         <label for=""> 

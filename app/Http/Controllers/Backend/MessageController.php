@@ -68,7 +68,7 @@ class MessageController extends Controller
         $precio_id = $request->id;
 
         PreciosEnvios::findOrFail($precio_id)->update([
-            'price' => $request->price,
+            'price' => (int)str_replace('.','',$request->price),
         ]);
         $notification = array(
             'message' => 'Precio Actualizado con éxito',

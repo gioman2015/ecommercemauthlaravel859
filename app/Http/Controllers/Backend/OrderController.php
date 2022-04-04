@@ -90,12 +90,24 @@ class OrderController extends Controller
 
 
 	public function PendingToConfirm($order_id){
-
+		/* Descuento Stock Start */
 		$product = OrderItem::where('order_id',$order_id)->get();
 		foreach ($product as $item) {
 			Product::where('id',$item->product_id)
 					->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]);
 		}
+		/* Descuento Stock End */
+		/* Calculo de puntos Start */
+		$order = Order::findorfail($order_id)->first();
+		$product = OrderItem::where('order_id',$order_id)->get();
+		foreach ($product as $item) {
+			$puntos = Product::where('id',$item->product_id)->first();
+			$cont = $puntos->puntos * $item->qty;
+			
+			User::where('id', $order->user_id)
+					->update(['puntos' => DB::raw('puntos+'.$cont)]);
+		}
+		/* Calculo de puntos End */
 
       Order::findOrFail($order_id)->update(['status' => 'confirm','confirmed_date' => Carbon::now()]);
 
@@ -131,7 +143,9 @@ class OrderController extends Controller
 
 		public function ProcessingToPicked($order_id){
 
-      Order::findOrFail($order_id)->update(['status' => 'picked','picked_date' => Carbon::now()]);
+      /* Order::findOrFail($order_id)->update(['status' => 'picked','picked_date' => Carbon::now()]); */
+
+	  Order::findOrFail($order_id)->update(['status' => 'shipped','shipped_date' => Carbon::now()]);
 
       $notification = array(
 			'message' => 'Orden elegido con éxito',

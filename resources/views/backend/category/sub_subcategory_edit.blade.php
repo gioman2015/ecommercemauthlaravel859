@@ -78,6 +78,13 @@
 	 @enderror
 	  </div>
 	</div>
+	<div class="form-group">
+		<label for="exampleFormControlPassword3">Orden de Sub->SubCategoría</label>
+		<input type="number" name="subsubcategory_order" class="form-control" value="{{ $subsubcategories->subsubcategory_order }}">
+		@error('subsubcategory_order')
+			<span class="text-danger">{{$message}}</span>
+		@enderror
+	  </div>
 
 
 			 <div class="text-xs-right">

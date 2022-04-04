@@ -15,6 +15,7 @@ class SubSubCategory extends Model
         'subsubcategory_name_esp',
         'subsubcategory_slug_en',
         'subsubcategory_slug_esp',
+        'subsubcategory_order',
     ];
 
     public function category(){

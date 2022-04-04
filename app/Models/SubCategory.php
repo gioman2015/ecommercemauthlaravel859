@@ -14,6 +14,7 @@ class SubCategory extends Model
         'subcategory_name_esp',
         'subcategory_slug_en',
         'subcategory_slug_esp',
+        'subcategory_order'
     ];
 
     public function category(){

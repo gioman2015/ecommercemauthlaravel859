@@ -50,6 +50,13 @@
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlPassword3">Orden de Categoría</label>
+                        <input type="number" name="subcategory_order" class="form-control" value="{{$subcategory->subcategory_order}}">
+                        @error('subcategory_order')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                      </div>
                       <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Actualizar">
                   </form>
                    </div>

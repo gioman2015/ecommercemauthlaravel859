@@ -18,13 +18,14 @@ use App\Mail\OrderMail;
 class CashController extends Controller
 {
     public function CashOrder(Request $request){
-    	if (Session::has('coupon')) {
+    	/* if (Session::has('coupon')) {
     		$total_amount = Session::get('coupon')['total_amount'];
     	}else{
-    		$total_amount = round(Cart::total());
-    	}
+    		$total_amount = Cart::total();
+    	} */
 	    // dd($charge);
-
+        $total_amount = $request->grand_total;
+        
         $order_id = Order::insertGetId([
             'user_id' => Auth::id(),
             'division_id' => $request->division_id,

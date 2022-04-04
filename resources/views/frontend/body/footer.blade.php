@@ -19,7 +19,10 @@
             <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span> </div>
             <div class="media-body"><span style="color: white">314 7849806</span></div>
           </div>
-
+          <div style="position:fixed; right:10px; bottom:10px; text-align:center; padding:3px">
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=+573147849806">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png" width="60" height="60"></a>
+          </div>
           {{-- <div class="module-body">
             <ul class="toggle-footer" style="">
               <li class="media">
@@ -107,12 +110,12 @@
     <div class="container" style="background-color: #141414">
       <div class="col-xs-12 col-sm-6 no-padding social">
         <ul class="link">
-          <a target="_blank" href="https://www.facebook.com/GamelotManizales/" class="fa fa-facebook"></a>
+          <a target="_blank" href="https://www.facebook.com/GamelotManizales/" ><img src="{{asset('frontend/assets/images/facebook.jpg')}}" width="50" height="50"></a>
           {{-- <a href="#" class="fa fa-twitter"></a> --}}
           {{-- <a href="#" class="fa fa-google"></a> --}}
           {{-- <a href="#" class="fa fa-linkedin"></a> --}}
           {{-- <a target="_blank" href="#" class="fa fa-youtube"></a> --}}
-          <a target="_blank" href="https://www.instagram.com/gamelotcolombia/" class="fa fa-instagram"></a>
+          <a target="_blank" href="https://www.instagram.com/gamelotcolombia/" ><img src="{{asset('frontend/assets/images/instagram.jpg')}}" width="50" height="50"></a>
           {{-- <a href="#" class="fa fa-pinterest"></a> --}}
           {{-- <a href="#" class="fa fa-snapchat-ghost"></a> --}}
           {{-- <a href="#" class="fa fa-skype"></a> --}}
