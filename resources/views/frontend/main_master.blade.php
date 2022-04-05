@@ -600,9 +600,12 @@ wishlist();
                          ${value.price}
                      </div>
                  </td>
-
-                 <td class="col-md-2">
-            <strong>${value.options.color}</strong>
+            <td class="col-md-2">
+          ${value.options.color == null
+            ? `<span> .... </span>`
+            :
+          `<strong>${value.options.size} </strong>`
+          }
             </td>
          <td class="col-md-2">
           ${value.options.size == null
@@ -756,10 +759,10 @@ function cartIncrement(rowId){
                     `<tr>
                 <th>
                     <div class="cart-sub-total">
-                        Subtotal<span class="inner-left-md">$ ${data.total}</span>
+                        Subtotal<span class="inner-left-md">$ ${data.total_format}</span>
                     </div>
                     <div class="cart-grand-total">
-                        Grand Total<span class="inner-left-md">$ ${data.total}</span>
+                        Grand Total<span class="inner-left-md">$ ${data.total_format}</span>
                     </div>
                 </th>
             </tr>`
@@ -769,17 +772,17 @@ function cartIncrement(rowId){
                     `<tr>
         <th>
             <div class="cart-sub-total">
-                Subtotal<span class="inner-left-md">$ ${data.subtotal}</span>
+                Subtotal<span class="inner-left-md">$ ${data.subtotal_format}</span>
             </div>
             <div class="cart-sub-total">
                 Coupon<span class="inner-left-md">$ ${data.coupon_name}</span>
                 <button type="submit" onclick="couponRemove()"><i class="fa fa-times"></i>  </button>
             </div>
              <div class="cart-sub-total">
-                Discount Amount<span class="inner-left-md">$ ${data.discount_amount}</span>
+                Discount Amount<span class="inner-left-md">$ ${data.discount_amount_format}</span>
             </div>
             <div class="cart-grand-total">
-                Grand Total<span class="inner-left-md">$ ${data.total_amount}</span>
+                Grand Total<span class="inner-left-md">$ ${data.total_amount_format}</span>
             </div>
         </th>
             </tr>`

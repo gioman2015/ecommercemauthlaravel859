@@ -199,7 +199,7 @@ My Checkout
 
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>SubTotal: </strong> ${{ number_format($cartTotal,0,",",".") }} <hr>
 
 <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
@@ -209,22 +209,22 @@ My Checkout
  @php
      $descuento = round( session()->get('coupon')['discount_amount'] )
  @endphp
- {{$descuento}}
+ {{number_format($descuento,0,",",".")}}
  <hr>
   <strong>Grand Total : </strong> ${{-- {{ session()->get('coupon')['total_amount'] }} --}}
   @php
      $grandtotal = round( session()->get('coupon')['total_amount'] )
  @endphp
- {{$grandtotal}} 
+ {{number_format($grandtotal,0,",",".")}} 
  <hr>
 
 
 		 	@else
              
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>SubTotal: </strong> ${{ number_format($cartTotal,0,",",".") }} <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Grand Total : </strong> ${{ number_format($cartTotal,0,",",".") }} <hr>
 
 
 		 	@endif 

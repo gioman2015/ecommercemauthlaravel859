@@ -86,11 +86,11 @@ Cash On Delivery
 								 <li>
 									 @if(Session::has('coupon'))
 									 <div class="row">
-										<div class="col-md-3"><strong>SubTotal: </strong> ${{ $cartTotal }} <hr></div>
+										<div class="col-md-3"><strong>SubTotal: </strong> ${{ number_format($cartTotal,0,",",".") }} <hr></div>
 										<div class="col-md-3">{{ session()->get('coupon')['coupon_name'] }}
 											( {{ session()->get('coupon')['coupon_discount'] }} % )
 											 
-											 	<strong>Descuento : </strong> ${{ round(session()->get('coupon')['discount_amount']) }} 
+											 	<strong>Descuento : </strong> ${{ number_format(round(session()->get('coupon')['discount_amount']),0,",",".") }} 
 											 
 										</div>
 										@if ($data['payment_method'] == 'recojer')
@@ -98,7 +98,7 @@ Cash On Delivery
 												$valorenvio=0
 											@endphp
 										 @else
-										 	<div class="col-md-4"><strong>Valor de Envio: </strong> ${{ $envios->price }} <hr></div>
+										 	<div class="col-md-4"><strong>Valor de Envio: </strong> ${{ number_format($envios->price,0,",",".") }} <hr></div>
 											 @php
 												 $valorenvio = $envios->price
 											 @endphp
@@ -108,19 +108,19 @@ Cash On Delivery
 										   $cupon = round(session()->get('coupon')['total_amount']);
 										   $totalenvio = $valorenvio + $cupon;
 										   @endphp
-										   <strong><strong>Total : </strong>  {{$totalenvio}}
+										   <strong><strong>Total : </strong>  {{number_format($totalenvio,0,",",".")}}
 										</div>
 									</div>
 						
 									 @else
 									 <div class="row">
-										 <div class="col-md-4"><strong>SubTotal: </strong> ${{ $cartTotal }} <hr></div>
+										 <div class="col-md-4"><strong>SubTotal: </strong> ${{ number_format($cartTotal,0,",",".") }} <hr></div>
 										 @if ($data['payment_method'] == 'recojer')
 											@php
 												$valorenvio=0
 											@endphp
 										 @else
-										 	<div class="col-md-4"><strong>Valor de Envio: </strong> ${{ $envios->price }} <hr></div>
+										 	<div class="col-md-4"><strong>Valor de Envio: </strong> ${{ number_format($envios->price,0,",",".") }} <hr></div>
 											 @php
 												 $valorenvio = $envios->price
 											 @endphp
@@ -130,7 +130,7 @@ Cash On Delivery
 											@php
 											$totalenvio = $valorenvio + $cartTotal
 											@endphp
-											<strong>Grand Total : {{-- {{$envios->price}}- {{$cartTotal}} --}}</strong> ${{$totalenvio}}<hr>
+											<strong>Grand Total : {{-- {{$envios->price}}- {{$cartTotal}} --}}</strong> ${{number_format($totalenvio,0,",",".")}}<hr>
 										 </div>
 									 </div>
 									 @endif 
@@ -161,21 +161,41 @@ Cash On Delivery
 												<div class="row">
 													{{-- <div class="panel-heading"><h4>Seleccione medio de pago</h4></div>
 													<div class="panel-heading"></div> --}}
-													<div class="col-md-2"></div>
-													<div class="col-md-3" style="border: #292929 solid 3px; border-radius: 5px;">
-														{{-- <p><b>Deposito o transferencia desde nequi o bancolombia a nuestra cuenta de ahorros bancolombia:</b></p> --}}
-														<img src="{{asset('frontend/assets/images/bancolombia.png')}}" style="width: 100%"><br>
-														<img src="{{asset('frontend/assets/images/nequi.png')}}" style="width: 100%"><br>
-														<center><input type="radio" name="payment_type" value="bancolombia" required></center>
+													<div class="col-md-1"></div>
+													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
+														<div class="row">
+															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="bancolombia" required></div>
+															<div class="col-md-10"><img src="{{asset('frontend/assets/images/merdiodepagoNEQUI.jpg')}}" style="width: 100%"><br></div>
+														</div>
 													</div>
 													<div class="col-md-1"></div>
-													<div class="col-md-3" style="border: #292929 solid 3px; border-radius: 5px;">
-														{{-- <p><b>Deposito o transferencia desde daviplata o davivienda a nuestra cuenta de ahorros davivienda:</b></p> --}}
-														<img src="{{asset('frontend/assets/images/davivienda.png')}}" style="width: 100%"><br>
-														<img src="{{asset('frontend/assets/images/daviplata.png')}}" style="width: 100%"><br>
-														<center><input type="radio" name="payment_type" value="davivienda" required></center>
+													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
+														<div class="row">
+															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="davivienda" required></div>
+															<div class="col-md-10"><img src="{{asset('frontend/assets/images/mediodepagoDAVIPLATA.jpg')}}" style="width: 100%"><br><br></div>
+														</div>
 													</div>
-													<div class="col-md-3"></div>
+													<div class="col-md-2"></div>
+													</div>
+												</div>
+												<div class="row">
+													{{-- <div class="panel-heading"><h4>Seleccione medio de pago</h4></div>
+													<div class="panel-heading"></div> --}}
+													<div class="col-md-1"></div>
+													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
+														<div class="row">
+															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="bancolombia" required></div>
+															<div class="col-md-10"><img src="{{asset('frontend/assets/images/mediodepagoBANCOLOMBIA.jpg')}}" style="width: 100%"><br></div>
+														</div>
+													</div>
+													<div class="col-md-1"></div>
+													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
+														<div class="row">
+															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="davivienda" required></div>
+															<div class="col-md-10"><img src="{{asset('frontend/assets/images/mediodepagoDAVIVIENDA.jpg')}}" style="width: 100%"><br><br></div>
+														</div>
+													</div>
+													<div class="col-md-2"></div>
 													</div>
 												</div>
 											{{-- <img src="{{ asset('frontend/assets/images/payments/cash.png') }}"> --}}
@@ -204,8 +224,8 @@ Cash On Delivery
 									
 											</div>
 											<br>
-											<button class="btn btn-primary" style="background-color: #292929">Enviar Pedido</button>
-											</form>
+											<button class="btn btn-primary" style="background-color: #292929">Enviar Pedido</button><br>
+											</form><br><br>
 									
 									
 									

@@ -54,7 +54,7 @@
     @php
         $header = App\Models\HeaderConfig::latest()->first();
     @endphp
-    <div class="main-header" style="background-color: {{$header->background_color}}; background-image: url('{{asset($header->background_imagen)}}') ">
+    <div class="main-header" style="background: url('{{asset($header->background_imagen)}}') no-repeat; background-size: 100%; background-color: {{$header->background_color}}; ">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-3 col-md-4"></div>

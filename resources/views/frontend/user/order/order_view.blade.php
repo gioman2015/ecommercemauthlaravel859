@@ -51,7 +51,7 @@
 					 </td>
 	 
 					 <td class="col-md-3">
-					   <label for=""> ${{ $order->amount }}</label>
+					   <label for=""> ${{ number_format($order->amount,0,",",".") }}</label>
 					 </td>
 	 
 	 

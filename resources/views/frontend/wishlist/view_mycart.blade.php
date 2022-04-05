@@ -9,8 +9,8 @@ My Cart Page
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>MyCart</li>
+				<li><a href="{{url('/')}}">Home</a></li>
+				<li class='active'>Mi Carrito</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -25,13 +25,13 @@ My Cart Page
 					<table class="table">
 						<thead>
 							<tr>
-								<th class="cart-romove item">Image</th>
-								<th class="cart-description item">Name</th>
+								<th class="cart-romove item">Imagen</th>
+								<th class="cart-description item">Nombre</th>
 								<th class="cart-product-name item">Color</th>
 								<th class="cart-edit item">Size</th>
-								<th class="cart-qty item">Quantity</th>
+								<th class="cart-qty item">Cantidad</th>
 								<th class="cart-sub-total item">Subtotal</th>
-								<th class="cart-total last-item">Remove</th>
+								<th class="cart-total last-item">Remover</th>
 							</tr>
 						</thead><!-- /thead -->
 						<tbody id="cartPage">
@@ -54,8 +54,8 @@ My Cart Page
 		<thead>
 			<tr>
 				<th>
-					<span class="estimate-title">Discount Code</span>
-					<p>Enter your coupon code if you have one..</p>
+					<span class="estimate-title">Codigo de descuento</span>
+					<p>Ingrese su codigo de cupon si tiene uno...</p>
 				</th>
 			</tr>
 		</thead>
@@ -66,7 +66,7 @@ My Cart Page
 			<input type="text" class="form-control unicase-form-control text-input" placeholder="You Coupon.." id="coupon_name">
 		</div>
 		<div class="clearfix pull-right">
-			<button type="submit" class="btn-upper btn btn-primary" onclick="applyCoupon()">APPLY COUPON</button>
+			<button type="submit" class="btn-upper btn btn-primary" onclick="applyCoupon()">APLICAR CUPON</button>
 		</div>
 	</td>
 </tr>
@@ -88,7 +88,7 @@ My Cart Page
 				<tr>
 					<td>
 						<div class="cart-checkout-btn pull-right">
-							<a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
+							<a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">PROCEDER AL PAGO</a>
 						</div>
 					</td>
 				</tr>

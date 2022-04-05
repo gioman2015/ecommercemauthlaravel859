@@ -177,18 +177,31 @@
 													{{-- <input type="hidden" id="pprice" value="0" readonly> --}}
 													<input type="hidden" id="oldprice" value="0" readonly>
 													<input type="hidden" id="pprice" class="price" value="{{ $product->supplier_price }}" readonly>
-													<span class="price">${{ $product->supplier_price }}</span>
+													@php
+														$var = number_format($product->supplier_price,0,",",".")
+													@endphp
+													<span class="price">${{$var}}</span>
+													{{-- <span class="price">${{ $product->supplier_price }}</span> --}}
 												@else
 													@if ($product->discount_price == NULL)
 														<input type="hidden" id="pprice" value="0" readonly>
 														<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
-														<span class="price">${{ $product->selling_price }}</span>
+														@php
+															$var =  number_format($product->selling_price,0,",",".")
+														@endphp
+														<span class="price">${{$var}}</span>
 														{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 													@else
 														<input type="hidden" id="pprice" value="{{ $product->discount_price }}" readonly>
 														<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
-														<span class="price">${{ $product->discount_price }}</span>
-														<span class="price-strike">${{ $product->selling_price }}</span>
+														@php
+															$var = number_format($product->discount_price,0,",",".");
+															$var2 = number_format($product->selling_price,0,",",".")
+														@endphp
+														<span class="price">${{$var}}</span>
+														{{-- <span class="price">${{ $product->discount_price }}</span> --}}
+														<span class="price-strike">${{$var2}}</span>
+														{{-- <span class="price-strike">${{ $product->selling_price }}</span> --}}
 														{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
 														<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 													@endif 
@@ -197,13 +210,22 @@
 												@if ($product->discount_price == NULL)
 													<input type="hidden" id="pprice" value="0" readonly>
 													<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
-													<span class="price">${{ $product->selling_price }}</span>
+													@php
+														$var = number_format($product->selling_price,0,",",".")
+													@endphp
+													<span class="price">${{$var}}</span>
 													{{-- <span class="price" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 												@else
 													<input type="hidden" id="pprice" value="{{ $product->discount_price }}" readonly>
 													<input type="hidden" id="oldprice" class="price" value="{{ $product->selling_price }}" readonly>
-													<span class="price">${{ $product->discount_price }}</span>
-													<span class="price-strike">${{ $product->selling_price }}</span>
+													@php
+															$var = number_format($product->discount_price,0,",",".");
+															$var2 = number_format($product->selling_price,0,",",".")
+													@endphp
+													<span class="price">${{$var}}</span>
+													{{-- <span class="price">${{ $product->discount_price }}</span> --}}
+													<span class="price-strike">${{$var2}}</span>
+													{{-- <span class="price-strike">${{ $product->selling_price }}</span> --}}
 													{{-- <span class="price" id="pprice" value="{{ $product->discount_price }}">${{ $product->discount_price }}</span>
 													<span class="price-strike" id="oldprice" value="{{ $product->selling_price }}">${{ $product->selling_price }}</span> --}}
 												@endif 
@@ -466,92 +488,121 @@
 				</div><!-- /.product-tabs -->
 
 				<!-- ============================================== UPSELL PRODUCTS ============================================== -->
-<section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Productos Relacionados</h3>
-	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-	    	
-		@foreach ($relatedProduct as $product)
-			
-		
-		<div class="item item-carousel">
-			<div class="products">
-				
-	<div class="product">		
-		<div class="product-image">
-			<div class="image">
-				<a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}"><img  src="{{asset($product->product_thambnail)}}"><img  src="assets/images/products/p1.jpg" alt=""></a>
-			</div><!-- /.image -->			
-
-			            <div class="tag sale"><span>sale</span></div>            		   
-		</div><!-- /.product-image -->
-			
-		
-		<div class="product-info text-left">
-			<h3 class="name">
-				<a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">
-					@if(session()->get('language') == 'spanish') 
-						{{$product->product_name_esp}} 
-					@else 
-					  {{$product->product_name_en}}  
-					@endif
-				</a>
-			</h3>
-			{{-- <div class="rating rateit-small"></div> --}}
-			<div class="description"></div>
-				@auth
+				<section class="section featured-product wow fadeInUp">
+					<h3 class="section-title">Productos Destacados</h3>
+					<div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
+					  @foreach ($relatedProduct as $product)
+					  <div class="item item-carousel">
+						<div class="products">
+						  <div class="product">
+							<div class="product-image">
+							  <div class="image"> <a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}"><img  src="{{asset($product->product_thambnail)}}" alt=""></a> </div>
+							  <!-- /.image -->
+							  @php
+								$amount = $product->selling_price - $product->discount_price;
+								$discount = ($amount/$product->selling_price) * 100;
+							  @endphp                 
+								<div>
+								  @auth
 					@php
-					$user = Auth::user();
+					  $user = Auth::user();
 					@endphp
 					@if ($user->type_user == 1)
-					<div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+					
 					@else
-					@if ($product->discount_price == NULL)
-						<div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
-					@else
-						<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+					@php
+					$amount = $product->selling_price - $product->discount_price;
+					$discount = ($amount/$product->selling_price) * 100;
+					@endphp     
+					  
+					  <div>
+						@if ($product->discount_price == NULL)
+						<div class="tag new"><span>new</span></div>
+						@else
+						<div class="tag hot"><span>{{ round($discount) }}%</span></div>
+						@endif
+					  </div>
 					@endif
-					@endif
-				@else
-					@if ($product->discount_price == NULL)
-					<div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
-					@else
-					<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
-					@endif
-				@endauth
-			
-		</div><!-- /.product-info -->
-					<div class="cart clearfix animate-effect">
-				<div class="action">
-					<ul class="list-unstyled">
-						<li class="add-cart-button btn-group">
-							<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-								<i class="fa fa-shopping-cart"></i>													
-							</button>
-							<button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-													
-						</li>
-	                   
-		                <li class="lnk wishlist">
-							<a class="add-to-cart" href="detail.html" title="Wishlist">
-								 <i class="icon fa fa-heart"></i>
-							</a>
-						</li>
-
-						<li class="lnk">
-							<a class="add-to-cart" href="detail.html" title="Compare">
-							    <i class="fa fa-signal"></i>
-							</a>
-						</li>
-					</ul>
-				</div><!-- /.action -->
-			</div><!-- /.cart -->
-			</div><!-- /.product -->
-      
-			</div><!-- /.products -->
-		</div><!-- /.item -->
-		@endforeach
-			</div><!-- /.home-owl-carousel -->
-</section><!-- /.section -->
+				  @else
+				  @php
+				  $amount = $product->selling_price - $product->discount_price;
+				  $discount = ($amount/$product->selling_price) * 100;
+				  @endphp     
+					
+					<div>
+					  @if ($product->discount_price == NULL)
+					  <div class="tag new"><span>new</span></div>
+					  @else
+					  <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+					  @endif
+					</div>
+				  @endauth
+								</div>
+						   </div>
+		
+							<!-- /.product-image -->
+							
+							<div class="product-info text-left">
+							  <h3 class="name">
+								<a href="{{url('product/details/'.$product->id.'/'.$product->product_slug_en)}}">
+								  @if(session()->get('language') == 'spanish') 
+								  {{$product->product_name_esp}} 
+								  @else 
+									{{$product->product_name_en}}  
+								  @endif
+								</a>
+							  </h3>
+							  {{-- <div class=""></div> --}}
+							  <div class="description"></div>
+							  @auth
+								@php
+								  $user = Auth::user();
+								@endphp
+								@if ($user->type_user == 1)
+								  <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
+								@else
+								  @if ($product->discount_price == NULL)
+									<div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
+								  @else
+									<div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
+								  @endif
+								@endif
+							  @else
+								@if ($product->discount_price == NULL)
+								  <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
+								@else
+								  <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
+								@endif
+							  @endauth
+							  <!-- /.product-price --> 
+							  
+							</div>
+							<!-- /.product-info -->
+							<div class="cart clearfix animate-effect">
+							  <div class="action">
+								{{-- <ul class="list-unstyled">
+								  <li class="add-cart-button btn-group">
+									<button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+									<button class="btn btn-primary cart-btn" type="button">Agregar al Carrito</button>
+								  </li>
+								  <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"  style="background-color: #292929"> <i class="icon fa fa-heart"></i> </a> </li>
+								</ul> --}}
+							  </div>
+							  <!-- /.action --> 
+							</div>
+							<!-- /.cart --> 
+						  </div>
+						  <!-- /.product --> 
+						  
+						</div>
+						<!-- /.products --> 
+					  </div>
+					  <!-- /.item -->
+					  @endforeach
+		
+					</div>
+					<!-- /.home-owl-carousel --> 
+				  </section>
 <!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
 			
 			</div><!-- /.col -->

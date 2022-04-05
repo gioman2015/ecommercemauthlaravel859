@@ -109,7 +109,7 @@
         
                      <tr>
                       <th> Total : </th>
-                       <th>{{ $order->amount }} </th>
+                       <th>{{ number_format($order->amount,0,",",".") }} </th>
                     </tr>
         
                     <tr>
@@ -230,7 +230,7 @@
                         </td>
         
                   <td class="col-md-2">
-                          <label for=""> ${{ $item->price }}  ( $ {{ $item->price * $item->qty}} ) </label>
+                          <label for=""> ${{ number_format($item->price,0,",",".") }} <br> ( $ {{ number_format($item->price * $item->qty,0,",",".")}} ) </label>
                         </td>
         
                       </tr>

@@ -34,7 +34,7 @@ class MessagesSeeder extends Seeder
             'desde' => 1,
             'hasta' => 3,
             'type' => 'Regional',
-            'price' => '8.600'
+            'price' => '8600'
         ]);
 
         $enviosNac1 = PreciosEnvios::create([
@@ -42,7 +42,7 @@ class MessagesSeeder extends Seeder
             'desde' => 1,
             'hasta' => 3,
             'type' => 'Nacional',
-            'price' => '10.900'
+            'price' => '10900'
         ]);
 
         $enviosReg2 = PreciosEnvios::create([
@@ -50,7 +50,7 @@ class MessagesSeeder extends Seeder
             'desde' => 4,
             'hasta' => 5,
             'type' => 'Regional',
-            'price' => '12.300'
+            'price' => '12300'
         ]);
 
         $enviosNac2 = PreciosEnvios::create([
@@ -58,7 +58,7 @@ class MessagesSeeder extends Seeder
             'desde' => 4,
             'hasta' => 5,
             'type' => 'Nacional',
-            'price' => '16.000'
+            'price' => '16000'
         ]);
 
         $enviosReg2 = PreciosEnvios::create([
@@ -66,7 +66,7 @@ class MessagesSeeder extends Seeder
             'desde' => 6,
             'hasta' => 8,
             'type' => 'Regional',
-            'price' => '16.300'
+            'price' => '16300'
         ]);
 
         $enviosNac2 = PreciosEnvios::create([
@@ -74,7 +74,7 @@ class MessagesSeeder extends Seeder
             'desde' => 6,
             'hasta' => 8,
             'type' => 'Nacional',
-            'price' => '19.600'
+            'price' => '19600'
         ]);
 
         $bancolombia = DatosBanco::create([

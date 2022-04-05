@@ -132,8 +132,8 @@
                                                     <td align="center">{{ $item->product->product_name_en }}</td>
                                                     <td align="center">{{ $item->product->product_code }}</td>
                                                     <td align="center">{{ $item->qty }}</td>
-                                                    <td align="center">${{ $item->price }}</td>
-                                                    <td align="center">${{ $item->price * $item->qty}}</td>
+                                                    <td align="center">${{number_format($item->price,0,",",".")}}</td>
+                                                    <td align="center">${{number_format($item->price * $item->qty,0,",",".") }}</td>
                                                 </tr>
                                                 @endforeach
 
@@ -146,9 +146,9 @@
                                             <table width="100%" style=" padding:0 10px 0 10px;">
                                                 <tr>
                                                     <td align="right" >
-                                                        <span style="color: rgb(14, 14, 14);"><b>Subtotal:</b></span> {{$order['order']->amount}}
+                                                        <span style="color: rgb(14, 14, 14);"><b>Subtotal:</b></span> {{number_format($order['order']->amount,0,",",".")}}
                                                         <br>
-                                                        <span style="color: rgb(14, 14, 14);"><b>Total:</b></span> {{$order['order']->amount}}
+                                                        <span style="color: rgb(14, 14, 14);"><b>Total:</b></span> {{number_format($order['order']->amount,0,",",".")}}
                                                     </td>
                                                 </tr>
                                             </table>

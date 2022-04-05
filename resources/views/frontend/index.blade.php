@@ -48,19 +48,19 @@ Home Easy Online Shop
                                     $user = Auth::user();
                                   @endphp
                                   @if ($user->type_user == 1)
-                                    <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
                                   @else
                                     @if ($product->discount_price == NULL)
-                                      <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                      <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                                     @else
-                                      <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                      <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                                     @endif
                                   @endif
                                 @else
                                   @if ($product->discount_price == NULL)
-                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                                   @else
-                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                                   @endif
                                 @endauth
                                 <!-- /.product-price --> 
@@ -115,19 +115,19 @@ Home Easy Online Shop
                                     $user = Auth::user();
                                   @endphp
                                   @if ($user->type_user == 1)
-                                    <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
                                   @else
                                     @if ($product->discount_price == NULL)
-                                      <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                      <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                                     @else
-                                      <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                      <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                                     @endif
                                   @endif
                                 @else
                                   @if ($product->discount_price == NULL)
-                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                                   @else
-                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                                   @endif
                                 @endauth
                                 <!-- /.product-price --> 
@@ -331,19 +331,19 @@ Home Easy Online Shop
                                 $user = Auth::user();
                               @endphp
                               @if ($user->type_user == 1)
-                                <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+                                <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
                               @else
                                 @if ($product->discount_price == NULL)
-                                  <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                                 @else
-                                  <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                                 @endif
                               @endif
                             @else
                               @if ($product->discount_price == NULL)
-                                <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                               @else
-                                <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                               @endif
                             @endauth
                             {{-- @if ($product->discount_price == NULL)
@@ -448,25 +448,25 @@ Home Easy Online Shop
                               {{-- <div class=""></div> --}}
                               <div class="description"></div>
                               @auth
-                              @php
-                                $user = Auth::user();
-                              @endphp
-                              @if ($user->type_user == 1)
-                                <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+                                @php
+                                  $user = Auth::user();
+                                @endphp
+                                @if ($user->type_user == 1)
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
+                                @else
+                                  @if ($product->discount_price == NULL)
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
+                                  @else
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
+                                  @endif
+                                @endif
                               @else
                                 @if ($product->discount_price == NULL)
-                                  <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                                 @else
-                                  <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                                 @endif
-                              @endif
-                            @else
-                              @if ($product->discount_price == NULL)
-                                <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
-                              @else
-                                <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
-                              @endif
-                            @endauth
+                              @endauth
                               <!-- /.product-price --> 
                               
                             </div>
@@ -478,7 +478,7 @@ Home Easy Online Shop
                                     <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
                                     <button class="btn btn-primary cart-btn" type="button">Agregar al Carrito</button>
                                   </li>
-                                  <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"  style="background-color: #292929"> <i class="icon fa fa-heart"></i> </a> </li>
+                                   <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"  style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
                                   
                                 </ul>
                               </div>
@@ -607,19 +607,19 @@ Home Easy Online Shop
                           $user = Auth::user();
                         @endphp
                         @if ($user->type_user == 1)
-                          <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+                          <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
                         @else
                           @if ($product->discount_price == NULL)
-                            <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                            <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                           @else
-                            <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                            <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                           @endif
                         @endif
                       @else
                         @if ($product->discount_price == NULL)
-                          <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                          <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
                         @else
-                          <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                          <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
                         @endif
                       @endauth
                       <!-- /.product-price --> 
@@ -633,7 +633,7 @@ Home Easy Online Shop
                             <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
                             <button class="btn btn-primary cart-btn" type="button">Agregar al Carrito</button>
                           </li>
-                          <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"  style="background-color: #292929"> <i class="icon fa fa-heart"></i> </a> </li>
+                          <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"  style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
                         </ul>
                       </div>
                       <!-- /.action --> 

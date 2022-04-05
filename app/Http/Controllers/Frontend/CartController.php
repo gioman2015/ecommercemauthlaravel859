@@ -123,14 +123,18 @@ class CartController extends Controller
 			/* dd(session()->get('coupon')); */
             return response()->json(array(
                 'subtotal' => Cart::total(),
+				'subtotal_format' => number_format(Cart::total(),0,",","."),
                 'coupon_name' => session()->get('coupon')['coupon_name'],
                 'coupon_discount' => session()->get('coupon')['coupon_discount'],
                 'discount_amount' => round(session()->get('coupon')['discount_amount']),
                 'total_amount' => round(session()->get('coupon')['total_amount']),
+				'discount_amount_format' => number_format(round(session()->get('coupon')['discount_amount']),0,",","."),
+				'total_amount_format' => number_format(round(session()->get('coupon')['total_amount']),0,",","."),
             ));
         }else{
             return response()->json(array(
                 'total' => Cart::total(),
+				'total_format' => number_format(Cart::total(),0,",","."),
             ));
         }
     } // end method

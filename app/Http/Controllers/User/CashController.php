@@ -23,7 +23,7 @@ class CashController extends Controller
     	}else{
     		$total_amount = Cart::total();
     	} */
-	    // dd($charge);
+	    /* dd($request); */
         $total_amount = $request->grand_total;
         
         $order_id = Order::insertGetId([
