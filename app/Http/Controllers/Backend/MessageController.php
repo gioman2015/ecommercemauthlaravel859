@@ -55,7 +55,7 @@ class MessageController extends Controller
     }
 
     public function PreciosEnvios(){
-        $envios = PreciosEnvios::latest()->get();
+        $envios = PreciosEnvios::orderBy('id')->get();
         return view('backend.messages.envios', compact('envios'));
     }
 
@@ -68,6 +68,8 @@ class MessageController extends Controller
         $precio_id = $request->id;
 
         PreciosEnvios::findOrFail($precio_id)->update([
+            'desde' => $request->desde,
+            'hasta' => $request->hasta,
             'price' => (int)str_replace('.','',$request->price),
         ]);
         $notification = array(

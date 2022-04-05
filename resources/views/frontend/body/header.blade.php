@@ -150,7 +150,7 @@
                               @endphp
                               @foreach ($subsubcategories as $subsubcategory)
                               <ul class="links">
-                                <li><a href="{{url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en)}}"><h2 class="title">@if(session()->get('language') == 'spanish') <i class="fa fa-circle"></i> {{$subsubcategory->subsubcategory_name_esp}} @else <i class="fa fa-circle"></i> {{$subsubcategory->subsubcategory_name_en}} @endif</h2></a></li>
+                                <li><a href="{{url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en)}}">@if(session()->get('language') == 'spanish') {{$subsubcategory->subsubcategory_name_esp}} @else  {{$subsubcategory->subsubcategory_name_en}} @endif</h2></a></li>
                               </ul>
                               @endforeach {{-- end subsubcategory foreach --}} 
                             </div>

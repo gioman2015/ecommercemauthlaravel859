@@ -42,17 +42,26 @@ Cash On Delivery
 									</div>
 									<div class="">
 										<ul class="nav nav-checkout-progress list-unstyled">
+											@php
+												$envios1 = App\Models\PreciosEnvios::where('id',1)->first();
+												$envios2 = App\Models\PreciosEnvios::where('id',2)->first();
+												$envios3 = App\Models\PreciosEnvios::where('id',3)->first();
+												$envios4 = App\Models\PreciosEnvios::where('id',4)->first();
+												$envios5 = App\Models\PreciosEnvios::where('id',5)->first();
+												$envios6 = App\Models\PreciosEnvios::where('id',6)->first();
+												/* dd($envios2->hasta) */
+											@endphp
 											<input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
 											@php
 												$envios = App\Models\PreciosEnvios::latest()->get();
 											@endphp
 										@if ($data['type']==0)
-											@if ($data['weigth'] <= 3 )
+											@if ($data['weigth'] <= $envios2->hasta )
 												@php
 													$envios = App\Models\PreciosEnvios::where('id',2)->first();
 												@endphp
 												<input type="hidden" value="{{$envios->price}}">
-											@elseif ($data['weigth'] <= 5)
+											@elseif ($data['weigth'] <= $envios4->hasta)
 												@php
 													$envios = App\Models\PreciosEnvios::where('id',4)->first();
 												@endphp
@@ -65,12 +74,12 @@ Cash On Delivery
 											@endif
 										@else
 											
-											@if ($data['weigth'] <= 3 )
+											@if ($data['weigth'] <= $envios1->hasta )
 												@php
 													$envios = App\Models\PreciosEnvios::where('id',1)->first();
 												@endphp
 												<input type="hidden" value="{{$envios->price}}">
-											@elseif ($data['weigth'] <= 5)
+											@elseif ($data['weigth'] <= $envios3->hasta)
 												@php
 													$envios = App\Models\PreciosEnvios::where('id',3)->first();
 												@endphp

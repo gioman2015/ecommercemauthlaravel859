@@ -25,11 +25,18 @@
                       <input type="hidden" name="id" value="{{$envios->id}}">
                       <div class="form-group">
                           <label for="exampleFormControlInput3">Peso</label>
-                          <input type="text" name="peso" class="form-control" value="{{$envios->desde}} - {{$envios->hasta}}" readonly>
-                          @error('peso')
+                          <input type="text" name="desde" class="form-control" value="{{$envios->desde}}">
+                          @error('desde')
                               <span class="text-danger">{{$message}}</span>
                           @enderror
                       </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput3">Peso</label>
+                        <input type="text" name="hasta" class="form-control" value="{{$envios->hasta}}">
+                        @error('haste')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
                       <div class="form-group">
                           <label for="exampleFormControlPassword3">Tipo de envio</label>
                           <input type="text" name="type" class="form-control" value="{{$envios->type}}" readonly>
