@@ -264,8 +264,9 @@ Category Product
             <div class="col col-sm-6 col-md-2" >
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active" > <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+                  <li class="active"><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+
+                  <li  > <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
@@ -329,145 +330,130 @@ Category Product
 
         <div class="search-result-container ">
           <div id="myTabContent" class="tab-content category-list">
-            <div class="tab-pane active " id="grid-container" >
+            <div class="tab-pane  " id="grid-container" >
               <div class="category-product">
                 <div class="row">
+                  @foreach($products as $product)
+                    <div class="col-sm-6 col-md-4 wow fadeInUp">
+                      <div class="products">
+                        <div class="product">
+                          <div class="product-image">
+                            <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thambnail) }}" width="300" height="300"  alt=""></a> </div>
+                            <!-- /.image -->
+
+                            @php
+                          $amount = $product->selling_price - $product->discount_price;
+                          $discount = ($amount/$product->selling_price) * 100;
+                          @endphp     
+                            
+                            <div>
+                              @auth
+                              @php
+                                $user = Auth::user();
+                              @endphp
+                              @if ($user->type_user == 1)
+                              
+                              @else
+                              @php
+                              $amount = $product->selling_price - $product->discount_price;
+                              $discount = ($amount/$product->selling_price) * 100;
+                              @endphp     
+                                
+                                <div>
+                                  @if ($product->discount_price == NULL)
+                                  <div class="tag new"><span>new</span></div>
+                                  @else
+                                  <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                  @endif
+                                </div>
+                              @endif
+                            @else
+                            @php
+                            $amount = $product->selling_price - $product->discount_price;
+                            $discount = ($amount/$product->selling_price) * 100;
+                            @endphp     
+                              
+                              <div>
+                                @if ($product->discount_price == NULL)
+                                <div class="tag new"><span>new</span></div>
+                                @else
+                                <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                @endif
+                              </div>
+                            @endauth
+                            </div>
+
+
+                          </div>
+                          <!-- /.product-image -->
+                          
+                          <div class="product-info text-left">
+                            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
+                              @if(session()->get('language') == 'spanish') 
+                                  {{$product->product_name_esp}} 
+                              @else 
+                                  {{$product->product_name_en}} 
+                              @endif
+                          </a></h3>
+                            <div class=""></div>
+                            <div class="description"></div>
+
+
+                            @auth
+                            @php
+                              $user = Auth::user();
+                            @endphp
+                            @if ($user->type_user == 1)
+                              <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
+                            @else
+                              @if ($product->discount_price == NULL)
+                                <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
+                              @else
+                                <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
+                              @endif
+                            @endif
+                          @else
+                            @if ($product->discount_price == NULL)
+                              <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
+                            @else
+                              <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
+                            @endif
+                          @endauth
 
 
 
-@foreach($products as $product)
-  <div class="col-sm-6 col-md-4 wow fadeInUp">
-    <div class="products">
-      <div class="product">
-        <div class="product-image">
-          <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
-          <!-- /.image -->
-
-           @php
-        $amount = $product->selling_price - $product->discount_price;
-        $discount = ($amount/$product->selling_price) * 100;
-        @endphp     
-          
-          <div>
-            @auth
-            @php
-              $user = Auth::user();
-            @endphp
-            @if ($user->type_user == 1)
-            
-            @else
-            @php
-            $amount = $product->selling_price - $product->discount_price;
-            $discount = ($amount/$product->selling_price) * 100;
-            @endphp     
-              
-              <div>
-                @if ($product->discount_price == NULL)
-                <div class="tag new"><span>new</span></div>
-                @else
-                <div class="tag hot"><span>{{ round($discount) }}%</span></div>
-                @endif
-              </div>
-            @endif
-          @else
-          @php
-          $amount = $product->selling_price - $product->discount_price;
-          $discount = ($amount/$product->selling_price) * 100;
-          @endphp     
-            
-            <div>
-              @if ($product->discount_price == NULL)
-              <div class="tag new"><span>new</span></div>
-              @else
-              <div class="tag hot"><span>{{ round($discount) }}%</span></div>
-              @endif
-            </div>
-          @endauth
-          </div>
-
-
-        </div>
-        <!-- /.product-image -->
-        
-        <div class="product-info text-left">
-          <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-            @if(session()->get('language') == 'spanish') 
-                {{$product->product_name_esp}} 
-            @else 
-                {{$product->product_name_en}} 
-            @endif
-        </a></h3>
-          <div class=""></div>
-          <div class="description"></div>
-
-
-          @auth
-          @php
-            $user = Auth::user();
-          @endphp
-          @if ($user->type_user == 1)
-            <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
-          @else
-            @if ($product->discount_price == NULL)
-              <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
-            @else
-              <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
-            @endif
-          @endif
-        @else
-          @if ($product->discount_price == NULL)
-            <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
-          @else
-            <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
-          @endif
-        @endauth
-
-
-
-          
-          <!-- /.product-price --> 
-          
-        </div>
-        <!-- /.product-info -->
-        <div class="cart clearfix animate-effect">
-          <div class="action">
-            <ul class="list-unstyled">
-              <li class="add-cart-button btn-group">
-                <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-              </li>
-              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"  style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
-            </ul>
-          </div>
-          <!-- /.action --> 
-        </div>
-        <!-- /.cart --> 
-      </div>
-      <!-- /.product --> 
-      
-    </div>
-    <!-- /.products --> 
-  </div>
-  <!-- /.item -->
-  @endforeach
-                  
-                
-
-
-
-
-
-
-
-
-
+                            
+                            <!-- /.product-price --> 
+                            
+                          </div>
+                          <!-- /.product-info -->
+                          <div class="cart clearfix animate-effect">
+                            <div class="action">
+                              <ul class="list-unstyled">
+                                <li class="add-cart-button btn-group">
+                                  <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+                                  <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                </li>
+                                <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"  style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
+                              </ul>
+                            </div>
+                            <!-- /.action --> 
+                          </div>
+                          <!-- /.cart --> 
+                        </div>
+                        <!-- /.product --> 
+                        
+                      </div>
+                      <!-- /.products --> 
+                    </div>
+                    <!-- /.item -->
+                  @endforeach
                 </div>
                 <!-- /.row --> 
               </div>
-              <!-- /.category-product --> 
-              
+              <!-- /.category-product -->   
             </div>
-            <!-- /.tab-pane -->
+            <!-- /.tab-pane grid-container-->
 
  <!--            //////////////////// END Product Grid View  ////////////// -->
 
@@ -476,152 +462,130 @@ Category Product
 
  <!--            //////////////////// Product List View Start ////////////// -->
             
-
-
-            <div class="tab-pane "  id="list-container">
+            <div class="tab-pane active"  id="list-container">
               <div class="category-product">
-
-
-
- @foreach($products as $product)
-<div class="category-product-inner wow fadeInUp">
-  <div class="products">
-    <div class="product-list product">
-      <div class="row product-list-row">
-        <div class="col col-sm-4 col-lg-4">
-          <div class="product-image">
-            <div class="image"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </div>
-          </div>
-          <!-- /.product-image --> 
-        </div>
-        <!-- /.col -->
-        <div class="col col-sm-8 col-lg-8">
-          <div class="product-info">
-            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-                @if(session()->get('language') == 'spanish') 
-                    {{$product->product_name_esp}} 
-                @else 
-                    {{$product->product_name_en}} 
-                @endif
-            </a></h3>
-            <div class=""></div>
-
-
-            @auth
-                @php
-                  $user = Auth::user();
-                @endphp
-                @if ($user->type_user == 1)
-                  <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
-                @else
-                  @if ($product->discount_price == NULL)
-                    <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
-                  @else
-                    <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
-                  @endif
-                @endif
-              @else
-                @if ($product->discount_price == NULL)
-                  <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
-                @else
-                  <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
-                @endif
-              @endauth
-            
-            <!-- /.product-price -->
-            <div class="description m-t-10">
-                @if(session()->get('language') == 'spanish') 
-                    {{$product->short_descp_esp}} 
-                @else 
-                    {{$product->short_descp_en}} 
-                @endif
-            </div>
-            <div class="cart clearfix animate-effect">
-              <div class="action">
-                <ul class="list-unstyled">
-                  <li class="add-cart-button btn-group">
-                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
-                    <button class="btn btn-primary cart-btn" type="button"  style="background-color: #292929">Agregar al Carrito</button>
-                  </li>
-                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)" style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
-                </ul>
-              </div>
-              <!-- /.action --> 
-            </div>
-            <!-- /.cart --> 
-            
-          </div>
-          <!-- /.product-info --> 
-        </div>
-        <!-- /.col --> 
-      </div>
-
-
-
-         @php
-        $amount = $product->selling_price - $product->discount_price;
-        $discount = ($amount/$product->selling_price) * 100;
-        @endphp    
-
-                      <!-- /.product-list-row -->
-                      <div>
-                        @auth
-                        @php
-                          $user = Auth::user();
-                        @endphp
-                        @if ($user->type_user == 1)
-                        
-                        @else
-                        @php
-                        $amount = $product->selling_price - $product->discount_price;
-                        $discount = ($amount/$product->selling_price) * 100;
-                        @endphp     
-                          
-                          <div>
-                            @if ($product->discount_price == NULL)
-                            <div class="tag new"><span>new</span></div>
-                            @else
-                            <div class="tag hot"><span>{{ round($discount) }}%</span></div>
-                            @endif
+                @foreach($products as $product)
+                  <div class="category-product-inner wow fadeInUp">
+                  <div class="products">
+                    <div class="product-list product">
+                      <div class="row product-list-row">
+                        <div class="col col-sm-4 col-lg-4">
+                          <div class="product-image">
+                            <div class="image"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </div>
                           </div>
-                        @endif
-                      @else
-                      @php
-                      $amount = $product->selling_price - $product->discount_price;
-                      $discount = ($amount/$product->selling_price) * 100;
-                      @endphp     
-                        
-                        <div>
-                          @if ($product->discount_price == NULL)
-                          <div class="tag new"><span>new</span></div>
-                          @else
-                          <div class="tag hot"><span>{{ round($discount) }}%</span></div>
-                          @endif
+                          <!-- /.product-image --> 
                         </div>
-                      @endauth
-          </div>
+                        <!-- /.col -->
+                        <div class="col col-sm-8 col-lg-8">
+                          <div class="product-info">
+                            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
+                                @if(session()->get('language') == 'spanish') 
+                                    {{$product->product_name_esp}} 
+                                @else 
+                                    {{$product->product_name_en}} 
+                                @endif
+                            </a></h3>
+                            <div class=""></div>
+
+
+                              @auth
+                                @php
+                                  $user = Auth::user();
+                                @endphp
+                                @if ($user->type_user == 1)
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
+                                @else
+                                  @if ($product->discount_price == NULL)
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
+                                  @else
+                                    <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
+                                  @endif
+                                @endif
+                              @else
+                                @if ($product->discount_price == NULL)
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
+                                @else
+                                  <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
+                                @endif
+                              @endauth
+                            
+                            <!-- /.product-price -->
+                            <div class="description m-t-10">
+                                @if(session()->get('language') == 'spanish') 
+                                    {{$product->short_descp_esp}} 
+                                @else 
+                                    {{$product->short_descp_en}} 
+                                @endif
+                            </div>
+                            <div class="cart clearfix animate-effect">
+                              <div class="action">
+                                <ul class="list-unstyled">
+                                  <li class="add-cart-button btn-group">
+                                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary icon" type="button" title="Add Cart" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+                                    <button class="btn btn-primary cart-btn" type="button"  style="background-color: #292929">Agregar al Carrito</button>
+                                  </li>
+                                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)" style="background-color: #292929"> <i class="fa fa-heart"></i> </button>
+                                </ul>
+                              </div>
+                              <!-- /.action --> 
+                            </div>
+                            <!-- /.cart --> 
+                          </div>
+                          <!-- /.product-info --> 
+                        </div>
+                        <!-- /.col --> 
+                      </div>
 
 
 
-                    </div>
-                    <!-- /.product-list --> 
-                  </div>
-                  <!-- /.products --> 
-                </div>
-                <!-- /.category-product-inner -->
-    @endforeach
+                                      @php
+                                        $amount = $product->selling_price - $product->discount_price;
+                                        $discount = ($amount/$product->selling_price) * 100;
+                                      @endphp
+                                      <!-- /.product-list-row -->
+                                      <div>
+                                        @auth
+                                          @php
+                                            $user = Auth::user();
+                                          @endphp
+                                            @if ($user->type_user == 1)
+                                            
+                                            @else
+                                              @php
+                                                $amount = $product->selling_price - $product->discount_price;
+                                                $discount = ($amount/$product->selling_price) * 100;
+                                              @endphp  
+                                                <div>
+                                                  @if ($product->discount_price == NULL)
+                                                    <div class="tag new"><span>new</span></div>
+                                                  @else
+                                                    <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                  @endif
+                                                </div>
+                                            @endif
+                                          @else
+                                            @php
+                                              $amount = $product->selling_price - $product->discount_price;
+                                              $discount = ($amount/$product->selling_price) * 100;
+                                            @endphp       
+                                          <div>
+                                          @if ($product->discount_price == NULL)
+                                            <div class="tag new"><span>new</span></div>
+                                          @else
+                                            <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                          @endif
+                                          </div>
+                                        @endauth
+                                      </div>
+                                    </div>
+                                    <!-- /.product-list --> 
+                                  </div>
+                                  <!-- /.products --> 
+                                </div>
+                                <!-- /.category-product-inner -->
+                @endforeach
+                <!--            //////////////////// Product List View END ////////////// -->
 
-                
-
- <!--            //////////////////// Product List View END ////////////// -->
-
-
-
-
-
-
-
-                
               </div>
               <!-- /.category-product --> 
             </div>
@@ -632,8 +596,24 @@ Category Product
             <div class="text-right">
               <div class="pagination-container">
                 <ul class="list-inline list-unstyled">
-                  {{ $products->links()  }}
+                  @php
+                      $cont = 1;
+                  @endphp
+                  @foreach ($products->links()['elements'][0] as $item)
+                    {{-- {{$item}} --}}
+                    <a href="{{$item}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                      {{$cont++}}
+                    </a>
+                    {{-- @php
+                       echo($item)
+                    @endphp  --}} 
+                  
+                  @endforeach
                 </ul>
+                {{-- <ul class="list-inline list-unstyled">
+                  
+                  {{ $products->links()  }}
+                </ul> --}}
                 <!-- /.list-inline --> 
               </div>
               <!-- /.pagination-container --> </div>

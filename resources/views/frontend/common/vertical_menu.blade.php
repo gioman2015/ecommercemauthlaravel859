@@ -27,9 +27,9 @@
                     <li>
                       <a href="{{url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en)}}">
                         @if(session()->get('language') == 'spanish') 
-                          <i class="fa fa-circle"></i>{{$subsubcategory->subsubcategory_name_esp}} 
+                          <i class="fa fa-circle" style="font-size: 8px;"></i> {{$subsubcategory->subsubcategory_name_esp}} 
                         @else 
-                          <i class="fa fa-circle"></i>{{$subsubcategory->subsubcategory_name_en}} 
+                          <i class="fa fa-circle" style="font-size: 8px;"></i> {{$subsubcategory->subsubcategory_name_en}} 
                         @endif
                         </a>
                       </li>

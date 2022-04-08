@@ -264,8 +264,9 @@ Sub Category Product
             <div class="col col-sm-6 col-md-2">
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+                  <li class="active"><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+
+                  <li  > <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
@@ -329,7 +330,7 @@ Sub Category Product
 
         <div class="search-result-container ">
           <div id="myTabContent" class="tab-content category-list">
-            <div class="tab-pane active " id="grid-container">
+            <div class="tab-pane " id="grid-container">
               <div class="category-product">
                 <div class="row">
 
@@ -478,7 +479,7 @@ Sub Category Product
             
 
 
-            <div class="tab-pane "  id="list-container">
+            <div class="tab-pane active"  id="list-container">
               <div class="category-product">
 
 
@@ -632,7 +633,19 @@ Sub Category Product
             <div class="text-right">
               <div class="pagination-container">
                 <ul class="list-inline list-unstyled">
-                  {{ $products->links()  }}
+                  @php
+                      $cont = 1;
+                  @endphp
+                  @foreach ($products->links()['elements'][0] as $item)
+                    {{-- {{$item}} --}}
+                    <a href="{{$item}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                      {{$cont++}}
+                    </a>
+                    {{-- @php
+                       echo($item)
+                    @endphp  --}} 
+                  
+                  @endforeach
                 </ul>
                 <!-- /.list-inline --> 
               </div>

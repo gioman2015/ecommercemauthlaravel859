@@ -27,7 +27,7 @@ class CategorySeeder extends Seeder
             'slider_categoria_1' => 'upload/default/category-slider-1.jpg',
         ]);
 
-        $category2 = Category::create([
+        /* $category2 = Category::create([
             'id' => 2,
             'category_name_en' => 'Categoria2',
             'category_name_esp' => 'Categoria2',
@@ -72,6 +72,6 @@ class CategorySeeder extends Seeder
             'subsubcategory_slug_esp' => 'subsubcategoria2',
             'category_id' => $category2->id,
             'subcategory_id' => $subCategory2->id
-        ]);
+        ]); */
     }
 }

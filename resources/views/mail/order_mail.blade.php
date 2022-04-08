@@ -125,7 +125,7 @@
                                                 <tr class="font">
 
                                                     <td align="center">
-                                                        <img src="https://shopbeta.game-lot.com/{{ $item->product->product_thambnail }}"
+                                                        <img src="https://game-lot.com/{{ $item->product->product_thambnail }}"
                                                             style="height: 50px; width: 50px;" alt="">
                                                     </td>
 
@@ -136,13 +136,81 @@
                                                     <td align="center">${{number_format($item->price * $item->qty,0,",",".") }}</td>
                                                 </tr>
                                                 @endforeach
-
+                                                
+                                                
                                             </tbody>
 
                                             
 
                                         </table>
                                         <br>
+                                        @if ($order['order']->payment_method == 'recojer')
+                                            
+                                        @else
+                                            
+                                        
+                                        @php
+                                            $municipio = App\Models\ShipDistrict::where('district_name',$order['order']->district->district_name)->first(); 
+                                            $peso = 0;
+                                        @endphp
+                                        @foreach($order['orderItem'] as $item)
+                                            @php
+                                                $peso = $peso + $item->product->product_weight
+                                            @endphp					
+                                        @endforeach
+                                        @php
+                                            $envios1 = App\Models\PreciosEnvios::where('id',1)->first();
+                                            $envios2 = App\Models\PreciosEnvios::where('id',2)->first();
+                                            $envios3 = App\Models\PreciosEnvios::where('id',3)->first();
+                                            $envios4 = App\Models\PreciosEnvios::where('id',4)->first();
+                                            $envios5 = App\Models\PreciosEnvios::where('id',5)->first();
+                                            $envios6 = App\Models\PreciosEnvios::where('id',6)->first();
+                                            $pesoqty = $peso * $item->qty
+                                        @endphp
+                                        <table width="100%" style=" padding:0 10px 0 10px;">
+                                            <tr>
+                                                <td align="right" >
+                                                    <span style="color: rgb(14, 14, 14);"><b>Precio de envio:</b></span>
+                                        @if ($municipio->type==0)
+											@if ($pesoqty <= $envios2->hasta )
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',2)->first();
+												@endphp
+												{{number_format($envios->price,0,",",".")}}
+											@elseif ($pesoqty <= $envios4->hasta)
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',4)->first();
+												@endphp
+												{{number_format($envios->price,0,",",".")}}
+											@else
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',6)->first();
+												@endphp
+												{{number_format($envios->price,0,",",".")}}
+											@endif
+										@else
+											
+											@if ($pesoqty <= $envios1->hasta )
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',1)->first();
+												@endphp
+												{{number_format($envios->price,0,",",".")}}
+											@elseif ($pesoqty <= $envios3->hasta)
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',3)->first();
+												@endphp
+												{{number_format($envios->price,0,",",".")}}
+											@else
+												@php
+													$envios = App\Models\PreciosEnvios::where('id',5)->first();
+												@endphp
+												{{number_format($envios->price,0,",",".")}}
+											@endif
+										@endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    @endif
                                             <table width="100%" style=" padding:0 10px 0 10px;">
                                                 <tr>
                                                     <td align="right" >

@@ -61,10 +61,11 @@
                {{-- <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a> --}}
 
             @endif
-			 <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  </td>
+			 {{-- <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  --}} </td>
 
 		<td width="25%">
  <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-eye"></i> </a>
+ <a href="{{ route('status-cancel-orders',$item->id) }}" class="btn btn-danger" title="Edit Data"><i class="fa fa-eye"></i> </a>
 
 		</td>
 
