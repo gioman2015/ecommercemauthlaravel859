@@ -63,6 +63,7 @@ class ProductController extends Controller
             'long_descp_esp' => $request->long_descp_esp,
             'hot_deals' => $request->hot_deals,
             'puntos' =>$request->puntos,
+            'order' =>$request->order,
 
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,
@@ -148,6 +149,7 @@ class ProductController extends Controller
             'long_descp_esp' => $request->long_descp_esp,
             'hot_deals' => $request->hot_deals,
             'puntos' =>$request->puntos,
+            'order' =>$request->order,
 
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,

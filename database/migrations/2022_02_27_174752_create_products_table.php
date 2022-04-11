@@ -47,6 +47,7 @@ return new class extends Migration
             $table->integer('special_deals')->nullable();
             $table->integer('status')->default(0);
             $table->integer('puntos')->default(0);
+            $table->integer('order')->default(1)->nullable();
             $table->timestamps();
         });
     }

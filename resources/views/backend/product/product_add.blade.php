@@ -21,7 +21,18 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="row">{{-- 1st row --}}
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <h5>Orden <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="number" name="order" class="form-control">
+                                        @error('order')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Seleccione marca <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -36,8 +47,8 @@
                                     @enderror
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Seleccione categoría <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -52,8 +63,8 @@
                                       @enderror
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
-                            <div class="col-md-4">
+                            </div>{{-- end col-md-3 --}}
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <h5>Seleccione subcategoría <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -65,7 +76,7 @@
                                     @enderror
                                     </div>
                                 </div>
-                            </div>{{-- end col-md-4 --}}
+                            </div>{{-- end col-md-3 --}}
                         </div>{{-- end 1st row --}}
 
                         <div class="row">{{-- 2nd row --}}

@@ -26,6 +26,7 @@
                             <th>Precio del Producto</th>
                             <th>Cantidad</th>
                             <th>Descuento</th>
+                            <th>Orden</th>
                             <th>Estado</th>
                             <th>Acción</th>
                           </tr>
@@ -48,6 +49,7 @@
                                         <span class="badge badge-pill badge-danger">{{ round($discount)  }} %</span>
                                     @endif
                                 </td>
+                                <td>{{$item->order}}</td>
                                 <td>
                                     @if ($item->status == 1)
                                         <span class="badge badge-pill badge-success">Active</span>
