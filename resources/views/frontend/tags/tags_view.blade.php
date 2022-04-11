@@ -248,7 +248,7 @@ Tag Wise Product
               <!-- /.filter-tabs --> 
             </div>
             <!-- /.col -->
-            <div class="col col-sm-12 col-md-6">
+            {{-- <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
                 <div class="lbl-cnt"> <span class="lbl">Sort by</span>
                   <div class="fld inline">
@@ -291,7 +291,7 @@ Tag Wise Product
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col --> 
-            </div>
+            </div> --}}
             <!-- /.col -->
             <div class="col col-sm-6 col-md-4 text-right">
               
@@ -377,19 +377,19 @@ Tag Wise Product
             $user = Auth::user();
           @endphp
           @if ($user->type_user == 1)
-            <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+            <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
           @else
             @if ($product->discount_price == NULL)
-              <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+              <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
             @else
-              <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+              <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
             @endif
           @endif
         @else
           @if ($product->discount_price == NULL)
-            <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+            <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
           @else
-            <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+            <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
           @endif
         @endauth
 
@@ -483,19 +483,19 @@ Tag Wise Product
             $user = Auth::user();
           @endphp
           @if ($user->type_user == 1)
-            <div class="product-price"> <span class="price"> ${{ $product->supplier_price }} </span>  </div>
+            <div class="product-price"> <span class="price"> ${{ number_format($product->supplier_price,0,",",".") }} </span>  </div>
           @else
             @if ($product->discount_price == NULL)
-              <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+              <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
             @else
-              <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+              <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
             @endif
           @endif
         @else
           @if ($product->discount_price == NULL)
-            <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+            <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price,0,",",".") }} </span>  </div>
           @else
-            <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+            <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price,0,",",".") }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price,0,",",".") }}</span> </div>
           @endif
         @endauth
             

@@ -9,7 +9,7 @@ Home Easy Online Shop
     <div class="container" >
       <div class="row"> 
         <!-- ============================================== SIDEBAR ============================================== -->
-        <div class="col-xs-12 col-sm-12 col-md-3 sidebar"> 
+        
           <!-- ================================== TOP NAVIGATION ================================== -->
           @include('frontend.common.vertical_menu')
           <!-- ================================== TOP NAVIGATION : END ================================== --> 

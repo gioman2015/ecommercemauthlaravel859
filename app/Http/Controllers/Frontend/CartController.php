@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\ShipDivision;
 use App\Models\ShipDistrict;
 use App\Models\Address;
+use DB;
+use App\Models\Category;
 
 class CartController extends Controller
 {
@@ -173,5 +175,14 @@ class CartController extends Controller
         return redirect()->route('login')->with($notification);
         }
     } // end method
+
+	public function Search(Request $request){
+		$item = $request->search;
+		/* echo "$item"; */
+		$categories = Category::orderBy('category_name_en','ASC')->get();
+		$products = DB::table('products')->where('product_name_en','LIKE',"%$item%")->paginate(20);
+		return view('frontend.product.search',compact('products','categories'));
+
+	} // end method
 
 }

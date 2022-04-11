@@ -316,3 +316,6 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
 Route::post('/checkout/message', [CheckoutController::class, 'CheckoutMessage'])->name('checkout.message');
+
+//Search Route
+Route::post('/product/search', [CartController::class, 'Search'])->name('product.search');
