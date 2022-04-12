@@ -600,15 +600,16 @@ Category Product
                       $cont = 1;
                   @endphp
                   @foreach ($products->links()['elements'][0] as $item)
-                    {{-- {{$item}} --}}
-                    <a href="{{$item}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-                      {{$cont++}}
-                    </a>
-                    {{-- @php
-                       echo($item)
-                    @endphp  --}} 
-                  
-                  @endforeach
+                    @if ($products->currentPage() == $cont)
+                      <a href="{{$item}}" style="color: rgb(255, 255, 255); background-color: #141414; font-size: 150%; text-align: center;" class="circulo">
+                        &nbsp;&nbsp;{{$cont++}}&nbsp;
+                      </a>  
+                    @else
+                      <a href="{{$item}}" style="font-size: 150%; width: 150%; text-align: center;" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                        &nbsp;{{$cont++}}&nbsp;
+                      </a>  
+                    @endif                              
+                  @endforeach 
                 </ul>
                 {{-- <ul class="list-inline list-unstyled">
                   

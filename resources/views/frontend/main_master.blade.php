@@ -3,6 +3,37 @@
 <head>
 
   <style>
+    
+   /* unvisited link */
+a:link {
+  color: #141414;
+}
+
+/* visited link */
+a:visited {
+  color: #141414;
+}
+
+/* mouse over link */
+/* a:hover {
+  color: hotpink;
+} */
+
+/* selected link */
+/* a:active {
+  background-color: rgb(255, 5, 5);
+  color: blue;
+}  */
+
+.circulo {
+    width: 100px;
+    height: 100px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
     /* .fa {
       font-size: 30px;
       width: 50px;
