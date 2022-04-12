@@ -121,7 +121,7 @@ class IndexController extends Controller
 
     public function TagWiseProduct($tag){
         $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get();
-		$products = Product::where([['status',1],['product_tags_en',$tag],['product_tags_esp',$tag]])->orderBy('order','ASC')->paginate(3);
+		$products = Product::where([['status',1],['product_tags_en',$tag],['product_tags_esp',$tag]])->orderBy('orden','ASC')->paginate(3);
         $categories = Category::orderBy('category_name_en','ASC')->get();
 		return view('frontend.tags.tags_view',compact('products','categories','sliders'));
 	}
@@ -129,7 +129,7 @@ class IndexController extends Controller
     public function CatWiseProduct($cat_id, $slug){
         /* $sliders = Slider::where('status','1')->orderBy('id','DESC')->limit(3)->get(); */
         $sliders = Category::where([['id',$cat_id]])->get();
-        $products = Product::where([['status',1],['category_id',$cat_id]])->orderBy('order','ASC')->paginate(6);
+        $products = Product::where([['status',1],['category_id',$cat_id]])->orderBy('orden','ASC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
 		return view('frontend.product.category_view',compact('products','categories','sliders'));
     }
@@ -137,7 +137,7 @@ class IndexController extends Controller
     public function SubCatWiseProduct($subcat_id, $slug){
         $subcategory = SubCategory::findOrFail($subcat_id);
         $sliders = Category::where('id', $subcategory->category_id)->get();
-        $products = Product::where([['status',1],['subcategory_id',$subcat_id]])->orderBy('order','ASC')->paginate(6);
+        $products = Product::where([['status',1],['subcategory_id',$subcat_id]])->orderBy('orden','ASC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
 		return view('frontend.product.subcategory_view',compact('products','categories','sliders'));
     }
@@ -145,7 +145,7 @@ class IndexController extends Controller
     public function SubSubCatWiseProduct($subsubcat_id, $slug){
         $subsubcategory = SubSubCategory::findOrFail($subsubcat_id);
         $sliders = Category::where('id', $subsubcategory->category_id)->get();
-        $products = Product::where([['status',1],['subsubcategory_id',$subsubcat_id]])->orderBy('order','ASC')->paginate(6);
+        $products = Product::where([['status',1],['subsubcategory_id',$subsubcat_id]])->orderBy('orden','ASC')->paginate(6);
         $categories = Category::orderBy('category_name_en','ASC')->get();
 		return view('frontend.product.sub_subcategory_view',compact('products','categories','sliders'));
     }
