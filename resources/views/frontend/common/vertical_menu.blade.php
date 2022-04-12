@@ -2,20 +2,21 @@
     $categories = App\Models\Category::orderBy('category_order','ASC')->get();
 @endphp
 
-  {{-- <form action="{{ route('product.search') }}" method="POST">
+  <form action="{{ route('product.search') }}" method="POST">
     @csrf
     <div class="row">
       <div class="col-xs-10 col-sm-10 col-md-10">
-        <input type="search" required="required" class="header_search_input" placeholder="Buscar producto..." name="search" style="width: 100%">
+        <input type="search" required="required" class="header_search_input" placeholder="Buscar productos..." name="search" style="width: 100%; height: 35px;">
       </div>
-      <div class="col-xs-2 col-sm-2 col-md-2">
-        <button type="submit" class="header_search_button trans_300" value="submit">
-          <img src="{{asset('frontend/assets/images/search.png')}}" alt="" width="10px">
+      <div class="col-xs-1 col-sm-1 col-md-1">
+        <button type="submit" class="btn btn-primary icon" value="submit" style="background: #292929; color:white; margin-left: -10px">
+          <i class="fa fa-search"></i>
+          {{-- <img src="{{asset('frontend/assets/images/search.png')}}" alt="" width="10px"> --}}
         </button>
       </div>
     </div>
   </form>
-  <br> --}}
+  <br>
 
 <div class="side-menu animate-dropdown outer-bottom-xs"  {{-- style="background-image: url({{asset('frontend/assets/images/body.jpg')}})" --}}>
     <div class="head" style="background: #292929; color:white"><i class="icon fa fa-align-justify fa-fw"></i> Categorias</div>

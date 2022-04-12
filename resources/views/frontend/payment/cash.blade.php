@@ -173,15 +173,15 @@ Cash On Delivery
 													<div class="col-md-1"></div>
 													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
 														<div class="row">
-															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="bancolombia" required></div>
-															<div class="col-md-10"><img src="{{asset('frontend/assets/images/merdiodepagoNEQUI.jpg')}}" style="width: 100%"><br></div>
+															<div class="col-md-1 col-xs-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="bancolombia" required></div>
+															<div class="col-md-10 col-xs-10"><img src="{{asset('frontend/assets/images/merdiodepagoNEQUI.jpg')}}" style="width: 100%"><br></div>
 														</div>
 													</div>
 													<div class="col-md-1"></div>
 													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
 														<div class="row">
-															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="davivienda" required></div>
-															<div class="col-md-10"><img src="{{asset('frontend/assets/images/mediodepagoDAVIPLATA.jpg')}}" style="width: 100%"><br><br></div>
+															<div class="col-md-1 col-xs-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="davivienda" required></div>
+															<div class="col-md-10 col-xs-10"><img src="{{asset('frontend/assets/images/mediodepagoDAVIPLATA.jpg')}}" style="width: 100%"><br><br></div>
 														</div>
 													</div>
 													<div class="col-md-2"></div>
@@ -193,15 +193,15 @@ Cash On Delivery
 													<div class="col-md-1"></div>
 													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
 														<div class="row">
-															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="bancolombia" required></div>
-															<div class="col-md-10"><img src="{{asset('frontend/assets/images/mediodepagoBANCOLOMBIA.jpg')}}" style="width: 100%"><br></div>
+															<div class="col-md-1 col-xs-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="bancolombia" required></div>
+															<div class="col-md-10 col-xs-10"><img src="{{asset('frontend/assets/images/mediodepagoBANCOLOMBIA.jpg')}}" style="width: 100%"><br></div>
 														</div>
 													</div>
 													<div class="col-md-1"></div>
 													<div class="col-md-4" style="border: #292929 solid 0px; border-radius: 5px;">
 														<div class="row">
-															<div class="col-md-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="davivienda" required></div>
-															<div class="col-md-10"><img src="{{asset('frontend/assets/images/mediodepagoDAVIVIENDA.jpg')}}" style="width: 100%"><br><br></div>
+															<div class="col-md-1 col-xs-1" style=" transform: translateY(100%);"><input style="height:20px; width:20px;" type="radio" name="payment_type" value="davivienda" required></div>
+															<div class="col-md-10 col-xs-10"><img src="{{asset('frontend/assets/images/mediodepagoDAVIVIENDA.jpg')}}" style="width: 100%"><br><br></div>
 														</div>
 													</div>
 													<div class="col-md-2"></div>

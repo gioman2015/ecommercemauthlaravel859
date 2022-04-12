@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                     <h5>Orden <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="number" name="order" class="form-control" value="{{$products->order}}">
+                                        <input type="number" name="order" class="form-control" value="{{$products->orden}}">
                                         @error('order')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

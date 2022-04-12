@@ -49,7 +49,7 @@
                                         <span class="badge badge-pill badge-danger">{{ round($discount)  }} %</span>
                                     @endif
                                 </td>
-                                <td>{{$item->order}}</td>
+                                <td>{{$item->orden}}</td>
                                 <td>
                                     @if ($item->status == 1)
                                         <span class="badge badge-pill badge-success">Active</span>

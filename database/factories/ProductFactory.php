@@ -52,7 +52,7 @@ class ProductFactory extends Factory
             'special_deals' => NULL,
             'status' => 1,
             'puntos' => $this->faker->numberBetween($min = 1, $max = 100),
-            'order' => $this->faker->numberBetween($min = 1, $max = 100)
+            'orden' => $this->faker->numberBetween($min = 1, $max = 100)
         ];
     }
 }
